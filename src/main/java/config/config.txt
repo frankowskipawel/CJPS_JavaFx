@@ -1,0 +1,4 @@
+localhost
+certyfikaty_database
+pawel
+admin
