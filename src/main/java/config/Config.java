@@ -37,13 +37,13 @@ public class Config {
     private void setDefaultConfig() throws IOException {
         File file = new File(PATH);
         file.createNewFile();
-        PrintWriter tekstowy = new PrintWriter(PATH);
+        PrintWriter printWriter = new PrintWriter(PATH);
         //Wartości domyślnie wpisywane do pliku konfiguracyjnego
-        tekstowy.println("localhost");
-        tekstowy.println("certyfikaty_database");
-        tekstowy.println("pawel");
-        tekstowy.println("admin");
-        tekstowy.close();
+        printWriter.println("localhost");
+        printWriter.println("certyfikaty_database");
+        printWriter.println("pawel");
+        printWriter.println("admin");
+        printWriter.close();
     }
 
 
