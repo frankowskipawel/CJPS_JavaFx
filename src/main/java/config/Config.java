@@ -10,8 +10,8 @@ public class Config {
     private final String PATH = "src\\main\\java\\config\\config.txt";
 
     public static String HOSTNAME;
-    public static String DATABASE;
-    public static String LOGIN;
+    public static String DATABASENAME;
+    public static String USER;
     public static String PASSWORD;
 
     public void getConfigFromFile() throws IOException {
@@ -29,8 +29,8 @@ public class Config {
         File plik = new File(PATH);
         Scanner wejscie = new Scanner(plik);
         HOSTNAME = wejscie.nextLine();
-        DATABASE = wejscie.nextLine();
-        LOGIN = wejscie.nextLine();
+        DATABASENAME = wejscie.nextLine();
+        USER = wejscie.nextLine();
         PASSWORD = wejscie.nextLine();
     }
 
@@ -44,6 +44,26 @@ public class Config {
         printWriter.println("pawel");
         printWriter.println("admin");
         printWriter.close();
+    }
+
+    public void setConfig(String host, String database, String login, String password) {
+        try {
+            File file = new File(PATH);
+            if (!file.delete()) {
+                PrintWriter printWriter = new PrintWriter(PATH);
+                printWriter.println(host);
+                printWriter.println(database);
+                printWriter.println(login);
+                printWriter.println(password);
+                printWriter.close();
+                getConfig();
+            } else {
+                file.createNewFile();
+                setConfig(host, database, login, password);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
