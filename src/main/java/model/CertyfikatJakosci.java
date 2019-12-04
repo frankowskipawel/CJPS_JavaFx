@@ -3,6 +3,11 @@ package model;
 import javafx.beans.property.SimpleStringProperty;
 
 public class CertyfikatJakosci {
+    //Zmienne używane na stronie głównej na liście aktywnych certyfikatów
+    private final SimpleStringProperty nrCertyfikatuTableViewStronaGlowna = new SimpleStringProperty("");
+    private final SimpleStringProperty naszaNazwaTableViewStronaGlowna = new SimpleStringProperty("");
+
+    //zmienne używane na liście certyfiktów
     private final SimpleStringProperty numerCertyfikatu = new SimpleStringProperty("");
     private final SimpleStringProperty aktywny = new SimpleStringProperty("");
     private final SimpleStringProperty naszaNazwa = new SimpleStringProperty("");
@@ -22,7 +27,10 @@ public class CertyfikatJakosci {
     private final SimpleStringProperty dostawca = new SimpleStringProperty("");
     private final SimpleStringProperty nrFV = new SimpleStringProperty("");
 
+    public CertyfikatJakosci() {
+    }
 
+    //Konstruktor używany na liście certyfikatów
     public CertyfikatJakosci(String numerCertyfikatu, String aktywny, String naszaNazwa, String asortyment, String data,
                              String numerCertyfikatuLaboratorium, String zawartoscPopiolu, String zawartoscSiarkiCalkowitej,
                              String zawartoscCzesciLotnych, String wartoscOpalowa, String zdolnoscSpiekania,
@@ -47,15 +55,7 @@ public class CertyfikatJakosci {
         setZawartoscWilgociCalkowitej(zawartoscWilgociCalkowitej);
         setDostawca(dostawca);
         setNrFV(nrFV);
-
-    }
-
-    public CertyfikatJakosci(String numerCertyfikatu, String naszaNazwa) {
-
-        setNumerCertyfikatu(numerCertyfikatu);
-        setNaszaNazwa(naszaNazwa);
-
-
+//---
     }
 
     public String getNumerCertyfikatu() {
@@ -70,6 +70,7 @@ public class CertyfikatJakosci {
         this.numerCertyfikatu.set(numerCertyfikatu);
     }
 
+    //---
     public String getAktywny() {
         return aktywny.get();
     }
@@ -82,6 +83,7 @@ public class CertyfikatJakosci {
         this.aktywny.set(aktywny);
     }
 
+    //---
     public String getNaszaNazwa() {
         return naszaNazwa.get();
     }
@@ -94,6 +96,7 @@ public class CertyfikatJakosci {
         this.naszaNazwa.set(naszaNazwa);
     }
 
+    //---
     public String getAsortyment() {
         return asortyment.get();
     }
@@ -106,7 +109,7 @@ public class CertyfikatJakosci {
         this.asortyment.set(asortyment);
     }
 
-
+    //---
     public String getData() {
         return data.get();
     }
@@ -119,6 +122,7 @@ public class CertyfikatJakosci {
         this.data.set(data);
     }
 
+    //---
     public String getNumerCertyfikatuLaboratorium() {
         return numerCertyfikatuLaboratorium.get();
     }
@@ -131,6 +135,7 @@ public class CertyfikatJakosci {
         this.numerCertyfikatuLaboratorium.set(numerCertyfikatuLaboratorium);
     }
 
+    //---
     public String getZawartoscPopiolu() {
         return zawartoscPopiolu.get();
     }
@@ -143,6 +148,7 @@ public class CertyfikatJakosci {
         this.zawartoscPopiolu.set(zawartoscPopiolu);
     }
 
+    //---
     public String getZawartoscSiarkiCalkowitej() {
         return zawartoscSiarkiCalkowitej.get();
     }
@@ -155,6 +161,7 @@ public class CertyfikatJakosci {
         this.zawartoscSiarkiCalkowitej.set(zawartoscSiarkiCalkowitej);
     }
 
+    //---
     public String getZawartoscCzesciLotnych() {
         return zawartoscCzesciLotnych.get();
     }
@@ -167,6 +174,7 @@ public class CertyfikatJakosci {
         this.zawartoscCzesciLotnych.set(zawartoscCzesciLotnych);
     }
 
+    //---
     public String getWartoscOpalowa() {
         return wartoscOpalowa.get();
     }
@@ -179,6 +187,7 @@ public class CertyfikatJakosci {
         this.wartoscOpalowa.set(wartoscOpalowa);
     }
 
+    //---
     public String getZdolnoscSpiekania() {
         return zdolnoscSpiekania.get();
     }
@@ -191,6 +200,7 @@ public class CertyfikatJakosci {
         this.zdolnoscSpiekania.set(zdolnoscSpiekania);
     }
 
+    //---
     public String getMinimalnyWymiarZiarna() {
         return minimalnyWymiarZiarna.get();
     }
@@ -203,6 +213,7 @@ public class CertyfikatJakosci {
         this.minimalnyWymiarZiarna.set(minimalnyWymiarZiarna);
     }
 
+    //---
     public String getMaksymalnyWymiarZiarna() {
         return maksymalnyWymiarZiarna.get();
     }
@@ -215,6 +226,7 @@ public class CertyfikatJakosci {
         this.maksymalnyWymiarZiarna.set(maksymalnyWymiarZiarna);
     }
 
+    //---
     public String getZawartoscPodziarna() {
         return zawartoscPodziarna.get();
     }
@@ -227,6 +239,7 @@ public class CertyfikatJakosci {
         this.zawartoscPodziarna.set(zawartoscPodziarna);
     }
 
+    //---
     public String getZawartoscNadziarna() {
         return zawartoscNadziarna.get();
     }
@@ -239,6 +252,7 @@ public class CertyfikatJakosci {
         this.zawartoscNadziarna.set(zawartoscNadziarna);
     }
 
+    //---
     public String getZawartoscWilgociCalkowitej() {
         return zawartoscWilgociCalkowitej.get();
     }
@@ -251,6 +265,7 @@ public class CertyfikatJakosci {
         this.zawartoscWilgociCalkowitej.set(zawartoscWilgociCalkowitej);
     }
 
+    //---
     public String getDostawca() {
         return dostawca.get();
     }
@@ -263,6 +278,7 @@ public class CertyfikatJakosci {
         this.dostawca.set(dostawca);
     }
 
+    //---
     public String getNrFV() {
         return nrFV.get();
     }
@@ -274,6 +290,40 @@ public class CertyfikatJakosci {
     public void setNrFV(String nrFV) {
         this.nrFV.set(nrFV);
     }
+//-------------------------------------------------------------------------------------------------------
+
+    //Konstruktor na potrzeby wyświetlenia listy Aktywnych certyfikatów na Stronie Głównej
+    public CertyfikatJakosci(String numerCertyfikatu, String naszaNazwa) {
+        setNumerCertyfikatuAktywne(numerCertyfikatu);
+        setNaszaNazwaAktywne(naszaNazwa);
+    }
+
+    public String getNumerCertyfikatuAktywne() {
+        return nrCertyfikatuTableViewStronaGlowna.get();
+    }
+
+    public SimpleStringProperty nrCertyfikatuTableViewStronaGlownaProperty() {
+        return nrCertyfikatuTableViewStronaGlowna;
+    }
+
+    public void setNumerCertyfikatuAktywne(String numerCertyfikatu) {
+        this.nrCertyfikatuTableViewStronaGlowna.set(numerCertyfikatu);
+    }
+
+    //---
+    public String getNaszaNazwaAktywne() {
+        return naszaNazwaTableViewStronaGlowna.get();
+    }
+
+    public SimpleStringProperty naszaNazwaTableViewStronaGlownaProperty() {
+        return naszaNazwaTableViewStronaGlowna;
+    }
+
+    public void setNaszaNazwaAktywne(String naszaNazwa) {
+        this.naszaNazwaTableViewStronaGlowna.set(naszaNazwa);
+    }
+//----------------------------------------------------------------------------------------------------------
+
 
     @Override
     public String toString() {

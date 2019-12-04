@@ -2,7 +2,6 @@ package stages;
 
 import dao.CertyfikatJakosciDao;
 import dao.DokumentDao;
-import model.AktywneCertyfikaty;
 import model.CertyfikatJakosci;
 import model.Dokument;
 import javafx.collections.ObservableList;
@@ -16,7 +15,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -26,7 +24,7 @@ import java.util.List;
 public class StronaGlownaController {
 
     @FXML
-    private TableView<AktywneCertyfikaty> listaAktywnychCertyfikatowTableViewStronaGlowna;
+    private TableView<CertyfikatJakosci> listaAktywnychCertyfikatowTableViewStronaGlowna;
     @FXML
     private ListView<Dokument> listaDokumentowListViewStronaGlowna;
     @FXML
@@ -50,9 +48,10 @@ public class StronaGlownaController {
 
         Iterator<CertyfikatJakosci> iterator = list.iterator();
         for (CertyfikatJakosci b : list) {
-            ObservableList<AktywneCertyfikaty> data = listaAktywnychCertyfikatowTableViewStronaGlowna.getItems();
-            data.add(new AktywneCertyfikaty(b.numerCertyfikatuProperty().getValue(), b.naszaNazwaProperty().getValue()
+            ObservableList<CertyfikatJakosci> data = listaAktywnychCertyfikatowTableViewStronaGlowna.getItems();
+            data.add(new CertyfikatJakosci(b.numerCertyfikatuProperty().getValue(), b.naszaNazwaProperty().getValue()
             ));
+
         }
     }
 
@@ -87,7 +86,7 @@ public class StronaGlownaController {
 
 
        // stage.close();
-        Dokument dokumenty = new Dokument();
+     //   Dokument dokument = new Dokument();
 
        //dokumenty.numerDokumentuStatic = "12345";
 
@@ -102,7 +101,7 @@ public class StronaGlownaController {
     }
 
     public void odswiezListeAktywnychCertyfikatow() {
-        ObservableList<AktywneCertyfikaty> data = listaAktywnychCertyfikatowTableViewStronaGlowna.getItems();
+        ObservableList<CertyfikatJakosci> data = listaAktywnychCertyfikatowTableViewStronaGlowna.getItems();
         data.removeAll(data);
         dodajAktywneCertyfikatyDoTableView();
     }
