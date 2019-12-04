@@ -17,9 +17,10 @@ public class DaoService {
             connection = DriverManager.getConnection("jdbc:mysql://" + Config.HOSTNAME + "/" + Config.DATABASENAME + "?useSSL=false", Config.USER, Config.PASSWORD);
         } catch (Exception e) {
             createDatabase();
-            System.out.println("Brak stryktury bazy danych. Tworze nową!");
+            System.out.println("Brak struktury bazy danych. Tworzenie nowej!");
           //  e.printStackTrace();
         }
+
     }
 
     public void createDatabase() {

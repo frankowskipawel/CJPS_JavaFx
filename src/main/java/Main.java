@@ -1,6 +1,5 @@
 import config.Config;
 import dao.DaoService;
-
 import java.io.IOException;
 
 public class Main {
