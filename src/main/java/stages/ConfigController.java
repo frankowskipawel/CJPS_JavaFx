@@ -4,7 +4,9 @@ import config.Config;
 import config.Default;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -27,6 +29,9 @@ public class ConfigController {
     private TextField passwordTextfieldConfig;
 
     @FXML
+    private Button anulujButton;
+
+    @FXML
     public void initialize() {
         //Chwilowo wczytanie ustawień z pliku
         Config config = new Config();
@@ -47,6 +52,7 @@ public class ConfigController {
         Config config = new Config();
         config.setConfig(hostTextFieldConfig.getText(), portTextFieldConfig.getText(), databaseNameTextFieldConfig.getText(), loginTextFieldConfig.getText(), passwordTextfieldConfig.getText());
         config.getConfigFromFile();
+        closeStage();
     }
 
     @FXML
@@ -57,6 +63,16 @@ public class ConfigController {
         loginTextFieldConfig.setText(Default.CONNECTION.getUser());
         passwordTextfieldConfig.setText(Default.CONNECTION.getPassword());
 
+    }
+
+    @FXML
+    void anulujClick(ActionEvent event) {
+        closeStage();
+    }
+
+    void closeStage(){
+        Stage stage = (Stage) anulujButton.getScene().getWindow();
+        stage.close();
     }
 
 

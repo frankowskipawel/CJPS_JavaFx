@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="260.0" prefWidth="355.0" style="-fx-spacing: 0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stages.ConfigController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="274.0" prefWidth="355.0" style="-fx-spacing: 0;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stages.ConfigController">
    <children>
       <Label prefHeight="44.0" prefWidth="334.0" style="-fx-alignment: center;" text="Message" textAlignment="CENTER">
          <font>
@@ -42,7 +42,7 @@
             <Label text="Port" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <GridPane style="-fx-alignment: center;">
+      <GridPane prefHeight="57.0" prefWidth="334.0" style="-fx-alignment: center;">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="159.79999542236328" minWidth="10.0" prefWidth="140.59998321533203" />
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="109.4000244140625" minWidth="10.0" prefWidth="89.40001678466797" />
@@ -53,7 +53,7 @@
         </rowConstraints>
          <children>
             <Button mnemonicParsing="false" onAction="#okClick" prefHeight="14.0" prefWidth="87.0" text="OK" GridPane.columnIndex="2" />
-            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="82.0" text="Anuluj" GridPane.columnIndex="1" />
+            <Button fx:id="anulujButton" mnemonicParsing="false" onAction="#anulujClick" prefHeight="26.0" prefWidth="82.0" text="Anuluj" GridPane.columnIndex="1" />
             <Button mnemonicParsing="false" onAction="#domyslneClick" text="Domyślne" />
          </children>
       </GridPane>

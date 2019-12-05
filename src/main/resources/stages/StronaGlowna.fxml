@@ -22,6 +22,7 @@
         <Menu mnemonicParsing="false" text="Menu">
           <items>
             <MenuItem fx:id="MenuListaCertyfikatow" mnemonicParsing="false" onAction="#MenuListaCertyfikatowClick" text="Lista Certyfikatów" />
+                  <MenuItem mnemonicParsing="false" onAction="#menuUstawieniaClick" text="Ustawienia" />
             <MenuItem mnemonicParsing="false" text="Quit" />
           </items>
         </Menu>

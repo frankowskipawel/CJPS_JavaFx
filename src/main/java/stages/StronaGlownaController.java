@@ -2,6 +2,7 @@ package stages;
 
 import dao.CertyfikatJakosciDao;
 import dao.DokumentDao;
+import javafx.event.ActionEvent;
 import model.CertyfikatJakosci;
 import model.Dokument;
 import javafx.collections.ObservableList;
@@ -245,6 +246,17 @@ public class StronaGlownaController {
     @FXML
     public void podgladClick() throws IOException {
 
+    }
+
+    @FXML
+    void menuUstawieniaClick(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        stage.setTitle("Ustawienia");
+        Pane myPane = (Pane) FXMLLoader.load(getClass().getResource
+                ("Config.fxml"));
+        Scene myScene = new Scene(myPane);
+        stage.setScene(myScene);
+        stage.show();
     }
 
 }
