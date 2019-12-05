@@ -1,5 +1,6 @@
 package dao;
 
+import config.Config;
 import model.Kontrahent;
 
 import java.sql.*;
@@ -8,24 +9,23 @@ import java.util.List;
 
 public class KontrahentDao {
     private Connection connection;
-    private final String databaseName = "certyfikaty_database";
     private final String tableName = "kontrahent";
-    private final String user = "pawel";
-    private final String password = "admin";
+
 
     public KontrahentDao() {
         init();
     }
+
     private void init() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost/"+databaseName+"?useSSL=false", user, password);
-        } catch(Exception e) {
+            connection = DriverManager.getConnection("jdbc:mysql://" + Config.HOSTNAME + ":" + Config.PORT + "/" + Config.HOSTNAME + "?useSSL=false", Config.USER, Config.PASSWORD);
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public  List<Kontrahent> getAllKontrahent() {
+    public List<Kontrahent> getAllKontrahent() {
         List<Kontrahent> kontrahenci = new LinkedList<Kontrahent>();
         Statement statement = null;
         try {
@@ -45,7 +45,6 @@ public class KontrahentDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return kontrahenci;
     }
 
@@ -53,26 +52,19 @@ public class KontrahentDao {
         Statement statement = null;
         try {
             statement = connection.createStatement();
-          //  insert into employees(name, lastname, age) values('Jan', 'Kowalski', 22);
-            String query  = "insert into "+ tableName+"(id_kontrahent, nazwa_kontrahent, adres_kontrahent, nip_kontrahent, regon_kontrahent) values('"+id+"', '"+nazwa+"', '"+adres+"', '"+nip+"', '"+regon+"');";
-           // System.out.println(query);
-            //   String query = "select * from " + tableName;
+            String query = "insert into " + tableName + "(id_kontrahent, nazwa_kontrahent, adres_kontrahent, nip_kontrahent, regon_kontrahent) values('" + id + "', '" + nazwa + "', '" + adres + "', '" + nip + "', '" + regon + "');";
             int resultSet = statement.executeUpdate(query);
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
     public void deleteKontrahentDatabase(String id) {
         Statement statement = null;
         try {
             statement = connection.createStatement();
-            //  insert into employees(name, lastname, age) values('Jan', 'Kowalski', 22);
-            String query  = "delete from "+ tableName+" where id_dokumenty = "+id;
-          ///  System.out.println(query);
-            //   String query = "select * from " + tableName;
+            String query = "delete from " + tableName + " where id_dokumenty = " + id;
             int resultSet = statement.executeUpdate(query);
-
         } catch (SQLException e) {
             e.printStackTrace();
         }

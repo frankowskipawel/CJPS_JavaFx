@@ -10,6 +10,7 @@ public class Config {
     private final String PATH = "src\\main\\java\\config\\config.txt";
 
     public static String HOSTNAME;
+    public static String PORT;
     public static String DATABASENAME;
     public static String USER;
     public static String PASSWORD;
@@ -29,6 +30,7 @@ public class Config {
         File plik = new File(PATH);
         Scanner wejscie = new Scanner(plik);
         HOSTNAME = wejscie.nextLine();
+        PORT = wejscie.nextLine();
         DATABASENAME = wejscie.nextLine();
         USER = wejscie.nextLine();
         PASSWORD = wejscie.nextLine();
@@ -39,19 +41,21 @@ public class Config {
         file.createNewFile();
         PrintWriter printWriter = new PrintWriter(PATH);
         //Wartości domyślnie wpisywane do pliku konfiguracyjnego
-        printWriter.println("localhost");
-        printWriter.println("certyfikaty_database");
-        printWriter.println("pawel");
-        printWriter.println("admin");
+        printWriter.println(Default.CONNECTION.getHost());
+        printWriter.println(Default.CONNECTION.getPort());
+        printWriter.println(Default.CONNECTION.getDatabaseName());
+        printWriter.println(Default.CONNECTION.getUser());
+        printWriter.println(Default.CONNECTION.getPassword());
         printWriter.close();
     }
 
-    public void setConfig(String host, String database, String login, String password) {
+    public void setConfig(String host, String port, String database, String login, String password) {
         try {
             File file = new File(PATH);
             if (!file.delete()) {
                 PrintWriter printWriter = new PrintWriter(PATH);
                 printWriter.println(host);
+                printWriter.println(port);
                 printWriter.println(database);
                 printWriter.println(login);
                 printWriter.println(password);
@@ -59,7 +63,7 @@ public class Config {
                 getConfig();
             } else {
                 file.createNewFile();
-                setConfig(host, database, login, password);
+                setConfig(host, port, database, login, password);
             }
         } catch (Exception e) {
             e.printStackTrace();

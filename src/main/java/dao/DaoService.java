@@ -14,7 +14,7 @@ public class DaoService {
     public void init() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://" + Config.HOSTNAME + "/" + Config.DATABASENAME + "?useSSL=false", Config.USER, Config.PASSWORD);
+            connection = DriverManager.getConnection("jdbc:mysql://" + Config.HOSTNAME +  ":"+Config.PORT+"/" + Config.DATABASENAME + "?useSSL=false", Config.USER, Config.PASSWORD);
         } catch (Exception e) {
             createDatabase();
             System.out.println("Brak struktury bazy danych. Tworzenie nowej!");

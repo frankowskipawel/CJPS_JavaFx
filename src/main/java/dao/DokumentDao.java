@@ -1,6 +1,7 @@
 package dao;
 
 
+import config.Config;
 import model.Dokument;
 
 import java.sql.*;
@@ -10,10 +11,8 @@ import java.util.List;
 public class DokumentDao {
 
     private Connection connection;
-    private final String databaseName = "certyfikaty_database";
     private final String tableName = "dokumenty";
-    private final String user = "pawel";
-    private final String password = "admin";
+
 
     public DokumentDao() {
         init();
@@ -22,7 +21,9 @@ public class DokumentDao {
     private void init() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://10.0.0.6:3306/" + databaseName + "?useSSL=false", user, password);
+
+            connection = DriverManager.getConnection("jdbc:mysql://"+ Config.HOSTNAME + ":"+Config.PORT+"/" + Config.DATABASENAME + "?useSSL=false", Config.USER, Config.PASSWORD);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
