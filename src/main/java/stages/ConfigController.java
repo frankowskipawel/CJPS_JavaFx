@@ -5,6 +5,7 @@ import config.Default;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -32,6 +33,14 @@ public class ConfigController {
     private Button anulujButton;
 
     @FXML
+    private Label messageLabel;
+
+
+    public ConfigController() {
+    }
+
+    //Najpierw wywoływany jest konstruktor dopiero metoda initialize i to w niej mozna dopiero ustawiać kontrolki
+    @FXML
     public void initialize() {
         //Chwilowo wczytanie ustawień z pliku
         Config config = new Config();
@@ -45,6 +54,7 @@ public class ConfigController {
         databaseNameTextFieldConfig.setText(Config.DATABASENAME);
         loginTextFieldConfig.setText(Config.USER);
         passwordTextfieldConfig.setText(Config.PASSWORD);
+
     }
 
     @FXML
@@ -70,9 +80,13 @@ public class ConfigController {
         closeStage();
     }
 
-    void closeStage(){
+    void closeStage() {
         Stage stage = (Stage) anulujButton.getScene().getWindow();
         stage.close();
+    }
+
+    public void setMessageLabel(String text){
+        messageLabel.setText(text);
     }
 
 

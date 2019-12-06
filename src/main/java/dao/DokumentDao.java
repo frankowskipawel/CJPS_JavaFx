@@ -123,7 +123,7 @@ public class DokumentDao {
             statement = connection.createStatement();
             //  insert into employees(name, lastname, age) values('Jan', 'Kowalski', 22);
             String query = "insert into " + tableName + "(id_dokumenty, data_dokumenty, nr_certyfikaty, aktywny_certyfikaty, nasza_nazwa_certyfikaty, asortyment_certyfikaty, data_certyfikaty, nr_lab_certyfikaty, popiol_certyfikaty, siarka_certyfikaty, cz_lotne_certyfikaty, wartosc_opalowa_certyfikaty, spiekalnosc_certyfikaty, min_ziarno_certyfikaty, max_ziarno_certyfikaty, podziarno_certyfikaty, nadziarno_certyfikaty, wilgoc_certyfikaty, dostawca_certyfikaty, nr_fv_certyfikaty) values('" + dokument.getNumerDokumentu() + "', '" + dokument.getDataDokumentu() + "', '" + dokument.getNumerCertyfikatu() + "', '" + dokument.getAktywny() + "', '" + dokument.getNaszaNazwa() + "', '" + dokument.getAsortyment() + "', '" + dokument.getData() + "', '" + dokument.getNumerCertyfikatuLaboratorium() + "', '" + dokument.getZawartoscPopiolu() + "', '" + dokument.getZawartoscSiarkiCalkowitej() + "', '" + dokument.getZawartoscCzesciLotnych() + "', '" + dokument.getWartoscOpalowa() + "', '" + dokument.getZdolnoscSpiekania() + "', '" + dokument.getMinimalnyWymiarZiarna() + "', '" + dokument.getMaksymalnyWymiarZiarna() + "', '" + dokument.getZawartoscPodziarna() + "', '" + dokument.getZawartoscNadziarna() + "', '" + dokument.getZawartoscWilgociCalkowitej() + "', '" + dokument.getDostawca() + "', '" + dokument.getNrFV() + "');";
-            //  System.out.println(query);
+             System.out.println(query);
             //   String query = "select * from " + tableName;
             int resultSet = statement.executeUpdate(query);
 

@@ -7,9 +7,10 @@ public class Dokument extends CertyfikatJakosci {
     private final SimpleStringProperty numerDokumentu = new SimpleStringProperty("");
     private final SimpleStringProperty dataDokumentu = new SimpleStringProperty("");
 
-   // public Dokument() {
-//        super();
-//    }
+    private final SimpleStringProperty nrCertyfikatuTableViewStronaGlowna = new SimpleStringProperty("");
+    private final SimpleStringProperty naszaNazwaTableViewStronaGlowna = new SimpleStringProperty("");
+
+
 
 
     public Dokument(String numerDokumentu, String dataDokumentu, String numerCertyfikatu, String aktywny, String naszaNazwa, String asortyment, String data, String numerCertyfikatuLaboratorium, String zawartoscPopiolu, String zawartoscSiarkiCalkowitej, String zawartoscCzesciLotnych, String wartoscOpalowa, String zdolnoscSpiekania, String minimalnyWymiarZiarna, String maksymalnyWymiarZiarna, String zawartoscPodziarna, String zawartoscNadziarna, String zawartoscWilgociCalkowitej, String dostawca, String nrFV) {

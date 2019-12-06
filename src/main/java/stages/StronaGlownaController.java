@@ -47,6 +47,7 @@ public class StronaGlownaController {
         CertyfikatJakosciDao certyfikatJakosciDao = new CertyfikatJakosciDao();
         List<CertyfikatJakosci> list = certyfikatJakosciDao.getAllCertyfikatJakosciTylkoAktywne();
 
+
         Iterator<CertyfikatJakosci> iterator = list.iterator();
         for (CertyfikatJakosci b : list) {
             ObservableList<CertyfikatJakosci> data = listaAktywnychCertyfikatowTableViewStronaGlowna.getItems();
@@ -54,6 +55,7 @@ public class StronaGlownaController {
             ));
 
         }
+
     }
 
     @FXML
@@ -69,27 +71,20 @@ public class StronaGlownaController {
     protected void dodajWydrukujClick() throws IOException {
 
 
-        dodajElementDoListViewIUstawZmienneStatyczneDoWydruku();
+        dodajDokumentDoListView();
 
         odswiezListeAktywnychCertyfikatow();
 
         odswiezListedokumentow();
-        wydrukujDokument();
+        pokazDokument();
 
         //print(vBoxStronaGlowna); //do zmiany
 
     }
 
-    protected void wydrukujDokument() throws IOException {
+    protected void pokazDokument() throws IOException {
 
 
-      //  stage.close();
-
-
-       // stage.close();
-     //   Dokument dokument = new Dokument();
-
-       //dokumenty.numerDokumentuStatic = "12345";
 
         Stage stage = new Stage();
         stage.setTitle("Dodaj nowy certyfikat jakości");
@@ -115,10 +110,14 @@ public class StronaGlownaController {
 
 
     @FXML
-    protected void dodajElementDoListViewIUstawZmienneStatyczneDoWydruku() {
+    protected void dodajDokumentDoListView() {
 
         ObservableList<Dokument> data = listaDokumentowListViewStronaGlowna.getItems();
-        CertyfikatJakosci certyfikatJakoscipoId = new CertyfikatJakosciDao().znajdzCertyfikatPoId(listaAktywnychCertyfikatowTableViewStronaGlowna.getSelectionModel().getSelectedItem().getNumerCertyfikatu());
+
+        System.out.println("zaznaczenia nr "+listaAktywnychCertyfikatowTableViewStronaGlowna.getSelectionModel().getSelectedItem());
+
+        CertyfikatJakosci certyfikatJakoscipoId = new CertyfikatJakosciDao().znajdzCertyfikatPoId(listaAktywnychCertyfikatowTableViewStronaGlowna.getSelectionModel().getSelectedItem().getNumerCertyfikatuAktywne());
+
         DokumentDao dokumentDao = new DokumentDao();
         int numer = dokumentDao.getNajwyzszyNumerDokumentuDao() + 1;
       //  System.out.println("Najwyzszy numer to: "+numer);
@@ -128,9 +127,10 @@ public class StronaGlownaController {
 
 
         Dokument dokumentDodawany = new Dokument(Integer.toString(numer)+"/"+dataDzisiejszaString.substring(0, 4), dataDzisiejszaString, certyfikatJakoscipoId.getNumerCertyfikatu(), certyfikatJakoscipoId.getAktywny(), certyfikatJakoscipoId.getNaszaNazwa(), certyfikatJakoscipoId.getAsortyment(), certyfikatJakoscipoId.getData(), certyfikatJakoscipoId.getNumerCertyfikatuLaboratorium(), certyfikatJakoscipoId.getZawartoscPopiolu(), certyfikatJakoscipoId.getZawartoscSiarkiCalkowitej(), certyfikatJakoscipoId.getZawartoscCzesciLotnych(), certyfikatJakoscipoId.getWartoscOpalowa(), certyfikatJakoscipoId.getZdolnoscSpiekania(), certyfikatJakoscipoId.getMinimalnyWymiarZiarna(), certyfikatJakoscipoId.getMaksymalnyWymiarZiarna(), certyfikatJakoscipoId.getZawartoscPodziarna(), certyfikatJakoscipoId.getZawartoscNadziarna(), certyfikatJakoscipoId.getZawartoscWilgociCalkowitej(), certyfikatJakoscipoId.getDostawca(), certyfikatJakoscipoId.getNrFV());
+        System.out.println("dok dodawany : "+dokumentDodawany);
         data.add(dokumentDodawany);
 
-        //Dodanie numeru do wydruku
+
 //        dokumentDodawany.numerDokumentuStatic = dokumentDodawany.getNumerDokumentu();
 //        dokumentDodawany.dataDokumentuStatic = dokumentDodawany.getDataDokumentu();
 //        dokumentDodawany.asortymentStatic= dokumentDodawany.getAsortyment();
@@ -149,8 +149,12 @@ public class StronaGlownaController {
 //        dokumentDodawany.zawartoscWilgociCalkowitejStatic = dokumentDodawany.getZawartoscWilgociCalkowitej();
 
 
-
+        System.out.println(">>>>"+dokumentDodawany.getNaszaNazwa());
         dokumentDao.addDokumentToDatabase(dokumentDodawany);
+
+    }
+
+    public void przekazanieZmiennychDoWydruku(){
 
     }
 

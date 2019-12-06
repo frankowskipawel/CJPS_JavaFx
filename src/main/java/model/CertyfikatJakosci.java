@@ -27,8 +27,7 @@ public class CertyfikatJakosci {
     private final SimpleStringProperty dostawca = new SimpleStringProperty("");
     private final SimpleStringProperty nrFV = new SimpleStringProperty("");
 
-    public CertyfikatJakosci() {
-    }
+
 
     //Konstruktor używany na liście certyfikatów
     public CertyfikatJakosci(String numerCertyfikatu, String aktywny, String naszaNazwa, String asortyment, String data,
@@ -300,7 +299,7 @@ public class CertyfikatJakosci {
 
     public String getNumerCertyfikatuAktywne() {
         return nrCertyfikatuTableViewStronaGlowna.get();
-    }
+    } //Tu sprawdzic
 
     public SimpleStringProperty nrCertyfikatuTableViewStronaGlownaProperty() {
         return nrCertyfikatuTableViewStronaGlowna;

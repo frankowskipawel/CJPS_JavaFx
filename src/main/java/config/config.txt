@@ -1,5 +1,5 @@
-localhost
+10.0.0.6
 3306
 certyfikaty_database
-root
+pawel
 admin
