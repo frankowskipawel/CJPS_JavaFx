@@ -1,7 +1,7 @@
 package stages;
 
 import config.Config;
-import config.Default;
+import config.DefaultConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -67,11 +67,11 @@ public class ConfigController {
 
     @FXML
     void domyslneClick(ActionEvent event) {
-        hostTextFieldConfig.setText(Default.CONNECTION.getHost());
-        portTextFieldConfig.setText(Default.CONNECTION.getPort());
-        databaseNameTextFieldConfig.setText(Default.CONNECTION.getDatabaseName());
-        loginTextFieldConfig.setText(Default.CONNECTION.getUser());
-        passwordTextfieldConfig.setText(Default.CONNECTION.getPassword());
+        hostTextFieldConfig.setText(DefaultConnection.CONNECTION.getHost());
+        portTextFieldConfig.setText(DefaultConnection.CONNECTION.getPort());
+        databaseNameTextFieldConfig.setText(DefaultConnection.CONNECTION.getDatabaseName());
+        loginTextFieldConfig.setText(DefaultConnection.CONNECTION.getUser());
+        passwordTextfieldConfig.setText(DefaultConnection.CONNECTION.getPassword());
 
     }
 

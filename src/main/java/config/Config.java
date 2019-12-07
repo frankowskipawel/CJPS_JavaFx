@@ -41,11 +41,11 @@ public class Config {
         file.createNewFile();
         PrintWriter printWriter = new PrintWriter(PATH);
         //Wartości domyślnie wpisywane do pliku konfiguracyjnego
-        printWriter.println(Default.CONNECTION.getHost());
-        printWriter.println(Default.CONNECTION.getPort());
-        printWriter.println(Default.CONNECTION.getDatabaseName());
-        printWriter.println(Default.CONNECTION.getUser());
-        printWriter.println(Default.CONNECTION.getPassword());
+        printWriter.println(DefaultConnection.CONNECTION.getHost());
+        printWriter.println(DefaultConnection.CONNECTION.getPort());
+        printWriter.println(DefaultConnection.CONNECTION.getDatabaseName());
+        printWriter.println(DefaultConnection.CONNECTION.getUser());
+        printWriter.println(DefaultConnection.CONNECTION.getPassword());
         printWriter.close();
     }
 

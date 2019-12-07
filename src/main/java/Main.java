@@ -1,5 +1,5 @@
 import config.Config;
-import config.Default;
+import config.DefaultConnection;
 import dao.DaoService;
 import java.io.IOException;
 
@@ -16,7 +16,7 @@ public class Main {
         DaoService daoService = new DaoService();
         daoService.init();
 
-        System.out.println(Default.CONNECTION.getDatabaseName());
+        System.out.println(DefaultConnection.CONNECTION.getDatabaseName());
 
 
     }

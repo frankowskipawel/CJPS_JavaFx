@@ -1,6 +1,5 @@
 package dao;
 
-
 import config.Config;
 import model.Dokument;
 

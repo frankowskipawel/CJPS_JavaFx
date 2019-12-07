@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import model.WartościDopuszczalnePaliwa;
 
 public class CertyfikatJakosciWydrukStage extends Application {
 
@@ -38,6 +39,11 @@ public class CertyfikatJakosciWydrukStage extends Application {
 //
 //        ConfigController configController = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
 //        configController.setMessageLabel("fsxafs");
+
+//        System.out.println(WartościDopuszczalnePaliwa.WEGIEL_KAMIENNY_KOSTKA.getMinPopiol());
+//        WartościDopuszczalnePaliwa.WEGIEL_KAMIENNY_KOSTKA.setMinPopiol("20");
+//        System.out.println(WartościDopuszczalnePaliwa.WEGIEL_KAMIENNY_KOSTKA.getMinPopiol());
+
 
     }
 }
