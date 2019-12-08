@@ -26,7 +26,7 @@ public class CertyfikatJakosciWydrukStage extends Application {
         CertyfikatJakosciWydrukController controller = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
 //        ConfigController configController = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
 //        configController.setMessageLabel("fsxafs");
-        controller.setTextLabel("3000");
+     //   controller.setTextLabel("3000");
 
 
 

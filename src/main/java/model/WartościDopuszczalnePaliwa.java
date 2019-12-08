@@ -164,7 +164,7 @@ public enum WartościDopuszczalnePaliwa {
         this.minPodziarno = minPodziarno;
     }
 
-    public String getMaxPadziarno() {
+    public String getMaxPodziarno() {
         return maxPadziarno;
     }
 
@@ -188,7 +188,7 @@ public enum WartościDopuszczalnePaliwa {
         this.maxNadziarno = maxNadziarno;
     }
 
-    public String getMinWolgotnosc() {
+    public String getMinWilgotnosc() {
         return minWolgotnosc;
     }
 

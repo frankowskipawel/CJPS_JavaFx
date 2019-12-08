@@ -16,6 +16,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import model.WartościDopuszczalnePaliwa;
+
 import java.io.IOException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
@@ -87,12 +89,47 @@ public class StronaGlownaController {
 
 
         Stage stage = new Stage();
-        stage.setTitle("Dodaj nowy certyfikat jakości");
-        Pane myPane = (Pane) FXMLLoader.load(getClass().getResource
-                ("CertyfikatJakosciWydruk.fxml"));
-        Scene myScene = new Scene(myPane);
-        stage.setScene(myScene);
+//        stage.setTitle("Dodaj nowy certyfikat jakości");
+//        Pane myPane = (Pane) FXMLLoader.load(getClass().getResource
+//                ("CertyfikatJakosciWydruk.fxml"));
+//        Scene myScene = new Scene(myPane);
+//        stage.setScene(myScene);
+//        stage.show();
+
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(this.getClass().getResource("/stages/CertyfikatJakosciWydruk.fxml"));
+        Pane pane = loader.load();
+        Scene scene = new Scene(pane);
+        stage.setScene(scene);
+        stage.setTitle("Podgląd wydruku");
         stage.show();
+
+        CertyfikatJakosciWydrukController certyfikatJakosciWydrukController = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
+
+        ustawNaWydrukuWartosciDopuszczalne(certyfikatJakosciWydrukController, WartościDopuszczalnePaliwa.WEGIEL_KAMIENNY_KOSTKA);
+
+    }
+
+    public void ustawNaWydrukuWartosciDopuszczalne(CertyfikatJakosciWydrukController certyfikatJakosciWydrukController, WartościDopuszczalnePaliwa asortyment){
+        certyfikatJakosciWydrukController.setWDminPopiolWydruk(asortyment.getMinPopiol());
+        certyfikatJakosciWydrukController.setWDmaxPopiolWydruk(asortyment.getMaxPopiol());
+        certyfikatJakosciWydrukController.setWDminSiarkaWydruk(asortyment.getMinSiarka());
+        certyfikatJakosciWydrukController.setWDmaxSiarkaWydruk(asortyment.getMaxSiarka());
+        certyfikatJakosciWydrukController.setWDminCzLotneWydruk(asortyment.getMinCzLotne());
+        certyfikatJakosciWydrukController.setWDmaxCzLotneWydruk(asortyment.getMaxCzLotne());
+        certyfikatJakosciWydrukController.setWDminWartoscOpalowaWydruk(asortyment.getMinWartoscOpalowa());
+        certyfikatJakosciWydrukController.setWDmaxWartoscOpalowaWydruk(asortyment.getMaxWartoscOpalowa());
+        certyfikatJakosciWydrukController.setWDminSpiekalnoscWydruk(asortyment.getMinSpiekalnsc());
+        certyfikatJakosciWydrukController.setWDmaxSpiekalnoscWydruk(asortyment.getMaxSpiekalnosc());
+        certyfikatJakosciWydrukController.setWDminWymiarZiarna(asortyment.getMinWymiarZiarna());
+        certyfikatJakosciWydrukController.setWDmaxWymiarZiarna(asortyment.getMaxWymiarZiarna());
+        certyfikatJakosciWydrukController.setWDminPodziarnoWydruk(asortyment.getMinPodziarno());
+        certyfikatJakosciWydrukController.setWDmaxPodziarnoWydruk(asortyment.getMaxPodziarno());
+        certyfikatJakosciWydrukController.setWDminNadziarnoWydruk(asortyment.getMinNadziarno());
+        certyfikatJakosciWydrukController.setWDmaxNadziarnoWydruk(asortyment.getMaxNadziarno());
+        certyfikatJakosciWydrukController.setWDminWilgotnoscWydruk(asortyment.getMinWilgotnosc());
+        certyfikatJakosciWydrukController.setWDmaxWilgotnoscWydruk(asortyment.getMaxWilgotnosc());
 
     }
 
@@ -100,6 +137,8 @@ public class StronaGlownaController {
         ObservableList<CertyfikatJakosci> data = listaAktywnychCertyfikatowTableViewStronaGlowna.getItems();
         data.removeAll(data);
         dodajAktywneCertyfikatyDoTableView();
+
+
     }
 
     public void odswiezListedokumentow() {
