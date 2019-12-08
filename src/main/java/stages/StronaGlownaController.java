@@ -120,6 +120,7 @@ public class StronaGlownaController {
 
         DokumentDao dokumentDao = new DokumentDao();
         int numer = dokumentDao.getNajwyzszyNumerDokumentuDao() + 1;
+
       //  System.out.println("Najwyzszy numer to: "+numer);
         ZonedDateTime dataDzisiejsza = ZonedDateTime.now();
         DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy-MM-dd");
