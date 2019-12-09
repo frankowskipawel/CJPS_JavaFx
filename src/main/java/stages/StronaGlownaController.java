@@ -34,69 +34,48 @@ public class StronaGlownaController {
     private VBox vBoxStronaGlowna;
 
 
-
     @FXML
     public void initialize() {
 
-        dodajAktywneCertyfikatyDoTableView();
-        dodajOstatniePiecDokumentowDoListView();
+        setListaAktywnychCertyfikatow();
+        add5DokumentowToListView();
 
     }
 
-    @FXML
-    protected void dodajAktywneCertyfikatyDoTableView() {
+    protected List<CertyfikatJakosci> getAktywneCertyfikaty() {
 
         CertyfikatJakosciDao certyfikatJakosciDao = new CertyfikatJakosciDao();
-        List<CertyfikatJakosci> list = certyfikatJakosciDao.getAllCertyfikatJakosciTylkoAktywne();
+        return certyfikatJakosciDao.getAktywneCertyfikatyJakosci();
+    }
 
+    protected void setListaAktywnychCertyfikatow() {
 
-        Iterator<CertyfikatJakosci> iterator = list.iterator();
-        for (CertyfikatJakosci b : list) {
+        for (CertyfikatJakosci b : getAktywneCertyfikaty()) {
             ObservableList<CertyfikatJakosci> data = listaAktywnychCertyfikatowTableViewStronaGlowna.getItems();
             data.add(new CertyfikatJakosci(b.numerCertyfikatuProperty().getValue(), b.naszaNazwaProperty().getValue()
             ));
-
         }
-
     }
 
     @FXML
-    protected void odswiezClick() throws IOException {
+    protected void refreshClick() {
 
-        odswiezListeAktywnychCertyfikatow();
-        odswiezListedokumentow();
-
-
+        refreshListaAktywnychCertyfikatow();
+        refreshListaDokumentow();
     }
 
     @FXML
-    protected void dodajWydrukujClick() throws IOException {
-
-
-        dodajDokumentDoListView();
-
-        odswiezListeAktywnychCertyfikatow();
-
-        odswiezListedokumentow();
-        pokazDokument();
-
-        //print(vBoxStronaGlowna); //do zmiany
-
+    protected void addAndPrintNowyDokumentClick() throws IOException {
+        Dokument dokument;
+        dokument = addDokumentToListView();
+        refreshListaAktywnychCertyfikatow();
+        refreshListaDokumentow();
+        showDokument(dokument); //zamienic na print docelowo
     }
 
-    protected void pokazDokument() throws IOException {
-
-
+    protected void showDokument(Dokument dokument) throws IOException {
 
         Stage stage = new Stage();
-//        stage.setTitle("Dodaj nowy certyfikat jakości");
-//        Pane myPane = (Pane) FXMLLoader.load(getClass().getResource
-//                ("CertyfikatJakosciWydruk.fxml"));
-//        Scene myScene = new Scene(myPane);
-//        stage.setScene(myScene);
-//        stage.show();
-
-
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(this.getClass().getResource("/stages/CertyfikatJakosciWydruk.fxml"));
         Pane pane = loader.load();
@@ -106,12 +85,11 @@ public class StronaGlownaController {
         stage.show();
 
         CertyfikatJakosciWydrukController certyfikatJakosciWydrukController = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
-
-        ustawNaWydrukuWartosciDopuszczalne(certyfikatJakosciWydrukController, WartościDopuszczalnePaliwa.WEGIEL_KAMIENNY_KOSTKA);
+        setWartosciDopuszczalneNaWydruku(certyfikatJakosciWydrukController, WartościDopuszczalnePaliwa.WEGIEL_KAMIENNY_KOSTKA);
 
     }
 
-    public void ustawNaWydrukuWartosciDopuszczalne(CertyfikatJakosciWydrukController certyfikatJakosciWydrukController, WartościDopuszczalnePaliwa asortyment){
+    public void setWartosciDopuszczalneNaWydruku(CertyfikatJakosciWydrukController certyfikatJakosciWydrukController, WartościDopuszczalnePaliwa asortyment) {
         certyfikatJakosciWydrukController.setWDminPopiolWydruk(asortyment.getMinPopiol());
         certyfikatJakosciWydrukController.setWDmaxPopiolWydruk(asortyment.getMaxPopiol());
         certyfikatJakosciWydrukController.setWDminSiarkaWydruk(asortyment.getMinSiarka());
@@ -133,41 +111,33 @@ public class StronaGlownaController {
 
     }
 
-    public void odswiezListeAktywnychCertyfikatow() {
+    public void refreshListaAktywnychCertyfikatow() {
         ObservableList<CertyfikatJakosci> data = listaAktywnychCertyfikatowTableViewStronaGlowna.getItems();
         data.removeAll(data);
-        dodajAktywneCertyfikatyDoTableView();
-
-
+        setListaAktywnychCertyfikatow();
     }
 
-    public void odswiezListedokumentow() {
+    public void refreshListaDokumentow() {
         ObservableList<Dokument> data = listaDokumentowListViewStronaGlowna.getItems();
         data.removeAll(data);
-        dodajOstatniePiecDokumentowDoListView();
+        add5DokumentowToListView();
     }
 
-
-    @FXML
-    protected void dodajDokumentDoListView() {
+    protected Dokument addDokumentToListView() {
 
         ObservableList<Dokument> data = listaDokumentowListViewStronaGlowna.getItems();
-
-        System.out.println("zaznaczenia nr "+listaAktywnychCertyfikatowTableViewStronaGlowna.getSelectionModel().getSelectedItem());
-
-        CertyfikatJakosci certyfikatJakoscipoId = new CertyfikatJakosciDao().znajdzCertyfikatPoId(listaAktywnychCertyfikatowTableViewStronaGlowna.getSelectionModel().getSelectedItem().getNumerCertyfikatuAktywne());
+        CertyfikatJakosci getCertyfikatJakosciPoId = new CertyfikatJakosciDao().znajdzCertyfikatPoId(listaAktywnychCertyfikatowTableViewStronaGlowna.getSelectionModel().getSelectedItem().getNumerCertyfikatuAktywne());
 
         DokumentDao dokumentDao = new DokumentDao();
+        System.out.println(dokumentDao.getNajwyzszyNumerDokumentuDao());
         int numer = dokumentDao.getNajwyzszyNumerDokumentuDao() + 1;
 
-      //  System.out.println("Najwyzszy numer to: "+numer);
         ZonedDateTime dataDzisiejsza = ZonedDateTime.now();
         DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String dataDzisiejszaString = dataDzisiejsza.format(f);
 
-
-        Dokument dokumentDodawany = new Dokument(Integer.toString(numer)+"/"+dataDzisiejszaString.substring(0, 4), dataDzisiejszaString, certyfikatJakoscipoId.getNumerCertyfikatu(), certyfikatJakoscipoId.getAktywny(), certyfikatJakoscipoId.getNaszaNazwa(), certyfikatJakoscipoId.getAsortyment(), certyfikatJakoscipoId.getData(), certyfikatJakoscipoId.getNumerCertyfikatuLaboratorium(), certyfikatJakoscipoId.getZawartoscPopiolu(), certyfikatJakoscipoId.getZawartoscSiarkiCalkowitej(), certyfikatJakoscipoId.getZawartoscCzesciLotnych(), certyfikatJakoscipoId.getWartoscOpalowa(), certyfikatJakoscipoId.getZdolnoscSpiekania(), certyfikatJakoscipoId.getMinimalnyWymiarZiarna(), certyfikatJakoscipoId.getMaksymalnyWymiarZiarna(), certyfikatJakoscipoId.getZawartoscPodziarna(), certyfikatJakoscipoId.getZawartoscNadziarna(), certyfikatJakoscipoId.getZawartoscWilgociCalkowitej(), certyfikatJakoscipoId.getDostawca(), certyfikatJakoscipoId.getNrFV());
-        System.out.println("dok dodawany : "+dokumentDodawany);
+        Dokument dokumentDodawany = new Dokument(Integer.toString(numer) + "/" + dataDzisiejszaString.substring(0, 4), dataDzisiejszaString, getCertyfikatJakosciPoId.getNumerCertyfikatu(), getCertyfikatJakosciPoId.getAktywny(), getCertyfikatJakosciPoId.getNaszaNazwa(), getCertyfikatJakosciPoId.getAsortyment(), getCertyfikatJakosciPoId.getData(), getCertyfikatJakosciPoId.getNumerCertyfikatuLaboratorium(), getCertyfikatJakosciPoId.getZawartoscPopiolu(), getCertyfikatJakosciPoId.getZawartoscSiarkiCalkowitej(), getCertyfikatJakosciPoId.getZawartoscCzesciLotnych(), getCertyfikatJakosciPoId.getWartoscOpalowa(), getCertyfikatJakosciPoId.getZdolnoscSpiekania(), getCertyfikatJakosciPoId.getMinimalnyWymiarZiarna(), getCertyfikatJakosciPoId.getMaksymalnyWymiarZiarna(), getCertyfikatJakosciPoId.getZawartoscPodziarna(), getCertyfikatJakosciPoId.getZawartoscNadziarna(), getCertyfikatJakosciPoId.getZawartoscWilgociCalkowitej(), getCertyfikatJakosciPoId.getDostawca(), getCertyfikatJakosciPoId.getNrFV());
+        System.out.println("dok dodawany : " + dokumentDodawany);
         data.add(dokumentDodawany);
 
 
@@ -189,25 +159,23 @@ public class StronaGlownaController {
 //        dokumentDodawany.zawartoscWilgociCalkowitejStatic = dokumentDodawany.getZawartoscWilgociCalkowitej();
 
 
-        System.out.println(">>>>"+dokumentDodawany.getNaszaNazwa());
+        System.out.println(">>>>" + dokumentDodawany.getNaszaNazwa());
         dokumentDao.addDokumentToDatabase(dokumentDodawany);
-
+        return dokumentDodawany;
     }
 
-    public void przekazanieZmiennychDoWydruku(){
+    public void przekazanieZmiennychDoWydruku() {
 
     }
 
     @FXML
-    protected void dodajOstatniePiecDokumentowDoListView() {
+    protected void add5DokumentowToListView() {
 
         DokumentDao dokumentDao = new DokumentDao();
         List<Dokument> list = dokumentDao.getAllDokumenty();
-       // System.out.println(list);
-
 
         Iterator<Dokument> iterator = list.iterator();
-       // System.out.println("Dlugosc listy: " + list.size());
+        // System.out.println("Dlugosc listy: " + list.size());
         int i = 0;
         for (Dokument b : list) {
             if (i > list.size() - 6) {
@@ -269,6 +237,7 @@ public class StronaGlownaController {
 //            jobStatus.setText("Could not create a printer job.");
         }
     }
+
     @FXML
     public void MenuListaCertyfikatowClick() throws IOException {
         Stage stage = new Stage();
@@ -282,11 +251,12 @@ public class StronaGlownaController {
 
     @FXML
     public void usunOstatniMenuClick() throws IOException {
-       DokumentDao dokumentDao = new DokumentDao();
-       dokumentDao.getNajwyzszyNumerDokumentuDaoString();
-       dokumentDao.deleteDokumentDatabase(dokumentDao.getNajwyzszyNumerDokumentuDaoString());
-       odswiezListedokumentow();
+        DokumentDao dokumentDao = new DokumentDao();
+        dokumentDao.getNajwyzszyNumerDokumentuDaoString();
+        dokumentDao.deleteDokumentDatabase(dokumentDao.getNajwyzszyNumerDokumentuDaoString());
+        refreshListaDokumentow();
     }
+
     @FXML
     public void podgladClick() throws IOException {
 

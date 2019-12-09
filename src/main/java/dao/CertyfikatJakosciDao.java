@@ -68,7 +68,7 @@ public class CertyfikatJakosciDao {
     }
 
 
-    public List<CertyfikatJakosci> getAllCertyfikatJakosciTylkoAktywne() {
+    public List<CertyfikatJakosci> getAktywneCertyfikatyJakosci() {
         List<CertyfikatJakosci> certyfikatyJakosci = new LinkedList<CertyfikatJakosci>();
         Statement statement = null;
         try {

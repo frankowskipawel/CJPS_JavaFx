@@ -21,7 +21,7 @@ public class DokumentDao {
         try {
             Class.forName("com.mysql.jdbc.Driver");
 
-            connection = DriverManager.getConnection("jdbc:mysql://"+ Config.HOSTNAME + ":"+Config.PORT+"/" + Config.DATABASENAME + "?useSSL=false", Config.USER, Config.PASSWORD);
+            connection = DriverManager.getConnection("jdbc:mysql://" + Config.HOSTNAME + ":" + Config.PORT + "/" + Config.DATABASENAME + "?useSSL=false", Config.USER, Config.PASSWORD);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -122,7 +122,7 @@ public class DokumentDao {
             statement = connection.createStatement();
             //  insert into employees(name, lastname, age) values('Jan', 'Kowalski', 22);
             String query = "insert into " + tableName + "(id_dokumenty, data_dokumenty, nr_certyfikaty, aktywny_certyfikaty, nasza_nazwa_certyfikaty, asortyment_certyfikaty, data_certyfikaty, nr_lab_certyfikaty, popiol_certyfikaty, siarka_certyfikaty, cz_lotne_certyfikaty, wartosc_opalowa_certyfikaty, spiekalnosc_certyfikaty, min_ziarno_certyfikaty, max_ziarno_certyfikaty, podziarno_certyfikaty, nadziarno_certyfikaty, wilgoc_certyfikaty, dostawca_certyfikaty, nr_fv_certyfikaty) values('" + dokument.getNumerDokumentu() + "', '" + dokument.getDataDokumentu() + "', '" + dokument.getNumerCertyfikatu() + "', '" + dokument.getAktywny() + "', '" + dokument.getNaszaNazwa() + "', '" + dokument.getAsortyment() + "', '" + dokument.getData() + "', '" + dokument.getNumerCertyfikatuLaboratorium() + "', '" + dokument.getZawartoscPopiolu() + "', '" + dokument.getZawartoscSiarkiCalkowitej() + "', '" + dokument.getZawartoscCzesciLotnych() + "', '" + dokument.getWartoscOpalowa() + "', '" + dokument.getZdolnoscSpiekania() + "', '" + dokument.getMinimalnyWymiarZiarna() + "', '" + dokument.getMaksymalnyWymiarZiarna() + "', '" + dokument.getZawartoscPodziarna() + "', '" + dokument.getZawartoscNadziarna() + "', '" + dokument.getZawartoscWilgociCalkowitej() + "', '" + dokument.getDostawca() + "', '" + dokument.getNrFV() + "');";
-             System.out.println(query);
+            System.out.println(query);
             //   String query = "select * from " + tableName;
             int resultSet = statement.executeUpdate(query);
 
@@ -174,15 +174,23 @@ public class DokumentDao {
 //    }
 
     public int getNajwyzszyNumerDokumentuDao() {
-        Statement statement = null;
+        Statement statement;
+        int autoIncrement=0;
         int nrNajwyzszy = 0;
         try {
             statement = connection.createStatement();
-            String query = "SELECT max(id_dokumenty) FROM " + tableName;
+            String query = "SELECT max(auto_numeracja) FROM " + tableName;
             ResultSet resultSet = statement.executeQuery(query);
 
             while (resultSet.next()) {
-                nrNajwyzszy = resultSet.getInt("max(id_dokumenty)");
+                autoIncrement = resultSet.getInt("max(auto_numeracja)");
+            }
+            System.out.println(autoIncrement);
+            query = "SELECT id_dokumenty FROM " + tableName+" WHERE auto_numeracja="+autoIncrement;
+            System.out.println(query);
+            resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                nrNajwyzszy = resultSet.getInt("id_dokumenty");
             }
             statement.close();
         } catch (SQLException e) {
@@ -190,9 +198,10 @@ public class DokumentDao {
         }
         return nrNajwyzszy;
     }
+
     public String getNajwyzszyNumerDokumentuDaoString() {
         Statement statement = null;
-        String nrNajwyzszy="";
+        String nrNajwyzszy = "";
         try {
             statement = connection.createStatement();
             String query = "SELECT max(id_dokumenty) FROM " + tableName;
@@ -213,7 +222,7 @@ public class DokumentDao {
         try {
             statement = connection.createStatement();
 
-            String query  = "delete from "+ tableName+" where id_dokumenty = '"+id+"'";
+            String query = "delete from " + tableName + " where id_dokumenty = '" + id + "'";
             ///  System.out.println(query);1
             //   String query = "select * from " + tableName;
             int resultSet = statement.executeUpdate(query);

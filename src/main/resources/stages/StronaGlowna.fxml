@@ -57,8 +57,8 @@
                   <ListView fx:id="listaDokumentowListViewStronaGlowna" nodeOrientation="LEFT_TO_RIGHT" prefHeight="135.0" prefWidth="321.0" />
                   <Pane prefHeight="135.0" prefWidth="162.0">
                      <children>
-                        <Button fx:id="dodajWydrukujButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutY="1.0" mnemonicParsing="false" onAction="#dodajWydrukujClick" prefHeight="50.0" prefWidth="170.0" style="-fx-alignment: center;" text="Doodaj i wydrukuj" />
-                        <Button fx:id="odswiezButton" layoutY="51.0" mnemonicParsing="false" onAction="#odswiezClick" prefHeight="27.0" prefWidth="170.0" text="Odśwież" />
+                        <Button fx:id="dodajWydrukujButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutY="1.0" mnemonicParsing="false" onAction="#addAndPrintNowyDokumentClick" prefHeight="50.0" prefWidth="170.0" style="-fx-alignment: center;" text="Doodaj i wydrukuj" />
+                        <Button fx:id="odswiezButton" layoutY="51.0" mnemonicParsing="false" onAction="#refreshClick" prefHeight="27.0" prefWidth="170.0" text="Odśwież" />
                         <Button layoutX="1.0" layoutY="78.0" mnemonicParsing="false" onAction="#podgladClick" prefHeight="25.0" prefWidth="71.0" text="Podgląd" />
                      </children>
                   </Pane>
