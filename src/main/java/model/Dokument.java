@@ -2,21 +2,21 @@ package model;
 
 import javafx.beans.property.SimpleStringProperty;
 
-public class Dokument extends CertyfikatJakosci {
+public class Dokument {
+
+    private CertyfikatJakosci certyfikatJakosci;
 
     private final SimpleStringProperty numerDokumentu = new SimpleStringProperty("");
     private final SimpleStringProperty dataDokumentu = new SimpleStringProperty("");
 
-    private final SimpleStringProperty nrCertyfikatuTableViewStronaGlowna = new SimpleStringProperty("");
-    private final SimpleStringProperty naszaNazwaTableViewStronaGlowna = new SimpleStringProperty("");
+//    private final SimpleStringProperty nrCertyfikatuTableViewStronaGlowna = new SimpleStringProperty("");
+//    private final SimpleStringProperty naszaNazwaTableViewStronaGlowna = new SimpleStringProperty("");
+//
 
-
-
-
-    public Dokument(String numerDokumentu, String dataDokumentu, String numerCertyfikatu, String aktywny, String naszaNazwa, String asortyment, String data, String numerCertyfikatuLaboratorium, String zawartoscPopiolu, String zawartoscSiarkiCalkowitej, String zawartoscCzesciLotnych, String wartoscOpalowa, String zdolnoscSpiekania, String minimalnyWymiarZiarna, String maksymalnyWymiarZiarna, String zawartoscPodziarna, String zawartoscNadziarna, String zawartoscWilgociCalkowitej, String dostawca, String nrFV) {
-        super(numerCertyfikatu, aktywny, naszaNazwa, asortyment, data, numerCertyfikatuLaboratorium, zawartoscPopiolu, zawartoscSiarkiCalkowitej, zawartoscCzesciLotnych, wartoscOpalowa, zdolnoscSpiekania, minimalnyWymiarZiarna, maksymalnyWymiarZiarna, zawartoscPodziarna, zawartoscNadziarna, zawartoscWilgociCalkowitej, dostawca, nrFV);
+    public Dokument(String numerDokumentu, String dataDokumentu, CertyfikatJakosci certyfikatJakosci) {
         setNumerDokumentu(numerDokumentu);
         setDataDokumentu(dataDokumentu);
+        this.certyfikatJakosci = certyfikatJakosci;
     }
 
     public String getNumerDokumentu() {
@@ -43,12 +43,20 @@ public class Dokument extends CertyfikatJakosci {
         this.dataDokumentu.set(dataDokumentu);
     }
 
+    public CertyfikatJakosci getCertyfikatJakosci() {
+        return certyfikatJakosci;
+    }
+
+    public void setCertyfikatJakosci(CertyfikatJakosci certyfikatJakosci) {
+        this.certyfikatJakosci = certyfikatJakosci;
+    }
+
     @Override
     public String toString() {
         return
-                getNumerDokumentu() + " -- "+
-                        getNaszaNazwa()
-                        ;
+                getNumerDokumentu() + " -- " + certyfikatJakosci.getNaszaNazwa()
+
+                ;
 
 
     }

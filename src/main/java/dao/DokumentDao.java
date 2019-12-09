@@ -1,6 +1,7 @@
 package dao;
 
 import config.Config;
+import model.CertyfikatJakosci;
 import model.Dokument;
 
 import java.sql.*;
@@ -57,11 +58,11 @@ public class DokumentDao {
                 String dostawca_certyfikaty = resultSet.getString("dostawca_certyfikaty");
                 String nr_fv_certyfikaty = resultSet.getString("nr_fv_certyfikaty");
 
-                Dokument dokumenty = new Dokument(id_dokumenty, data_dokumenty, nr_certyfikaty, aktywny_certyfikaty, nasza_nazwa_certyfikaty,
+                Dokument dokumenty = new Dokument(id_dokumenty, data_dokumenty, new CertyfikatJakosci(nr_certyfikaty, aktywny_certyfikaty, nasza_nazwa_certyfikaty,
                         asortyment_certyfikaty, data_certyfikaty, nr_lab_certyfikaty, popiol_certyfikaty,
                         siarka_certyfikaty, cz_lotne_certyfikaty, wartosc_opalowa_certyfikaty, spiekalnosc_certyfikaty,
                         min_ziarno_certyfikaty, max_ziarno_certyfikaty, podziarno_certyfikaty, nadziarno_certyfikaty,
-                        wilgoc_certyfikaty, dostawca_certyfikaty, nr_fv_certyfikaty);
+                        wilgoc_certyfikaty, dostawca_certyfikaty, nr_fv_certyfikaty));
 
                 dokumentyLista.add(dokumenty);
             }
@@ -73,7 +74,7 @@ public class DokumentDao {
     }
 
     public Dokument znajdzDokumentPoId(String id) {
-        Dokument dokument = new Dokument("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
+        Dokument dokument = new Dokument("", "", new CertyfikatJakosci("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""));
         Statement statement = null;
         try {
             statement = connection.createStatement();
@@ -101,11 +102,11 @@ public class DokumentDao {
                 String dostawca_certyfikaty = resultSet.getString("dostawca_certyfikaty");
                 String nr_fv_certyfikaty = resultSet.getString("nr_fv_certyfikaty");
 
-                Dokument dokumenty = new Dokument(id_dokumenty, data_dokumenty, nr_certyfikaty, aktywny_certyfikaty, nasza_nazwa_certyfikaty,
+                Dokument dokumenty = new Dokument(id_dokumenty, data_dokumenty, new CertyfikatJakosci(nr_certyfikaty, aktywny_certyfikaty, nasza_nazwa_certyfikaty,
                         asortyment_certyfikaty, data_certyfikaty, nr_lab_certyfikaty, popiol_certyfikaty,
                         siarka_certyfikaty, cz_lotne_certyfikaty, wartosc_opalowa_certyfikaty, spiekalnosc_certyfikaty,
                         min_ziarno_certyfikaty, max_ziarno_certyfikaty, podziarno_certyfikaty, nadziarno_certyfikaty,
-                        wilgoc_certyfikaty, dostawca_certyfikaty, nr_fv_certyfikaty);
+                        wilgoc_certyfikaty, dostawca_certyfikaty, nr_fv_certyfikaty));
                 dokument = dokumenty;
 
             }
@@ -121,7 +122,7 @@ public class DokumentDao {
         try {
             statement = connection.createStatement();
             //  insert into employees(name, lastname, age) values('Jan', 'Kowalski', 22);
-            String query = "insert into " + tableName + "(id_dokumenty, data_dokumenty, nr_certyfikaty, aktywny_certyfikaty, nasza_nazwa_certyfikaty, asortyment_certyfikaty, data_certyfikaty, nr_lab_certyfikaty, popiol_certyfikaty, siarka_certyfikaty, cz_lotne_certyfikaty, wartosc_opalowa_certyfikaty, spiekalnosc_certyfikaty, min_ziarno_certyfikaty, max_ziarno_certyfikaty, podziarno_certyfikaty, nadziarno_certyfikaty, wilgoc_certyfikaty, dostawca_certyfikaty, nr_fv_certyfikaty) values('" + dokument.getNumerDokumentu() + "', '" + dokument.getDataDokumentu() + "', '" + dokument.getNumerCertyfikatu() + "', '" + dokument.getAktywny() + "', '" + dokument.getNaszaNazwa() + "', '" + dokument.getAsortyment() + "', '" + dokument.getData() + "', '" + dokument.getNumerCertyfikatuLaboratorium() + "', '" + dokument.getZawartoscPopiolu() + "', '" + dokument.getZawartoscSiarkiCalkowitej() + "', '" + dokument.getZawartoscCzesciLotnych() + "', '" + dokument.getWartoscOpalowa() + "', '" + dokument.getZdolnoscSpiekania() + "', '" + dokument.getMinimalnyWymiarZiarna() + "', '" + dokument.getMaksymalnyWymiarZiarna() + "', '" + dokument.getZawartoscPodziarna() + "', '" + dokument.getZawartoscNadziarna() + "', '" + dokument.getZawartoscWilgociCalkowitej() + "', '" + dokument.getDostawca() + "', '" + dokument.getNrFV() + "');";
+            String query = "insert into " + tableName + "(id_dokumenty, data_dokumenty, nr_certyfikaty, aktywny_certyfikaty, nasza_nazwa_certyfikaty, asortyment_certyfikaty, data_certyfikaty, nr_lab_certyfikaty, popiol_certyfikaty, siarka_certyfikaty, cz_lotne_certyfikaty, wartosc_opalowa_certyfikaty, spiekalnosc_certyfikaty, min_ziarno_certyfikaty, max_ziarno_certyfikaty, podziarno_certyfikaty, nadziarno_certyfikaty, wilgoc_certyfikaty, dostawca_certyfikaty, nr_fv_certyfikaty) values('" + dokument.getNumerDokumentu() + "', '" + dokument.getDataDokumentu() + "', '" + dokument.getCertyfikatJakosci().getNumerCertyfikatu() + "', '" + dokument.getCertyfikatJakosci().getAktywny() + "', '" + dokument.getCertyfikatJakosci().getNaszaNazwa() + "', '" + dokument.getCertyfikatJakosci().getAsortyment() + "', '" + dokument.getCertyfikatJakosci().getData() + "', '" + dokument.getCertyfikatJakosci().getNumerCertyfikatuLaboratorium() + "', '" + dokument.getCertyfikatJakosci().getZawartoscPopiolu() + "', '" + dokument.getCertyfikatJakosci().getZawartoscSiarkiCalkowitej() + "', '" + dokument.getCertyfikatJakosci().getZawartoscCzesciLotnych() + "', '" + dokument.getCertyfikatJakosci().getWartoscOpalowa() + "', '" + dokument.getCertyfikatJakosci().getZdolnoscSpiekania() + "', '" + dokument.getCertyfikatJakosci().getMinimalnyWymiarZiarna() + "', '" + dokument.getCertyfikatJakosci().getMaksymalnyWymiarZiarna() + "', '" + dokument.getCertyfikatJakosci().getZawartoscPodziarna() + "', '" + dokument.getCertyfikatJakosci().getZawartoscNadziarna() + "', '" + dokument.getCertyfikatJakosci().getZawartoscWilgociCalkowitej() + "', '" + dokument.getCertyfikatJakosci().getDostawca() + "', '" + dokument.getCertyfikatJakosci().getNrFV() + "');";
             System.out.println(query);
             //   String query = "select * from " + tableName;
             int resultSet = statement.executeUpdate(query);

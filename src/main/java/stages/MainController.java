@@ -24,7 +24,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Iterator;
 import java.util.List;
 
-public class StronaGlownaController {
+public class MainController {
 
     @FXML
     private TableView<CertyfikatJakosci> listaAktywnychCertyfikatowTableViewStronaGlowna;
@@ -126,7 +126,7 @@ public class StronaGlownaController {
     protected Dokument addDokumentToListView() {
 
         ObservableList<Dokument> data = listaDokumentowListViewStronaGlowna.getItems();
-        CertyfikatJakosci getCertyfikatJakosciPoId = new CertyfikatJakosciDao().znajdzCertyfikatPoId(listaAktywnychCertyfikatowTableViewStronaGlowna.getSelectionModel().getSelectedItem().getNumerCertyfikatuAktywne());
+        CertyfikatJakosci certyfikatJakosci = new CertyfikatJakosciDao().znajdzCertyfikatPoId(listaAktywnychCertyfikatowTableViewStronaGlowna.getSelectionModel().getSelectedItem().getNumerCertyfikatuAktywne());
 
         DokumentDao dokumentDao = new DokumentDao();
         System.out.println(dokumentDao.getNajwyzszyNumerDokumentuDao());
@@ -136,7 +136,7 @@ public class StronaGlownaController {
         DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String dataDzisiejszaString = dataDzisiejsza.format(f);
 
-        Dokument dokumentDodawany = new Dokument(Integer.toString(numer) + "/" + dataDzisiejszaString.substring(0, 4), dataDzisiejszaString, getCertyfikatJakosciPoId.getNumerCertyfikatu(), getCertyfikatJakosciPoId.getAktywny(), getCertyfikatJakosciPoId.getNaszaNazwa(), getCertyfikatJakosciPoId.getAsortyment(), getCertyfikatJakosciPoId.getData(), getCertyfikatJakosciPoId.getNumerCertyfikatuLaboratorium(), getCertyfikatJakosciPoId.getZawartoscPopiolu(), getCertyfikatJakosciPoId.getZawartoscSiarkiCalkowitej(), getCertyfikatJakosciPoId.getZawartoscCzesciLotnych(), getCertyfikatJakosciPoId.getWartoscOpalowa(), getCertyfikatJakosciPoId.getZdolnoscSpiekania(), getCertyfikatJakosciPoId.getMinimalnyWymiarZiarna(), getCertyfikatJakosciPoId.getMaksymalnyWymiarZiarna(), getCertyfikatJakosciPoId.getZawartoscPodziarna(), getCertyfikatJakosciPoId.getZawartoscNadziarna(), getCertyfikatJakosciPoId.getZawartoscWilgociCalkowitej(), getCertyfikatJakosciPoId.getDostawca(), getCertyfikatJakosciPoId.getNrFV());
+        Dokument dokumentDodawany = new Dokument(Integer.toString(numer) + "/" + dataDzisiejszaString.substring(0, 4), dataDzisiejszaString, certyfikatJakosci);
         System.out.println("dok dodawany : " + dokumentDodawany);
         data.add(dokumentDodawany);
 
@@ -159,7 +159,7 @@ public class StronaGlownaController {
 //        dokumentDodawany.zawartoscWilgociCalkowitejStatic = dokumentDodawany.getZawartoscWilgociCalkowitej();
 
 
-        System.out.println(">>>>" + dokumentDodawany.getNaszaNazwa());
+        System.out.println(">>>>" + dokumentDodawany.getCertyfikatJakosci().getNaszaNazwa());
         dokumentDao.addDokumentToDatabase(dokumentDodawany);
         return dokumentDodawany;
     }
@@ -177,30 +177,31 @@ public class StronaGlownaController {
         Iterator<Dokument> iterator = list.iterator();
         // System.out.println("Dlugosc listy: " + list.size());
         int i = 0;
+        // CertyfikatJakosci certyfikatJakosci = new CertyfikatJakosci();
         for (Dokument b : list) {
             if (i > list.size() - 6) {
                 ObservableList<Dokument> data = listaDokumentowListViewStronaGlowna.getItems();
 
                 data.add(new Dokument(b.numerDokumentuProperty().getValue(),
                         b.dataDokumentuProperty().getValue(),
-                        b.numerCertyfikatuProperty().getValue(),
-                        b.aktywnyProperty().getValue(),
-                        b.naszaNazwaProperty().getValue(),
-                        b.asortymentProperty().getValue(),
-                        b.dataProperty().getValue(),
-                        b.numerCertyfikatuLaboratoriumProperty().getValue(),
-                        b.zawartoscPopioluProperty().getValue(),
-                        b.zawartoscSiarkiCalkowitejProperty().getValue(),
-                        b.zawartoscCzesciLotnychProperty().getValue(),
-                        b.wartoscOpalowaProperty().getValue(),
-                        b.zdolnoscSpiekaniaProperty().getValue(),
-                        b.minimalnyWymiarZiarnaProperty().getValue(),
-                        b.maksymalnyWymiarZiarnaProperty().getValue(),
-                        b.zawartoscPodziarnaProperty().getValue(),
-                        b.zawartoscNadziarnaProperty().getValue(),
-                        b.zawartoscWilgociCalkowitejProperty().getValue(),
-                        b.dostawcaProperty().getValue(),
-                        b.nrFVProperty().getValue())
+                        new CertyfikatJakosci(b.getCertyfikatJakosci().numerCertyfikatuProperty().getValue(),
+                                b.getCertyfikatJakosci().aktywnyProperty().getValue(),
+                                b.getCertyfikatJakosci().naszaNazwaProperty().getValue(),
+                                b.getCertyfikatJakosci().asortymentProperty().getValue(),
+                                b.getCertyfikatJakosci().dataProperty().getValue(),
+                                b.getCertyfikatJakosci().numerCertyfikatuLaboratoriumProperty().getValue(),
+                                b.getCertyfikatJakosci().zawartoscPopioluProperty().getValue(),
+                                b.getCertyfikatJakosci().zawartoscSiarkiCalkowitejProperty().getValue(),
+                                b.getCertyfikatJakosci().zawartoscCzesciLotnychProperty().getValue(),
+                                b.getCertyfikatJakosci().wartoscOpalowaProperty().getValue(),
+                                b.getCertyfikatJakosci().zdolnoscSpiekaniaProperty().getValue(),
+                                b.getCertyfikatJakosci().minimalnyWymiarZiarnaProperty().getValue(),
+                                b.getCertyfikatJakosci().maksymalnyWymiarZiarnaProperty().getValue(),
+                                b.getCertyfikatJakosci().zawartoscPodziarnaProperty().getValue(),
+                                b.getCertyfikatJakosci().zawartoscNadziarnaProperty().getValue(),
+                                b.getCertyfikatJakosci().zawartoscWilgociCalkowitejProperty().getValue(),
+                                b.getCertyfikatJakosci().dostawcaProperty().getValue(),
+                                b.getCertyfikatJakosci().nrFVProperty().getValue()))
 
                 );
             }

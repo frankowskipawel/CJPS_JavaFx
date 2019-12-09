@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="vBoxStronaGlowna" prefHeight="621.0" prefWidth="490.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stages.StronaGlownaController">
+<VBox fx:id="vBoxStronaGlowna" prefHeight="621.0" prefWidth="490.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stages.MainController">
   <children>
     <MenuBar prefHeight="26.0" prefWidth="462.0" VBox.vgrow="NEVER">
       <menus>
