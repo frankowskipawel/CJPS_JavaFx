@@ -86,9 +86,26 @@ public class MainController {
 //-----------------------------------
         CertyfikatJakosciWydrukController certyfikatJakosciWydrukController = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
         setWartosciDopuszczalneNaWydruku(certyfikatJakosciWydrukController, WartościDopuszczalnePaliwa.valueOf(dokument.getCertyfikatJakosci().getAsortyment()));
-
+        setWartosciAnWydruku(certyfikatJakosciWydrukController,dokument);
     }
 
+    public void setWartosciAnWydruku(CertyfikatJakosciWydrukController certyfikatJakosciWydrukController, Dokument dokument){
+        certyfikatJakosciWydrukController.setNrWydruk(dokument.getNumerDokumentu());
+        certyfikatJakosciWydrukController.setDataDokumentuWydruk(dokument.getDataDokumentu());
+        certyfikatJakosciWydrukController.setAsortymentWydruk(dokument.getCertyfikatJakosci().getAsortyment());
+        certyfikatJakosciWydrukController.setNrLabWydruk(dokument.getCertyfikatJakosci().getNumerCertyfikatuLaboratorium());
+        certyfikatJakosciWydrukController.setPopiolWydruk(dokument.getCertyfikatJakosci().getZawartoscPopiolu());
+        certyfikatJakosciWydrukController.setSiarkaWydruk(dokument.getCertyfikatJakosci().getZawartoscSiarkiCalkowitej());
+        certyfikatJakosciWydrukController.setCzLotneWydruk(dokument.getCertyfikatJakosci().getZawartoscCzesciLotnych());
+        certyfikatJakosciWydrukController.setWartoscOpalowaWydruk(dokument.getCertyfikatJakosci().getWartoscOpalowa());
+        certyfikatJakosciWydrukController.setSpiekalnoscWydruk(dokument.getCertyfikatJakosci().getZdolnoscSpiekania());
+        certyfikatJakosciWydrukController.setWymiarZiarnaWydruk(dokument.getCertyfikatJakosci().getMinimalnyWymiarZiarna()+"-"+dokument.getCertyfikatJakosci().getMaksymalnyWymiarZiarna());
+        certyfikatJakosciWydrukController.setZawPodziarnaWydruk(dokument.getCertyfikatJakosci().getZawartoscPodziarna());
+        certyfikatJakosciWydrukController.setZawNadziarnaWydruk(dokument.getCertyfikatJakosci().getZawartoscNadziarna());
+        certyfikatJakosciWydrukController.setZawWilgociWydruk(dokument.getCertyfikatJakosci().getZawartoscWilgociCalkowitej());
+
+
+    }
 
     public void setWartosciDopuszczalneNaWydruku(CertyfikatJakosciWydrukController certyfikatJakosciWydrukController, WartościDopuszczalnePaliwa asortyment) {
         certyfikatJakosciWydrukController.setWDminPopiolWydruk(asortyment.getMinPopiol());

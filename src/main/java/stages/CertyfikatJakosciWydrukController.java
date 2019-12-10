@@ -179,7 +179,7 @@ public class CertyfikatJakosciWydrukController {
         this.zawPodziarnaWydruk .setText( zawPodziarnaWydruk);
     }
 
-    public void setNadziarnoWydruk(String nadziarnoWydruk) {
+    public void setZawNadziarnaWydruk(String nadziarnoWydruk) {
         this.nadziarnoWydruk .setText( nadziarnoWydruk);
     }
 
