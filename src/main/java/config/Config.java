@@ -38,6 +38,8 @@ public class Config {
 
     private void getConfig() throws FileNotFoundException {
         File plik = new File(PATH);
+        System.out.println(plik.exists());
+
         Scanner wejscie = new Scanner(plik);
         HOSTNAME = wejscie.nextLine();
         PORT = wejscie.nextLine();
@@ -50,11 +52,13 @@ public class Config {
         MIASTO_PODMIOTU= wejscie.nextLine();
         NIP_PODMIOTU= wejscie.nextLine();
         REGON_PODMIOTU= wejscie.nextLine();
+        wejscie.close();
+
     }
 
     private void setDefaultConfig() throws IOException {
         File file = new File(PATH);
-      //  file.delete();
+       // file.delete();
         file.createNewFile();
 
         PrintWriter printWriter = new PrintWriter(PATH);
@@ -78,7 +82,7 @@ public class Config {
     public void setConfig(String host, String port, String database, String login, String password) {
         try {
             File file = new File(PATH);
-            if (!file.delete()) {
+            if (file.exists()) {
                 PrintWriter printWriter = new PrintWriter(PATH);
                 printWriter.println(host);
                 printWriter.println(port);
@@ -109,7 +113,7 @@ public class Config {
             File file = new File(PATH);
 //            file.delete();
 //            file.createNewFile();
-            if (!file.delete()) {
+            if (file.exists()) {
 
                 PrintWriter printWriter = new PrintWriter(PATH);
                 printWriter.println(Config.HOSTNAME);

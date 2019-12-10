@@ -87,7 +87,7 @@ public class PodmiotConfigController {
     }
 
     @FXML
-    void okClick1(ActionEvent event) throws IOException {
+    void okClick(ActionEvent event) throws IOException {
         Config config = new Config();
         config.setDanePodmiotu(nazwaTextFieldPodmiotConfig.getText(), ulicaTextFieldPodmiotConfig.getText(), kodPocztowyTextFieldPodmiotConfig.getText(),
                 miastoTextFieldPodmiotConfig.getText(), nipTextFieldPodmiotConfig.getText(), regonTextFieldPodmiotConfig.getText());

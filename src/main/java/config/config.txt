@@ -1,0 +1,11 @@
+localhost
+3306
+certyfikaty_database
+root
+admin
+Przedsiębiorstwo Wielobranżowe WĘGLOKOKS-BIS s.c.
+Szosa chełmińska 204-210
+87-100
+Toruń
+956-11-45-924
+123456789

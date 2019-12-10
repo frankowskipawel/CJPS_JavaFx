@@ -195,8 +195,7 @@ public class MainController {
         Scene scene = new Scene(pane);
         stage.setScene(scene);
         stage.setTitle("Ustawienia podmiotu");
-        stage.show();
-//-----------------------------------
+
         PodmiotConfigController podmiotConfigController = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
         podmiotConfigController.setNazwaTextFieldPodmiotConfig(Config.NAZWA_PODMIOTU);
         podmiotConfigController.setUlicaTextFieldPodmiotConfig(Config.ULICA_I_NUMER_DOMU_PODMIOTU);
@@ -204,6 +203,7 @@ public class MainController {
         podmiotConfigController.setMiastoTextFieldPodmiotConfig(Config.MIASTO_PODMIOTU);
         podmiotConfigController.setNipTextFieldPodmiotConfig(Config.NIP_PODMIOTU);
         podmiotConfigController.setRegonTextFieldPodmiotConfig(Config.REGON_PODMIOTU);
+        stage.show();
     }
 
     @FXML

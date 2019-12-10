@@ -54,7 +54,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="okButton" mnemonicParsing="false" onAction="#okClick1" prefHeight="26.0" prefWidth="95.0" text="OK" GridPane.columnIndex="1" />
+            <Button fx:id="okButton" mnemonicParsing="false" onAction="#okClick" prefHeight="26.0" prefWidth="95.0" text="OK" GridPane.columnIndex="1" />
             <Button fx:id="anulujButton" mnemonicParsing="false" onAction="#anulujButtonClick" prefHeight="26.0" prefWidth="95.0" text="Anuluj" GridPane.columnIndex="2" />
          </children>
          <VBox.margin>
