@@ -1,5 +1,7 @@
 package config;
 
+import javafx.scene.layout.CornerRadii;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -14,12 +16,20 @@ public class Config {
     public static String DATABASENAME;
     public static String USER;
     public static String PASSWORD;
+    public static String NAZWA_PODMIOTU;
+    public static String ULICA_I_NUMER_DOMU_PODMIOTU;
+    public static String KOD_POCZTOWY_PODMIOTU;
+    public static String MIASTO_PODMIOTU;
+    public static String NIP_PODMIOTU;
+    public static String REGON_PODMIOTU;
+
 
     public void getConfigFromFile() throws IOException {
         try {
             getConfig();
 
         } catch (FileNotFoundException e) {
+            System.out.println("brak pliku");
             setDefaultConfig();
             getConfig();
         }
@@ -34,11 +44,19 @@ public class Config {
         DATABASENAME = wejscie.nextLine();
         USER = wejscie.nextLine();
         PASSWORD = wejscie.nextLine();
+        NAZWA_PODMIOTU = wejscie.nextLine();
+        ULICA_I_NUMER_DOMU_PODMIOTU = wejscie.nextLine();
+        KOD_POCZTOWY_PODMIOTU= wejscie.nextLine();
+        MIASTO_PODMIOTU= wejscie.nextLine();
+        NIP_PODMIOTU= wejscie.nextLine();
+        REGON_PODMIOTU= wejscie.nextLine();
     }
 
     private void setDefaultConfig() throws IOException {
         File file = new File(PATH);
+      //  file.delete();
         file.createNewFile();
+
         PrintWriter printWriter = new PrintWriter(PATH);
         //Wartości domyślnie wpisywane do pliku konfiguracyjnego
         printWriter.println(DefaultConnection.CONNECTION.getHost());
@@ -46,7 +64,15 @@ public class Config {
         printWriter.println(DefaultConnection.CONNECTION.getDatabaseName());
         printWriter.println(DefaultConnection.CONNECTION.getUser());
         printWriter.println(DefaultConnection.CONNECTION.getPassword());
+        printWriter.println("");
+        printWriter.println("");
+        printWriter.println("");
+        printWriter.println("");
+        printWriter.println("");
+        printWriter.println("");
+
         printWriter.close();
+        getConfig();
     }
 
     public void setConfig(String host, String port, String database, String login, String password) {
@@ -59,7 +85,15 @@ public class Config {
                 printWriter.println(database);
                 printWriter.println(login);
                 printWriter.println(password);
+                printWriter.println(Config.NAZWA_PODMIOTU);
+                printWriter.println(Config.ULICA_I_NUMER_DOMU_PODMIOTU);
+                printWriter.println(Config.KOD_POCZTOWY_PODMIOTU);
+                printWriter.println(Config.MIASTO_PODMIOTU);
+                printWriter.println(Config.NIP_PODMIOTU);
+                printWriter.println(Config.REGON_PODMIOTU);
                 printWriter.close();
+                Config config = new Config();
+                config.getConfigFromFile();
                 getConfig();
             } else {
                 file.createNewFile();
@@ -68,6 +102,40 @@ public class Config {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void setDanePodmiotu(String nazwa, String ulica, String kodPocztowy, String miasto, String nip, String regon){
+        try {
+            File file = new File(PATH);
+//            file.delete();
+//            file.createNewFile();
+            if (!file.delete()) {
+
+                PrintWriter printWriter = new PrintWriter(PATH);
+                printWriter.println(Config.HOSTNAME);
+                printWriter.println(Config.PORT);
+                printWriter.println(Config.DATABASENAME);
+                printWriter.println(Config.USER);
+                printWriter.println(Config.PASSWORD);
+                printWriter.println(nazwa);
+                printWriter.println(ulica);
+                printWriter.println(kodPocztowy);
+                printWriter.println(miasto);
+                printWriter.println(nip);
+                printWriter.println(regon);
+                printWriter.close();
+                getConfig();
+
+            }else{
+                file.createNewFile();
+                setDanePodmiotu(nazwa, ulica, kodPocztowy, miasto, nip, regon);
+
+            }
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+
     }
 
 

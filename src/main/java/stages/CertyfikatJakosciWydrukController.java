@@ -12,6 +12,10 @@ public class CertyfikatJakosciWydrukController {
     @FXML
     private Pane paneWydruk;
     @FXML
+    private Label nazwaAdresPodmiotuWydruk;
+    @FXML
+    private Label NipRegonPodmiotuWydruk;
+    @FXML
     private Label nrWydruk;
     @FXML
     private Label dataDokumentuWydruk;
@@ -134,6 +138,14 @@ public class CertyfikatJakosciWydrukController {
 //        this.WDmaxPopiolWydruk.setText(WDmaxPopiolWydruk);
 //    }
 
+
+    public void setNazwaAdresPodmiotuWydruk(String nazwaAdresPodmiotuWydruk) {
+        this.nazwaAdresPodmiotuWydruk.setText(nazwaAdresPodmiotuWydruk);
+    }
+
+    public void setNipRegonPodmiotuWydruk(String nipRegonPodmiotuWydruk) {
+        NipRegonPodmiotuWydruk.setText(nipRegonPodmiotuWydruk);
+    }
 
     public void setNrWydruk(String nrWydruk) {
         this.nrWydruk.setText(nrWydruk);

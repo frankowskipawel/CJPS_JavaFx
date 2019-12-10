@@ -43,7 +43,7 @@
                   </Label>
                   <Pane prefHeight="19.0" prefWidth="484.0">
                      <children>
-                        <Label layoutX="4.0" layoutY="1.0" prefHeight="17.0" prefWidth="477.0" style="-fx-alignment: center;" text="Przedsiębiorstwo Wielobranżowe WĘGLOKOKS-BIS S.C. Szosa Chełmińska 204-210, 87-100 Toruń">
+                        <Label fx:id="nazwaAdresPodmiotuWydruk" layoutX="4.0" layoutY="1.0" prefHeight="17.0" prefWidth="477.0" style="-fx-alignment: center;" text="Przedsiębiorstwo Wielobranżowe WĘGLOKOKS-BIS S.C. Szosa Chełmińska 204-210, 87-100 Toruń">
                            <font>
                               <Font size="10.0" />
                            </font>
@@ -61,7 +61,7 @@
                   </Label>
                   <Pane prefHeight="33.0" prefWidth="486.0">
                      <children>
-                        <Label contentDisplay="CENTER" layoutX="7.0" layoutY="2.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="17.0" prefWidth="467.0" style="-fx-alignment: center;" text="NIP 956-11-45-924   REGON 870376846">
+                        <Label fx:id="NipRegonPodmiotuWydruk" contentDisplay="CENTER" layoutX="7.0" layoutY="2.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="17.0" prefWidth="467.0" style="-fx-alignment: center;" text="NIP 956-11-45-924   REGON 870376846">
                            <font>
                               <Font size="10.0" />
                            </font>

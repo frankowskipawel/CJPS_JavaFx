@@ -1,5 +1,6 @@
 package stages;
 
+import config.Config;
 import dao.CertyfikatJakosciDao;
 import dao.DokumentDao;
 import javafx.event.ActionEvent;
@@ -86,13 +87,16 @@ public class MainController {
 //-----------------------------------
         CertyfikatJakosciWydrukController certyfikatJakosciWydrukController = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
         setWartosciDopuszczalneNaWydruku(certyfikatJakosciWydrukController, WartościDopuszczalnePaliwa.valueOf(dokument.getCertyfikatJakosci().getAsortyment()));
-        setWartosciAnWydruku(certyfikatJakosciWydrukController,dokument);
+        setWartosciNaWydruku(certyfikatJakosciWydrukController,dokument);
     }
 
-    public void setWartosciAnWydruku(CertyfikatJakosciWydrukController certyfikatJakosciWydrukController, Dokument dokument){
+    public void setWartosciNaWydruku(CertyfikatJakosciWydrukController certyfikatJakosciWydrukController, Dokument dokument){
+        certyfikatJakosciWydrukController.setNazwaAdresPodmiotuWydruk(Config.NAZWA_PODMIOTU+", "+Config.ULICA_I_NUMER_DOMU_PODMIOTU);
+        certyfikatJakosciWydrukController.setNipRegonPodmiotuWydruk("NIP "+Config.NIP_PODMIOTU+" / REGON "+Config.REGON_PODMIOTU);
+
         certyfikatJakosciWydrukController.setNrWydruk(dokument.getNumerDokumentu());
         certyfikatJakosciWydrukController.setDataDokumentuWydruk(dokument.getDataDokumentu());
-        certyfikatJakosciWydrukController.setAsortymentWydruk(dokument.getCertyfikatJakosci().getAsortyment());
+        certyfikatJakosciWydrukController.setAsortymentWydruk(WartościDopuszczalnePaliwa.valueOf(dokument.getCertyfikatJakosci().getAsortyment()).getNazwa());
         certyfikatJakosciWydrukController.setNrLabWydruk(dokument.getCertyfikatJakosci().getNumerCertyfikatuLaboratorium());
         certyfikatJakosciWydrukController.setPopiolWydruk(dokument.getCertyfikatJakosci().getZawartoscPopiolu());
         certyfikatJakosciWydrukController.setSiarkaWydruk(dokument.getCertyfikatJakosci().getZawartoscSiarkiCalkowitej());
@@ -103,7 +107,6 @@ public class MainController {
         certyfikatJakosciWydrukController.setZawPodziarnaWydruk(dokument.getCertyfikatJakosci().getZawartoscPodziarna());
         certyfikatJakosciWydrukController.setZawNadziarnaWydruk(dokument.getCertyfikatJakosci().getZawartoscNadziarna());
         certyfikatJakosciWydrukController.setZawWilgociWydruk(dokument.getCertyfikatJakosci().getZawartoscWilgociCalkowitej());
-
 
     }
 
@@ -182,8 +185,25 @@ public class MainController {
         return dokumentDodawany;
     }
 
-    public void przekazanieZmiennychDoWydruku() {
+    @FXML
+    void menuDanePodmiotuClick(ActionEvent event) throws IOException {
 
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(this.getClass().getResource("/stages/PodmiotConfig.fxml"));
+        Pane pane = loader.load();
+        Scene scene = new Scene(pane);
+        stage.setScene(scene);
+        stage.setTitle("Ustawienia podmiotu");
+        stage.show();
+//-----------------------------------
+        PodmiotConfigController podmiotConfigController = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
+        podmiotConfigController.setNazwaTextFieldPodmiotConfig(Config.NAZWA_PODMIOTU);
+        podmiotConfigController.setUlicaTextFieldPodmiotConfig(Config.ULICA_I_NUMER_DOMU_PODMIOTU);
+        podmiotConfigController.setKodPocztowyTextFieldPodmiotConfig(Config.KOD_POCZTOWY_PODMIOTU);
+        podmiotConfigController.setMiastoTextFieldPodmiotConfig(Config.MIASTO_PODMIOTU);
+        podmiotConfigController.setNipTextFieldPodmiotConfig(Config.NIP_PODMIOTU);
+        podmiotConfigController.setRegonTextFieldPodmiotConfig(Config.REGON_PODMIOTU);
     }
 
     @FXML

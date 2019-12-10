@@ -19,7 +19,8 @@ public class KontrahentDao {
     private void init() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://" + Config.HOSTNAME + ":" + Config.PORT + "/" + Config.HOSTNAME + "?useSSL=false", Config.USER, Config.PASSWORD);
+            connection = DriverManager.getConnection("jdbc:mysql://" + Config.HOSTNAME + ":" + Config.PORT + "/" + Config.DATABASENAME + "?useSSL=false", Config.USER, Config.PASSWORD);
+
         } catch (Exception e) {
             e.printStackTrace();
         }

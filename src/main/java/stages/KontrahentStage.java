@@ -1,6 +1,7 @@
 package stages;
 
 
+import config.Config;
 import dao.KontrahentDao;
 import model.Kontrahent;
 import javafx.application.Application;
@@ -9,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
@@ -16,7 +18,8 @@ public class KontrahentStage extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("Certyfikaty Jakości Paliw Stałych 1.0");
+
+        primaryStage.setTitle("Lista Kontrahentów");
         Pane myPane = (Pane)FXMLLoader.load(getClass().getResource
                 ("KontrahentTableView.fxml"));
         Scene myScene = new Scene(myPane);
@@ -25,8 +28,9 @@ public class KontrahentStage extends Application {
 
     }
 
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws IOException {
+        Config config = new Config();
+        config.getConfigFromFile();
 
 
         KontrahentDao kontrahentDao = new KontrahentDao();

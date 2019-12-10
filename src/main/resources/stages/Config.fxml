@@ -52,8 +52,8 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" onAction="#okClick" prefHeight="14.0" prefWidth="87.0" text="OK" GridPane.columnIndex="2" />
-            <Button fx:id="anulujButton" mnemonicParsing="false" onAction="#anulujClick" prefHeight="26.0" prefWidth="82.0" text="Anuluj" GridPane.columnIndex="1" />
+            <Button fx:id="okButton" mnemonicParsing="false" onAction="#okClick" prefHeight="14.0" prefWidth="87.0" text="OK" GridPane.columnIndex="1" />
+            <Button fx:id="anulujButton" mnemonicParsing="false" onAction="#anulujClick" prefHeight="26.0" prefWidth="82.0" text="Anuluj" GridPane.columnIndex="2" />
             <Button mnemonicParsing="false" onAction="#domyslneClick" text="Domyślne" />
          </children>
       </GridPane>

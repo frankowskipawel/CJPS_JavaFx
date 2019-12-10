@@ -17,7 +17,7 @@ public class ConfigStage extends Application {
        // stage.setX(0); // współrzędne uruchomienia
        // stage.setY(0);
         //stage.initStyle(StageStyle.UNDECORATED); //np. bez ramki
-        stage.setOpacity(0.5);
+      //  stage.setOpacity(0.5);
         Pane myPane = (Pane) FXMLLoader.load(getClass().getResource("Config.fxml"));
         Scene myScene = new Scene(myPane);
         stage.setScene(myScene);

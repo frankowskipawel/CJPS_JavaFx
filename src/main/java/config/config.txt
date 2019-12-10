@@ -1,5 +1,0 @@
-localhost
-3306
-certyfikaty_database
-root
-admin
