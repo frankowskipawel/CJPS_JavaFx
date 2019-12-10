@@ -7,6 +7,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import model.CertyfikatJakosci;
+import model.WartościDopuszczalnePaliwa;
 
 import java.io.IOException;
 
@@ -83,12 +84,13 @@ public class DodajNowyCertyfikatController {
 
 
         asortymentCombobox.getItems().addAll(
-                "WĘGIEL KAMIENNY - KOSTKA",
-                "WĘGIEL KAMIENNY - ORZECH",
-                "WĘGIEL KAMIENNY - GROSZEK",
-                "WĘGIEL KAMIENNY - MIAŁ",
-                "WĘGIEL KAMIENNY - EKOGROSZEK",
-                "WĘGIEL KAMIENNY - PELLET"
+                WartościDopuszczalnePaliwa.WEGIEL_KAMIENNY_KOSTKA,
+                WartościDopuszczalnePaliwa.WEGIEL_KAMIENNY_ORZECH,
+                WartościDopuszczalnePaliwa.WEGIEL_KAMIENNY_MIAL,
+                WartościDopuszczalnePaliwa.WEGIEL_KAMIENNY_EKOGROSZEK,
+                WartościDopuszczalnePaliwa.WEGIEL_KAMIENNY_PELLET
+
+
         );
     }
 }

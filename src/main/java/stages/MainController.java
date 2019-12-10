@@ -83,11 +83,12 @@ public class MainController {
         stage.setScene(scene);
         stage.setTitle("Podgląd wydruku");
         stage.show();
-
+//-----------------------------------
         CertyfikatJakosciWydrukController certyfikatJakosciWydrukController = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
-        setWartosciDopuszczalneNaWydruku(certyfikatJakosciWydrukController, WartościDopuszczalnePaliwa.WEGIEL_KAMIENNY_KOSTKA);
+        setWartosciDopuszczalneNaWydruku(certyfikatJakosciWydrukController, WartościDopuszczalnePaliwa.valueOf(dokument.getCertyfikatJakosci().getAsortyment()));
 
     }
+
 
     public void setWartosciDopuszczalneNaWydruku(CertyfikatJakosciWydrukController certyfikatJakosciWydrukController, WartościDopuszczalnePaliwa asortyment) {
         certyfikatJakosciWydrukController.setWDminPopiolWydruk(asortyment.getMinPopiol());

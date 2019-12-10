@@ -3,6 +3,8 @@ package model;
 import javafx.beans.property.SimpleStringProperty;
 
 public class CertyfikatJakosci {
+ //   private WartościDopuszczalnePaliwa typ;
+
     //Zmienne używane na stronie głównej na liście aktywnych certyfikatów
     private final SimpleStringProperty nrCertyfikatuTableViewStronaGlowna = new SimpleStringProperty("");
     private final SimpleStringProperty naszaNazwaTableViewStronaGlowna = new SimpleStringProperty("");
@@ -26,9 +28,6 @@ public class CertyfikatJakosci {
     private final SimpleStringProperty zawartoscWilgociCalkowitej = new SimpleStringProperty("");
     private final SimpleStringProperty dostawca = new SimpleStringProperty("");
     private final SimpleStringProperty nrFV = new SimpleStringProperty("");
-
-    public CertyfikatJakosci() {
-    }
 
     //Konstruktor używany na liście certyfikatów
     public CertyfikatJakosci(String numerCertyfikatu, String aktywny, String naszaNazwa, String asortyment, String data,
