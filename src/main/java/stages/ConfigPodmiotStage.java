@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class PodmiotConfigStage extends Application {
+public class ConfigPodmiotStage extends Application {
     public static void main(String[] args) {
         launch(args);
     }
@@ -25,7 +25,7 @@ public class PodmiotConfigStage extends Application {
         stage.setTitle("Ustawienia podmiotu");
         stage.show();
 //-----------------------------------
-        PodmiotConfigController podmiotConfigController = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
+        ConfigPodmiotController podmiotConfigController = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
         podmiotConfigController.setNazwaTextFieldPodmiotConfig(Config.NAZWA_PODMIOTU);
         podmiotConfigController.setUlicaTextFieldPodmiotConfig(Config.ULICA_I_NUMER_DOMU_PODMIOTU);
         podmiotConfigController.setKodPocztowyTextFieldPodmiotConfig(Config.KOD_POCZTOWY_PODMIOTU);

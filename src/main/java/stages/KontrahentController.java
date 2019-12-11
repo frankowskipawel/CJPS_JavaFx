@@ -34,8 +34,6 @@ public class KontrahentController {
         KontrahentDao kontrahentDao = new KontrahentDao();
         kontrahentDao.deleteKontrahentDatabase(KontrahenciTableView.getSelectionModel().getSelectedItem().getIdKontrahent());
 
-        System.out.println(KontrahenciTableView.getSelectionModel().getSelectedItem());
-        System.out.println("xxxx"+ KontrahenciTableView.getSelectionModel().getSelectedItem().getIdKontrahent());
 
         ObservableList<Kontrahent> data = KontrahenciTableView.getItems();
        data.remove(KontrahenciTableView.getSelectionModel().getSelectedItem());
@@ -52,7 +50,6 @@ public class KontrahentController {
                 adresKontrahentField.getText(),
                 nipKontrahentField.getText(),
                 regonKontrahentField.getText()
-
         ));
         KontrahentDao kontrahentDao = new KontrahentDao();
         kontrahentDao.addKontrahentDatabase(idKontrahentField.getText(), nazwaKontrahentField.getText(), adresKontrahentField.getText(), nipKontrahentField.getText(), regonKontrahentField.getText() );
@@ -73,12 +70,7 @@ public class KontrahentController {
                 "nipKontrahentField.getText()",
                 "regonKontrahentField.getText()" ));
 
-        //data.removeAll(data); //usuwa wszystko z table View
-       // data.remove(2); //usuwa pozycje z numerem a
-
-
     }
-
 
     @FXML
     protected void addAllKontrahentListFromDatabaseToTableView() {
@@ -96,7 +88,6 @@ public class KontrahentController {
                     b.adresKontrahentProperty().getValue(),
                     b.nipKontrahentProperty().getValue(),
                     b.regonKontrahentProperty().getValue()));
-
         }
     }
 }

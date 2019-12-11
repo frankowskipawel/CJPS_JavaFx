@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="vBoxStronaGlowna" prefHeight="621.0" prefWidth="490.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stages.MainController">
+<VBox fx:id="vBoxStronaGlowna" prefHeight="621.0" prefWidth="490.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stages.MainController">
   <children>
     <MenuBar prefHeight="26.0" prefWidth="462.0" VBox.vgrow="NEVER">
       <menus>
@@ -29,18 +29,19 @@
         <Menu mnemonicParsing="false" text="Edycja">
           <items>
             <MenuItem mnemonicParsing="false" onAction="#usunOstatniMenuClick" text="Usuń ostatni dokument" />
-            <MenuItem fx:id="MenuListaCertyfikatow" mnemonicParsing="false" onAction="#MenuListaCertyfikatowClick" text="Lista Certyfikatów" />
           </items>
         </Menu>
+            <Menu mnemonicParsing="false" text="Kartoteki">
+              <items>
+                  <MenuItem mnemonicParsing="false" onAction="#menuKontrahenciClick" text="Kontrahenci" />
+            <MenuItem fx:id="MenuListaCertyfikatow" mnemonicParsing="false" onAction="#MenuListaCertyfikatowClick" text="Certyfikaty" />
+                  <MenuItem fx:id="menuDokumenty" mnemonicParsing="false" onAction="#menuDokumentyClick" text="Dokumenty" />
+              </items>
+            </Menu>
       </menus>
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="610.0" prefWidth="490.0" VBox.vgrow="ALWAYS">
       <children>
-        <Label alignment="CENTER" layoutX="155.0" layoutY="177.0" style="&#10;" text="Drag components from Library here…" textAlignment="CENTER" textFill="#9f9f9f" wrapText="false">
-          <font>
-            <Font size="18.0" />
-          </font>
-        </Label>
             <TableView fx:id="listaAktywnychCertyfikatowTableViewStronaGlowna" prefHeight="460.0" prefWidth="490.0">
               <columns>
                 <TableColumn fx:id="nrCertyfikatuTableViewStronaGlowna" prefWidth="91.19995272159576" text="Nr certyfikatu">
@@ -60,12 +61,17 @@
                      <children>
                         <Button fx:id="dodajWydrukujButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutY="1.0" mnemonicParsing="false" onAction="#addAndPrintNowyDokumentClick" prefHeight="50.0" prefWidth="170.0" style="-fx-alignment: center;" text="Doodaj i wydrukuj" />
                         <Button fx:id="odswiezButton" layoutY="51.0" mnemonicParsing="false" onAction="#refreshClick" prefHeight="27.0" prefWidth="170.0" text="Odśwież" />
-                        <Button layoutX="1.0" layoutY="78.0" mnemonicParsing="false" onAction="#podgladClick" prefHeight="25.0" prefWidth="71.0" text="Podgląd" />
+                        <Button layoutX="27.0" layoutY="90.0" mnemonicParsing="false" onAction="#podgladClick" prefHeight="25.0" prefWidth="71.0" text="Podgląd" />
                      </children>
                   </Pane>
                </children>
             </HBox>
       </children>
     </AnchorPane>
+      <Label fx:id="messageLabelMain" prefHeight="21.0" prefWidth="510.0" style="-fx-alignment: center;">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
   </children>
 </VBox>

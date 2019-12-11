@@ -14,7 +14,7 @@ public class Main {
         System.out.println(config.PASSWORD);
 
         DaoService daoService = new DaoService();
-        daoService.init();
+       // daoService.init();
 
         System.out.println(DefaultConnection.CONNECTION.getDatabaseName());
 

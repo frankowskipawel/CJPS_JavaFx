@@ -1,6 +1,6 @@
 package model;
 
-public enum WartościDopuszczalnePaliwa {
+public enum WartosciDopuszczalnePaliwa {
 
     WEGIEL_KAMIENNY_KOSTKA("WĘGIEL KAMIENNY - KOSTKA", "-", "12", "-", "1,7", "-", "-", "22", "-", "-", "-", "63", "200", "0", "10", "0", "10", "-", "20"),
     WEGIEL_KAMIENNY_ORZECH("WĘGIEL KAMIENNY - ORZECH", "-", "12", "-", "1,7", "-", "-", "22", "-", "-", "-", "25", "80", "0", "10", "0", "10", "-", "20"),
@@ -30,7 +30,7 @@ public enum WartościDopuszczalnePaliwa {
     private String minWolgotnosc;
     private String maxWilgotnosc;
 
-    WartościDopuszczalnePaliwa(String nazwa, String minPopiol, String maxPopiol, String minSiarka, String maxSiarka, String minCzLotne, String maxCzLotne, String minWartoscOpalowa, String maxWartoscOpalowa, String minSpiekalnsc, String maxSpiekalnosc, String minWymiarZiarna, String maxWymiarZiarna, String minPodziarno, String maxPadziarno, String minNadziarno, String maxNadziarno, String minWolgotnosc, String maxWilgotnosc) {
+    WartosciDopuszczalnePaliwa(String nazwa, String minPopiol, String maxPopiol, String minSiarka, String maxSiarka, String minCzLotne, String maxCzLotne, String minWartoscOpalowa, String maxWartoscOpalowa, String minSpiekalnsc, String maxSpiekalnosc, String minWymiarZiarna, String maxWymiarZiarna, String minPodziarno, String maxPadziarno, String minNadziarno, String maxNadziarno, String minWolgotnosc, String maxWilgotnosc) {
         this.nazwa = nazwa;
         this.minPopiol = minPopiol;
         this.maxPopiol = maxPopiol;

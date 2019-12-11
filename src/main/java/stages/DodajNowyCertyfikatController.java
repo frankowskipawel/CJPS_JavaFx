@@ -7,7 +7,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import model.CertyfikatJakosci;
-import model.WartościDopuszczalnePaliwa;
+import model.WartosciDopuszczalnePaliwa;
 
 import java.io.IOException;
 
@@ -53,8 +53,8 @@ public class DodajNowyCertyfikatController {
     protected void dodajClick(ActionEvent event) throws IOException {
 
         CertyfikatJakosciDao certyfikatJakosciDao = new CertyfikatJakosciDao();
-        int numer = certyfikatJakosciDao.getNajwyzszyNumerCertyfikatuDao()+1;
-       // System.out.println(numer);
+        int numer = certyfikatJakosciDao.getNajwyzszyNumerCertyfikatuDao() + 1;
+        // System.out.println(numer);
         String numerString = Integer.toString(numer);
 
         String isAktywny;
@@ -64,15 +64,18 @@ public class DodajNowyCertyfikatController {
             isAktywny = "NIE";
         }
         String asortymentValue;
-        if(asortymentCombobox.getSelectionModel().isEmpty()){
-        asortymentValue="";} else {asortymentValue=asortymentCombobox.getSelectionModel().selectedItemProperty().getValue().toString();}
+        if (asortymentCombobox.getSelectionModel().isEmpty()) {
+            asortymentValue = "";
+        } else {
+            asortymentValue = asortymentCombobox.getSelectionModel().selectedItemProperty().getValue().toString();
+        }
 
         CertyfikatJakosci cerytfikatJakosci = new CertyfikatJakosci(numerString, isAktywny, naszaNazwaField.getText(), asortymentValue,
                 dataField.getText(), nrCertyfikatuLaboratoriumField.getText(), zawartoscPopioluField.getText(), zawartoscSiarkiField.getText(),
                 zawartoscCzesciLotnychField.getText(), wartoscOpalowaField.getText(), spiekalnoscField.getText(), minWymiarziarnaField.getText(),
                 maxWymiarziarnaField.getText(), zawartoscPodziarnaField.getText(), zawartoscNadziarnaField.getText(), zawartoscWilgociField.getText(),
                 dostawcaField.getText(), nrFvField.getText());
-       // System.out.println(cerytfikatJakosci);
+        // System.out.println(cerytfikatJakosci);
 
         certyfikatJakosciDao.addCertyfikatJakosciToDatabase(cerytfikatJakosci);
 
@@ -82,15 +85,9 @@ public class DodajNowyCertyfikatController {
     @FXML
     public void initialize() {
 
-
-        asortymentCombobox.getItems().addAll(
-                WartościDopuszczalnePaliwa.WEGIEL_KAMIENNY_KOSTKA,
-                WartościDopuszczalnePaliwa.WEGIEL_KAMIENNY_ORZECH,
-                WartościDopuszczalnePaliwa.WEGIEL_KAMIENNY_MIAL,
-                WartościDopuszczalnePaliwa.WEGIEL_KAMIENNY_EKOGROSZEK,
-                WartościDopuszczalnePaliwa.WEGIEL_KAMIENNY_PELLET
-
-
-        );
+        asortymentCombobox.getItems().addAll(WartosciDopuszczalnePaliwa.values());
     }
+
+
 }
+

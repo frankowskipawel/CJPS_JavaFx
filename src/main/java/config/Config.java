@@ -38,8 +38,6 @@ public class Config {
 
     private void getConfig() throws FileNotFoundException {
         File plik = new File(PATH);
-        System.out.println(plik.exists());
-
         Scanner wejscie = new Scanner(plik);
         HOSTNAME = wejscie.nextLine();
         PORT = wejscie.nextLine();

@@ -36,7 +36,7 @@ public class ListaCertyfikatowController {
 
         CertyfikatJakosciDao certyfikatJakosciDao = new CertyfikatJakosciDao();
         List<CertyfikatJakosci> list = certyfikatJakosciDao.getAllCertyfikatJakosci();
-        //System.out.println(list);
+
 
 
         Iterator<CertyfikatJakosci> iterator = list.iterator();
@@ -84,7 +84,7 @@ public class ListaCertyfikatowController {
     }
 
     @FXML
-    protected void odswiezClick() throws IOException {
+    protected void odswiezClick()  {
 
        odswiezListeCertyfikatow();
 

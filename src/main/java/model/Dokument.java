@@ -9,10 +9,6 @@ public class Dokument {
     private final SimpleStringProperty numerDokumentu = new SimpleStringProperty("");
     private final SimpleStringProperty dataDokumentu = new SimpleStringProperty("");
 
-//    private final SimpleStringProperty nrCertyfikatuTableViewStronaGlowna = new SimpleStringProperty("");
-//    private final SimpleStringProperty naszaNazwaTableViewStronaGlowna = new SimpleStringProperty("");
-//
-
     public Dokument(String numerDokumentu, String dataDokumentu, CertyfikatJakosci certyfikatJakosci) {
         setNumerDokumentu(numerDokumentu);
         setDataDokumentu(dataDokumentu);
@@ -54,11 +50,18 @@ public class Dokument {
     @Override
     public String toString() {
         return
-                getNumerDokumentu() + " -- " + certyfikatJakosci.getNaszaNazwa()
+                getNumerDokumentu() + "--{" + certyfikatJakosci.getNaszaNazwa()+ "}{nr certyfikatu " +
+                        certyfikatJakosci.getNumerCertyfikatu()+"}{popiół:"+
+                        certyfikatJakosci.getZawartoscPopiolu()+"%}{siarka:"+certyfikatJakosci.getZawartoscSiarkiCalkowitej()+"%}{cz.lotne"+
+                        certyfikatJakosci.getZawartoscCzesciLotnych()+"%}{wart.opał.:"+certyfikatJakosci.getWartoscOpalowa()+"MJ/kg}{RI:"+
+                        certyfikatJakosci.getZdolnoscSpiekania()+"}{wym.ziar.:"+certyfikatJakosci.getMinimalnyWymiarZiarna()+"-"+
+                        certyfikatJakosci.getMaksymalnyWymiarZiarna()+"mm}{podziarno:"+certyfikatJakosci.getZawartoscPodziarna()+"%}{nadziarno:"+
+                        certyfikatJakosci.getZawartoscNadziarna()+"%}{wilgotność:"+certyfikatJakosci.getZawartoscWilgociCalkowitej()+"%}"
 
                 ;
 
 
     }
+
 
 }

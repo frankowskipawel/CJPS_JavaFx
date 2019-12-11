@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class PodmiotConfigController {
+public class ConfigPodmiotController {
     @FXML
     private Button okButton;
     @FXML

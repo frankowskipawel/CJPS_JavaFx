@@ -1,8 +1,13 @@
 package dao;
 
 import config.Config;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import model.CertyfikatJakosci;
 import model.Dokument;
+import stages.OknoDialogoweController;
 
 import java.sql.*;
 import java.util.LinkedList;
@@ -123,7 +128,7 @@ public class DokumentDao {
             statement = connection.createStatement();
             //  insert into employees(name, lastname, age) values('Jan', 'Kowalski', 22);
             String query = "insert into " + tableName + "(id_dokumenty, data_dokumenty, nr_certyfikaty, aktywny_certyfikaty, nasza_nazwa_certyfikaty, asortyment_certyfikaty, data_certyfikaty, nr_lab_certyfikaty, popiol_certyfikaty, siarka_certyfikaty, cz_lotne_certyfikaty, wartosc_opalowa_certyfikaty, spiekalnosc_certyfikaty, min_ziarno_certyfikaty, max_ziarno_certyfikaty, podziarno_certyfikaty, nadziarno_certyfikaty, wilgoc_certyfikaty, dostawca_certyfikaty, nr_fv_certyfikaty) values('" + dokument.getNumerDokumentu() + "', '" + dokument.getDataDokumentu() + "', '" + dokument.getCertyfikatJakosci().getNumerCertyfikatu() + "', '" + dokument.getCertyfikatJakosci().getAktywny() + "', '" + dokument.getCertyfikatJakosci().getNaszaNazwa() + "', '" + dokument.getCertyfikatJakosci().getAsortyment() + "', '" + dokument.getCertyfikatJakosci().getData() + "', '" + dokument.getCertyfikatJakosci().getNumerCertyfikatuLaboratorium() + "', '" + dokument.getCertyfikatJakosci().getZawartoscPopiolu() + "', '" + dokument.getCertyfikatJakosci().getZawartoscSiarkiCalkowitej() + "', '" + dokument.getCertyfikatJakosci().getZawartoscCzesciLotnych() + "', '" + dokument.getCertyfikatJakosci().getWartoscOpalowa() + "', '" + dokument.getCertyfikatJakosci().getZdolnoscSpiekania() + "', '" + dokument.getCertyfikatJakosci().getMinimalnyWymiarZiarna() + "', '" + dokument.getCertyfikatJakosci().getMaksymalnyWymiarZiarna() + "', '" + dokument.getCertyfikatJakosci().getZawartoscPodziarna() + "', '" + dokument.getCertyfikatJakosci().getZawartoscNadziarna() + "', '" + dokument.getCertyfikatJakosci().getZawartoscWilgociCalkowitej() + "', '" + dokument.getCertyfikatJakosci().getDostawca() + "', '" + dokument.getCertyfikatJakosci().getNrFV() + "');";
-            System.out.println(query);
+
             //   String query = "select * from " + tableName;
             int resultSet = statement.executeUpdate(query);
 
@@ -186,9 +191,9 @@ public class DokumentDao {
             while (resultSet.next()) {
                 autoIncrement = resultSet.getInt("max(auto_numeracja)");
             }
-            System.out.println(autoIncrement);
+
             query = "SELECT id_dokumenty FROM " + tableName+" WHERE auto_numeracja="+autoIncrement;
-            System.out.println(query);
+
             resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
                 nrNajwyzszy = resultSet.getInt("id_dokumenty");
@@ -231,6 +236,12 @@ public class DokumentDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    public void usunOstatniDokument(){
+        DokumentDao dokumentDao = new DokumentDao();
+        dokumentDao.deleteDokumentDatabase(dokumentDao.getNajwyzszyNumerDokumentuDaoString());
+
     }
 
 }
