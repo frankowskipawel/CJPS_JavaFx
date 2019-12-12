@@ -3,9 +3,8 @@ package stages;
 import dao.CertyfikatJakosciDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 import model.CertyfikatJakosci;
 import model.WartosciDopuszczalnePaliwa;
 
@@ -13,6 +12,10 @@ import java.io.IOException;
 
 public class DodajNowyCertyfikatController {
 
+    ListaCertyfikatowController listaCertyfikatowController;
+
+    @FXML
+    private Label numerLabel;
     @FXML
     private TextField naszaNazwaField;
     @FXML
@@ -47,18 +50,25 @@ public class DodajNowyCertyfikatController {
     private TextField dostawcaField;
     @FXML
     private TextField nrFvField;
+    @FXML
+    private Button anulujButton;
 
 
     @FXML
-    protected void dodajClick(ActionEvent event) throws IOException {
+    protected void okClick() {
 
         CertyfikatJakosciDao certyfikatJakosciDao = new CertyfikatJakosciDao();
-        int numer = certyfikatJakosciDao.getNajwyzszyNumerCertyfikatuDao() + 1;
-        // System.out.println(numer);
-        String numerString = Integer.toString(numer);
+
+        String numerString;
+        if (numerLabel.getText().equals("(auto)")) {
+            numerString = Integer.toString(certyfikatJakosciDao.getNajwyzszyNumerCertyfikatuDao() + 1);
+
+        } else {
+            numerString = numerLabel.getText();
+        }
 
         String isAktywny;
-        if (aktywnyCheckbox.selectedProperty().getValue() == true) {
+        if (aktywnyCheckbox.selectedProperty().getValue()) {
             isAktywny = "TAK";
         } else {
             isAktywny = "NIE";
@@ -75,10 +85,23 @@ public class DodajNowyCertyfikatController {
                 zawartoscCzesciLotnychField.getText(), wartoscOpalowaField.getText(), spiekalnoscField.getText(), minWymiarziarnaField.getText(),
                 maxWymiarziarnaField.getText(), zawartoscPodziarnaField.getText(), zawartoscNadziarnaField.getText(), zawartoscWilgociField.getText(),
                 dostawcaField.getText(), nrFvField.getText());
-        // System.out.println(cerytfikatJakosci);
 
-        certyfikatJakosciDao.addCertyfikatJakosciToDatabase(cerytfikatJakosci);
+        if (numerLabel.getText().equals("(auto)")) {
+            certyfikatJakosciDao.addCertyfikatJakosciToDatabase(cerytfikatJakosci);
+        } else {
+            certyfikatJakosciDao.replaceCertyfikatJakosci(cerytfikatJakosci);
+        }
 
+
+        Stage stage = (Stage) anulujButton.getScene().getWindow();
+        stage.close();
+        this.listaCertyfikatowController.odswiezClick();
+    }
+
+    @FXML
+    void anulujButtonClick(ActionEvent event) {
+        Stage stage = (Stage) anulujButton.getScene().getWindow();
+        stage.close();
 
     }
 
@@ -88,6 +111,81 @@ public class DodajNowyCertyfikatController {
         asortymentCombobox.getItems().addAll(WartosciDopuszczalnePaliwa.values());
     }
 
+    public void setNumerLabel(String numerLabel) {
+        this.numerLabel.setText(numerLabel);
+    }
 
+    public void setNaszaNazwaField(String naszaNazwaField) {
+        this.naszaNazwaField.setText(naszaNazwaField);
+    }
+
+    public void setAktywnyCheckbox(String aktywnyCheckbox) {
+        if (aktywnyCheckbox.equals("TAK")) {
+            this.aktywnyCheckbox.setSelected(true);
+        } else {
+            this.aktywnyCheckbox.setSelected(false);
+        }
+    }
+
+    public void setAsortymentCombobox(String asortymentCombobox) {
+
+        this.asortymentCombobox.setPromptText(asortymentCombobox);
+    }
+
+    public void setDataField(String dataField) {
+        this.dataField.setText(dataField);
+    }
+
+    public void setNrCertyfikatuLaboratoriumField(String nrCertyfikatuLaboratoriumField) {
+        this.nrCertyfikatuLaboratoriumField.setText(nrCertyfikatuLaboratoriumField);
+    }
+
+    public void setZawartoscPopioluField(String zawartoscPopioluField) {
+        this.zawartoscPopioluField.setText(zawartoscPopioluField);
+    }
+
+    public void setZawartoscSiarkiField(String zawartoscSiarkiField) {
+        this.zawartoscSiarkiField.setText(zawartoscSiarkiField);
+    }
+
+    public void setZawartoscCzesciLotnychField(String zawartoscCzesciLotnychField) {
+        this.zawartoscCzesciLotnychField.setText(zawartoscCzesciLotnychField);
+    }
+
+    public void setWartoscOpalowaField(String wartoscOpalowaField) {
+        this.wartoscOpalowaField.setText(wartoscOpalowaField);
+    }
+
+    public void setSpiekalnoscField(String spiekalnoscField) {
+        this.spiekalnoscField.setText(spiekalnoscField);
+    }
+
+    public void setMinWymiarziarnaField(String minWymiarziarnaField) {
+        this.minWymiarziarnaField.setText(minWymiarziarnaField);
+    }
+
+    public void setMaxWymiarziarnaField(String maxWymiarziarnaField) {
+        this.maxWymiarziarnaField.setText(maxWymiarziarnaField);
+    }
+
+    public void setZawartoscPodziarnaField(String zawartoscPodziarnaField) {
+        this.zawartoscPodziarnaField.setText(zawartoscPodziarnaField);
+    }
+
+    public void setZawartoscNadziarnaField(String zawartoscNadziarnaField) {
+        this.zawartoscNadziarnaField.setText(zawartoscNadziarnaField);
+    }
+
+    public void setZawartoscWilgociField(String zawartoscWilgociField) {
+        this.zawartoscWilgociField.setText(zawartoscWilgociField);
+    }
+
+    public void setDostawcaField(String dostawcaField) {
+        this.dostawcaField.setText(dostawcaField);
+    }
+
+    public void setNrFvField(String nrFvField) {
+        this.nrFvField.setText(nrFvField);
+    }
 }
 

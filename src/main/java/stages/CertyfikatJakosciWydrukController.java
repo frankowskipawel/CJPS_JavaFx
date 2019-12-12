@@ -9,6 +9,8 @@ import javafx.scene.layout.Pane;
 import java.io.IOException;
 
 public class CertyfikatJakosciWydrukController {
+    CertyfikatJakosciWydrukController certyfikatJakosciWydrukController;
+
     @FXML
     private Pane paneWydruk;
     @FXML

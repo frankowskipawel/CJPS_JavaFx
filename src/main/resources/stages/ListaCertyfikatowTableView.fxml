@@ -96,8 +96,11 @@
         </TableView>
       <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
          <children>
+            <Button fx:id="zamknijButton" mnemonicParsing="false" onAction="#usunCertyfikat" text="Usuń" />
+            <Button mnemonicParsing="false" onAction="#edycjaOnClick" text="Edycja" />
             <Button fx:id="odswiezButton" mnemonicParsing="false" onAction="#odswiezClick" text="Odśwież" />
             <Button fx:id="dodajNowyButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#dodajNowyCertyfikatClick" text="Dodaj Nowy" textAlignment="CENTER" />
+            <Button mnemonicParsing="false" onAction="#zamknijOnClick" text="Zamknij" />
          </children>
       </HBox>
         </children>

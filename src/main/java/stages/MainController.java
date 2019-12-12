@@ -1,6 +1,5 @@
 package stages;
 
-import com.mysql.jdbc.CommunicationsException;
 import config.Config;
 import dao.CertyfikatJakosciDao;
 import dao.DokumentDao;
@@ -97,8 +96,10 @@ public class MainController {
         stage.setTitle("Podgląd wydruku");
         stage.show();
         CertyfikatJakosciWydrukController certyfikatJakosciWydrukController = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
+        certyfikatJakosciWydrukController.certyfikatJakosciWydrukController=certyfikatJakosciWydrukController; //
         setWartosciDopuszczalneNaWydruku(certyfikatJakosciWydrukController, WartosciDopuszczalnePaliwa.valueOf(dokument.getCertyfikatJakosci().getAsortyment()));
         setWartosciNaWydruku(certyfikatJakosciWydrukController, dokument);
+
     }
 
     public void setWartosciNaWydruku(CertyfikatJakosciWydrukController certyfikatJakosciWydrukController, Dokument dokument) {
@@ -159,7 +160,7 @@ public class MainController {
 
         ObservableList<Dokument> data = listaDokumentowListViewStronaGlowna.getItems();
 
-        CertyfikatJakosci certyfikatJakosci = new CertyfikatJakosciDao().znajdzCertyfikatPoId(listaAktywnychCertyfikatowTableViewStronaGlowna.getSelectionModel().getSelectedItem().getNumerCertyfikatuAktywne());
+        CertyfikatJakosci certyfikatJakosci = new CertyfikatJakosciDao().znajdzCertyfikatPoNr(listaAktywnychCertyfikatowTableViewStronaGlowna.getSelectionModel().getSelectedItem().getNumerCertyfikatuAktywne());
 
         DokumentDao dokumentDao = new DokumentDao();
 
@@ -271,12 +272,22 @@ public class MainController {
     @FXML
     public void MenuListaCertyfikatowClick() throws IOException {
         Stage stage = new Stage();
-        stage.setTitle("Lista Certyfikatow");
-        Pane myPane = (Pane) FXMLLoader.load(getClass().getResource
-                ("ListaCertyfikatowTableView.fxml"));
-        Scene myScene = new Scene(myPane);
-        stage.setScene(myScene);
+//        stage.setTitle("Lista Certyfikatow");
+//        Pane myPane = (Pane) FXMLLoader.load(getClass().getResource
+//                ("ListaCertyfikatowTableView.fxml"));
+//        Scene myScene = new Scene(myPane);
+//        stage.setScene(myScene);
+//        stage.show();
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(this.getClass().getResource("/stages/ListaCertyfikatowTableView.fxml"));
+        Pane pane = loader.load();
+        Scene scene = new Scene(pane);
+        stage.setScene(scene);
+        stage.setTitle("Lista Certyfikatów");
         stage.show();
+        ListaCertyfikatowController listaCertyfikatowController = loader.getController();
+        listaCertyfikatowController.listaCertyfikatowController=listaCertyfikatowController;
     }
 
     @FXML

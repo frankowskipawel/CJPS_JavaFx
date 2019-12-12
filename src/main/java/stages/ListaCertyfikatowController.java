@@ -1,7 +1,9 @@
 package stages;
 
 import dao.CertyfikatJakosciDao;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.layout.VBox;
 import model.CertyfikatJakosci;
 import javafx.collections.ObservableList;
 
@@ -17,7 +19,10 @@ import java.util.Iterator;
 import java.util.List;
 
 public class ListaCertyfikatowController {
+    ListaCertyfikatowController listaCertyfikatowController;
 
+    @FXML
+    private Button zamknijButton;
     @FXML
     private TableView<CertyfikatJakosci> listaCertyfikatowTableView;
     @FXML
@@ -74,12 +79,18 @@ public class ListaCertyfikatowController {
     protected void dodajNowyCertyfikatClick() throws IOException {
 
         Stage stage = new Stage();
-        stage.setTitle("Dodaj nowy certyfikat jakości");
-        Pane myPane = (Pane) FXMLLoader.load(getClass().getResource
-                ("DodajNowyCertyfikat.fxml"));
-        Scene myScene = new Scene(myPane);
-        stage.setScene(myScene);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(this.getClass().getResource("/stages/DodajNowyCertyfikat.fxml"));
+        VBox vbox = loader.load();
+        Scene scene = new Scene(vbox);
+        stage.setScene(scene);
+        stage.setTitle("Dodaj Nowy");
         stage.show();
+
+
+        DodajNowyCertyfikatController editedCertyfikat = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
+
+        editedCertyfikat.listaCertyfikatowController=this.listaCertyfikatowController;
 
     }
 
@@ -90,10 +101,62 @@ public class ListaCertyfikatowController {
 
     }
 
+    public TableView<CertyfikatJakosci> getListaCertyfikatowTableView() {
+        return listaCertyfikatowTableView;
+    }
+
+    @FXML
+    void edycjaOnClick(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(this.getClass().getResource("/stages/DodajNowyCertyfikat.fxml"));
+        VBox vbox = loader.load();
+        Scene scene = new Scene(vbox);
+        stage.setScene(scene);
+        stage.setTitle("Edycja");
+        stage.show();
+
+
+        DodajNowyCertyfikatController editedCertyfikat = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
+        CertyfikatJakosci selected = listaCertyfikatowTableView.getSelectionModel().getSelectedItem();
+        editedCertyfikat.setNumerLabel(selected.getNumerCertyfikatu());
+        editedCertyfikat.setNaszaNazwaField(selected.getNaszaNazwa());
+        editedCertyfikat.setDataField(selected.getData());
+        editedCertyfikat.setNrCertyfikatuLaboratoriumField(selected.getNumerCertyfikatuLaboratorium());
+        editedCertyfikat.setZawartoscPopioluField(selected.getZawartoscPopiolu());
+        editedCertyfikat.setZawartoscSiarkiField(selected.getZawartoscSiarkiCalkowitej());
+        editedCertyfikat.setZawartoscCzesciLotnychField(selected.getZawartoscCzesciLotnych());
+        editedCertyfikat.setWartoscOpalowaField(selected.getWartoscOpalowa());
+        editedCertyfikat.setSpiekalnoscField(selected.getZdolnoscSpiekania());
+        editedCertyfikat.setMinWymiarziarnaField(selected.getMinimalnyWymiarZiarna());
+        editedCertyfikat.setMaxWymiarziarnaField(selected.getMaksymalnyWymiarZiarna());
+        editedCertyfikat.setZawartoscPodziarnaField(selected.getZawartoscPodziarna());
+        editedCertyfikat.setZawartoscNadziarnaField(selected.getZawartoscNadziarna());
+        editedCertyfikat.setZawartoscWilgociField(selected.getZawartoscWilgociCalkowitej());
+        editedCertyfikat.setDostawcaField(selected.getDostawca());
+        editedCertyfikat.setNrFvField(selected.getNrFV());
+        editedCertyfikat.setAktywnyCheckbox(selected.getAktywny());
+        editedCertyfikat.setAsortymentCombobox(selected.getAsortyment());
+        editedCertyfikat.listaCertyfikatowController=this.listaCertyfikatowController;
+
+    }
+
+
     public void odswiezListeCertyfikatow(){
         ObservableList<CertyfikatJakosci> data = listaCertyfikatowTableView.getItems();
         data.removeAll(data);
         addAllCertyfikatyListFromDatabaseToTableView();
+    }
+    @FXML
+    public void usunCertyfikat(){
+        CertyfikatJakosciDao certyfikatJakosciDao = new CertyfikatJakosciDao();
+        certyfikatJakosciDao.deleteCertyfikatJakosci(listaCertyfikatowTableView.getSelectionModel().getSelectedItem());
+        odswiezClick();
+    }
+    @FXML
+    private void zamknijOnClick(){
+        Stage stage = (Stage) zamknijButton.getScene().getWindow();
+        stage.close();
     }
 
 }
