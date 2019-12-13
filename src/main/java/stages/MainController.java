@@ -19,6 +19,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.WartosciDopuszczalnePaliwa;
+
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.ZonedDateTime;
@@ -57,7 +58,7 @@ public class MainController {
             }
 
         } catch (SQLException e) {
-           // System.out.println("fsfafsd");
+            // System.out.println("fsfafsd");
             e.printStackTrace();
         }
     }
@@ -77,15 +78,28 @@ public class MainController {
             dokument = addDokumentToListView();
             refreshListaAktywnychCertyfikatow();
             refreshListaDokumentow();
-            showDokument(dokument); //zamienic na print docelowo}
+
+            showAndPrintDokument(dokument, true, false); //zamienic na print docelowo}
             messageLabelMain.setText("");
         } else {
             messageLabelMain.setText("Błąd - nie zaznaczono certyfikatu");
-         //   System.out.println("Zaznacz certyfikat do wydrukowania");
+            //   System.out.println("Zaznacz certyfikat do wydrukowania");
         }
     }
 
-    protected void showDokument(Dokument dokument) throws IOException {
+    @FXML
+    public void podgladClick() throws IOException {
+
+        if (!listaDokumentowListViewStronaGlowna.getSelectionModel().isEmpty()) {
+            messageLabelMain.setText("");
+           // System.out.println(listaDokumentowListViewStronaGlowna.getSelectionModel().getSelectedItem());
+            showAndPrintDokument(listaDokumentowListViewStronaGlowna.getSelectionModel().getSelectedItem(), false, true);
+        }else{
+            messageLabelMain.setText("Błąd - zaznacz najpierw dokument");
+        }
+    }
+
+    protected void showAndPrintDokument(Dokument dokument, boolean print, boolean show) throws IOException {
 
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader();
@@ -94,11 +108,16 @@ public class MainController {
         Scene scene = new Scene(pane);
         stage.setScene(scene);
         stage.setTitle("Podgląd wydruku");
-        stage.show();
+        if (show) {
+            stage.show();
+        }
         CertyfikatJakosciWydrukController certyfikatJakosciWydrukController = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
-        certyfikatJakosciWydrukController.certyfikatJakosciWydrukController=certyfikatJakosciWydrukController; //
+        certyfikatJakosciWydrukController.certyfikatJakosciWydrukController = certyfikatJakosciWydrukController; //
         setWartosciDopuszczalneNaWydruku(certyfikatJakosciWydrukController, WartosciDopuszczalnePaliwa.valueOf(dokument.getCertyfikatJakosci().getAsortyment()));
         setWartosciNaWydruku(certyfikatJakosciWydrukController, dokument);
+        if (print) {
+            certyfikatJakosciWydrukController.print(2);
+        }
 
     }
 
@@ -286,8 +305,7 @@ public class MainController {
         stage.setScene(scene);
         stage.setTitle("Lista Certyfikatów");
         stage.show();
-        ListaCertyfikatowController listaCertyfikatowController = loader.getController();
-        listaCertyfikatowController.listaCertyfikatowController=listaCertyfikatowController;
+
     }
 
     @FXML
@@ -297,9 +315,7 @@ public class MainController {
         refreshListaDokumentow();
     }
 
-    @FXML
-    public void podgladClick() {
-    }
+
 
     @FXML
     void menuUstawieniaClick(ActionEvent event) throws IOException {
@@ -322,6 +338,7 @@ public class MainController {
         stage.setScene(myScene);
         stage.show();
     }
+
     @FXML
     void menuDokumentyClick(ActionEvent event) throws IOException {
         Stage stage = new Stage();

@@ -23,5 +23,7 @@ public class ConfigStage extends Application {
         stage.setScene(myScene);
         stage.show();
 
+
+
     }
 }

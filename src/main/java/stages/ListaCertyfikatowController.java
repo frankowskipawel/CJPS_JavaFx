@@ -19,7 +19,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class ListaCertyfikatowController {
-    ListaCertyfikatowController listaCertyfikatowController;
+
 
     @FXML
     private Button zamknijButton;
@@ -90,7 +90,7 @@ public class ListaCertyfikatowController {
 
         DodajNowyCertyfikatController editedCertyfikat = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
 
-        editedCertyfikat.listaCertyfikatowController=this.listaCertyfikatowController;
+        editedCertyfikat.listaCertyfikatowController=ListaCertyfikatowController.this;
 
     }
 
@@ -137,7 +137,7 @@ public class ListaCertyfikatowController {
         editedCertyfikat.setNrFvField(selected.getNrFV());
         editedCertyfikat.setAktywnyCheckbox(selected.getAktywny());
         editedCertyfikat.setAsortymentCombobox(selected.getAsortyment());
-        editedCertyfikat.listaCertyfikatowController=this.listaCertyfikatowController;
+        editedCertyfikat.listaCertyfikatowController=ListaCertyfikatowController.this;
 
     }
 

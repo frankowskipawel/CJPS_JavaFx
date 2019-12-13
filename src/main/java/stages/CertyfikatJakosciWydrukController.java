@@ -166,111 +166,111 @@ public class CertyfikatJakosciWydrukController {
     }
 
     public void setPopiolWydruk(String popiolWydruk) {
-        this.popiolWydruk .setText( popiolWydruk);
+        this.popiolWydruk.setText(popiolWydruk);
     }
 
     public void setSiarkaWydruk(String siarkaWydruk) {
-        this.siarkaWydruk .setText( siarkaWydruk);
+        this.siarkaWydruk.setText(siarkaWydruk);
     }
 
     public void setCzLotneWydruk(String czLotneWydruk) {
-        this.czLotneWydruk .setText( czLotneWydruk);
+        this.czLotneWydruk.setText(czLotneWydruk);
     }
 
     public void setWartoscOpalowaWydruk(String wartoscOpalowaWydruk) {
-        this.wartoscOpalowaWydruk .setText( wartoscOpalowaWydruk);
+        this.wartoscOpalowaWydruk.setText(wartoscOpalowaWydruk);
     }
 
     public void setSpiekalnoscWydruk(String spiekalnoscWydruk) {
-        this.spiekalnoscWydruk .setText( spiekalnoscWydruk);
+        this.spiekalnoscWydruk.setText(spiekalnoscWydruk);
     }
 
     public void setWymiarZiarnaWydruk(String wymiarZiarnaWydruk) {
-        this.wymiarZiarnaWydruk .setText( wymiarZiarnaWydruk);
+        this.wymiarZiarnaWydruk.setText(wymiarZiarnaWydruk);
     }
 
     public void setZawPodziarnaWydruk(String zawPodziarnaWydruk) {
-        this.zawPodziarnaWydruk .setText( zawPodziarnaWydruk);
+        this.zawPodziarnaWydruk.setText(zawPodziarnaWydruk);
     }
 
     public void setZawNadziarnaWydruk(String nadziarnoWydruk) {
-        this.nadziarnoWydruk .setText( nadziarnoWydruk);
+        this.nadziarnoWydruk.setText(nadziarnoWydruk);
     }
 
     public void setZawWilgociWydruk(String zawWilgociWydruk) {
-        this.zawWilgociWydruk .setText( zawWilgociWydruk);
+        this.zawWilgociWydruk.setText(zawWilgociWydruk);
     }
 
     public void setWDminPopiolWydruk(String WDminPopiolWydruk) {
-        this.WDminPopiolWydruk .setText( WDminPopiolWydruk);
+        this.WDminPopiolWydruk.setText(WDminPopiolWydruk);
     }
 
     public void setWDminSiarkaWydruk(String WDminSiarkaWydruk) {
-        this.WDminSiarkaWydruk .setText( WDminSiarkaWydruk);
+        this.WDminSiarkaWydruk.setText(WDminSiarkaWydruk);
     }
 
     public void setWDminCzLotneWydruk(String WDminCzLotneWydruk) {
-        this.WDminCzLotneWydruk .setText( WDminCzLotneWydruk);
+        this.WDminCzLotneWydruk.setText(WDminCzLotneWydruk);
     }
 
     public void setWDminWartoscOpalowaWydruk(String WDminWartoscOpalowaWydruk) {
-        this.WDminWartoscOpalowaWydruk .setText( WDminWartoscOpalowaWydruk);
+        this.WDminWartoscOpalowaWydruk.setText(WDminWartoscOpalowaWydruk);
     }
 
     public void setWDminSpiekalnoscWydruk(String WDminSpiekalnoscWydruk) {
-        this.WDminSpiekalnoscWydruk .setText( WDminSpiekalnoscWydruk);
+        this.WDminSpiekalnoscWydruk.setText(WDminSpiekalnoscWydruk);
     }
 
     public void setWDminWymiarZiarna(String WDminWymiarZiarna) {
-        this.WDminWymiarZiarna .setText( WDminWymiarZiarna);
+        this.WDminWymiarZiarna.setText(WDminWymiarZiarna);
     }
 
     public void setWDminPodziarnoWydruk(String WDminZawPodziarnaWydruk) {
-        this.WDminZawPodziarnaWydruk .setText( WDminZawPodziarnaWydruk);
+        this.WDminZawPodziarnaWydruk.setText(WDminZawPodziarnaWydruk);
     }
 
     public void setWDminNadziarnoWydruk(String WDminNadziarnoWydruk) {
-        this.WDminNadziarnoWydruk .setText( WDminNadziarnoWydruk);
+        this.WDminNadziarnoWydruk.setText(WDminNadziarnoWydruk);
     }
 
     public void setWDminWilgotnoscWydruk(String WDminZawWilgociWydruk) {
-        this.WDminZawWilgociWydruk .setText( WDminZawWilgociWydruk);
+        this.WDminZawWilgociWydruk.setText(WDminZawWilgociWydruk);
     }
 
     public void setWDmaxPopiolWydruk(String WDmaxPopiolWydruk) {
-        this.WDmaxPopiolWydruk .setText( WDmaxPopiolWydruk);
+        this.WDmaxPopiolWydruk.setText(WDmaxPopiolWydruk);
     }
 
     public void setWDmaxSiarkaWydruk(String WDmaxSiarkaWydruk) {
-        this.WDmaxSiarkaWydruk .setText( WDmaxSiarkaWydruk);
+        this.WDmaxSiarkaWydruk.setText(WDmaxSiarkaWydruk);
     }
 
     public void setWDmaxCzLotneWydruk(String WDmaxCzLotneWydruk) {
-        this.WDmaxCzLotneWydruk .setText( WDmaxCzLotneWydruk);
+        this.WDmaxCzLotneWydruk.setText(WDmaxCzLotneWydruk);
     }
 
     public void setWDmaxWartoscOpalowaWydruk(String WDmaxWartoscOpalowaWydruk) {
-        this.WDmaxWartoscOpalowaWydruk .setText( WDmaxWartoscOpalowaWydruk);
+        this.WDmaxWartoscOpalowaWydruk.setText(WDmaxWartoscOpalowaWydruk);
     }
 
     public void setWDmaxSpiekalnoscWydruk(String WDmaxSpiekalnoscWydruk) {
-        this.WDmaxSpiekalnoscWydruk .setText( WDmaxSpiekalnoscWydruk);
+        this.WDmaxSpiekalnoscWydruk.setText(WDmaxSpiekalnoscWydruk);
     }
 
     public void setWDmaxWymiarZiarna(String WDmaxWymiarZiarna) {
-        this.WDmaxWymiarZiarna .setText( WDmaxWymiarZiarna);
+        this.WDmaxWymiarZiarna.setText(WDmaxWymiarZiarna);
     }
 
     public void setWDmaxPodziarnoWydruk(String WDmaxZawPodziarnaWydruk) {
-        this.WDmaxZawPodziarnaWydruk .setText( WDmaxZawPodziarnaWydruk);
+        this.WDmaxZawPodziarnaWydruk.setText(WDmaxZawPodziarnaWydruk);
     }
 
     public void setWDmaxNadziarnoWydruk(String WDmaxNadziarnoWydruk) {
-        this.WDmaxNadziarnoWydruk .setText( WDmaxNadziarnoWydruk);
+        this.WDmaxNadziarnoWydruk.setText(WDmaxNadziarnoWydruk);
     }
 
     public void setWDmaxWilgotnoscWydruk(String WDmaxZawWilgociWydruk) {
-        this.WDmaxZawWilgociWydruk .setText( WDmaxZawWilgociWydruk);
+        this.WDmaxZawWilgociWydruk.setText(WDmaxZawWilgociWydruk);
     }
 
 
@@ -315,13 +315,17 @@ public class CertyfikatJakosciWydrukController {
 //        wartosciDopuszczalneTablica = new String[]{"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
 //        return wartosciDopuszczalneTablica;
 //    }
+    public void print(int a){
+                for (int i = 1; i <= a; i++) {
+        print(paneWydruk);
+
+        }
+    }
 
 
     @FXML
     private void printClick() throws IOException {
-        print(paneWydruk);
-
-
+            print(2);
     }
 
     public void print(Node node) {
