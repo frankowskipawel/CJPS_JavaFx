@@ -123,7 +123,7 @@ public class MainController {
 
     public void setWartosciNaWydruku(CertyfikatJakosciWydrukController certyfikatJakosciWydrukController, Dokument dokument) {
 
-        certyfikatJakosciWydrukController.setNazwaAdresPodmiotuWydruk(Config.NAZWA_PODMIOTU + ", " + Config.ULICA_I_NUMER_DOMU_PODMIOTU);
+        certyfikatJakosciWydrukController.setNazwaAdresPodmiotuWydruk(Config.NAZWA_PODMIOTU + ", " + Config.ULICA_I_NUMER_DOMU_PODMIOTU+", "+Config.KOD_POCZTOWY_PODMIOTU+" "+Config.MIASTO_PODMIOTU);
         certyfikatJakosciWydrukController.setNipRegonPodmiotuWydruk("NIP " + Config.NIP_PODMIOTU + " / REGON " + Config.REGON_PODMIOTU);
         certyfikatJakosciWydrukController.setNrWydruk(dokument.getNumerDokumentu());
         certyfikatJakosciWydrukController.setDataDokumentuWydruk(dokument.getDataDokumentu());

@@ -56,7 +56,7 @@
             <Label text="Zawartość wilgoci" GridPane.rowIndex="14" />
             <Label text="Dostawca" GridPane.rowIndex="15" />
             <Label text="Nr Faktury VAT zakupu" GridPane.rowIndex="16" />
-            <TextField fx:id="naszaNazwaField" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="naszaNazwaField" alignment="TOP_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="dataField" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <TextField fx:id="nrCertyfikatuLaboratoriumField" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <TextField fx:id="zawartoscPopioluField" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="5" />

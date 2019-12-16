@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -13,7 +12,7 @@
 
 <Pane fx:id="paneWydruk" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="716.0" prefWidth="485.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stages.CertyfikatJakosciWydrukController">
    <children>
-      <GridPane gridLinesVisible="true" layoutY="4.0" prefHeight="237.0" prefWidth="485.0">
+      <GridPane layoutY="4.0" prefHeight="237.0" prefWidth="485.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -26,27 +25,21 @@
           <RowConstraints maxHeight="65.19998779296873" minHeight="10.0" prefHeight="37.20000610351562" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <HBox prefHeight="11.0" prefWidth="486.0">
+            <HBox prefHeight="11.0" prefWidth="486.0" style="-fx-border-style: solid inside;">
                <children>
-                  <Label prefHeight="38.0" prefWidth="302.0" text="1. ŚWIADECTWO JAKOŚCI PALIW STAŁYCH nr">
-                     <padding>
-                        <Insets left="5.0" right="5.0" />
-                     </padding></Label>
+                  <Label prefHeight="38.0" prefWidth="302.0" text="1. ŚWIADECTWO JAKOŚCI PALIW STAŁYCH nr" />
                   <Label fx:id="nrWydruk" alignment="CENTER" prefHeight="37.0" prefWidth="175.0" style="-fx-alignment: center;" text="Label">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font></Label>
                </children>
             </HBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+            <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-border-style: solid inside;" GridPane.rowIndex="1">
                <children>
                   <Label prefHeight="24.0" prefWidth="484.0" text="2. Oznaczenie przedsiębiorcy wystawiającego świadectwo jakości, jego siedziby i adresu oraz adresu punktu sprzedaży, jeśli jest inny niż adres siedziby przedsiębiorcy." wrapText="true">
                      <font>
                         <Font size="7.0" />
                      </font>
-                     <padding>
-                        <Insets left="5.0" right="5.0" />
-                     </padding>
                   </Label>
                   <Pane prefHeight="19.0" prefWidth="484.0">
                      <children>
@@ -59,15 +52,12 @@
                   </Pane>
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="2">
+            <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-border-style: solid;" GridPane.rowIndex="2">
                <children>
                   <Label prefHeight="38.0" prefWidth="486.0" text="3. Numer identyfikacji podatkowej (NIP) przedsiębiorcy wystawiającego świadectwo jakości oraz numer identyfikacyjny w krajowym rejestrze urzędowym podmiotów gospodarki narodowej (REGON), jeżeli został nadany, albo numer identyfikacyjny w odpowiednim rejestrze państwa obcego." wrapText="true">
                      <font>
                         <Font size="7.0" />
                      </font>
-                     <padding>
-                        <Insets left="5.0" right="5.0" />
-                     </padding>
                   </Label>
                   <Pane prefHeight="33.0" prefWidth="486.0">
                      <children>
@@ -80,15 +70,12 @@
                   </Pane>
                </children>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="3">
+            <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-border-style: solid;" GridPane.rowIndex="3">
                <children>
                   <Label text="4. Określenie rodzaju paliwa stałego, dla którego jest wystawiane świadectwo jakości.">
                      <font>
                         <Font size="7.0" />
                      </font>
-                     <padding>
-                        <Insets left="5.0" right="5.0" />
-                     </padding>
                   </Label>
                   <Pane prefHeight="200.0" prefWidth="200.0">
                      <children>
@@ -101,15 +88,12 @@
                   </Pane>
                </children>
             </VBox>
-            <VBox prefHeight="77.0" prefWidth="485.0" GridPane.rowIndex="4">
+            <VBox prefHeight="77.0" prefWidth="485.0" style="-fx-border-style: solid;" GridPane.rowIndex="4">
                <children>
                   <Label prefHeight="38.0" prefWidth="484.0" text="5. Wskazanie systemu certyfikacji lub innego dokumentu stanowiącego podstawę do uznania, że określony rodzaj paliwa stałego, dla którego jest wystawiane świadectwo jakości, spełnia wymagania jakościowe określone w przepisach wydanych na podstawie art. 3a ust. 2 ustawy z dnia 25 sierpnia 2006 r. o systemie monitorowania i kontrolowania jakości paliw." wrapText="true">
                      <font>
                         <Font size="7.0" />
                      </font>
-                     <padding>
-                        <Insets left="5.0" right="5.0" />
-                     </padding>
                   </Label>
                   <Pane prefHeight="10.0" prefWidth="484.0">
                      <children>
@@ -122,27 +106,18 @@
                   </Pane>
                </children>
             </VBox>
-            <VBox prefHeight="46.0" prefWidth="486.0" GridPane.rowIndex="5">
+            <VBox prefHeight="46.0" prefWidth="486.0" style="-fx-border-style: solid;" GridPane.rowIndex="5">
                <children>
                   <Label prefHeight="34.0" prefWidth="483.0" text="6. Wskazanie wartości parametrów paliwa stałego oraz informacja o wymaganiach jakościowych dla paliwa stałego określona zgodnie z przepisami wydanymi na podstawie art. 3a ust. 2 ustawy z dnia 25 sierpnia 2006 r. o systemie monitorowania i kontrolowania jakości paliw." wrapText="true">
                      <font>
                         <Font size="7.0" />
                      </font>
-                     <padding>
-                        <Insets left="5.0" right="5.0" />
-                     </padding>
                   </Label>
                </children>
             </VBox>
          </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-         <padding>
-            <Insets left="1.0" right="1.0" />
-         </padding>
       </GridPane>
-      <GridPane gridLinesVisible="true" layoutY="241.0" prefHeight="326.0" prefWidth="485.0">
+      <GridPane layoutX="1.0" layoutY="240.0" prefHeight="330.0" prefWidth="481.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="166.39996337890625" minWidth="10.0" prefWidth="160.5999755859375" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.00003662109376" minWidth="10.0" prefWidth="58.400000000000006" />
@@ -152,26 +127,26 @@
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="47.799993896484374" minHeight="10.0" prefHeight="43.7999755859375" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="31.0" minHeight="31.0" prefHeight="31.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="31.0" minHeight="31.0" prefHeight="31.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="31.0" minHeight="31.0" prefHeight="31.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="31.0" minHeight="31.0" prefHeight="31.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="31.0" minHeight="31.0" prefHeight="31.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="31.0" minHeight="31.0" prefHeight="31.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="31.0" minHeight="31.0" prefHeight="31.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="31.0" minHeight="31.0" prefHeight="31.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="31.0" minHeight="31.0" prefHeight="31.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="40.8" minHeight="3.0000061035156236" prefHeight="27.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="28.59998168945313" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="28.53333740234376" minHeight="10.0" prefHeight="28.53333740234376" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="29.99998779296874" minHeight="10.0" prefHeight="29.46666259765624" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Pane prefHeight="38.0" prefWidth="161.0">
+            <Pane prefHeight="38.0" prefWidth="161.0" style="-fx-border-style: solid;">
                <children>
-                  <Label layoutX="5.0" layoutY="15.0" prefHeight="17.0" prefWidth="143.0" style="-fx-alignment: center;" text="Parametr">
+                  <Label layoutX="5.0" layoutY="4.0" prefHeight="17.0" prefWidth="143.0" style="-fx-alignment: center;" text="Parametr">
                      <font>
                         <Font size="10.0" />
                      </font></Label>
                </children>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.rowIndex="1">
                <children>
                   <Label layoutX="6.0" layoutY="6.0" prefHeight="17.0" prefWidth="150.0" text="Zawartość popiołu">
                      <font>
@@ -179,7 +154,7 @@
                      </font>
                   </Label>
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.rowIndex="2">
                <children>
                   <Label layoutX="5.0" layoutY="6.0" prefHeight="17.0" prefWidth="150.0" text="Zawartość siarki całkowitej">
                      <font>
@@ -187,7 +162,7 @@
                      </font>
                   </Label>
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.rowIndex="3">
                <children>
                   <Label layoutX="5.0" layoutY="5.0" prefHeight="17.0" prefWidth="150.0" text="Zawartość części lotnych">
                      <font>
@@ -195,7 +170,7 @@
                      </font>
                   </Label>
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.rowIndex="4">
                <children>
                   <Label layoutX="5.0" layoutY="5.0" prefHeight="17.0" prefWidth="152.0" text="Wartość opałowa">
                      <font>
@@ -203,7 +178,7 @@
                      </font>
                   </Label>
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="5">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.rowIndex="5">
                <children>
                   <Label layoutX="4.0" layoutY="6.0" prefHeight="17.0" prefWidth="151.0" text="Zdolność spiekania">
                      <font>
@@ -211,7 +186,7 @@
                      </font>
                   </Label>
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="6">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.rowIndex="6">
                <children>
                   <Label layoutX="4.0" layoutY="8.0" prefHeight="17.0" prefWidth="152.0" text="Wymiar ziarna">
                      <font>
@@ -219,7 +194,7 @@
                      </font>
                   </Label>
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="7">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.rowIndex="7">
                <children>
                   <Label layoutX="4.0" layoutY="8.0" prefHeight="17.0" prefWidth="152.0" text="Zawartość podziarna">
                      <font>
@@ -227,7 +202,7 @@
                      </font>
                   </Label>
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="8">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.rowIndex="8">
                <children>
                   <Label layoutX="4.0" layoutY="8.0" prefHeight="17.0" prefWidth="150.0" text="Zawartość nadziarna">
                      <font>
@@ -235,7 +210,7 @@
                      </font>
                   </Label>
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="9">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.rowIndex="9">
                <children>
                   <Label layoutX="5.0" layoutY="8.0" prefHeight="17.0" prefWidth="150.0" text="Zawartość wilgoci całkowitej">
                      <font>
@@ -243,7 +218,7 @@
                      </font>
                   </Label>
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
                   <Label layoutX="24.0" layoutY="9.0" prefHeight="15.0" prefWidth="12.0" text="\%">
                      <font>
@@ -251,7 +226,7 @@
                      </font>
                   </Label>
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
                   <Label layoutX="24.0" layoutY="8.0" text="\%">
                      <font>
@@ -259,7 +234,7 @@
                      </font>
                   </Label>
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <children>
                   <Label layoutX="25.0" layoutY="6.0" text="\%">
                      <font>
@@ -267,7 +242,7 @@
                      </font>
                   </Label>
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <children>
                   <Label layoutX="16.0" layoutY="8.0" text="MJ/kg">
                      <font>
@@ -275,7 +250,7 @@
                      </font>
                   </Label>
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <children>
                   <Label layoutX="25.0" layoutY="10.0" text="RI">
                      <font>
@@ -283,7 +258,7 @@
                      </font>
                   </Label>
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <children>
                   <Label layoutX="21.0" layoutY="9.0" text="mm">
                      <font>
@@ -291,7 +266,7 @@
                      </font>
                   </Label>
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <children>
                   <Label layoutX="25.0" layoutY="10.0" text="\%">
                      <font>
@@ -299,7 +274,7 @@
                      </font>
                   </Label>
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="8">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="1" GridPane.rowIndex="8">
                <children>
                   <Label layoutX="25.0" layoutY="9.0" text="\%">
                      <font>
@@ -307,7 +282,7 @@
                      </font>
                   </Label>
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="1" GridPane.rowIndex="9">
                <children>
                   <Label layoutX="24.0" layoutY="9.0" text="\%">
                      <font>
@@ -315,125 +290,125 @@
                      </font>
                   </Label>
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid;" GridPane.columnIndex="2">
                <children>
-                  <Label layoutX="2.0" layoutY="6.0" prefHeight="34.0" prefWidth="106.0" text="7. Wartość wskazana przez przedsiębiorcę1)" wrapText="true">
+                  <Label layoutX="3.0" layoutY="7.0" prefHeight="43.0" prefWidth="106.0" text="7. Wartość wskazana przez przedsiębiorcę1)" wrapText="true">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </Label>
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <children>
-                  <Label fx:id="popiolWydruk" layoutX="1.0" layoutY="6.0" prefWidth="100.0" style="-fx-alignment: center;" text="Label" textAlignment="CENTER" />
+                  <Label fx:id="popiolWydruk" layoutX="39.0" layoutY="8.0" text="Label" />
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <children>
-                  <Label fx:id="siarkaWydruk" layoutX="1.0" layoutY="6.0" prefWidth="100.0" style="-fx-alignment: center;" text="Label" textAlignment="CENTER" />
+                  <Label fx:id="siarkaWydruk" layoutX="39.0" layoutY="6.0" text="Label" />
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <children>
-                  <Label fx:id="czLotneWydruk" layoutX="1.0" layoutY="6.0" prefWidth="100.0" style="-fx-alignment: center;" text="Label" textAlignment="CENTER" />
+                  <Label fx:id="czLotneWydruk" layoutX="39.0" layoutY="6.0" text="Label" />
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="2" GridPane.rowIndex="4">
                <children>
-                  <Label fx:id="wartoscOpalowaWydruk" layoutX="1.0" layoutY="6.0" prefWidth="100.0" style="-fx-alignment: center;" text="Label" textAlignment="CENTER" />
+                  <Label fx:id="wartoscOpalowaWydruk" layoutX="39.0" layoutY="5.0" text="Label" />
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="2" GridPane.rowIndex="5">
                <children>
-                  <Label fx:id="spiekalnoscWydruk" layoutX="1.0" layoutY="6.0" prefWidth="100.0" style="-fx-alignment: center;" text="Label" textAlignment="CENTER" />
+                  <Label fx:id="spiekalnoscWydruk" layoutX="39.0" layoutY="8.0" text="Label" />
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="6">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="2" GridPane.rowIndex="6">
                <children>
-                  <Label fx:id="wymiarZiarnaWydruk" layoutX="1.0" layoutY="6.0" prefWidth="100.0" style="-fx-alignment: center;" text="Label" textAlignment="CENTER" />
+                  <Label fx:id="wymiarZiarnaWydruk" layoutX="3.0" layoutY="8.0" prefHeight="17.0" prefWidth="94.0" style="-fx-alignment: center;" text="Label" />
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="7">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="2" GridPane.rowIndex="7">
                <children>
-                  <Label fx:id="zawPodziarnaWydruk" layoutX="1.0" layoutY="6.0" prefWidth="100.0" style="-fx-alignment: center;" text="Label" textAlignment="CENTER" />
+                  <Label fx:id="zawPodziarnaWydruk" layoutX="39.0" layoutY="8.0" text="Label" />
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="8">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="2" GridPane.rowIndex="8">
                <children>
-                  <Label fx:id="nadziarnoWydruk" layoutX="1.0" layoutY="6.0" prefWidth="100.0" style="-fx-alignment: center;" text="Label" textAlignment="CENTER" />
+                  <Label fx:id="nadziarnoWydruk" layoutX="39.0" layoutY="8.0" text="Label" />
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="9">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="2" GridPane.rowIndex="9">
                <children>
-                  <Label fx:id="zawWilgociWydruk" layoutX="1.0" layoutY="6.0" prefWidth="100.0" style="-fx-alignment: center;" text="Label" textAlignment="CENTER" />
+                  <Label fx:id="zawWilgociWydruk" layoutX="39.0" layoutY="8.0" text="Label" />
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <children>
-                  <Label fx:id="WDminPopiolWydruk" layoutX="2.0" layoutY="6.0" prefWidth="76.0" style="-fx-alignment: center;" text="Label" />
+                  <Label fx:id="WDminPopiolWydruk" layoutX="27.0" layoutY="8.0" text="Label" />
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="3" GridPane.rowIndex="2">
                <children>
-                  <Label fx:id="WDminSiarkaWydruk" layoutX="2.0" layoutY="6.0" prefWidth="76.0" style="-fx-alignment: center;" text="Label" />
+                  <Label fx:id="WDminSiarkaWydruk" layoutX="27.0" layoutY="6.0" text="Label" />
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="3" GridPane.rowIndex="3">
                <children>
-                  <Label fx:id="WDminCzLotneWydruk" layoutX="2.0" layoutY="6.0" prefWidth="76.0" style="-fx-alignment: center;" text="Label" />
+                  <Label fx:id="WDminCzLotneWydruk" layoutX="27.0" layoutY="6.0" text="Label" />
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="4">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="3" GridPane.rowIndex="4">
                <children>
-                  <Label fx:id="WDminWartoscOpalowaWydruk" layoutX="2.0" layoutY="6.0" prefWidth="76.0" style="-fx-alignment: center;" text="Label" />
+                  <Label fx:id="WDminWartoscOpalowaWydruk" layoutX="27.0" layoutY="7.0" text="Label" />
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="5">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="3" GridPane.rowIndex="5">
                <children>
-                  <Label fx:id="WDminSpiekalnoscWydruk" layoutX="2.0" layoutY="6.0" prefWidth="76.0" style="-fx-alignment: center;" text="Label" />
+                  <Label fx:id="WDminSpiekalnoscWydruk" layoutX="27.0" layoutY="8.0" text="Label" />
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="6">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="3" GridPane.rowIndex="6">
                <children>
-                  <Label fx:id="WDminWymiarZiarna" layoutX="2.0" layoutY="6.0" prefWidth="76.0" style="-fx-alignment: center;" text="Label" />
+                  <Label fx:id="WDminWymiarZiarna" layoutX="27.0" layoutY="8.0" text="Label" />
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="7">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="3" GridPane.rowIndex="7">
                <children>
-                  <Label fx:id="WDminZawPodziarnaWydruk" layoutX="2.0" layoutY="6.0" prefWidth="76.0" style="-fx-alignment: center;" text="Label" />
+                  <Label fx:id="WDminZawPodziarnaWydruk" layoutX="27.0" layoutY="8.0" text="Label" />
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="8">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="3" GridPane.rowIndex="8">
                <children>
-                  <Label fx:id="WDminNadziarnoWydruk" layoutX="2.0" layoutY="6.0" prefWidth="76.0" style="-fx-alignment: center;" text="Label" />
+                  <Label fx:id="WDminNadziarnoWydruk" layoutX="27.0" layoutY="8.0" text="Label" />
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="9">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="3" GridPane.rowIndex="9">
                <children>
-                  <Label fx:id="WDminZawWilgociWydruk" layoutX="2.0" layoutY="6.0" prefWidth="76.0" style="-fx-alignment: center;" text="Label" />
+                  <Label fx:id="WDminZawWilgociWydruk" layoutX="27.0" layoutY="8.0" text="Label" />
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="4" GridPane.rowIndex="1">
                <children>
-                  <Label fx:id="WDmaxPopiolWydruk" layoutX="2.0" layoutY="6.0" prefWidth="76.0" style="-fx-alignment: center;" text="Label" />
+                  <Label fx:id="WDmaxPopiolWydruk" layoutX="26.0" layoutY="8.0" text="Label" />
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="4" GridPane.rowIndex="2">
                <children>
-                  <Label fx:id="WDmaxSiarkaWydruk" layoutX="2.0" layoutY="6.0" prefWidth="76.0" style="-fx-alignment: center;" text="Label" />
+                  <Label fx:id="WDmaxSiarkaWydruk" layoutX="26.0" layoutY="5.0" text="Label" />
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="3">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="4" GridPane.rowIndex="3">
                <children>
-                  <Label fx:id="WDmaxCzLotneWydruk" layoutX="2.0" layoutY="6.0" prefWidth="76.0" style="-fx-alignment: center;" text="Label" />
+                  <Label fx:id="WDmaxCzLotneWydruk" layoutX="26.0" layoutY="5.0" text="Label" />
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="4">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="4" GridPane.rowIndex="4">
                <children>
-                  <Label fx:id="WDmaxWartoscOpalowaWydruk" layoutX="2.0" layoutY="6.0" prefWidth="76.0" style="-fx-alignment: center;" text="Label" />
+                  <Label fx:id="WDmaxWartoscOpalowaWydruk" layoutX="26.0" layoutY="7.0" text="Label" />
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="5">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="4" GridPane.rowIndex="5">
                <children>
-                  <Label fx:id="WDmaxSpiekalnoscWydruk" layoutX="2.0" layoutY="6.0" prefWidth="76.0" style="-fx-alignment: center;" text="Label" />
+                  <Label fx:id="WDmaxSpiekalnoscWydruk" layoutX="26.0" layoutY="8.0" text="Label" />
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="6">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="4" GridPane.rowIndex="6">
                <children>
-                  <Label fx:id="WDmaxWymiarZiarna" layoutX="2.0" layoutY="6.0" prefWidth="76.0" style="-fx-alignment: center;" text="Label" />
+                  <Label fx:id="WDmaxWymiarZiarna" layoutX="26.0" layoutY="8.0" text="Label" />
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="7">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="4" GridPane.rowIndex="7">
                <children>
-                  <Label fx:id="WDmaxZawPodziarnaWydruk" layoutX="2.0" layoutY="6.0" prefWidth="76.0" style="-fx-alignment: center;" text="Label" />
+                  <Label fx:id="WDmaxZawPodziarnaWydruk" layoutX="26.0" layoutY="8.0" text="Label" />
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="8">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="4" GridPane.rowIndex="8">
                <children>
-                  <Label fx:id="WDmaxNadziarnoWydruk" layoutX="2.0" layoutY="6.0" prefWidth="76.0" style="-fx-alignment: center;" text="Label" />
+                  <Label fx:id="WDmaxNadziarnoWydruk" layoutX="26.0" layoutY="8.0" text="Label" />
                </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="9">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid outside;" GridPane.columnIndex="4" GridPane.rowIndex="9">
                <children>
-                  <Label fx:id="WDmaxZawWilgociWydruk" layoutX="2.0" layoutY="6.0" prefWidth="76.0" style="-fx-alignment: center;" text="Label" />
+                  <Label fx:id="WDmaxZawWilgociWydruk" layoutX="26.0" layoutY="8.0" text="Label" />
                </children></Pane>
-            <Pane prefHeight="38.0" prefWidth="58.0" GridPane.columnIndex="1">
+            <Pane prefHeight="38.0" prefWidth="58.0" style="-fx-border-style: solid;" GridPane.columnIndex="1">
                <children>
-                  <Label layoutX="-2.0" layoutY="15.0" prefHeight="17.0" prefWidth="58.0" style="-fx-alignment: center;" text="Jednostka">
+                  <Label layoutX="-2.0" layoutY="4.0" prefHeight="17.0" prefWidth="58.0" style="-fx-alignment: center;" text="Jednostka">
                      <font>
                         <Font size="10.0" />
                      </font>
@@ -441,28 +416,81 @@
                </children></Pane>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="3">
                <children>
-                  <Label prefHeight="48.0" prefWidth="82.0" text="8. Wartość dopuszczalna minimalna 2)" textAlignment="CENTER" wrapText="true">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                  </Label>
+                  <GridPane>
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Pane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="26.0" layoutY="4.0" prefHeight="17.0" prefWidth="58.0" text="8. Wartość">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid;" GridPane.rowIndex="1">
+                           <children>
+                              <Label layoutX="7.0" layoutY="3.0" prefHeight="17.0" prefWidth="72.0" style="-fx-alignment: center;" text="minimalna">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                     </children>
+                  </GridPane>
                </children>
             </VBox>
             <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="4">
                <children>
-                  <Label prefHeight="48.0" prefWidth="82.0" text="8. Wartość dopuszczalna maksymalna 2)" textAlignment="CENTER" wrapText="true">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                  </Label>
+                  <GridPane>
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Pane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutY="4.0" prefHeight="17.0" prefWidth="77.0" text="dopuszczalna 2)">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid;" GridPane.rowIndex="1">
+                           <children>
+                              <Label layoutX="5.0" layoutY="4.0" prefHeight="17.0" prefWidth="66.0" style="-fx-alignment: center;" text="maksymalna">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Label>
+                           </children></Pane>
+                     </children>
+                  </GridPane>
                </children>
             </VBox>
          </children>
-         <padding>
-            <Insets left="1.0" right="1.0" />
-         </padding>
       </GridPane>
-      <GridPane gridLinesVisible="true" layoutY="597.0" prefHeight="84.0" prefWidth="485.0">
+      <Pane layoutX="1.0" layoutY="578.0" prefHeight="30.0" prefWidth="485.0" style="-fx-border-style: solid;">
+         <children>
+            <Label layoutX="5.0" layoutY="-3.0" prefHeight="30.0" prefWidth="471.0" text="9. Oświadczam, że paliwo stałe, dla którego jest wystawiane to świadectwo, spełnia wymagania jakościowe określone w przepisach wydanych na podstawie art. 3a ust. 2 ustawy z dnia 25 sierpnia 2006 r. o systemie monitorowania i kontrolowania jakości paliw." wrapText="true">
+               <font>
+                  <Font size="8.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <GridPane layoutX="1.0" layoutY="607.0" prefHeight="65.0" prefWidth="485.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="238.7333221435547" minWidth="10.0" prefWidth="220.066650390625" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="264.933349609375" minWidth="10.0" prefWidth="264.933349609375" />
@@ -471,37 +499,30 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Pane prefHeight="200.0" prefWidth="200.0">
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-border-style: solid;">
                <children>
-                  <Label layoutX="5.0" layoutY="2.0" prefHeight="17.0" prefWidth="190.0" text="10. Data i miejsce wystawienia świadectwa">
+                  <Label layoutX="5.0" prefHeight="17.0" prefWidth="190.0" text="10. Data i miejsce wystawienia świadectwa">
                      <font>
                         <Font size="8.0" />
                      </font>
                   </Label>
-                  <Label layoutX="5.0" layoutY="60.0" prefHeight="17.0" prefWidth="52.0" text="Toruń dn." />
-                  <Label fx:id="dataDokumentuWydruk" layoutX="64.0" layoutY="60.0" prefHeight="17.0" prefWidth="143.0" text="DATA" />
+                  <Label layoutX="4.0" layoutY="24.0" prefHeight="17.0" prefWidth="52.0" text="Toruń dn." />
+                  <Label fx:id="dataDokumentuWydruk" layoutX="58.0" layoutY="24.0" prefHeight="17.0" prefWidth="143.0" text="DATA" />
                </children>
             </Pane>
-            <Pane prefHeight="42.0" prefWidth="254.0" GridPane.columnIndex="1">
+            <Pane prefHeight="42.0" prefWidth="254.0" style="-fx-border-style: solid;" GridPane.columnIndex="1">
                <children>
-                  <Label layoutX="5.0" prefHeight="30.0" prefWidth="256.0" text="11. Podpis przedsiębiorcy wystawiającego świadectwo albo osoby upoważnionej do jego reprezentowania" wrapText="true">
+                  <Label layoutX="7.0" layoutY="-3.0" prefHeight="30.0" prefWidth="256.0" text="11. Podpis przedsiębiorcy wystawiającego świadectwo albo osoby upoważnionej do jego reprezentowania" wrapText="true">
                      <font>
                         <Font size="8.0" />
                      </font>
                   </Label>
-                  <Button layoutX="220.0" layoutY="62.0" mnemonicParsing="false" onAction="#printClick" prefHeight="9.0" prefWidth="41.0" text="Drukuj">
-                     <font>
-                        <Font size="8.0" />
-                     </font>
-                  </Button>
+                  <Button layoutX="180.0" layoutY="31.0" mnemonicParsing="false" onAction="#printClick" prefHeight="25.0" prefWidth="70.0" text="Drukuj" />
                </children>
             </Pane>
          </children>
-         <padding>
-            <Insets left="1.0" right="1.0" />
-         </padding>
       </GridPane>
-      <VBox layoutX="2.0" layoutY="680.0" prefHeight="34.0" prefWidth="484.0">
+      <VBox layoutX="2.0" layoutY="672.0" prefHeight="58.0" prefWidth="484.0">
          <children>
             <Label text="1) Wartość parametrów paliwa stałego wskazuje się poprzez przedstawienie granicznych wartości parametrów dla paliwa stałego, z uwzględnieniem dopuszczalnych poziomów odchyleń określonych w rozporządzeniu Ministra Energii z dnia 27 września 2018 r. w sprawie wymagań jakościowych dla paliw stałych." wrapText="true">
                <font>
@@ -510,34 +531,10 @@
             </Label>
             <Label text="2) Wartość dopuszczalna dla paliwa stałego, o której mowa w rozporządzeniu Ministra Energii z dnia 27 września 2018 r. w sprawie wymagań jakościowych dla paliw stałych" wrapText="true">
                <font>
-                  <Font size="6.0" />
+                  <Font size="7.0" />
                </font>
             </Label>
          </children>
       </VBox>
-      <GridPane gridLinesVisible="true" layoutY="567.0" prefHeight="30.0" prefWidth="485.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <padding>
-            <Insets left="1.0" right="1.0" />
-         </padding>
-         <children>
-            <Label prefHeight="47.0" prefWidth="478.0" text="9. Oświadczam, że paliwo stałe, dla którego jest wystawiane to świadectwo, spełnia wymagania jakościowe określone w przepisach wydanych na podstawie art. 3a ust. 2 ustawy z dnia 25 sierpnia 2006 r. o systemie monitorowania i kontrolowania jakości paliw." wrapText="true">
-               <font>
-                  <Font size="8.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets right="5.0" />
-               </GridPane.margin>
-               <padding>
-                  <Insets left="5.0" right="5.0" />
-               </padding>
-            </Label>
-         </children>
-      </GridPane>
    </children>
 </Pane>
