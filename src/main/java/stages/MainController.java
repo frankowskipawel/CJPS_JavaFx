@@ -24,6 +24,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class MainController {
@@ -118,7 +120,6 @@ public class MainController {
         if (print) {
             certyfikatJakosciWydrukController.print(2);
         }
-
     }
 
     public void setWartosciNaWydruku(CertyfikatJakosciWydrukController certyfikatJakosciWydrukController, Dokument dokument) {
@@ -251,11 +252,11 @@ public class MainController {
                                 b.getCertyfikatJakosci().zawartoscWilgociCalkowitejProperty().getValue(),
                                 b.getCertyfikatJakosci().dostawcaProperty().getValue(),
                                 b.getCertyfikatJakosci().nrFVProperty().getValue()))
-
                 );
             }
             i++;
         }
+      //  Collections.reverse(listaDokumentowListViewStronaGlowna.getItems());
 
     }
 
@@ -341,12 +342,25 @@ public class MainController {
 
     @FXML
     void menuDokumentyClick(ActionEvent event) throws IOException {
+//        Stage stage = new Stage();
+//        stage.setTitle("Lista Dokumentow");
+//        VBox myPane = (VBox) FXMLLoader.load(getClass().getResource
+//                ("Dokumenty.fxml"));
+//        Scene myScene = new Scene(myPane);
+//        stage.setScene(myScene);
+//        stage.show();
+
         Stage stage = new Stage();
-        stage.setTitle("Lista Dokumentow");
-        VBox myPane = (VBox) FXMLLoader.load(getClass().getResource
-                ("Dokumenty.fxml"));
-        Scene myScene = new Scene(myPane);
-        stage.setScene(myScene);
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(this.getClass().getResource("/stages/Dokumenty.fxml"));
+        VBox vBox = loader.load();
+        Scene scene = new Scene(vBox);
+        stage.setScene(scene);
+        stage.setTitle("Lista Dokumentów");
+
+        DokumentyStageController dokumentyStageController = loader.getController(); //
+        dokumentyStageController.mainController = MainController.this;
+
         stage.show();
     }
 }

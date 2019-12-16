@@ -6,7 +6,7 @@ public enum WartosciDopuszczalnePaliwa {
     WEGIEL_KAMIENNY_ORZECH("WĘGIEL KAMIENNY - ORZECH", "-", "12", "-", "1,7", "-", "-", "22", "-", "-", "-", "25", "80", "0", "10", "0", "10", "-", "20"),
     WEGIEL_KAMIENNY_GROSZEK("WĘGIEL KAMIENNY - GROSZEK", "-", "14", "-", "1,7", "-", "-", "21", "-", "-", "90", "5", "40", "0", "10", "0", "10", "-", "20"),
     WEGIEL_KAMIENNY_MIAL("WĘGIEL KAMIENNY - MIAŁ", "-", "28", "-", "1,7", "-", "-", "18", "-", "-", "-", "1", "31,5", "-", "30", "0", "5", "-", "24"),
-    WEGIEL_KAMIENNY_EKOMIAL("WĘGIEL KAMIENNY - EKOMIAŁ", "-", "28", "-", "1,7", "-", "-", "18", "-", "-", "-", "1", "31,5", "-", "15", "0", "5", "-", "20"),
+    WEGIEL_KAMIENNY_EKOMIAL("WĘGIEL KAMIENNY - EKOMIAŁ", "-", "28", "-", "1,7", "-", "-", "18", "-", "-", "-", "3", "31,5", "-", "15", "0", "5", "-", "20"),
     WEGIEL_KAMIENNY_EKOGROSZEK("WĘGIEL KAMIENNY - EKOGROSZEK", "-", "12", "-", "1,2", "-", "-", "24", "-", "-", "25", "5", "31,5", "0", "10", "0", "10", "-", "15"),
     WEGIEL_KAMIENNY_PELLET("WĘGIEL KAMIENNY - PELLET", "-", "12", "-", "1,2", "-", "-", "24", "-", "-", "25", "5", "31,5", "0", "10", "0", "5", "-", "15");
 
