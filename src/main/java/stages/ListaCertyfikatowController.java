@@ -136,7 +136,9 @@ public class ListaCertyfikatowController {
         editedCertyfikat.setDostawcaField(selected.getDostawca());
         editedCertyfikat.setNrFvField(selected.getNrFV());
         editedCertyfikat.setAktywnyCheckbox(selected.getAktywny());
+     //   editedCertyfikat.setAsortymentCombobox(selected.getAsortyment());
         editedCertyfikat.setAsortymentCombobox(selected.getAsortyment());
+
         editedCertyfikat.listaCertyfikatowController=ListaCertyfikatowController.this;
 
     }

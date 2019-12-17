@@ -1,6 +1,8 @@
 package stages;
 
 import dao.KontrahentDao;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
 import model.Kontrahent;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,6 +14,8 @@ import java.util.Iterator;
 import java.util.List;
 
 public class KontrahentController {
+    private DodajNowyCertyfikatController dodajNowyCertyfikatController;
+
     @FXML
     private TableView<Kontrahent> KontrahenciTableView;
     @FXML private TextField idKontrahentField;
@@ -19,6 +23,8 @@ public class KontrahentController {
     @FXML private TextField adresKontrahentField;
     @FXML private TextField nipKontrahentField;
     @FXML private TextField regonKontrahentField;
+    @FXML
+    private Button okButton;
 
 
     @FXML
@@ -89,5 +95,26 @@ public class KontrahentController {
                     b.nipKontrahentProperty().getValue(),
                     b.regonKontrahentProperty().getValue()));
         }
+    }
+
+    @FXML
+    void okOnClick(ActionEvent event) {
+            dodajNowyCertyfikatController.setDostawcaField(getKontrahenciTableView().getSelectionModel().getSelectedItem().getIdKontrahent());
+        Stage stage = (Stage) okButton.getScene().getWindow();
+        stage.close();
+    }
+
+
+
+    public DodajNowyCertyfikatController getDodajNowyCertyfikatController() {
+        return dodajNowyCertyfikatController;
+    }
+
+    public void setDodajNowyCertyfikatController(DodajNowyCertyfikatController dodajNowyCertyfikatController) {
+        this.dodajNowyCertyfikatController = dodajNowyCertyfikatController;
+    }
+
+    public TableView<Kontrahent> getKontrahenciTableView() {
+        return KontrahenciTableView;
     }
 }

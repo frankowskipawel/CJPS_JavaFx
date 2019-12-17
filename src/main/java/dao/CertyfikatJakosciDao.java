@@ -150,7 +150,7 @@ public class CertyfikatJakosciDao {
         try {
             statement = connection.createStatement();
             String query = "UPDATE " + tableName + " SET `aktywny_certyfikaty` = '" + certyfikatJakosci.getAktywny() + "', `nasza_nazwa_certyfikaty` = '" + certyfikatJakosci.getNaszaNazwa() + "', `asortyment_certyfikaty` = '" + certyfikatJakosci.getAsortyment() + "', `data_certyfikaty` = '" + certyfikatJakosci.getData() + "', `nr_lab_certyfikaty` = '" + certyfikatJakosci.getNumerCertyfikatuLaboratorium() + "', `popiol_certyfikaty` = '" + certyfikatJakosci.getZawartoscPopiolu() + "', `siarka_certyfikaty` = '" + certyfikatJakosci.getZawartoscSiarkiCalkowitej() + "', `cz_lotne_certyfikaty` = '" + certyfikatJakosci.getZawartoscCzesciLotnych() + "', `wartosc_opalowa_certyfikaty` = '" + certyfikatJakosci.getWartoscOpalowa() + "', `spiekalnosc_certyfikaty` = '" + certyfikatJakosci.getZdolnoscSpiekania() + "', `min_ziarno_certyfikaty` = '" + certyfikatJakosci.getMinimalnyWymiarZiarna() + "', `max_ziarno_certyfikaty` = '" + certyfikatJakosci.getMaksymalnyWymiarZiarna() + "', `podziarno_certyfikaty` = '" + certyfikatJakosci.getZawartoscPodziarna() + "', `nadziarno_certyfikaty` = '" + certyfikatJakosci.getZawartoscNadziarna() + "', `wilgoc_certyfikaty` = '" + certyfikatJakosci.getZawartoscWilgociCalkowitej() + "', `dostawca_certyfikaty` = '" + certyfikatJakosci.getDostawca() + "', `nr_fv_certyfikaty` = '" + certyfikatJakosci.getNrFV() + "' WHERE (`nr_certyfikaty` = '" + certyfikatJakosci.getNumerCertyfikatu() + "')";
-            System.out.println(query);
+         //   System.out.println(query);
             int resultSet = statement.executeUpdate(query);
         } catch (SQLException e) {
             e.printStackTrace();

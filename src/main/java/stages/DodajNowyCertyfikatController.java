@@ -3,7 +3,10 @@ package stages;
 import dao.CertyfikatJakosciDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.CertyfikatJakosci;
 import model.WartosciDopuszczalnePaliwa;
@@ -74,10 +77,11 @@ public class DodajNowyCertyfikatController {
             isAktywny = "NIE";
         }
         String asortymentValue;
-        if (asortymentCombobox.getSelectionModel().isEmpty()) {
-            asortymentValue = "";
+        if (asortymentCombobox.getPromptText().isEmpty()) {
+
+           asortymentValue = "";
         } else {
-            asortymentValue = asortymentCombobox.getSelectionModel().selectedItemProperty().getValue().toString();
+            asortymentValue = asortymentCombobox.getPromptText();
         }
 
         CertyfikatJakosci cerytfikatJakosci = new CertyfikatJakosci(numerString, isAktywny, naszaNazwaField.getText(), asortymentValue,
@@ -102,6 +106,21 @@ public class DodajNowyCertyfikatController {
     void anulujButtonClick(ActionEvent event) {
         Stage stage = (Stage) anulujButton.getScene().getWindow();
         stage.close();
+
+    }
+
+    @FXML
+    void kontrahentOnClick(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(this.getClass().getResource("/stages/KontrahentTableView.fxml"));
+        VBox vBox = loader.load();
+        Scene scene = new Scene(vBox);
+        stage.setScene(scene);
+        stage.setTitle("Kontrahenci");
+        stage.show();
+        KontrahentController kontrahentController = loader.getController();
+        kontrahentController.setDodajNowyCertyfikatController(DodajNowyCertyfikatController.this);
 
     }
 

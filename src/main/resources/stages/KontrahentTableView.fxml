@@ -9,40 +9,42 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="772.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stages.KontrahentController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="935.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stages.KontrahentController">
    <children>
       <Label text="Kontrahenci" />
       <TableView fx:id="KontrahenciTableView" prefHeight="200.0" prefWidth="200.0">
         <columns>
-          <TableColumn fx:id="idKontrahentTableView" prefWidth="59.200013756752014" text="Id">
+          <TableColumn fx:id="idKontrahentTableView" prefWidth="135.0" text="Id">
             <cellValueFactory><PropertyValueFactory property="idKontrahent" />
             </cellValueFactory>
           </TableColumn>
-          <TableColumn fx:id="nazwaKontrahentTableView" prefWidth="207.99996185302734" text="Nazwa">
+          <TableColumn fx:id="nazwaKontrahentTableView" prefWidth="305.0" text="Nazwa">
             <cellValueFactory><PropertyValueFactory property="nazwaKontrahent" />
             </cellValueFactory>
           </TableColumn>
-            <TableColumn fx:id="adresKontrahentTableView" prefWidth="228.0" text="Adres">
+            <TableColumn fx:id="adresKontrahentTableView" prefWidth="278.0" text="Adres">
                 <cellValueFactory><PropertyValueFactory property="adresKontrahent" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="nipKontrahentTableView" prefWidth="138.39999389648438" text="Nip">
+            <TableColumn fx:id="nipKontrahentTableView" prefWidth="109.0" text="Nip">
             <cellValueFactory><PropertyValueFactory property="nipKontrahent" />
             </cellValueFactory></TableColumn>
-            <TableColumn fx:id="regonKontrahentTableView" prefWidth="135.19989013671875" text="Regon">
+            <TableColumn fx:id="regonKontrahentTableView" prefWidth="107.0" text="Regon">
             <cellValueFactory><PropertyValueFactory property="regonKontrahent" />
             </cellValueFactory></TableColumn>
         </columns>
       </TableView>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <TextField fx:id="idKontrahentField" prefHeight="26.0" prefWidth="67.0" promptText="Id" />
-            <TextField fx:id="nazwaKontrahentField" prefHeight="26.0" prefWidth="198.0" promptText="Nazwa" />
-            <TextField fx:id="adresKontrahentField" prefHeight="26.0" prefWidth="198.0" promptText="Adres" />
+            <TextField fx:id="idKontrahentField" prefHeight="26.0" prefWidth="99.0" promptText="Id" />
+            <TextField fx:id="nazwaKontrahentField" prefHeight="26.0" prefWidth="178.0" promptText="Nazwa" />
+            <TextField fx:id="adresKontrahentField" prefHeight="26.0" prefWidth="163.0" promptText="Adres" />
             <TextField fx:id="nipKontrahentField" prefHeight="26.0" prefWidth="117.0" promptText="Nip" />
             <TextField fx:id="regonKontrahentField" prefHeight="26.0" prefWidth="118.0" promptText="Regon" />
-            <Button mnemonicParsing="false" onAction="#deleteRowFromTableViewAndDatabase" prefHeight="26.0" prefWidth="70.0" text="Delete" />
-            <Button mnemonicParsing="false" onAction="#addNewKontrahentToTableViewAndDatabase" prefHeight="24.0" prefWidth="88.0" text="Add" />
+            <Button mnemonicParsing="false" onAction="#deleteRowFromTableViewAndDatabase" prefHeight="26.0" prefWidth="50.0" text="Usuń" />
+            <Button mnemonicParsing="false" onAction="#addNewKontrahentToTableViewAndDatabase" prefHeight="25.0" prefWidth="88.0" text="Dodaj Nowy" />
+            <Button fx:id="okButton" mnemonicParsing="false" onAction="#okOnClick" prefHeight="25.0" prefWidth="80.0" text="OK" />
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Anuluj" />
          </children>
       </HBox>
    </children>
