@@ -4,8 +4,7 @@ import config.Config;
 import dao.CertyfikatJakosciDao;
 import dao.DokumentDao;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import model.CertyfikatJakosci;
 import model.Dokument;
@@ -15,8 +14,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.print.PrinterJob;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.WartosciDopuszczalnePaliwa;
@@ -39,12 +36,15 @@ public class MainController {
     private Label messageLabelMain;
     @FXML
     private MenuItem menuQuit;
+    @FXML
+    private TableColumn naszaNazwaTableViewStronaGlowna;
 
     @FXML
     public void initialize() {
 
         setListaAktywnychCertyfikatow();
         add5DokumentowToListView();
+        listaAktywnychCertyfikatowTableViewStronaGlowna.getSortOrder().add(naszaNazwaTableViewStronaGlowna);
     }
 
     protected List<CertyfikatJakosci> getAktywneCertyfikaty() throws SQLException {
@@ -55,24 +55,31 @@ public class MainController {
 
     protected void setListaAktywnychCertyfikatow() {
 
+        ObservableList<CertyfikatJakosci> data = listaAktywnychCertyfikatowTableViewStronaGlowna.getItems();
         try {
             for (CertyfikatJakosci b : getAktywneCertyfikaty()) {
-                ObservableList<CertyfikatJakosci> data = listaAktywnychCertyfikatowTableViewStronaGlowna.getItems();
+
                 data.add(new CertyfikatJakosci(b.numerCertyfikatuProperty().getValue(), b.naszaNazwaProperty().getValue()
                 ));
-            }
 
+
+            }
         } catch (SQLException e) {
-            // System.out.println("fsfafsd");
+
             e.printStackTrace();
         }
+
+
     }
+
+
 
     @FXML
     protected void refreshClick() {
 
         refreshListaAktywnychCertyfikatow();
         refreshListaDokumentow();
+        listaAktywnychCertyfikatowTableViewStronaGlowna.getSortOrder().add(naszaNazwaTableViewStronaGlowna);
     }
 
     @FXML
@@ -97,9 +104,9 @@ public class MainController {
 
         if (!listaDokumentowListViewStronaGlowna.getSelectionModel().isEmpty()) {
             messageLabelMain.setText("");
-           // System.out.println(listaDokumentowListViewStronaGlowna.getSelectionModel().getSelectedItem());
+            // System.out.println(listaDokumentowListViewStronaGlowna.getSelectionModel().getSelectedItem());
             showAndPrintDokument(listaDokumentowListViewStronaGlowna.getSelectionModel().getSelectedItem(), false, true);
-        }else{
+        } else {
             messageLabelMain.setText("Błąd - zaznacz najpierw dokument");
         }
     }
@@ -127,7 +134,7 @@ public class MainController {
 
     public void setWartosciNaWydruku(CertyfikatJakosciWydrukController certyfikatJakosciWydrukController, Dokument dokument) {
 
-        certyfikatJakosciWydrukController.setNazwaAdresPodmiotuWydruk(Config.NAZWA_PODMIOTU + ", " + Config.ULICA_I_NUMER_DOMU_PODMIOTU+", "+Config.KOD_POCZTOWY_PODMIOTU+" "+Config.MIASTO_PODMIOTU);
+        certyfikatJakosciWydrukController.setNazwaAdresPodmiotuWydruk(Config.NAZWA_PODMIOTU + ", " + Config.ULICA_I_NUMER_DOMU_PODMIOTU + ", " + Config.KOD_POCZTOWY_PODMIOTU + " " + Config.MIASTO_PODMIOTU);
         certyfikatJakosciWydrukController.setNipRegonPodmiotuWydruk("NIP " + Config.NIP_PODMIOTU + " / REGON " + Config.REGON_PODMIOTU);
         certyfikatJakosciWydrukController.setNrWydruk(dokument.getNumerDokumentu());
         certyfikatJakosciWydrukController.setDataDokumentuWydruk(dokument.getDataDokumentu());
@@ -170,6 +177,7 @@ public class MainController {
     public void refreshListaAktywnychCertyfikatow() {
         ObservableList<CertyfikatJakosci> data = listaAktywnychCertyfikatowTableViewStronaGlowna.getItems();
         data.removeAll(data);
+
         setListaAktywnychCertyfikatow();
     }
 
@@ -264,7 +272,7 @@ public class MainController {
             }
             i++;
         }
-      //  Collections.reverse(listaDokumentowListViewStronaGlowna.getItems());
+        //  Collections.reverse(listaDokumentowListViewStronaGlowna.getItems());
 
     }
 
@@ -323,7 +331,6 @@ public class MainController {
         dokumentDao.usunOstatniDokument();
         refreshListaDokumentow();
     }
-
 
 
     @FXML
