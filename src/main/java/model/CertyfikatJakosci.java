@@ -300,17 +300,18 @@ public class CertyfikatJakosci {
         setIloscAktywne(iloscAktywne);
     }
 
-//    public String getNumerCertyfikatu() {
-//        return numerCertyfikatu.get();
+//    public String getNaszaNazwa() {
+//        return naszaNazwa.get();
 //    }
 //
-//    public SimpleStringProperty numerCertyfikatuProperty() {
-//        return numerCertyfikatu;
+//    public SimpleStringProperty naszaNazwaProperty() {
+//        return naszaNazwa;
 //    }
 //
-//    public void setNumerCertyfikatu(String numerCertyfikatu) {
-//        this.numerCertyfikatu.set(numerCertyfikatu);
+//    public void setNaszaNazwa(String naszaNazwa) {
+//        this.naszaNazwa.set(naszaNazwa);
 //    }
+
 
     public String getNumerCertyfikatuAktywne() {
         return numerCertyfikatuAktywne.get();
@@ -320,8 +321,8 @@ public class CertyfikatJakosci {
         return numerCertyfikatuAktywne;
     }
 
-    public void setNumerCertyfikatuAktywne(String numerCertyfikatu) {
-        this.numerCertyfikatuAktywne.set(numerCertyfikatu);
+    public void setNumerCertyfikatuAktywne(String numerCertyfikatuAktywne) {
+        this.numerCertyfikatuAktywne.set(numerCertyfikatuAktywne);
     }
 
     //---
@@ -333,8 +334,8 @@ public class CertyfikatJakosci {
         return naszaNazwaAktywne;
     }
 
-    public void setNaszaNazwaAktywne(String naszaNazwa) {
-        this.naszaNazwaAktywne.set(naszaNazwa);
+    public void setNaszaNazwaAktywne(String naszaNazwaAktywne) {
+        this.naszaNazwaAktywne.set(naszaNazwaAktywne);
     }
 
     //---
@@ -346,10 +347,10 @@ public class CertyfikatJakosci {
         return iloscAktywne;
     }
 
-    public void setIloscAktywne(String ilosc) {
-        DokumentDao dokumentDao = new DokumentDao();
+    public void setIloscAktywne(String iloscAktywne) {
+      //  DokumentDao dokumentDao = new DokumentDao();
 
-        this.iloscAktywne.set(ilosc);
+        this.iloscAktywne.set(iloscAktywne);
     }
 //----------------------------------------------------------------------------------------------------------
 

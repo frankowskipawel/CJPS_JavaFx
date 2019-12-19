@@ -28,6 +28,7 @@ import java.util.List;
 
 public class MainController {
 
+    private ObservableList<CertyfikatJakosci> lista;
     @FXML
     private TableView<CertyfikatJakosci> listaAktywnychCertyfikatowTableViewStronaGlowna;
     @FXML
@@ -38,6 +39,10 @@ public class MainController {
     private MenuItem menuQuit;
     @FXML
     private TableColumn naszaNazwaTableViewStronaGlowna;
+    @FXML
+    private TableColumn nrCertyfikatuTableViewStronaGlowna;
+    @FXML
+    private TableColumn iloscTableViewStronaGlowna;
 
     @FXML
     public void initialize() {
@@ -56,23 +61,21 @@ public class MainController {
     }
 
     protected void setListaAktywnychCertyfikatow() {
+        CertyfikatJakosciDao certyfikatJakosciDao = new CertyfikatJakosciDao();
+        List<CertyfikatJakosci> list = certyfikatJakosciDao.getAktywneCertyfikatyJakosci();
+
 
         ObservableList<CertyfikatJakosci> data = listaAktywnychCertyfikatowTableViewStronaGlowna.getItems();
-        try {
-            DokumentDao dokumentDao = new DokumentDao();
-            for (CertyfikatJakosci b : getAktywneCertyfikaty()) {
 
+          //  DokumentDao dokumentDao = new DokumentDao();
+            for (CertyfikatJakosci b : list) {
+             //   System.out.println(b);
                 data.add(new CertyfikatJakosci(b.numerCertyfikatuAktywneProperty().getValue(), b.naszaNazwaAktywneProperty().getValue(), b.iloscStronaGlownaProperty().getValue()
                 ));
-               // System.out.println(Integer.toString(dokumentDao.countDokument(b)));
-
-
+              //  System.out.println(b.numerCertyfikatuAktywneProperty().getValue()+b.naszaNazwaAktywneProperty().getValue()+b.iloscStronaGlownaProperty().getValue());
             }
-        } catch (SQLException e) {
-
-            e.printStackTrace();
-        }
-
+          //  System.out.println();
+        this.lista = data;
 
     }
 
@@ -198,7 +201,7 @@ public class MainController {
 
         ObservableList<Dokument> data = listaDokumentowListViewStronaGlowna.getItems();
 
-        CertyfikatJakosci certyfikatJakosci = new CertyfikatJakosciDao().znajdzCertyfikatPoNr(listaAktywnychCertyfikatowTableViewStronaGlowna.getSelectionModel().getSelectedItem().getNumerCertyfikatuAktywne());
+       CertyfikatJakosci certyfikatJakosci = new CertyfikatJakosciDao().znajdzCertyfikatPoNr(listaAktywnychCertyfikatowTableViewStronaGlowna.getSelectionModel().getSelectedItem().getNumerCertyfikatuAktywne());
 
         DokumentDao dokumentDao = new DokumentDao();
 

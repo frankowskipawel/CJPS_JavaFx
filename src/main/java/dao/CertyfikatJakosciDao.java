@@ -71,7 +71,7 @@ public class CertyfikatJakosciDao {
 
     public List<CertyfikatJakosci> getAktywneCertyfikatyJakosci() {
 
-        List<CertyfikatJakosci> certyfikatyJakosci = new LinkedList<CertyfikatJakosci>();
+        List<CertyfikatJakosci> certyfikatyJakosci = new LinkedList<>();
         Statement statement = null;
         try {
             statement = connection.createStatement();
@@ -97,17 +97,16 @@ public class CertyfikatJakosciDao {
                 String dostawca_certyfikaty = resultSet.getString("dostawca_certyfikaty");
                 String nr_fv_certyfikaty = resultSet.getString("nr_fv_certyfikaty");
 
-                CertyfikatJakosci certyfikatJakosci = new CertyfikatJakosci(nr_certyfikaty, aktywny_certyfikaty, nasza_nazwa_certyfikaty,
-                        asortyment_certyfikaty, data_certyfikaty, nr_lab_certyfikaty, popiol_certyfikaty,
-                        siarka_certyfikaty, cz_lotne_certyfikaty, wartosc_opalowa_certyfikaty, spiekalnosc_certyfikaty,
-                        min_ziarno_certyfikaty, max_ziarno_certyfikaty, podziarno_certyfikaty, nadziarno_certyfikaty,
-                        wilgoc_certyfikaty, dostawca_certyfikaty, nr_fv_certyfikaty);
-
+              //  System.out.println(nr_certyfikaty);
+                CertyfikatJakosci certyfikatJakosci = new CertyfikatJakosci(nr_certyfikaty, nasza_nazwa_certyfikaty, "aaa");
+             //   System.out.println(certyfikatJakosci.getNaszaNazwaAktywne()+ certyfikatJakosci.getNumerCertyfikatuAktywne()+ certyfikatJakosci.getIloscAktywne());
                 certyfikatyJakosci.add(certyfikatJakosci);
             }
+
         } catch (SQLException e) {
             System.out.println("Bład poł");
         }
+        System.out.println();
         return certyfikatyJakosci;
     }
 
@@ -150,7 +149,7 @@ public class CertyfikatJakosciDao {
         try {
             statement = connection.createStatement();
             String query = "UPDATE " + tableName + " SET `aktywny_certyfikaty` = '" + certyfikatJakosci.getAktywny() + "', `nasza_nazwa_certyfikaty` = '" + certyfikatJakosci.getNaszaNazwa() + "', `asortyment_certyfikaty` = '" + certyfikatJakosci.getAsortyment() + "', `data_certyfikaty` = '" + certyfikatJakosci.getData() + "', `nr_lab_certyfikaty` = '" + certyfikatJakosci.getNumerCertyfikatuLaboratorium() + "', `popiol_certyfikaty` = '" + certyfikatJakosci.getZawartoscPopiolu() + "', `siarka_certyfikaty` = '" + certyfikatJakosci.getZawartoscSiarkiCalkowitej() + "', `cz_lotne_certyfikaty` = '" + certyfikatJakosci.getZawartoscCzesciLotnych() + "', `wartosc_opalowa_certyfikaty` = '" + certyfikatJakosci.getWartoscOpalowa() + "', `spiekalnosc_certyfikaty` = '" + certyfikatJakosci.getZdolnoscSpiekania() + "', `min_ziarno_certyfikaty` = '" + certyfikatJakosci.getMinimalnyWymiarZiarna() + "', `max_ziarno_certyfikaty` = '" + certyfikatJakosci.getMaksymalnyWymiarZiarna() + "', `podziarno_certyfikaty` = '" + certyfikatJakosci.getZawartoscPodziarna() + "', `nadziarno_certyfikaty` = '" + certyfikatJakosci.getZawartoscNadziarna() + "', `wilgoc_certyfikaty` = '" + certyfikatJakosci.getZawartoscWilgociCalkowitej() + "', `dostawca_certyfikaty` = '" + certyfikatJakosci.getDostawca() + "', `nr_fv_certyfikaty` = '" + certyfikatJakosci.getNrFV() + "' WHERE (`nr_certyfikaty` = '" + certyfikatJakosci.getNumerCertyfikatu() + "')";
-         //   System.out.println(query);
+            //   System.out.println(query);
             int resultSet = statement.executeUpdate(query);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -203,12 +202,12 @@ public class CertyfikatJakosciDao {
         return dokument;
     }
 
-    public void deleteCertyfikatJakosci(CertyfikatJakosci certyfikatJakosci){
+    public void deleteCertyfikatJakosci(CertyfikatJakosci certyfikatJakosci) {
 
         Statement statement = null;
         try {
             statement = connection.createStatement();
-            String query = "DELETE FROM "+tableName+" WHERE (`nr_certyfikaty` = '"+certyfikatJakosci.getNumerCertyfikatu()+"');";
+            String query = "DELETE FROM " + tableName + " WHERE (`nr_certyfikaty` = '" + certyfikatJakosci.getNumerCertyfikatu() + "');";
             boolean resultSet = statement.execute(query);
         } catch (SQLException e) {
             e.printStackTrace();
