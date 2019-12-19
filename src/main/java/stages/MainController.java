@@ -45,6 +45,8 @@ public class MainController {
         setListaAktywnychCertyfikatow();
         add5DokumentowToListView();
         listaAktywnychCertyfikatowTableViewStronaGlowna.getSortOrder().add(naszaNazwaTableViewStronaGlowna);
+
+
     }
 
     protected List<CertyfikatJakosci> getAktywneCertyfikaty() throws SQLException {
@@ -57,10 +59,12 @@ public class MainController {
 
         ObservableList<CertyfikatJakosci> data = listaAktywnychCertyfikatowTableViewStronaGlowna.getItems();
         try {
+            DokumentDao dokumentDao = new DokumentDao();
             for (CertyfikatJakosci b : getAktywneCertyfikaty()) {
 
-                data.add(new CertyfikatJakosci(b.numerCertyfikatuProperty().getValue(), b.naszaNazwaProperty().getValue()
+                data.add(new CertyfikatJakosci(b.numerCertyfikatuAktywneProperty().getValue(), b.naszaNazwaAktywneProperty().getValue(), b.iloscStronaGlownaProperty().getValue()
                 ));
+               // System.out.println(Integer.toString(dokumentDao.countDokument(b)));
 
 
             }
@@ -71,7 +75,6 @@ public class MainController {
 
 
     }
-
 
 
     @FXML
@@ -93,6 +96,8 @@ public class MainController {
 
             showAndPrintDokument(dokument, true, false); //zamienic na print docelowo}
             messageLabelMain.setText("");
+
+
         } else {
             messageLabelMain.setText("Błąd - nie zaznaczono certyfikatu");
             //   System.out.println("Zaznacz certyfikat do wydrukowania");
@@ -121,6 +126,8 @@ public class MainController {
         stage.setScene(scene);
         stage.setTitle("Podgląd wydruku");
         if (show) {
+            DokumentDao dokumentDao = new DokumentDao();
+            System.out.println(dokumentDao.countDokument(listaDokumentowListViewStronaGlowna.getSelectionModel().getSelectedItem().getCertyfikatJakosci()));
             stage.show();
         }
         CertyfikatJakosciWydrukController certyfikatJakosciWydrukController = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a

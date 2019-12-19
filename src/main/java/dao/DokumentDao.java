@@ -7,6 +7,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.CertyfikatJakosci;
 import model.Dokument;
+import model.WartosciDopuszczalnePaliwa;
 import stages.OknoDialogoweController;
 
 import java.sql.*;
@@ -181,7 +182,7 @@ public class DokumentDao {
 
     public int getNajwyzszyNumerDokumentuDao() {
         Statement statement;
-        int autoIncrement=0;
+        int autoIncrement = 0;
         int nrNajwyzszy = 0;
         try {
             statement = connection.createStatement();
@@ -192,7 +193,7 @@ public class DokumentDao {
                 autoIncrement = resultSet.getInt("max(auto_numeracja)");
             }
 
-            query = "SELECT id_dokumenty FROM " + tableName+" WHERE auto_numeracja="+autoIncrement;
+            query = "SELECT id_dokumenty FROM " + tableName + " WHERE auto_numeracja=" + autoIncrement;
 
             resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
@@ -238,18 +239,18 @@ public class DokumentDao {
         }
     }
 
-    public void usunOstatniDokument(){
+    public void usunOstatniDokument() {
         DokumentDao dokumentDao = new DokumentDao();
         dokumentDao.deleteDokumentDatabase(dokumentDao.getNajwyzszyNumerDokumentuDaoString());
 
     }
 
-    public void updateDokument(Dokument dokument){
+    public void updateDokument(Dokument dokument) {
         Statement statement = null;
         try {
             statement = connection.createStatement();
 
-            String query = "UPDATE "+tableName+" SET `nr_certyfikaty` = '"+dokument.getCertyfikatJakosci().getNumerCertyfikatu()+"', `aktywny_certyfikaty` = '"+dokument.getCertyfikatJakosci().getAktywny()+"', `nasza_nazwa_certyfikaty` = '"+dokument.getCertyfikatJakosci().getNaszaNazwa()+"', `asortyment_certyfikaty` = '"+dokument.getCertyfikatJakosci().getAsortyment()+"', `data_certyfikaty` = '"+dokument.getCertyfikatJakosci().getData()+"', `nr_lab_certyfikaty` = '"+dokument.getCertyfikatJakosci().getNumerCertyfikatuLaboratorium()+"', `popiol_certyfikaty` = '"+dokument.getCertyfikatJakosci().getZawartoscPopiolu()+"', `siarka_certyfikaty` = '"+dokument.getCertyfikatJakosci().getZawartoscSiarkiCalkowitej()+"', `cz_lotne_certyfikaty` = '"+dokument.getCertyfikatJakosci().getZawartoscCzesciLotnych()+"', `wartosc_opalowa_certyfikaty` = '"+dokument.getCertyfikatJakosci().getWartoscOpalowa()+"', `spiekalnosc_certyfikaty` = '"+dokument.getCertyfikatJakosci().getZdolnoscSpiekania()+"', `min_ziarno_certyfikaty` = '"+dokument.getCertyfikatJakosci().getMinimalnyWymiarZiarna()+"', `max_ziarno_certyfikaty` = '"+dokument.getCertyfikatJakosci().getMaksymalnyWymiarZiarna()+"', `podziarno_certyfikaty` = '"+dokument.getCertyfikatJakosci().getZawartoscPodziarna()+"', `nadziarno_certyfikaty` = '"+dokument.getCertyfikatJakosci().getZawartoscNadziarna()+"', `wilgoc_certyfikaty` = '"+dokument.getCertyfikatJakosci().getZawartoscWilgociCalkowitej()+"', `dostawca_certyfikaty` = '"+dokument.getCertyfikatJakosci().getDostawca()+"', `nr_fv_certyfikaty` = '"+dokument.getCertyfikatJakosci().getNrFV()+"' WHERE (`id_dokumenty` = '"+dokument.getNumerDokumentu()+"');";
+            String query = "UPDATE " + tableName + " SET `nr_certyfikaty` = '" + dokument.getCertyfikatJakosci().getNumerCertyfikatu() + "', `aktywny_certyfikaty` = '" + dokument.getCertyfikatJakosci().getAktywny() + "', `nasza_nazwa_certyfikaty` = '" + dokument.getCertyfikatJakosci().getNaszaNazwa() + "', `asortyment_certyfikaty` = '" + dokument.getCertyfikatJakosci().getAsortyment() + "', `data_certyfikaty` = '" + dokument.getCertyfikatJakosci().getData() + "', `nr_lab_certyfikaty` = '" + dokument.getCertyfikatJakosci().getNumerCertyfikatuLaboratorium() + "', `popiol_certyfikaty` = '" + dokument.getCertyfikatJakosci().getZawartoscPopiolu() + "', `siarka_certyfikaty` = '" + dokument.getCertyfikatJakosci().getZawartoscSiarkiCalkowitej() + "', `cz_lotne_certyfikaty` = '" + dokument.getCertyfikatJakosci().getZawartoscCzesciLotnych() + "', `wartosc_opalowa_certyfikaty` = '" + dokument.getCertyfikatJakosci().getWartoscOpalowa() + "', `spiekalnosc_certyfikaty` = '" + dokument.getCertyfikatJakosci().getZdolnoscSpiekania() + "', `min_ziarno_certyfikaty` = '" + dokument.getCertyfikatJakosci().getMinimalnyWymiarZiarna() + "', `max_ziarno_certyfikaty` = '" + dokument.getCertyfikatJakosci().getMaksymalnyWymiarZiarna() + "', `podziarno_certyfikaty` = '" + dokument.getCertyfikatJakosci().getZawartoscPodziarna() + "', `nadziarno_certyfikaty` = '" + dokument.getCertyfikatJakosci().getZawartoscNadziarna() + "', `wilgoc_certyfikaty` = '" + dokument.getCertyfikatJakosci().getZawartoscWilgociCalkowitej() + "', `dostawca_certyfikaty` = '" + dokument.getCertyfikatJakosci().getDostawca() + "', `nr_fv_certyfikaty` = '" + dokument.getCertyfikatJakosci().getNrFV() + "' WHERE (`id_dokumenty` = '" + dokument.getNumerDokumentu() + "');";
             //   System.out.println(query);
 
             int resultSet = statement.executeUpdate(query);
@@ -258,6 +259,27 @@ public class DokumentDao {
             e.printStackTrace();
         }
 
+    }
+
+    public int countDokument(CertyfikatJakosci certyfikatJakosci) {
+        //  SELECT * FROM certyfikaty_database.dokumenty WHERE nr_certyfikaty="30";
+        int count=0;
+        Statement statement = null;
+        try {
+            statement = connection.createStatement();
+
+            String query = "SELECT * FROM " + tableName + " WHERE nr_certyfikaty='" + certyfikatJakosci.getNumerCertyfikatu()+"';";            //   System.out.println(query);
+            ResultSet resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
+                count++;
+            }
+           // System.out.println(resultSet);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return count;
     }
 
 }

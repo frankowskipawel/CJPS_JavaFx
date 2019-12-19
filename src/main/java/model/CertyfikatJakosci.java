@@ -1,13 +1,15 @@
 package model;
 
+import dao.DokumentDao;
 import javafx.beans.property.SimpleStringProperty;
 
 public class CertyfikatJakosci {
  //   private WartościDopuszczalnePaliwa typ;
 
     //Zmienne używane na stronie głównej na liście aktywnych certyfikatów
-    private final SimpleStringProperty nrCertyfikatuTableViewStronaGlowna = new SimpleStringProperty("");
-    private final SimpleStringProperty naszaNazwaTableViewStronaGlowna = new SimpleStringProperty("");
+    private final SimpleStringProperty numerCertyfikatuAktywne = new SimpleStringProperty("");
+    private final SimpleStringProperty naszaNazwaAktywne = new SimpleStringProperty("");
+    private final SimpleStringProperty iloscAktywne = new SimpleStringProperty("");
 
     //zmienne używane na liście certyfiktów
     private final SimpleStringProperty numerCertyfikatu = new SimpleStringProperty("");
@@ -292,34 +294,62 @@ public class CertyfikatJakosci {
 //-------------------------------------------------------------------------------------------------------
 
     //Konstruktor na potrzeby wyświetlenia listy Aktywnych certyfikatów na Stronie Głównej
-    public CertyfikatJakosci(String numerCertyfikatu, String naszaNazwa) {
-        setNumerCertyfikatuAktywne(numerCertyfikatu);
-        setNaszaNazwaAktywne(naszaNazwa);
+    public CertyfikatJakosci(String numerCertyfikatuAktywne, String naszaNazwaAktywne, String iloscAktywne) {
+        setNumerCertyfikatuAktywne(numerCertyfikatuAktywne);
+        setNaszaNazwaAktywne(naszaNazwaAktywne);
+        setIloscAktywne(iloscAktywne);
     }
 
+//    public String getNumerCertyfikatu() {
+//        return numerCertyfikatu.get();
+//    }
+//
+//    public SimpleStringProperty numerCertyfikatuProperty() {
+//        return numerCertyfikatu;
+//    }
+//
+//    public void setNumerCertyfikatu(String numerCertyfikatu) {
+//        this.numerCertyfikatu.set(numerCertyfikatu);
+//    }
+
     public String getNumerCertyfikatuAktywne() {
-        return nrCertyfikatuTableViewStronaGlowna.get();
+        return numerCertyfikatuAktywne.get();
     } //Tu sprawdzic
 
-    public SimpleStringProperty nrCertyfikatuTableViewStronaGlownaProperty() {
-        return nrCertyfikatuTableViewStronaGlowna;
+    public SimpleStringProperty numerCertyfikatuAktywneProperty() {
+        return numerCertyfikatuAktywne;
     }
 
     public void setNumerCertyfikatuAktywne(String numerCertyfikatu) {
-        this.nrCertyfikatuTableViewStronaGlowna.set(numerCertyfikatu);
+        this.numerCertyfikatuAktywne.set(numerCertyfikatu);
     }
 
     //---
     public String getNaszaNazwaAktywne() {
-        return naszaNazwaTableViewStronaGlowna.get();
+        return naszaNazwaAktywne.get();
     }
 
-    public SimpleStringProperty naszaNazwaTableViewStronaGlownaProperty() {
-        return naszaNazwaTableViewStronaGlowna;
+    public SimpleStringProperty naszaNazwaAktywneProperty() {
+        return naszaNazwaAktywne;
     }
 
     public void setNaszaNazwaAktywne(String naszaNazwa) {
-        this.naszaNazwaTableViewStronaGlowna.set(naszaNazwa);
+        this.naszaNazwaAktywne.set(naszaNazwa);
+    }
+
+    //---
+    public String getIloscAktywne() {
+        return iloscAktywne.get();
+    }
+
+    public SimpleStringProperty iloscStronaGlownaProperty() {
+        return iloscAktywne;
+    }
+
+    public void setIloscAktywne(String ilosc) {
+        DokumentDao dokumentDao = new DokumentDao();
+
+        this.iloscAktywne.set(ilosc);
     }
 //----------------------------------------------------------------------------------------------------------
 
