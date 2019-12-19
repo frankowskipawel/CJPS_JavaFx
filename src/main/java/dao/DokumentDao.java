@@ -244,4 +244,20 @@ public class DokumentDao {
 
     }
 
+    public void updateDokument(Dokument dokument){
+        Statement statement = null;
+        try {
+            statement = connection.createStatement();
+
+            String query = "UPDATE "+tableName+" SET `nr_certyfikaty` = '"+dokument.getCertyfikatJakosci().getNumerCertyfikatu()+"', `aktywny_certyfikaty` = '"+dokument.getCertyfikatJakosci().getAktywny()+"', `nasza_nazwa_certyfikaty` = '"+dokument.getCertyfikatJakosci().getNaszaNazwa()+"', `asortyment_certyfikaty` = '"+dokument.getCertyfikatJakosci().getAsortyment()+"', `data_certyfikaty` = '"+dokument.getCertyfikatJakosci().getData()+"', `nr_lab_certyfikaty` = '"+dokument.getCertyfikatJakosci().getNumerCertyfikatuLaboratorium()+"', `popiol_certyfikaty` = '"+dokument.getCertyfikatJakosci().getZawartoscPopiolu()+"', `siarka_certyfikaty` = '"+dokument.getCertyfikatJakosci().getZawartoscSiarkiCalkowitej()+"', `cz_lotne_certyfikaty` = '"+dokument.getCertyfikatJakosci().getZawartoscCzesciLotnych()+"', `wartosc_opalowa_certyfikaty` = '"+dokument.getCertyfikatJakosci().getWartoscOpalowa()+"', `spiekalnosc_certyfikaty` = '"+dokument.getCertyfikatJakosci().getZdolnoscSpiekania()+"', `min_ziarno_certyfikaty` = '"+dokument.getCertyfikatJakosci().getMinimalnyWymiarZiarna()+"', `max_ziarno_certyfikaty` = '"+dokument.getCertyfikatJakosci().getMaksymalnyWymiarZiarna()+"', `podziarno_certyfikaty` = '"+dokument.getCertyfikatJakosci().getZawartoscPodziarna()+"', `nadziarno_certyfikaty` = '"+dokument.getCertyfikatJakosci().getZawartoscNadziarna()+"', `wilgoc_certyfikaty` = '"+dokument.getCertyfikatJakosci().getZawartoscWilgociCalkowitej()+"', `dostawca_certyfikaty` = '"+dokument.getCertyfikatJakosci().getDostawca()+"', `nr_fv_certyfikaty` = '"+dokument.getCertyfikatJakosci().getNrFV()+"' WHERE (`id_dokumenty` = '"+dokument.getNumerDokumentu()+"');";
+            //   System.out.println(query);
+
+            int resultSet = statement.executeUpdate(query);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 }

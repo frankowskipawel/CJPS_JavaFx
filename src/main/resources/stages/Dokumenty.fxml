@@ -28,8 +28,8 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" text="Edytuj" GridPane.columnIndex="1" />
-            <Button mnemonicParsing="false" text="Anuluj" GridPane.columnIndex="2" />
+            <Button mnemonicParsing="false" onAction="#edytujOnClick" text="Edytuj" GridPane.columnIndex="1" />
+            <Button fx:id="anulujButton" mnemonicParsing="false" onAction="#anulujOnClick" text="Anuluj" GridPane.columnIndex="2" />
             <Button mnemonicParsing="false" onAction="#podgladOnClick" text="Podgląd" />
          </children>
       </GridPane>

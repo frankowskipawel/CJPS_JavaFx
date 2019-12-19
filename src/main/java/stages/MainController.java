@@ -5,6 +5,7 @@ import dao.CertyfikatJakosciDao;
 import dao.DokumentDao;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.VBox;
 import model.CertyfikatJakosci;
 import model.Dokument;
@@ -36,6 +37,8 @@ public class MainController {
     private ListView<Dokument> listaDokumentowListViewStronaGlowna;
     @FXML
     private Label messageLabelMain;
+    @FXML
+    private MenuItem menuQuit;
 
     @FXML
     public void initialize() {
@@ -218,6 +221,11 @@ public class MainController {
         podmiotConfigController.setNipTextFieldPodmiotConfig(Config.NIP_PODMIOTU);
         podmiotConfigController.setRegonTextFieldPodmiotConfig(Config.REGON_PODMIOTU);
         stage.show();
+    }
+
+    @FXML
+    void menuQuitOnClick(ActionEvent event) {
+        System.exit(0);
     }
 
     @FXML

@@ -17,6 +17,8 @@ public class KontrahentController {
     private DodajNowyCertyfikatController dodajNowyCertyfikatController;
 
     @FXML
+    private Button anulujButton;
+    @FXML
     private TableView<Kontrahent> KontrahenciTableView;
     @FXML private TextField idKontrahentField;
     @FXML private TextField nazwaKontrahentField;
@@ -101,6 +103,11 @@ public class KontrahentController {
     void okOnClick(ActionEvent event) {
             dodajNowyCertyfikatController.setDostawcaField(getKontrahenciTableView().getSelectionModel().getSelectedItem().getIdKontrahent());
         Stage stage = (Stage) okButton.getScene().getWindow();
+        stage.close();
+    }
+    @FXML
+    void anulujOnClick(ActionEvent event) {
+        Stage stage = (Stage) anulujButton.getScene().getWindow();
         stage.close();
     }
 

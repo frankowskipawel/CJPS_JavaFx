@@ -44,7 +44,7 @@
             <Button mnemonicParsing="false" onAction="#deleteRowFromTableViewAndDatabase" prefHeight="26.0" prefWidth="50.0" text="Usuń" />
             <Button mnemonicParsing="false" onAction="#addNewKontrahentToTableViewAndDatabase" prefHeight="25.0" prefWidth="88.0" text="Dodaj Nowy" />
             <Button fx:id="okButton" mnemonicParsing="false" onAction="#okOnClick" prefHeight="25.0" prefWidth="80.0" text="OK" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Anuluj" />
+            <Button fx:id="anulujButton" mnemonicParsing="false" onAction="#anulujOnClick" prefHeight="25.0" prefWidth="80.0" text="Anuluj" />
          </children>
       </HBox>
    </children>

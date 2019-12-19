@@ -1,6 +1,7 @@
 package stages;
 
 import dao.CertyfikatJakosciDao;
+import dao.DokumentDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.VBox;
@@ -13,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import model.Dokument;
 
 import java.io.IOException;
 import java.util.Iterator;
@@ -21,12 +23,18 @@ import java.util.List;
 public class ListaCertyfikatowController {
 
 
+    private DokumentyStageController dokumentyStageController;
+   private ObservableList<CertyfikatJakosci> lista;
+   private Dokument dokumentEdytowany;
+
     @FXML
     private Button zamknijButton;
     @FXML
     private TableView<CertyfikatJakosci> listaCertyfikatowTableView;
     @FXML
     private Button dodajNowyButton;
+    @FXML
+    private Button zmienButton;
 
     @FXML
     public void initialize() {
@@ -45,10 +53,11 @@ public class ListaCertyfikatowController {
 
 
         Iterator<CertyfikatJakosci> iterator = list.iterator();
+        ObservableList<CertyfikatJakosci> data = listaCertyfikatowTableView.getItems();
 
         for (CertyfikatJakosci b : list) {
 
-            ObservableList<CertyfikatJakosci> data = listaCertyfikatowTableView.getItems();
+
 
             data.add(new CertyfikatJakosci(b.numerCertyfikatuProperty().getValue(),
 
@@ -73,6 +82,8 @@ public class ListaCertyfikatowController {
             );
 
         }
+        this.lista = data;
+
     }
 
     @FXML
@@ -160,5 +171,49 @@ public class ListaCertyfikatowController {
         Stage stage = (Stage) zamknijButton.getScene().getWindow();
         stage.close();
     }
+    @FXML
+    void zmienOnClick(ActionEvent event) {
+        Dokument dokument = new Dokument(dokumentEdytowany.getNumerDokumentu(),dokumentEdytowany.getDataDokumentu(),listaCertyfikatowTableView.getSelectionModel().getSelectedItem());
+        DokumentDao dokumentDao = new DokumentDao();
+        dokumentDao.updateDokument(dokument);
+        dokumentyStageController.refreshDokumentyListView();
+        zamknijOnClick();
+    }
 
+
+    public void setListaCertyfikatowTableView(TableView<CertyfikatJakosci> listaCertyfikatowTableView) {
+        this.listaCertyfikatowTableView = listaCertyfikatowTableView;
+    }
+
+    public DokumentyStageController getDokumentyStageController() {
+        return dokumentyStageController;
+    }
+
+    public void setDokumentyStageController(DokumentyStageController dokumentyStageController) {
+        this.dokumentyStageController = dokumentyStageController;
+    }
+
+    public ObservableList<CertyfikatJakosci> getLista() {
+        return lista;
+    }
+
+    public void setLista(ObservableList<CertyfikatJakosci> lista) {
+        this.lista = lista;
+    }
+
+    public Dokument getDokumentEdytowany() {
+        return dokumentEdytowany;
+    }
+
+    public void setDokumentEdytowany(Dokument dokumentEdytowany) {
+        this.dokumentEdytowany = dokumentEdytowany;
+    }
+
+    public void setZmienButton(Button zmienButton) {
+        this.zmienButton = zmienButton;
+    }
+
+    public Button getZmienButton() {
+        return zmienButton;
+    }
 }

@@ -1,19 +1,20 @@
 package model;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.control.TableView;
 
 public class Dokument {
 
-    private CertyfikatJakosci certyfikatJakosci;
+        private CertyfikatJakosci certyfikatJakosci;
 
-    private final SimpleStringProperty numerDokumentu = new SimpleStringProperty("");
-    private final SimpleStringProperty dataDokumentu = new SimpleStringProperty("");
+        private final SimpleStringProperty numerDokumentu = new SimpleStringProperty("");
+        private final SimpleStringProperty dataDokumentu = new SimpleStringProperty("");
 
-    public Dokument(String numerDokumentu, String dataDokumentu, CertyfikatJakosci certyfikatJakosci) {
-        setNumerDokumentu(numerDokumentu);
-        setDataDokumentu(dataDokumentu);
-        this.certyfikatJakosci = certyfikatJakosci;
-    }
+        public Dokument(String numerDokumentu, String dataDokumentu, CertyfikatJakosci certyfikatJakosci) {
+            setNumerDokumentu(numerDokumentu);
+            setDataDokumentu(dataDokumentu);
+            this.certyfikatJakosci = certyfikatJakosci;
+        }
 
     public String getNumerDokumentu() {
         return numerDokumentu.get();
@@ -50,13 +51,13 @@ public class Dokument {
     @Override
     public String toString() {
         return
-                getNumerDokumentu() + "--{" + certyfikatJakosci.getNaszaNazwa()+ "}{nr certyfikatu " +
-                        certyfikatJakosci.getNumerCertyfikatu()+"}{popiół:"+
-                        certyfikatJakosci.getZawartoscPopiolu()+"%}{siarka:"+certyfikatJakosci.getZawartoscSiarkiCalkowitej()+"%}{cz.lotne"+
-                        certyfikatJakosci.getZawartoscCzesciLotnych()+"%}{wart.opał.:"+certyfikatJakosci.getWartoscOpalowa()+"MJ/kg}{RI:"+
-                        certyfikatJakosci.getZdolnoscSpiekania()+"}{wym.ziar.:"+certyfikatJakosci.getMinimalnyWymiarZiarna()+"-"+
-                        certyfikatJakosci.getMaksymalnyWymiarZiarna()+"mm}{podziarno:"+certyfikatJakosci.getZawartoscPodziarna()+"%}{nadziarno:"+
-                        certyfikatJakosci.getZawartoscNadziarna()+"%}{wilgotność:"+certyfikatJakosci.getZawartoscWilgociCalkowitej()+"%}"
+                getNumerDokumentu() + "->{" + certyfikatJakosci.getNaszaNazwa()+"}-{data: "+getDataDokumentu()+ "}-{nr certyfikatu: " +
+                        certyfikatJakosci.getNumerCertyfikatu()+"}-{popiół: "+
+                        certyfikatJakosci.getZawartoscPopiolu()+"%}-{siarka: "+certyfikatJakosci.getZawartoscSiarkiCalkowitej()+"%}-{cz.lotne: "+
+                        certyfikatJakosci.getZawartoscCzesciLotnych()+"%}-{wart.opał.: "+certyfikatJakosci.getWartoscOpalowa()+"MJ/kg}-{RI: "+
+                        certyfikatJakosci.getZdolnoscSpiekania()+"}-{wym.ziar.: "+certyfikatJakosci.getMinimalnyWymiarZiarna()+"-"+
+                        certyfikatJakosci.getMaksymalnyWymiarZiarna()+"mm}-{podziarno: "+certyfikatJakosci.getZawartoscPodziarna()+"%}-{nadziarno: "+
+                        certyfikatJakosci.getZawartoscNadziarna()+"%}-{wilgotność: "+certyfikatJakosci.getZawartoscWilgociCalkowitej()+"%}"
 
                 ;
 

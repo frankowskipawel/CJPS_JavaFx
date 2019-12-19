@@ -23,7 +23,7 @@
           <items>
                   <MenuItem mnemonicParsing="false" onAction="#menuDanePodmiotuClick" text="Dane podmiotu" />
                   <MenuItem mnemonicParsing="false" onAction="#menuUstawieniaClick" text="Ustawienia" />
-            <MenuItem mnemonicParsing="false" text="Quit" />
+            <MenuItem fx:id="menuQuit" mnemonicParsing="false" onAction="#menuQuitOnClick" text="Quit" />
           </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Edycja">
