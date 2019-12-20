@@ -82,7 +82,7 @@ public class MainController {
 
     @FXML
     protected void refreshClick() {
-
+        messageLabelMain.setText("");
         refreshListaAktywnychCertyfikatow();
         refreshListaDokumentow();
         listaAktywnychCertyfikatowTableViewStronaGlowna.getSortOrder().add(naszaNazwaAktywne);
@@ -90,6 +90,7 @@ public class MainController {
 
     @FXML
     protected void addAndPrintNowyDokumentClick() throws IOException {
+        messageLabelMain.setText("");
         ObservableList<Dokument> data = listaDokumentowListViewStronaGlowna.getItems();
         if (!listaAktywnychCertyfikatowTableViewStronaGlowna.getSelectionModel().isEmpty()) {
             Dokument dokument;
@@ -98,7 +99,7 @@ public class MainController {
             refreshListaDokumentow();
 
             showAndPrintDokument(dokument, true, false); //zamienic na print docelowo}
-            messageLabelMain.setText("");
+           // messageLabelMain.setText("");
 
 
         } else {
@@ -129,16 +130,18 @@ public class MainController {
         stage.setScene(scene);
         stage.setTitle("Podgląd wydruku");
         if (show) {
-            DokumentDao dokumentDao = new DokumentDao();
-          //  System.out.println(dokumentDao.countDokument(listaDokumentowListViewStronaGlowna.getSelectionModel().getSelectedItem().getCertyfikatJakosci()));
+
             stage.show();
         }
         CertyfikatJakosciWydrukController certyfikatJakosciWydrukController = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
-        certyfikatJakosciWydrukController.certyfikatJakosciWydrukController = certyfikatJakosciWydrukController; //
+       // certyfikatJakosciWydrukController.certyfikatJakosciWydrukController = certyfikatJakosciWydrukController; //
         setWartosciDopuszczalneNaWydruku(certyfikatJakosciWydrukController, WartosciDopuszczalnePaliwa.valueOf(dokument.getCertyfikatJakosci().getAsortyment()));
         setWartosciNaWydruku(certyfikatJakosciWydrukController, dokument);
+        certyfikatJakosciWydrukController.mainController = MainController.this;
         if (print) {
+
             certyfikatJakosciWydrukController.print(2);
+
         }
     }
 
@@ -291,14 +294,14 @@ public class MainController {
         // Define the Job Status Message
 //        jobStatus.textProperty().unbind();
 //        jobStatus.setText("Creating a printer job...");
-
+            messageLabelMain.setText("Przygotowuje wydruk");
         // Create a printer job for the default printer
         PrinterJob job = PrinterJob.createPrinterJob();
 
         if (job != null) {
             // Show the printer job status
 //            jobStatus.textProperty().bind(job.jobStatusProperty().asString());
-
+            messageLabelMain.setText(job.jobStatusProperty().toString());
             // Print the node
             boolean printed = job.printPage(node);
 
@@ -309,10 +312,12 @@ public class MainController {
                 // Write Error Message
 //                jobStatus.textProperty().unbind();
 //                jobStatus.setText("Printing failed.");
+                messageLabelMain.setText("Błąd wydruku");
             }
         } else {
             // Write Error Message
 //            jobStatus.setText("Could not create a printer job.");
+            messageLabelMain.setText("Błąd wydruku");
         }
     }
 
@@ -389,6 +394,10 @@ public class MainController {
         dokumentyStageController.mainController = MainController.this;
 
         stage.show();
+    }
+
+    public void setMessageLabelMain(String messageLabelMain) {
+        this.messageLabelMain.setText(messageLabelMain);
     }
 }
 

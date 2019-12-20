@@ -10,6 +10,7 @@ import java.io.IOException;
 
 public class CertyfikatJakosciWydrukController {
     CertyfikatJakosciWydrukController certyfikatJakosciWydrukController;
+    MainController mainController;
 
     @FXML
     private Pane paneWydruk;
@@ -330,30 +331,33 @@ public class CertyfikatJakosciWydrukController {
 
     public void print(Node node) {
         // Define the Job Status Message
-//        jobStatus.textProperty().unbind();
-//        jobStatus.setText("Creating a printer job...");
 
+        mainController.setMessageLabelMain("Przygotowuje wydruk");
         // Create a printer job for the default printer
         PrinterJob job = PrinterJob.createPrinterJob();
 
         if (job != null) {
             // Show the printer job status
 //            jobStatus.textProperty().bind(job.jobStatusProperty().asString());
-
+          //  mainController.setMessageLabelMain(job.jobStatusProperty().asString().toString());
+            mainController.setMessageLabelMain("Trwa Drukowanie");
             // Print the node
             boolean printed = job.printPage(node);
 
             if (printed) {
                 // End the printer job
+               mainController.setMessageLabelMain("Wydrukowano pomyślnie");
                 job.endJob();
             } else {
                 // Write Error Message
 //                jobStatus.textProperty().unbind();
 //                jobStatus.setText("Printing failed.");
+                mainController.setMessageLabelMain("Błąd wydruku");
             }
         } else {
             // Write Error Message
 //            jobStatus.setText("Could not create a printer job.");
+            mainController.setMessageLabelMain("Błąd wydruku");
         }
     }
 }
