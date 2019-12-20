@@ -261,14 +261,14 @@ public class DokumentDao {
 
     }
 
-    public int countDokument(CertyfikatJakosci certyfikatJakosci) {
+    public int countDokument(String numerCertyfikatu) {
         //  SELECT * FROM certyfikaty_database.dokumenty WHERE nr_certyfikaty="30";
         int count=0;
         Statement statement = null;
         try {
             statement = connection.createStatement();
 
-            String query = "SELECT * FROM " + tableName + " WHERE nr_certyfikaty='" + certyfikatJakosci.getNumerCertyfikatu()+"';";            //   System.out.println(query);
+            String query = "SELECT * FROM " + tableName + " WHERE nr_certyfikaty='" + numerCertyfikatu+"';";            //   System.out.println(query);
             ResultSet resultSet = statement.executeQuery(query);
 
             while (resultSet.next()) {

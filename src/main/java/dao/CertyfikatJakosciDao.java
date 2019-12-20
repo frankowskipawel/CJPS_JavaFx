@@ -71,6 +71,7 @@ public class CertyfikatJakosciDao {
 
     public List<CertyfikatJakosci> getAktywneCertyfikatyJakosci() {
 
+        DokumentDao dokumentDao = new DokumentDao();
         List<CertyfikatJakosci> certyfikatyJakosci = new LinkedList<>();
         Statement statement = null;
         try {
@@ -98,7 +99,8 @@ public class CertyfikatJakosciDao {
                 String nr_fv_certyfikaty = resultSet.getString("nr_fv_certyfikaty");
 
               //  System.out.println(nr_certyfikaty);
-                CertyfikatJakosci certyfikatJakosci = new CertyfikatJakosci(nr_certyfikaty, nasza_nazwa_certyfikaty, "aaa");
+
+                CertyfikatJakosci certyfikatJakosci = new CertyfikatJakosci(nr_certyfikaty, nasza_nazwa_certyfikaty, Integer.toString(dokumentDao.countDokument(nr_certyfikaty)));
              //   System.out.println(certyfikatJakosci.getNaszaNazwaAktywne()+ certyfikatJakosci.getNumerCertyfikatuAktywne()+ certyfikatJakosci.getIloscAktywne());
                 certyfikatyJakosci.add(certyfikatJakosci);
             }

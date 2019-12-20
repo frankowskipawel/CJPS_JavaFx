@@ -38,7 +38,7 @@ public class MainController {
     @FXML
     private MenuItem menuQuit;
     @FXML
-    private TableColumn naszaNazwaTableViewStronaGlowna;
+    private TableColumn naszaNazwaAktywne;
     @FXML
     private TableColumn nrCertyfikatuTableViewStronaGlowna;
     @FXML
@@ -49,7 +49,7 @@ public class MainController {
 
         setListaAktywnychCertyfikatow();
         add5DokumentowToListView();
-        listaAktywnychCertyfikatowTableViewStronaGlowna.getSortOrder().add(naszaNazwaTableViewStronaGlowna);
+        listaAktywnychCertyfikatowTableViewStronaGlowna.getSortOrder().add(naszaNazwaAktywne);
 
 
     }
@@ -85,7 +85,7 @@ public class MainController {
 
         refreshListaAktywnychCertyfikatow();
         refreshListaDokumentow();
-        listaAktywnychCertyfikatowTableViewStronaGlowna.getSortOrder().add(naszaNazwaTableViewStronaGlowna);
+        listaAktywnychCertyfikatowTableViewStronaGlowna.getSortOrder().add(naszaNazwaAktywne);
     }
 
     @FXML
@@ -130,7 +130,7 @@ public class MainController {
         stage.setTitle("Podgląd wydruku");
         if (show) {
             DokumentDao dokumentDao = new DokumentDao();
-            System.out.println(dokumentDao.countDokument(listaDokumentowListViewStronaGlowna.getSelectionModel().getSelectedItem().getCertyfikatJakosci()));
+          //  System.out.println(dokumentDao.countDokument(listaDokumentowListViewStronaGlowna.getSelectionModel().getSelectedItem().getCertyfikatJakosci()));
             stage.show();
         }
         CertyfikatJakosciWydrukController certyfikatJakosciWydrukController = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
@@ -189,6 +189,7 @@ public class MainController {
         data.removeAll(data);
 
         setListaAktywnychCertyfikatow();
+        listaAktywnychCertyfikatowTableViewStronaGlowna.getSortOrder().add(naszaNazwaAktywne);
     }
 
     public void refreshListaDokumentow() {
@@ -340,6 +341,7 @@ public class MainController {
         DokumentDao dokumentDao = new DokumentDao();
         dokumentDao.usunOstatniDokument();
         refreshListaDokumentow();
+        refreshListaAktywnychCertyfikatow();
     }
 
 
