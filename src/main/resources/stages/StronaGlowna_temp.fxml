@@ -42,25 +42,22 @@
     </MenuBar>
       <TableView fx:id="listaAktywnychCertyfikatowTableViewStronaGlowna" prefHeight="516.0" prefWidth="538.0">
         <columns>
-          <TableColumn fx:id="numerCertyfikatuAktywne" prefWidth="88.0" style="-fx-alignment: center;" text="Nr certyfikatu">
+          <TableColumn fx:id="numerCertyfikatuAktywne" prefWidth="91.19995272159576" text="Nr certyfikatu">
             <cellValueFactory>
               <PropertyValueFactory property="numerCertyfikatuAktywne" />
             </cellValueFactory>
             </TableColumn>
-          <TableColumn fx:id="naszaNazwaAktywne" prefWidth="398.0" text="Nasza Nazwa">
+          <TableColumn fx:id="naszaNazwaAktywne" prefWidth="378.0" text="Nasza Nazwa">
             <cellValueFactory>
               <PropertyValueFactory property="naszaNazwaAktywne" />
             </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="iloscAktywne" prefWidth="51.0" style="-fx-alignment: center;" text="ilość">
+            <TableColumn fx:id="iloscAktywne" prefWidth="68.0" text="ilość">
                 <cellValueFactory>
                     <PropertyValueFactory property="iloscAktywne" />
                 </cellValueFactory>
             </TableColumn>
         </columns>
-         <VBox.margin>
-            <Insets right="1.0" top="1.0" />
-         </VBox.margin>
       </TableView>
       <HBox alignment="TOP_RIGHT" prefHeight="179.0" prefWidth="540.0">
          <children>
@@ -71,7 +68,7 @@
             </ListView>
             <Pane prefHeight="127.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="dodajWydrukujButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#addAndPrintNowyDokumentClick" prefHeight="50.0" prefWidth="199.0" style="-fx-alignment: center;" text="Doodaj i wydrukuj">
+                  <Button fx:id="dodajWydrukujButton" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutY="1.0" mnemonicParsing="false" onAction="#addAndPrintNowyDokumentClick" prefHeight="50.0" prefWidth="199.0" style="-fx-alignment: center;" text="Doodaj i wydrukuj">
                      <padding>
                         <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                      </padding>
@@ -81,7 +78,7 @@
                         <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                      </padding>
                   </Button>
-                  <Button layoutY="121.0" mnemonicParsing="false" onAction="#podgladClick" prefHeight="25.0" prefWidth="71.0" text="Podgląd">
+                  <Button layoutY="108.0" mnemonicParsing="false" onAction="#podgladClick" prefHeight="25.0" prefWidth="71.0" text="Podgląd">
                      <padding>
                         <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                      </padding>
