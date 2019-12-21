@@ -2,20 +2,29 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stages.DokumentyStageController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="433.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stages.DokumentyStageController">
    <children>
-      <ListView fx:id="dokumentyListView" prefHeight="330.0" prefWidth="600.0">
-         <padding>
-            <Insets top="10.0" />
-         </padding>
+      <Label text="Szukaj">
          <VBox.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            <Insets left="10.0" right="10.0" top="10.0" />
+         </VBox.margin>
+      </Label>
+      <TextField fx:id="szukajTextField" onKeyReleased="#szukaj">
+         <VBox.margin>
+            <Insets bottom="1.0" left="10.0" right="10.0" />
+         </VBox.margin>
+      </TextField>
+      <ListView fx:id="dokumentyListView" prefHeight="330.0" prefWidth="600.0">
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="1.0" />
          </VBox.margin>
       </ListView>
       <GridPane>

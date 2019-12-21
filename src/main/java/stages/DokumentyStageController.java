@@ -5,19 +5,20 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.CertyfikatJakosci;
 import model.Dokument;
 
+
 import java.io.IOException;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 
 
 public class DokumentyStageController {
@@ -25,7 +26,8 @@ public class DokumentyStageController {
     MainController mainController;
     @FXML
     private Button anulujButton;
-
+    @FXML
+    private TextField szukajTextField;
 
     @FXML
     private ListView<Dokument> dokumentyListView;
@@ -50,6 +52,7 @@ public class DokumentyStageController {
         mainController.showAndPrintDokument(dokumentyListView.getSelectionModel().getSelectedItem(), false, true);
 
     }
+
     @FXML
     void anulujOnClick() {
         Stage stage = (Stage) anulujButton.getScene().getWindow();
@@ -86,5 +89,22 @@ public class DokumentyStageController {
         //^^^^^^^^^^
 
         stage.show();
+    }
+
+    @FXML
+    void szukaj(KeyEvent event) {
+
+        ObservableList<Dokument> data = dokumentyListView.getItems();
+        data.removeAll(data);
+        DokumentDao dokumentDao = new DokumentDao();
+        List<Dokument> dataFromDB = dokumentDao.getAllDokumenty();
+
+        for (Dokument item : dataFromDB) {
+            if (item.toString().matches(("(.*)" + szukajTextField.getText()) + "(.*)")) {
+                data.add(item);
+
+            }
+        }
+        Collections.reverse(data);
     }
 }
