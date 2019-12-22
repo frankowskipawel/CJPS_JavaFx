@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.DragEvent;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
@@ -22,7 +23,7 @@ import java.util.List;
 
 
 public class DokumentyStageController {
-
+    private int i=0;
     MainController mainController;
     @FXML
     private Button anulujButton;
@@ -99,12 +100,10 @@ public class DokumentyStageController {
         DokumentDao dokumentDao = new DokumentDao();
         List<Dokument> dataFromDB = dokumentDao.getAllDokumenty();
 
-        for (Dokument item : dataFromDB) {
-            if (item.toString().matches(("(.*)" + szukajTextField.getText()) + "(.*)")) {
-                data.add(item);
+        dataFromDB.stream()
+                .filter(item -> item.toString().matches(("(.*)" + szukajTextField.getText()) + "(.*)"))
+                .forEach(data::add);
 
-            }
-        }
         Collections.reverse(data);
     }
 }

@@ -72,6 +72,7 @@ public class MainController {
              //   System.out.println(b);
                 data.add(new CertyfikatJakosci(b.numerCertyfikatuAktywneProperty().getValue(), b.naszaNazwaAktywneProperty().getValue(), b.iloscStronaGlownaProperty().getValue()
                 ));
+              
               //  System.out.println(b.numerCertyfikatuAktywneProperty().getValue()+b.naszaNazwaAktywneProperty().getValue()+b.iloscStronaGlownaProperty().getValue());
             }
           //  System.out.println();

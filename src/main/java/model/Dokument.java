@@ -51,7 +51,7 @@ public class Dokument {
     @Override
     public String toString() {
         return
-                getNumerDokumentu() + "->{" + certyfikatJakosci.getNaszaNazwa()+"}-{data: "+getDataDokumentu()+ "}-{nr certyfikatu: " +
+                getNumerDokumentu() + "    " + certyfikatJakosci.getNaszaNazwa()+" {data: "+getDataDokumentu()+ "}-{nr certyfikatu: " +
                         certyfikatJakosci.getNumerCertyfikatu()+"}-{popiół: "+
                         certyfikatJakosci.getZawartoscPopiolu()+"%}-{siarka: "+certyfikatJakosci.getZawartoscSiarkiCalkowitej()+"%}-{cz.lotne: "+
                         certyfikatJakosci.getZawartoscCzesciLotnych()+"%}-{wart.opał.: "+certyfikatJakosci.getWartoscOpalowa()+"MJ/kg}-{RI: "+

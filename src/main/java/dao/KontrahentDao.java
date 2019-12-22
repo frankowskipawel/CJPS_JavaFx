@@ -49,11 +49,11 @@ public class KontrahentDao {
         return kontrahenci;
     }
 
-    public void addKontrahentDatabase(String id, String nazwa, String adres, String nip, String regon) {
+    public void addKontrahentDatabase(Kontrahent kontrahent) {
         Statement statement = null;
         try {
             statement = connection.createStatement();
-            String query = "insert into " + tableName + "(id_kontrahent, nazwa_kontrahent, adres_kontrahent, nip_kontrahent, regon_kontrahent) values('" + id + "', '" + nazwa + "', '" + adres + "', '" + nip + "', '" + regon + "');";
+            String query = "insert into " + tableName + "(id_kontrahent, nazwa_kontrahent, adres_kontrahent, nip_kontrahent, regon_kontrahent) values('" + kontrahent.getIdKontrahent() + "', '" + kontrahent.getNazwaKontrahent() + "', '" + kontrahent.getAdresKontrahent() + "', '" + kontrahent.getNipKontrahent() + "', '" + kontrahent.getRegonKontrahent() + "');";
             int resultSet = statement.executeUpdate(query);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -64,7 +64,7 @@ public class KontrahentDao {
         Statement statement = null;
         try {
             statement = connection.createStatement();
-            String query = "delete from " + tableName + " where id_dokumenty = " + id;
+            String query = "delete from " + tableName + " where id_kontrahent = '" + id+"';";
             int resultSet = statement.executeUpdate(query);
         } catch (SQLException e) {
             e.printStackTrace();
