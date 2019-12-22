@@ -66,7 +66,9 @@ public class DodajNowyCertyfikatController {
         if (numerLabel.getText().equals("(auto)")) {
             numerString = Integer.toString(certyfikatJakosciDao.getNajwyzszyNumerCertyfikatuDao() + 1);
 
+
         } else {
+
             numerString = numerLabel.getText();
         }
 
@@ -77,12 +79,15 @@ public class DodajNowyCertyfikatController {
             isAktywny = "NIE";
         }
         String asortymentValue;
-        if (asortymentCombobox.getPromptText().isEmpty()) {
 
-           asortymentValue = "";
-        } else {
-            asortymentValue = asortymentCombobox.getPromptText();
-        }
+
+//        if (asortymentCombobox.getPromptText().isEmpty()) {
+//
+//           asortymentValue = "";
+//        } else {
+//            asortymentValue = asortymentCombobox.getPromptText();
+//        }
+        asortymentValue = asortymentCombobox.getValue().toString();
 
         CertyfikatJakosci cerytfikatJakosci = new CertyfikatJakosci(numerString, isAktywny, naszaNazwaField.getText(), asortymentValue,
                 dataField.getText(), nrCertyfikatuLaboratoriumField.getText(), zawartoscPopioluField.getText(), zawartoscSiarkiField.getText(),

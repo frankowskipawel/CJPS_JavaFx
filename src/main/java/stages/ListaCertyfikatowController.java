@@ -2,8 +2,10 @@ package stages;
 
 import dao.CertyfikatJakosciDao;
 import dao.DokumentDao;
+import dao.KontrahentDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.layout.VBox;
 import model.CertyfikatJakosci;
 import javafx.collections.ObservableList;
@@ -15,8 +17,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.Dokument;
+import model.Kontrahent;
 
 import java.io.IOException;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -35,6 +39,8 @@ public class ListaCertyfikatowController {
     private Button dodajNowyButton;
     @FXML
     private Button zmienButton;
+    @FXML
+    private CheckBox tylkoAktywne;
 
     @FXML
     public void initialize() {
@@ -178,6 +184,27 @@ public class ListaCertyfikatowController {
         dokumentDao.updateDokument(dokument);
         dokumentyStageController.refreshDokumentyListView();
         zamknijOnClick();
+    }
+    @FXML
+    void tylkoAktywneCheck(ActionEvent event) {
+
+        if (tylkoAktywne.isSelected()){
+        ObservableList<CertyfikatJakosci> data = listaCertyfikatowTableView.getItems();
+        data.removeAll(data);
+        CertyfikatJakosciDao certyfikatJakosciDao = new CertyfikatJakosciDao();
+        List<CertyfikatJakosci> dataFromDB = certyfikatJakosciDao.getAllCertyfikatJakosci();
+
+        dataFromDB.stream()
+                .filter(item -> item.getAktywny().equals("TAK"))
+                .forEach(data::add);}
+        else{
+            ObservableList<CertyfikatJakosci> data = listaCertyfikatowTableView.getItems();
+            data.removeAll(data);
+            CertyfikatJakosciDao certyfikatJakosciDao = new CertyfikatJakosciDao();
+            List<CertyfikatJakosci> dataFromDB = certyfikatJakosciDao.getAllCertyfikatJakosci();
+            data.addAll(dataFromDB);
+        }
+
     }
 
 
