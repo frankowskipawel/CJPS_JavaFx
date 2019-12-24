@@ -124,6 +124,7 @@ public class MainController {
     protected void showAndPrintDokument(Dokument dokument, boolean print, boolean show) throws IOException {
 
         Stage stage = new Stage();
+        stage.setResizable(false);
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(this.getClass().getResource("/stages/CertyfikatJakosciWydruk.fxml"));
         Pane pane = loader.load();
@@ -229,6 +230,7 @@ public class MainController {
     void menuDanePodmiotuClick(ActionEvent event) throws IOException {
 
         Stage stage = new Stage();
+        stage.setResizable(false);
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(this.getClass().getResource("/stages/PodmiotConfig.fxml"));
         Pane pane = loader.load();
@@ -260,7 +262,7 @@ public class MainController {
         //   Iterator<Dokument> iterator = list.iterator();
         int i = 0;
         for (Dokument b : list) {
-            if (i > list.size() - 6) {
+            if (i > list.size() - 7) {
                 ObservableList<Dokument> data = listaDokumentowListViewStronaGlowna.getItems();
 
                 data.add(new Dokument(b.numerDokumentuProperty().getValue(),
@@ -354,6 +356,7 @@ public class MainController {
     @FXML
     void menuUstawieniaClick(ActionEvent event) throws IOException {
         Stage stage = new Stage();
+        stage.setResizable(false);
         stage.setTitle("Ustawienia");
         Pane myPane = (Pane) FXMLLoader.load(getClass().getResource
                 ("Config.fxml"));

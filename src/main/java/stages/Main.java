@@ -6,6 +6,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -22,9 +23,11 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Lista Certyfikatów Jakości");
-        Pane myPane = (Pane) FXMLLoader.load(getClass().getResource
+        VBox vbox = (VBox) FXMLLoader.load(getClass().getResource
                 ("StronaGlowna.fxml"));
-        Scene myScene = new Scene(myPane);
+        primaryStage.setX(-7);
+        primaryStage.setY(307);
+        Scene myScene = new Scene(vbox);
         primaryStage.setScene(myScene);
         primaryStage.show();
 
