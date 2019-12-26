@@ -54,32 +54,20 @@ public class MainController {
 
     }
 
-    protected List<CertyfikatJakosci> getAktywneCertyfikaty() throws SQLException {
-
-        CertyfikatJakosciDao certyfikatJakosciDao = new CertyfikatJakosciDao();
-        return certyfikatJakosciDao.getAktywneCertyfikatyJakosci();
-    }
-
     protected void setListaAktywnychCertyfikatow() {
         CertyfikatJakosciDao certyfikatJakosciDao = new CertyfikatJakosciDao();
         List<CertyfikatJakosci> list = certyfikatJakosciDao.getAktywneCertyfikatyJakosci();
 
-
         ObservableList<CertyfikatJakosci> data = listaAktywnychCertyfikatowTableViewStronaGlowna.getItems();
 
-          //  DokumentDao dokumentDao = new DokumentDao();
-            for (CertyfikatJakosci b : list) {
-             //   System.out.println(b);
-                data.add(new CertyfikatJakosci(b.numerCertyfikatuAktywneProperty().getValue(), b.naszaNazwaAktywneProperty().getValue(), b.iloscStronaGlownaProperty().getValue()
-                ));
-              
-              //  System.out.println(b.numerCertyfikatuAktywneProperty().getValue()+b.naszaNazwaAktywneProperty().getValue()+b.iloscStronaGlownaProperty().getValue());
-            }
-          //  System.out.println();
+        for (CertyfikatJakosci b : list) {
+
+            data.add(new CertyfikatJakosci(b.numerCertyfikatuAktywneProperty().getValue(), b.naszaNazwaAktywneProperty().getValue(), b.iloscStronaGlownaProperty().getValue()
+            ));
+        }
         this.lista = data;
 
     }
-
 
     @FXML
     protected void refreshClick() {
@@ -100,12 +88,8 @@ public class MainController {
             refreshListaDokumentow();
 
             showAndPrintDokument(dokument, true, false); //zamienic na print docelowo}
-           // messageLabelMain.setText("");
-
-
         } else {
             messageLabelMain.setText("Błąd - nie zaznaczono certyfikatu");
-            //   System.out.println("Zaznacz certyfikat do wydrukowania");
         }
     }
 
@@ -114,7 +98,6 @@ public class MainController {
 
         if (!listaDokumentowListViewStronaGlowna.getSelectionModel().isEmpty()) {
             messageLabelMain.setText("");
-            // System.out.println(listaDokumentowListViewStronaGlowna.getSelectionModel().getSelectedItem());
             showAndPrintDokument(listaDokumentowListViewStronaGlowna.getSelectionModel().getSelectedItem(), false, true);
         } else {
             messageLabelMain.setText("Błąd - zaznacz najpierw dokument");
@@ -136,63 +119,17 @@ public class MainController {
             stage.show();
         }
         CertyfikatJakosciWydrukController certyfikatJakosciWydrukController = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
-       // certyfikatJakosciWydrukController.certyfikatJakosciWydrukController = certyfikatJakosciWydrukController; //
-        setWartosciDopuszczalneNaWydruku(certyfikatJakosciWydrukController, WartosciDopuszczalnePaliwa.valueOf(dokument.getCertyfikatJakosci().getAsortyment()));
-        setWartosciNaWydruku(certyfikatJakosciWydrukController, dokument);
+        certyfikatJakosciWydrukController.setPolaNaWydruku(dokument);
         certyfikatJakosciWydrukController.mainController = MainController.this;
         if (print) {
-
             certyfikatJakosciWydrukController.print(2);
-
         }
     }
 
-    public void setWartosciNaWydruku(CertyfikatJakosciWydrukController certyfikatJakosciWydrukController, Dokument dokument) {
-
-        certyfikatJakosciWydrukController.setNazwaAdresPodmiotuWydruk(Config.NAZWA_PODMIOTU + ", " + Config.ULICA_I_NUMER_DOMU_PODMIOTU + ", " + Config.KOD_POCZTOWY_PODMIOTU + " " + Config.MIASTO_PODMIOTU);
-        certyfikatJakosciWydrukController.setNipRegonPodmiotuWydruk("NIP " + Config.NIP_PODMIOTU + " / REGON " + Config.REGON_PODMIOTU);
-        certyfikatJakosciWydrukController.setNrWydruk(dokument.getNumerDokumentu());
-        certyfikatJakosciWydrukController.setDataDokumentuWydruk(dokument.getDataDokumentu());
-        certyfikatJakosciWydrukController.setAsortymentWydruk(WartosciDopuszczalnePaliwa.valueOf(dokument.getCertyfikatJakosci().getAsortyment()).getNazwa());
-        certyfikatJakosciWydrukController.setNrLabWydruk(dokument.getCertyfikatJakosci().getNumerCertyfikatuLaboratorium());
-        certyfikatJakosciWydrukController.setPopiolWydruk(dokument.getCertyfikatJakosci().getZawartoscPopiolu());
-        certyfikatJakosciWydrukController.setSiarkaWydruk(dokument.getCertyfikatJakosci().getZawartoscSiarkiCalkowitej());
-        certyfikatJakosciWydrukController.setCzLotneWydruk(dokument.getCertyfikatJakosci().getZawartoscCzesciLotnych());
-        certyfikatJakosciWydrukController.setWartoscOpalowaWydruk(dokument.getCertyfikatJakosci().getWartoscOpalowa());
-        certyfikatJakosciWydrukController.setSpiekalnoscWydruk(dokument.getCertyfikatJakosci().getZdolnoscSpiekania());
-        certyfikatJakosciWydrukController.setWymiarZiarnaWydruk(dokument.getCertyfikatJakosci().getMinimalnyWymiarZiarna() + "-" + dokument.getCertyfikatJakosci().getMaksymalnyWymiarZiarna());
-        certyfikatJakosciWydrukController.setZawPodziarnaWydruk(dokument.getCertyfikatJakosci().getZawartoscPodziarna());
-        certyfikatJakosciWydrukController.setZawNadziarnaWydruk(dokument.getCertyfikatJakosci().getZawartoscNadziarna());
-        certyfikatJakosciWydrukController.setZawWilgociWydruk(dokument.getCertyfikatJakosci().getZawartoscWilgociCalkowitej());
-
-    }
-
-    public void setWartosciDopuszczalneNaWydruku(CertyfikatJakosciWydrukController certyfikatJakosciWydrukController, WartosciDopuszczalnePaliwa asortyment) {
-        certyfikatJakosciWydrukController.setWDminPopiolWydruk(asortyment.getMinPopiol());
-        certyfikatJakosciWydrukController.setWDmaxPopiolWydruk(asortyment.getMaxPopiol());
-        certyfikatJakosciWydrukController.setWDminSiarkaWydruk(asortyment.getMinSiarka());
-        certyfikatJakosciWydrukController.setWDmaxSiarkaWydruk(asortyment.getMaxSiarka());
-        certyfikatJakosciWydrukController.setWDminCzLotneWydruk(asortyment.getMinCzLotne());
-        certyfikatJakosciWydrukController.setWDmaxCzLotneWydruk(asortyment.getMaxCzLotne());
-        certyfikatJakosciWydrukController.setWDminWartoscOpalowaWydruk(asortyment.getMinWartoscOpalowa());
-        certyfikatJakosciWydrukController.setWDmaxWartoscOpalowaWydruk(asortyment.getMaxWartoscOpalowa());
-        certyfikatJakosciWydrukController.setWDminSpiekalnoscWydruk(asortyment.getMinSpiekalnsc());
-        certyfikatJakosciWydrukController.setWDmaxSpiekalnoscWydruk(asortyment.getMaxSpiekalnosc());
-        certyfikatJakosciWydrukController.setWDminWymiarZiarna(asortyment.getMinWymiarZiarna());
-        certyfikatJakosciWydrukController.setWDmaxWymiarZiarna(asortyment.getMaxWymiarZiarna());
-        certyfikatJakosciWydrukController.setWDminPodziarnoWydruk(asortyment.getMinPodziarno());
-        certyfikatJakosciWydrukController.setWDmaxPodziarnoWydruk(asortyment.getMaxPodziarno());
-        certyfikatJakosciWydrukController.setWDminNadziarnoWydruk(asortyment.getMinNadziarno());
-        certyfikatJakosciWydrukController.setWDmaxNadziarnoWydruk(asortyment.getMaxNadziarno());
-        certyfikatJakosciWydrukController.setWDminWilgotnoscWydruk(asortyment.getMinWilgotnosc());
-        certyfikatJakosciWydrukController.setWDmaxWilgotnoscWydruk(asortyment.getMaxWilgotnosc());
-
-    }
 
     public void refreshListaAktywnychCertyfikatow() {
         ObservableList<CertyfikatJakosci> data = listaAktywnychCertyfikatowTableViewStronaGlowna.getItems();
         data.removeAll(data);
-
         setListaAktywnychCertyfikatow();
         listaAktywnychCertyfikatowTableViewStronaGlowna.getSortOrder().add(naszaNazwaAktywne);
     }
@@ -206,9 +143,7 @@ public class MainController {
     protected Dokument addDokumentToListView() {
 
         ObservableList<Dokument> data = listaDokumentowListViewStronaGlowna.getItems();
-
-       CertyfikatJakosci certyfikatJakosci = new CertyfikatJakosciDao().znajdzCertyfikatPoNr(listaAktywnychCertyfikatowTableViewStronaGlowna.getSelectionModel().getSelectedItem().getNumerCertyfikatuAktywne());
-
+        CertyfikatJakosci certyfikatJakosci = new CertyfikatJakosciDao().znajdzCertyfikatPoNr(listaAktywnychCertyfikatowTableViewStronaGlowna.getSelectionModel().getSelectedItem().getNumerCertyfikatuAktywne());
         DokumentDao dokumentDao = new DokumentDao();
 
         int numer = dokumentDao.getNajwyzszyNumerDokumentuDao() + 1;
@@ -220,8 +155,6 @@ public class MainController {
         Dokument dokumentDodawany = new Dokument(Integer.toString(numer) + "/" + dataDzisiejszaString.substring(0, 4), dataDzisiejszaString, certyfikatJakosci);
 
         data.add(dokumentDodawany);
-
-
         dokumentDao.addDokumentToDatabase(dokumentDodawany);
         return dokumentDodawany;
     }
@@ -259,7 +192,6 @@ public class MainController {
         DokumentDao dokumentDao = new DokumentDao();
         List<Dokument> list = dokumentDao.getAllDokumenty();
 
-        //   Iterator<Dokument> iterator = list.iterator();
         int i = 0;
         for (Dokument b : list) {
             if (i > list.size() - 7) {
@@ -289,37 +221,21 @@ public class MainController {
             }
             i++;
         }
-        //  Collections.reverse(listaDokumentowListViewStronaGlowna.getItems());
-
     }
 
     private void print(Node node) {
-        // Define the Job Status Message
-//        jobStatus.textProperty().unbind();
-//        jobStatus.setText("Creating a printer job...");
-            messageLabelMain.setText("Przygotowuje wydruk");
-        // Create a printer job for the default printer
+
+        messageLabelMain.setText("Przygotowuje wydruk");
         PrinterJob job = PrinterJob.createPrinterJob();
-
         if (job != null) {
-            // Show the printer job status
-//            jobStatus.textProperty().bind(job.jobStatusProperty().asString());
             messageLabelMain.setText(job.jobStatusProperty().toString());
-            // Print the node
             boolean printed = job.printPage(node);
-
             if (printed) {
-                // End the printer job
                 job.endJob();
             } else {
-                // Write Error Message
-//                jobStatus.textProperty().unbind();
-//                jobStatus.setText("Printing failed.");
                 messageLabelMain.setText("Błąd wydruku");
             }
         } else {
-            // Write Error Message
-//            jobStatus.setText("Could not create a printer job.");
             messageLabelMain.setText("Błąd wydruku");
         }
     }
@@ -327,13 +243,6 @@ public class MainController {
     @FXML
     public void MenuListaCertyfikatowClick() throws IOException {
         Stage stage = new Stage();
-//        stage.setTitle("Lista Certyfikatow");
-//        Pane myPane = (Pane) FXMLLoader.load(getClass().getResource
-//                ("ListaCertyfikatowTableView.fxml"));
-//        Scene myScene = new Scene(myPane);
-//        stage.setScene(myScene);
-//        stage.show();
-
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(this.getClass().getResource("/stages/ListaCertyfikatowTableView.fxml"));
         Pane pane = loader.load();
@@ -341,7 +250,6 @@ public class MainController {
         stage.setScene(scene);
         stage.setTitle("Lista Certyfikatów");
         stage.show();
-
     }
 
     @FXML
@@ -378,13 +286,6 @@ public class MainController {
 
     @FXML
     void menuDokumentyClick(ActionEvent event) throws IOException {
-//        Stage stage = new Stage();
-//        stage.setTitle("Lista Dokumentow");
-//        VBox myPane = (VBox) FXMLLoader.load(getClass().getResource
-//                ("Dokumenty.fxml"));
-//        Scene myScene = new Scene(myPane);
-//        stage.setScene(myScene);
-//        stage.show();
 
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader();

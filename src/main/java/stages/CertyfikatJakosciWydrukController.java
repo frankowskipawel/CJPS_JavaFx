@@ -1,14 +1,18 @@
 package stages;
 
+import config.Config;
 import javafx.fxml.FXML;
 import javafx.print.PrinterJob;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import model.Dokument;
+import model.WartosciDopuszczalnePaliwa;
 
 import java.io.IOException;
 
 public class CertyfikatJakosciWydrukController {
+
     CertyfikatJakosciWydrukController certyfikatJakosciWydrukController;
     MainController mainController;
 
@@ -85,63 +89,81 @@ public class CertyfikatJakosciWydrukController {
     public CertyfikatJakosciWydrukController() {
     }
 
+    public void initialize() {
+    }
 
-    public void initialize() throws IOException {
-//        Dokument dokument = new Dokument();
-//        nrWydruk.setText(dokumenty.numerDokumentuStatic);
-//        dataDokumentuWydruk.setText(dokumenty.dataDokumentuStatic);
-//        asortymentWydruk.setText(dokumenty.asortymentStatic);
-//        nrLabWydruk.setText(dokumenty.numerCertyfikatuLaboratoriumStatic);
-//        popiolWydruk.setText(dokumenty.zawartoscPopioluStatic);
-//        siarkaWydruk.setText(dokumenty.zawartoscSiarkiCalkowitejStatic);
-//        czLotneWydruk.setText(dokumenty.zawartoscCzesciLotnychStatic);
-//        wartoscOpalowaWydruk.setText(dokumenty.wartoscOpalowaStatic);
-//        spiekalnoscWydruk.setText(dokumenty.zdolnoscSpiekaniaStatic);
-//        wymiarZiarnaWydruk.setText((dokumenty.minimalnyWymiarZiarnaStatic) + "-" + (dokumenty.maksymalnyWymiarZiarnaStatic));
-//        zawPodziarnaWydruk.setText(dokumenty.zawartoscPodziarnaStatic);
-//        nadziarnoWydruk.setText(dokumenty.zawartoscNadziarnaStatic);
-//        zawWilgociWydruk.setText(dokumenty.zawartoscWilgociCalkowitejStatic);
+    public void setPolaNaWydruku(Dokument dokument) {
 
-//     String[] wartosciDopuszczalne = wartosciDopuszczalne(dokument.asortymentStatic);
-//
-//
-//
-//
-//
-//         WDminPopiolWydruk.setText(wartosciDopuszczalne[0]);
-//         WDminSiarkaWydruk.setText(wartosciDopuszczalne[1]);
-//         WDminCzLotneWydruk.setText(wartosciDopuszczalne[2]);
-//         WDminWartoscOpalowaWydruk.setText(wartosciDopuszczalne[3]);
-//         WDminSpiekalnoscWydruk.setText(wartosciDopuszczalne[4]);
-//         WDminWymiarZiarna.setText(wartosciDopuszczalne[5]);
-//         WDminZawPodziarnaWydruk.setText(wartosciDopuszczalne[6]);
-//         WDminNadziarnoWydruk.setText(wartosciDopuszczalne[7]);
-//         WDminZawWilgociWydruk.setText(wartosciDopuszczalne[8]);
-//
-//         WDmaxPopiolWydruk.setText(wartosciDopuszczalne[9]);
-//         WDmaxSiarkaWydruk.setText(wartosciDopuszczalne[10]);
-//         WDmaxCzLotneWydruk.setText(wartosciDopuszczalne[11]);
-//         WDmaxWartoscOpalowaWydruk.setText(wartosciDopuszczalne[12]);
-//         WDmaxSpiekalnoscWydruk.setText(wartosciDopuszczalne[13]);
-//         WDmaxWymiarZiarna.setText(wartosciDopuszczalne[14]);
-//         WDmaxZawPodziarnaWydruk.setText(wartosciDopuszczalne[15]);
-//         WDmaxNadziarnoWydruk.setText(wartosciDopuszczalne[16]);
-//         WDmaxZawWilgociWydruk.setText(wartosciDopuszczalne[17]);
+        //Wartości paliwa
+        setNazwaAdresPodmiotuWydruk(Config.NAZWA_PODMIOTU + ", " + Config.ULICA_I_NUMER_DOMU_PODMIOTU + ", " + Config.KOD_POCZTOWY_PODMIOTU + " " + Config.MIASTO_PODMIOTU);
+        setNipRegonPodmiotuWydruk("NIP " + Config.NIP_PODMIOTU + " / REGON " + Config.REGON_PODMIOTU);
+        setNrWydruk(dokument.getNumerDokumentu());
+        setDataDokumentuWydruk(dokument.getDataDokumentu());
+        setAsortymentWydruk(WartosciDopuszczalnePaliwa.valueOf(dokument.getCertyfikatJakosci().getAsortyment()).getNazwa());
+        setNrLabWydruk(dokument.getCertyfikatJakosci().getNumerCertyfikatuLaboratorium());
+        setPopiolWydruk(dokument.getCertyfikatJakosci().getZawartoscPopiolu());
+        setSiarkaWydruk(dokument.getCertyfikatJakosci().getZawartoscSiarkiCalkowitej());
+        setCzLotneWydruk(dokument.getCertyfikatJakosci().getZawartoscCzesciLotnych());
+        setWartoscOpalowaWydruk(dokument.getCertyfikatJakosci().getWartoscOpalowa());
+        setSpiekalnoscWydruk(dokument.getCertyfikatJakosci().getZdolnoscSpiekania());
+        setWymiarZiarnaWydruk(dokument.getCertyfikatJakosci().getMinimalnyWymiarZiarna() + "-" + dokument.getCertyfikatJakosci().getMaksymalnyWymiarZiarna());
+        setZawPodziarnaWydruk(dokument.getCertyfikatJakosci().getZawartoscPodziarna());
+        setZawNadziarnaWydruk(dokument.getCertyfikatJakosci().getZawartoscNadziarna());
+        setZawWilgociWydruk(dokument.getCertyfikatJakosci().getZawartoscWilgociCalkowitej());
+        //wartości dopuszczalne
+        setWDminPopiolWydruk(WartosciDopuszczalnePaliwa.valueOf(dokument.getCertyfikatJakosci().getAsortyment()).getMinPopiol());
+        setWDmaxPopiolWydruk(WartosciDopuszczalnePaliwa.valueOf(dokument.getCertyfikatJakosci().getAsortyment()).getMaxPopiol());
+        setWDminSiarkaWydruk(WartosciDopuszczalnePaliwa.valueOf(dokument.getCertyfikatJakosci().getAsortyment()).getMinSiarka());
+        setWDmaxSiarkaWydruk(WartosciDopuszczalnePaliwa.valueOf(dokument.getCertyfikatJakosci().getAsortyment()).getMaxSiarka());
+        setWDminCzLotneWydruk(WartosciDopuszczalnePaliwa.valueOf(dokument.getCertyfikatJakosci().getAsortyment()).getMinCzLotne());
+        setWDmaxCzLotneWydruk(WartosciDopuszczalnePaliwa.valueOf(dokument.getCertyfikatJakosci().getAsortyment()).getMaxCzLotne());
+        setWDminWartoscOpalowaWydruk(WartosciDopuszczalnePaliwa.valueOf(dokument.getCertyfikatJakosci().getAsortyment()).getMinWartoscOpalowa());
+        setWDmaxWartoscOpalowaWydruk(WartosciDopuszczalnePaliwa.valueOf(dokument.getCertyfikatJakosci().getAsortyment()).getMaxWartoscOpalowa());
+        setWDminSpiekalnoscWydruk(WartosciDopuszczalnePaliwa.valueOf(dokument.getCertyfikatJakosci().getAsortyment()).getMinSpiekalnsc());
+        setWDmaxSpiekalnoscWydruk(WartosciDopuszczalnePaliwa.valueOf(dokument.getCertyfikatJakosci().getAsortyment()).getMaxSpiekalnosc());
+        setWDminWymiarZiarna(WartosciDopuszczalnePaliwa.valueOf(dokument.getCertyfikatJakosci().getAsortyment()).getMinWymiarZiarna());
+        setWDmaxWymiarZiarna(WartosciDopuszczalnePaliwa.valueOf(dokument.getCertyfikatJakosci().getAsortyment()).getMaxWymiarZiarna());
+        setWDminPodziarnoWydruk(WartosciDopuszczalnePaliwa.valueOf(dokument.getCertyfikatJakosci().getAsortyment()).getMinPodziarno());
+        setWDmaxPodziarnoWydruk(WartosciDopuszczalnePaliwa.valueOf(dokument.getCertyfikatJakosci().getAsortyment()).getMaxPodziarno());
+        setWDminNadziarnoWydruk(WartosciDopuszczalnePaliwa.valueOf(dokument.getCertyfikatJakosci().getAsortyment()).getMinNadziarno());
+        setWDmaxNadziarnoWydruk(WartosciDopuszczalnePaliwa.valueOf(dokument.getCertyfikatJakosci().getAsortyment()).getMaxNadziarno());
+        setWDminWilgotnoscWydruk(WartosciDopuszczalnePaliwa.valueOf(dokument.getCertyfikatJakosci().getAsortyment()).getMinWilgotnosc());
+        setWDmaxWilgotnoscWydruk(WartosciDopuszczalnePaliwa.valueOf(dokument.getCertyfikatJakosci().getAsortyment()).getMaxWilgotnosc());
+    }
 
-        //print(paneWydruk);
-        // print(paneWydruk);
+    @FXML
+    private void printClick() throws IOException {
+        print(2);
+    }
+
+    public void print(int a) {
+        for (int i = 1; i <= a; i++) {
+            print(paneWydruk);
+        }
+    }
+
+    public void print(Node node) {
+
+        mainController.setMessageLabelMain("Przygotowuje wydruk");
+        PrinterJob job = PrinterJob.createPrinterJob();
+
+        if (job != null) {
+            mainController.setMessageLabelMain("Trwa Drukowanie");
+            boolean printed = job.printPage(node);
+
+            if (printed) {
+                mainController.setMessageLabelMain("Wydrukowano pomyślnie");
+                job.endJob();
+            } else {
+                mainController.setMessageLabelMain("Błąd wydruku");
+            }
+        } else {
+            mainController.setMessageLabelMain("Błąd wydruku");
+        }
     }
 
 
-//    public void setWDminPopiolWydruk(String WDminPopiolWydruk) {
-//        this.WDminPopiolWydruk.setText(WDminPopiolWydruk);
-//    }
-//
-//    public void setWDmaxPopiolWydruk(String WDmaxPopiolWydruk) {
-//        this.WDmaxPopiolWydruk.setText(WDmaxPopiolWydruk);
-//    }
-
-
+    //getters and sertters
     public void setNazwaAdresPodmiotuWydruk(String nazwaAdresPodmiotuWydruk) {
         this.nazwaAdresPodmiotuWydruk.setText(nazwaAdresPodmiotuWydruk);
     }
@@ -272,92 +294,5 @@ public class CertyfikatJakosciWydrukController {
 
     public void setWDmaxWilgotnoscWydruk(String WDmaxZawWilgociWydruk) {
         this.WDmaxZawWilgociWydruk.setText(WDmaxZawWilgociWydruk);
-    }
-
-
-//    public void setTextLabel(String text){
-//        nrWydruk.setText(text);
-//    }
-
-//    private String[] wartosciDopuszczalne(String asortyment) {
-//
-//        if (asortyment.equals("WĘGIEL KAMIENNY - KOSTKA")) {
-//            String[] wartosciDopuszczalneTablica;
-//            wartosciDopuszczalneTablica = new String[]{"-", "-", "-", "22", "-", "63", "0", "0", "-", "12", "1,7", "-", "-", "-", "200", "10", "10", "20"};
-//            return wartosciDopuszczalneTablica;
-//        }
-//        if (asortyment.equals("WĘGIEL KAMIENNY - ORZECH") ) {
-//            String[] wartosciDopuszczalneTablica;
-//            wartosciDopuszczalneTablica = new String[]{"-", "-", "-", "22", "-", "25", "0", "0", "-", "12", "1,7", "-", "-", "-", "80", "10", "10", "20"};
-//            return wartosciDopuszczalneTablica;
-//        }
-//        if (asortyment.equals("WĘGIEL KAMIENNY - GROSZEK")) {
-//            String[] wartosciDopuszczalneTablica;
-//            wartosciDopuszczalneTablica = new String[]{"-", "-", "-", "21", "-", "5", "0", "0", "-", "14", "1,7", "-", "-", "90", "40", "11", "10", "20"};
-//            return wartosciDopuszczalneTablica;
-//        }
-//        if (asortyment.equals("WĘGIEL KAMIENNY - MIAŁ")) {
-//            String[] wartosciDopuszczalneTablica;
-//            wartosciDopuszczalneTablica = new String[]{"-", "-", "-", "18", "-", "1", "-", "0", "-", "28", "1,7", "-", "-", "-", "31,5", "30", "5", "24"};
-//            return wartosciDopuszczalneTablica;
-//        }
-//        if (asortyment.equals("WĘGIEL KAMIENNY - EKOGROSZEK")) {
-//            String[] wartosciDopuszczalneTablica;
-//            wartosciDopuszczalneTablica = new String[]{"-", "-", "-", "24", "-", "5", "0", "0", "-", "12", "1,2", "-", "-", "25", "31,5", "10", "10", "15"};
-//            return wartosciDopuszczalneTablica;
-//        }
-//        if (asortyment.equals("WĘGIEL KAMIENNY - PELLET")) {
-//            String[] wartosciDopuszczalneTablica;
-//            wartosciDopuszczalneTablica = new String[]{"-", "-", "-", "24", "-", "5", "0", "0", "-", "12", "1,2", "-", "-", "25", "31,5", "10", "5", "15"};
-//            return wartosciDopuszczalneTablica;
-//        }
-//
-//        String[] wartosciDopuszczalneTablica;
-//        wartosciDopuszczalneTablica = new String[]{"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""};
-//        return wartosciDopuszczalneTablica;
-//    }
-    public void print(int a){
-                for (int i = 1; i <= a; i++) {
-        print(paneWydruk);
-
-        }
-    }
-
-
-    @FXML
-    private void printClick() throws IOException {
-            print(2);
-    }
-
-    public void print(Node node) {
-        // Define the Job Status Message
-
-        mainController.setMessageLabelMain("Przygotowuje wydruk");
-        // Create a printer job for the default printer
-        PrinterJob job = PrinterJob.createPrinterJob();
-
-        if (job != null) {
-            // Show the printer job status
-//            jobStatus.textProperty().bind(job.jobStatusProperty().asString());
-          //  mainController.setMessageLabelMain(job.jobStatusProperty().asString().toString());
-            mainController.setMessageLabelMain("Trwa Drukowanie");
-            // Print the node
-            boolean printed = job.printPage(node);
-
-            if (printed) {
-                // End the printer job
-               mainController.setMessageLabelMain("Wydrukowano pomyślnie");
-                job.endJob();
-            } else {
-                // Write Error Message
-//                jobStatus.textProperty().unbind();
-//                jobStatus.setText("Printing failed.");
-                mainController.setMessageLabelMain("Błąd wydruku");
-            }
-        } else {
-            // Write Error Message
-//            jobStatus.setText("Could not create a printer job.");
-            mainController.setMessageLabelMain("Błąd wydruku");
-        }
     }
 }

@@ -92,12 +92,12 @@
             <CheckBox fx:id="aktywnyCheckbox" mnemonicParsing="false" text="Aktywny" />
             <HBox alignment="CENTER_RIGHT" cache="true" prefHeight="48.0" prefWidth="418.0">
                <children>
-                  <Button fx:id="dodajButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#okClick" prefHeight="26.0" prefWidth="82.0" text="OK">
+                  <Button fx:id="dodajButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#okOnClick" prefHeight="26.0" prefWidth="82.0" text="OK">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
                   </Button>
-                  <Button fx:id="anulujButton" mnemonicParsing="false" onAction="#anulujButtonClick" prefHeight="25.0" prefWidth="82.0" text="Anuluj" />
+                  <Button fx:id="anulujButton" mnemonicParsing="false" onAction="#anulujOnClick" prefHeight="25.0" prefWidth="82.0" text="Anuluj" />
                </children>
                <opaqueInsets>
                   <Insets />

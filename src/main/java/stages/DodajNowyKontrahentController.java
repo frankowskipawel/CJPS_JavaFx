@@ -12,22 +12,16 @@ public class DodajNowyKontrahentController {
 
     @FXML
     private TextField id;
-
     @FXML
     private TextField nazwa;
-
     @FXML
     private TextField adres;
-
     @FXML
     private TextField nip;
-
     @FXML
     private TextField regon;
-
     @FXML
     private Button okButton;
-
     @FXML
     void anulujOnClick() {
         Stage stage = (Stage) okButton.getScene().getWindow();
@@ -38,7 +32,7 @@ public class DodajNowyKontrahentController {
     void okOnClick() {
 
         Kontrahent kontrahent = new Kontrahent(id.getText(), nazwa.getText(), adres.getText(), nip.getText(), regon.getText());
-        kontrahentController.dodajNowyKontrahent(kontrahent);
+        kontrahentController.addNowyKontrahent(kontrahent);
         Stage stage = (Stage) okButton.getScene().getWindow();
         stage.close();
     }

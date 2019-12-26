@@ -6,10 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.DragEvent;
-import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.CertyfikatJakosci;
@@ -23,7 +20,7 @@ import java.util.List;
 
 
 public class DokumentyStageController {
-    private int i=0;
+
     MainController mainController;
     @FXML
     private Button anulujButton;
@@ -35,12 +32,11 @@ public class DokumentyStageController {
 
     @FXML
     public void initialize() {
-        refreshDokumentyListView();
-        refreshDokumentyListView();
-
+        odswiezDokumentyListView();
+        odswiezDokumentyListView();
     }
 
-    public void refreshDokumentyListView() {
+    public void odswiezDokumentyListView() {
         ObservableList<Dokument> data = dokumentyListView.getItems();
         data.removeAll(data);
         DokumentDao dokumentDao = new DokumentDao();

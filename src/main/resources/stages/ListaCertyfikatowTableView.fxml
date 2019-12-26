@@ -133,7 +133,7 @@
                         <Insets left="10.0" top="10.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="dodajNowyButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#dodajNowyCertyfikatClick" text="Dodaj Nowy" textAlignment="CENTER">
+                  <Button fx:id="dodajNowyButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addNowyCertyfikatOnClick" text="Dodaj Nowy" textAlignment="CENTER">
                      <HBox.margin>
                         <Insets left="10.0" top="10.0" />
                      </HBox.margin>

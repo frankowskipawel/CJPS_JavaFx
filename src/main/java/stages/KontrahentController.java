@@ -1,6 +1,5 @@
 package stages;
 
-import dao.DokumentDao;
 import dao.KontrahentDao;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -8,7 +7,6 @@ import javafx.scene.control.Button;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import model.Dokument;
 import model.Kontrahent;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,7 +16,6 @@ import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 public class KontrahentController {
@@ -29,16 +26,6 @@ public class KontrahentController {
     @FXML
     private TableView<Kontrahent> kontrahenciTableView;
     @FXML
-    private TextField idKontrahentField;
-    @FXML
-    private TextField nazwaKontrahentField;
-    @FXML
-    private TextField adresKontrahentField;
-    @FXML
-    private TextField nipKontrahentField;
-    @FXML
-    private TextField regonKontrahentField;
-    @FXML
     private Button okButton;
     @FXML
     private TextField szukajTextField;
@@ -47,13 +34,12 @@ public class KontrahentController {
     @FXML
     public void initialize() {
 
-        addAllKontrahentListFromDatabaseToTableView();
-        //  addNewKontrahentToTableViewTest();
+        setAllKontrahentTableView();
 
     }
 
-    @FXML //Pobierz dane zaznaczone w TableView
-    protected void deleteRowFromTableViewAndDatabase(ActionEvent event) {
+    @FXML
+    protected void usunKontrahent(ActionEvent event) {
 
         KontrahentDao kontrahentDao = new KontrahentDao();
         System.out.println(kontrahenciTableView.getSelectionModel().getSelectedItem().getIdKontrahent());
@@ -62,11 +48,9 @@ public class KontrahentController {
 
         ObservableList<Kontrahent> data = kontrahenciTableView.getItems();
         data.remove(kontrahenciTableView.getSelectionModel().getSelectedItem());
-
-
     }
 
-    public void dodajNowyKontrahent(Kontrahent kontrahent) {
+    public void addNowyKontrahent(Kontrahent kontrahent) {
         ObservableList<Kontrahent> data = kontrahenciTableView.getItems();
         data.add(new Kontrahent(kontrahent.getIdKontrahent(),
                 kontrahent.getNazwaKontrahent(),
@@ -82,21 +66,6 @@ public class KontrahentController {
 
     @FXML
     protected void dodajNowyOnClick(ActionEvent event) throws IOException {
-//        ObservableList<Kontrahent> data = KontrahenciTableView.getItems();
-////        data.add(new Kontrahent(idKontrahentField.getText(),
-////                nazwaKontrahentField.getText(),
-////                adresKontrahentField.getText(),
-////                nipKontrahentField.getText(),
-////                regonKontrahentField.getText()
-////        ));
-////        KontrahentDao kontrahentDao = new KontrahentDao();
-////        kontrahentDao.addKontrahentDatabase(idKontrahentField.getText(), nazwaKontrahentField.getText(), adresKontrahentField.getText(), nipKontrahentField.getText(), regonKontrahentField.getText() );
-////
-////        idKontrahentField.setText("");
-////        nazwaKontrahentField.setText("");
-////        adresKontrahentField.setText("");
-////        nipKontrahentField.setText("");
-////        regonKontrahentField.setText("");
 
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader();
@@ -112,23 +81,10 @@ public class KontrahentController {
     }
 
     @FXML
-    protected void addNewKontrahentToTableViewTest() {
-        ObservableList<Kontrahent> data = kontrahenciTableView.getItems();
-        data.add(new Kontrahent("idKontrahentField.getText()",
-                "nazwaKontrahentField.getText()",
-                "adresKontrahentField.getText()",
-                "nipKontrahentField.getText()",
-                "regonKontrahentField.getText()"));
-
-    }
-
-    @FXML
-    protected void addAllKontrahentListFromDatabaseToTableView() {
+    protected void setAllKontrahentTableView() {
 
         KontrahentDao kontrahentDao = new KontrahentDao();
         List<Kontrahent> list = kontrahentDao.getAllKontrahent();
-
-        Iterator<Kontrahent> iterator = list.iterator();
 
         for (Kontrahent b : list) {
 

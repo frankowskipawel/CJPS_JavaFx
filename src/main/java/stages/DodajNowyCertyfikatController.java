@@ -58,20 +58,15 @@ public class DodajNowyCertyfikatController {
 
 
     @FXML
-    protected void okClick() {
+    protected void okOnClick() {
 
         CertyfikatJakosciDao certyfikatJakosciDao = new CertyfikatJakosciDao();
-
         String numerString;
         if (numerLabel.getText().equals("(auto)")) {
             numerString = Integer.toString(certyfikatJakosciDao.getNajwyzszyNumerCertyfikatuDao() + 1);
-
-
         } else {
-
             numerString = numerLabel.getText();
         }
-
         String isAktywny;
         if (aktywnyCheckbox.selectedProperty().getValue()) {
             isAktywny = "TAK";
@@ -80,15 +75,7 @@ public class DodajNowyCertyfikatController {
         }
         String asortymentValue;
 
-
-//        if (asortymentCombobox.getPromptText().isEmpty()) {
-//
-//           asortymentValue = "";
-//        } else {
-//            asortymentValue = asortymentCombobox.getPromptText();
-//        }
         asortymentValue = asortymentCombobox.getValue().toString();
-
         CertyfikatJakosci cerytfikatJakosci = new CertyfikatJakosci(numerString, isAktywny, naszaNazwaField.getText(), asortymentValue,
                 dataField.getText(), nrCertyfikatuLaboratoriumField.getText(), zawartoscPopioluField.getText(), zawartoscSiarkiField.getText(),
                 zawartoscCzesciLotnychField.getText(), wartoscOpalowaField.getText(), spiekalnoscField.getText(), minWymiarziarnaField.getText(),
@@ -101,14 +88,13 @@ public class DodajNowyCertyfikatController {
             certyfikatJakosciDao.replaceCertyfikatJakosci(cerytfikatJakosci);
         }
 
-
         Stage stage = (Stage) anulujButton.getScene().getWindow();
         stage.close();
         this.listaCertyfikatowController.odswiezClick();
     }
 
     @FXML
-    void anulujButtonClick(ActionEvent event) {
+    void anulujOnClick(ActionEvent event) {
         Stage stage = (Stage) anulujButton.getScene().getWindow();
         stage.close();
 
