@@ -62,6 +62,7 @@ public class ConfigController {
         Config config = new Config();
         config.setConfig(hostTextFieldConfig.getText(), portTextFieldConfig.getText(), databaseNameTextFieldConfig.getText(), loginTextFieldConfig.getText(), passwordTextfieldConfig.getText());
         config.getConfigFromFile();
+        messageLabel.setText("Zapisano zmiany!");
 //        closeStage();
     }
 
@@ -89,5 +90,59 @@ public class ConfigController {
         messageLabel.setText(text);
     }
 
+    public TextField getHostTextFieldConfig() {
+        return hostTextFieldConfig;
+    }
 
+    public void setHostTextFieldConfig(TextField hostTextFieldConfig) {
+        this.hostTextFieldConfig = hostTextFieldConfig;
+    }
+
+    public TextField getPortTextFieldConfig() {
+        return portTextFieldConfig;
+    }
+
+    public void setPortTextFieldConfig(TextField portTextFieldConfig) {
+        this.portTextFieldConfig = portTextFieldConfig;
+    }
+
+    public TextField getDatabaseNameTextFieldConfig() {
+        return databaseNameTextFieldConfig;
+    }
+
+    public void setDatabaseNameTextFieldConfig(TextField databaseNameTextFieldConfig) {
+        this.databaseNameTextFieldConfig = databaseNameTextFieldConfig;
+    }
+
+    public TextField getLoginTextFieldConfig() {
+        return loginTextFieldConfig;
+    }
+
+    public void setLoginTextFieldConfig(TextField loginTextFieldConfig) {
+        this.loginTextFieldConfig = loginTextFieldConfig;
+    }
+
+    public TextField getPasswordTextfieldConfig() {
+        return passwordTextfieldConfig;
+    }
+
+    public void setPasswordTextfieldConfig(TextField passwordTextfieldConfig) {
+        this.passwordTextfieldConfig = passwordTextfieldConfig;
+    }
+
+    public Button getAnulujButton() {
+        return anulujButton;
+    }
+
+    public void setAnulujButton(Button anulujButton) {
+        this.anulujButton = anulujButton;
+    }
+
+    public Label getMessageLabel() {
+        return messageLabel;
+    }
+
+    public void setMessageLabel(Label messageLabel) {
+        this.messageLabel = messageLabel;
+    }
 }

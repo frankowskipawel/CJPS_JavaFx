@@ -25,20 +25,19 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-
-        Config config = new Config();
-        config.getConfigFromFile();
-        DaoService daoService = new DaoService();
-        daoService.init();
-
-        VBox vBox = (VBox) FxmlUtils.fxmlLoader("/stages/StronaGlowna.fxml");
-        Scene scene = new Scene(vBox);
-        primaryStage.setScene(scene);
-        primaryStage.setTitle(FxmlUtils.getResourceBundle().getString("title.application"));
-        primaryStage.show();
-        FXMLLoader loader = FxmlUtils.getLoader("/stages/StronaGlowna.fxml");
-        MainController mainController = loader.getController();
-
+        StartMain.startMain(primaryStage);
+//        Config config = new Config();
+//        config.getConfigFromFile();
+//        DaoService daoService = new DaoService();
+//        daoService.init();
+//
+//        VBox vBox = (VBox) FxmlUtils.fxmlLoader("/stages/StronaGlowna.fxml");
+//        Scene scene = new Scene(vBox);
+//        primaryStage.setScene(scene);
+//        primaryStage.setTitle(FxmlUtils.getResourceBundle().getString("title.application"));
+//        primaryStage.show();
+//        FXMLLoader loader = FxmlUtils.getLoader("/stages/StronaGlowna.fxml");
+//        MainController mainController = loader.getController();
 
 
 //        Locale.setDefault(new Locale("pl"));

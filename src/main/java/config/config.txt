@@ -1,7 +1,7 @@
-localhost1
+localhost
 3306
 certyfikaty_database
-root
+pawel
 admin
 Przedsiębiorstwo Wielobranżowe WĘGLOKOKS-BIS s.c.
 Szosa chełmińska 204-210

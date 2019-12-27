@@ -2,6 +2,7 @@ package stages;
 
 import config.Config;
 import dao.CertyfikatJakosciDao;
+import dao.DaoService;
 import dao.DokumentDao;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -187,14 +188,13 @@ public class MainController {
     @FXML
     void menuQuitOnClick(ActionEvent event) {
         Optional<ButtonType> result = DialogsUtils.confirmationDialog("exit.title", "exit.header");
-        if(result.get()==ButtonType.OK){
+        if (result.get() == ButtonType.OK) {
             Platform.exit();
             System.exit(0);
         }
 
 
-
-       // System.exit(0);
+        // System.exit(0);
     }
 
     @FXML
@@ -260,33 +260,44 @@ public class MainController {
         Scene scene = new Scene(pane);
         stage.setScene(scene);
         stage.setTitle("Lista Certyfikatów");
-        stage.show();
+        stage.showAndWait();
     }
 
     @FXML
     public void usunOstatniMenuClick() throws IOException {
 
         Optional<ButtonType> result = DialogsUtils.confirmationDialog("delete.title", "delete.header");
-        if(result.get()==ButtonType.OK){
+        if (result.get() == ButtonType.OK) {
 
 
-        DokumentDao dokumentDao = new DokumentDao();
-        dokumentDao.usunOstatniDokument();
-        refreshListaDokumentow();
-        refreshListaAktywnychCertyfikatow();
-    }}
+            DokumentDao dokumentDao = new DokumentDao();
+            dokumentDao.usunOstatniDokument();
+            refreshListaDokumentow();
+            refreshListaAktywnychCertyfikatow();
+        }
+    }
 
 
     @FXML
-    void menuUstawieniaClick(ActionEvent event) throws IOException {
-        Stage stage = new Stage();
-        stage.setResizable(false);
-        stage.setTitle("Ustawienia");
-        Pane myPane = (Pane) FXMLLoader.load(getClass().getResource
-                ("Config.fxml"));
-        Scene myScene = new Scene(myPane);
-        stage.setScene(myScene);
-        stage.show();
+    void menuUstawieniaClick(ActionEvent event) throws Exception {
+        Optional<ButtonType> result = DialogsUtils.configDialog("config.title", "config.header");
+        if (result.get() == ButtonType.OK) {
+            Config config = new Config();
+            config.getConfigFromFile();
+            DaoService daoService = new DaoService();
+            daoService.init();
+            refreshClick();
+
+        }
+
+//        Stage stage = new Stage();
+//        stage.setResizable(false);
+//        stage.setTitle("Ustawienia");
+//        Pane myPane = (Pane) FXMLLoader.load(getClass().getResource
+//                ("Config.fxml"));
+//        Scene myScene = new Scene(myPane);
+//        stage.setScene(myScene);
+//        stage.showAndWait();
     }
 
     @FXML

@@ -12,7 +12,7 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="274.0" prefWidth="355.0" style="-fx-spacing: 0;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stages.ConfigController">
    <children>
-      <Label fx:id="messageLabel" prefHeight="44.0" prefWidth="334.0" style="-fx-alignment: center;" text="Message" textAlignment="CENTER">
+      <Label fx:id="messageLabel" prefHeight="44.0" prefWidth="334.0" style="-fx-alignment: center;" textAlignment="CENTER">
          <font>
             <Font size="14.0" />
          </font>
@@ -52,8 +52,8 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="okButton" mnemonicParsing="false" onAction="#okClick" prefHeight="14.0" prefWidth="87.0" text="OK" GridPane.columnIndex="1" />
-            <Button fx:id="anulujButton" mnemonicParsing="false" onAction="#anulujClick" prefHeight="26.0" prefWidth="82.0" text="Anuluj" GridPane.columnIndex="2" />
+            <Button fx:id="okButton" mnemonicParsing="false" onAction="#okClick" prefHeight="14.0" prefWidth="87.0" text="Zapisz" GridPane.columnIndex="2" />
+            <Button fx:id="anulujButton" mnemonicParsing="false" onAction="#anulujClick" prefHeight="26.0" prefWidth="82.0" text="Anuluj" visible="false" GridPane.columnIndex="1" />
             <Button mnemonicParsing="false" onAction="#domyslneClick" text="Domyślne" />
          </children>
       </GridPane>

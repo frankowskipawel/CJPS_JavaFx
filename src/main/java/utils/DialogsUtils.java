@@ -2,10 +2,16 @@ package utils;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
+import javafx.stage.Stage;
 import stages.ConfigController;
+import stages.DokumentyStageController;
 
+import java.io.IOException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -34,13 +40,17 @@ public class DialogsUtils {
         errorAlert.showAndWait();
     }
 
-    public static Optional<ButtonType> configDialog(String bundleTitle, String BundleHeader) {
+    public static Optional<ButtonType> configDialog(String bundleTitle, String BundleHeader) throws IOException {
         Alert confirmationDialog = new Alert(Alert.AlertType.CONFIRMATION);
         confirmationDialog.setTitle(bundle.getString(bundleTitle));
         confirmationDialog.setHeaderText(bundle.getString(BundleHeader));
         confirmationDialog.initModality(Modality.NONE);
-        confirmationDialog.getDialogPane().setContent(FxmlUtils.fxmlLoader("/stages/Config.fxml"));
 
+        FXMLLoader loader = new FXMLLoader();
+        loader.<ConfigController>setController(FxmlUtils.fxmlLoader("/stages/Config.fxml"));
+//        ConfigController configController = (ConfigController)loader.getController();
+
+        confirmationDialog.<ConfigController>getDialogPane().setContent(loader.getController());
         Optional<ButtonType> result = confirmationDialog.showAndWait();
 
         return result;
