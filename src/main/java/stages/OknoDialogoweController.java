@@ -17,6 +17,11 @@ public class OknoDialogoweController {
     private Button anulujButton;
 
     @FXML
+    public void initialize() {
+
+    }
+
+    @FXML
     void anulujClick(ActionEvent event) {
 
     }

@@ -4,6 +4,7 @@ import dao.CertyfikatJakosciDao;
 import dao.DokumentDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.VBox;
 import model.CertyfikatJakosci;
@@ -15,10 +16,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import model.Dokument;
+import utils.DialogsUtils;
 
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 public class ListaCertyfikatowController {
 
@@ -146,10 +149,12 @@ public class ListaCertyfikatowController {
 
     @FXML
     public void usunCertyfikat() {
+        Optional<ButtonType> result = DialogsUtils.confirmationDialog("delete.title", "delete.header");
+        if(result.get()==ButtonType.OK){
         CertyfikatJakosciDao certyfikatJakosciDao = new CertyfikatJakosciDao();
         certyfikatJakosciDao.deleteCertyfikatJakosci(listaCertyfikatowTableView.getSelectionModel().getSelectedItem());
         odswiezClick();
-    }
+    }}
 
     @FXML
     private void zamknijOnClick() {
@@ -159,12 +164,14 @@ public class ListaCertyfikatowController {
 
     @FXML
     void zmienOnClick(ActionEvent event) {
+        Optional<ButtonType> result = DialogsUtils.confirmationDialog("replace.title", "replace.header");
+        if(result.get()==ButtonType.OK){
         Dokument dokument = new Dokument(dokumentEdytowany.getNumerDokumentu(), dokumentEdytowany.getDataDokumentu(), listaCertyfikatowTableView.getSelectionModel().getSelectedItem());
         DokumentDao dokumentDao = new DokumentDao();
         dokumentDao.updateDokument(dokument);
         dokumentyStageController.odswiezDokumentyListView();
         zamknijOnClick();
-    }
+    }}
 
     @FXML
     void tylkoAktywneCheck(ActionEvent event) {

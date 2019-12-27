@@ -3,6 +3,7 @@ package stages;
 import config.Config;
 import dao.CertyfikatJakosciDao;
 import dao.DokumentDao;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
@@ -17,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import model.WartosciDopuszczalnePaliwa;
+import utils.DialogsUtils;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -25,6 +27,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 public class MainController {
 
@@ -183,7 +186,15 @@ public class MainController {
 
     @FXML
     void menuQuitOnClick(ActionEvent event) {
-        System.exit(0);
+        Optional<ButtonType> result = DialogsUtils.confirmationDialog("exit.title", "exit.header");
+        if(result.get()==ButtonType.OK){
+            Platform.exit();
+            System.exit(0);
+        }
+
+
+
+       // System.exit(0);
     }
 
     @FXML
@@ -254,11 +265,16 @@ public class MainController {
 
     @FXML
     public void usunOstatniMenuClick() throws IOException {
+
+        Optional<ButtonType> result = DialogsUtils.confirmationDialog("delete.title", "delete.header");
+        if(result.get()==ButtonType.OK){
+
+
         DokumentDao dokumentDao = new DokumentDao();
         dokumentDao.usunOstatniDokument();
         refreshListaDokumentow();
         refreshListaAktywnychCertyfikatow();
-    }
+    }}
 
 
     @FXML

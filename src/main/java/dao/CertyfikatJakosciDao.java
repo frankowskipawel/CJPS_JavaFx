@@ -214,6 +214,5 @@ public class CertyfikatJakosciDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 }

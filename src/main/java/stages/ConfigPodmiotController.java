@@ -35,13 +35,13 @@ public class ConfigPodmiotController {
 
 
     @FXML
-    void anulujButtonClick(ActionEvent event) {
+    void anulujButtonClick() {
         Stage stage = (Stage) anulujButton.getScene().getWindow();
         stage.close();
     }
 
     @FXML
-    void okClick(ActionEvent event) throws IOException {
+    void okClick() throws IOException {
         Config config = new Config();
         config.setDanePodmiotu(nazwaTextFieldPodmiotConfig.getText(), ulicaTextFieldPodmiotConfig.getText(), kodPocztowyTextFieldPodmiotConfig.getText(),
                 miastoTextFieldPodmiotConfig.getText(), nipTextFieldPodmiotConfig.getText(), regonTextFieldPodmiotConfig.getText());

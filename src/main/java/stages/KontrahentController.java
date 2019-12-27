@@ -4,6 +4,7 @@ import dao.KontrahentDao;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -13,10 +14,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import utils.DialogsUtils;
 
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 public class KontrahentController {
     private DodajNowyCertyfikatController dodajNowyCertyfikatController;
@@ -40,7 +43,8 @@ public class KontrahentController {
 
     @FXML
     protected void usunKontrahent(ActionEvent event) {
-
+        Optional<ButtonType> result = DialogsUtils.confirmationDialog("delete.title", "delete.header");
+        if(result.get()==ButtonType.OK){
         KontrahentDao kontrahentDao = new KontrahentDao();
         System.out.println(kontrahenciTableView.getSelectionModel().getSelectedItem().getIdKontrahent());
         kontrahentDao.deleteKontrahentDatabase(kontrahenciTableView.getSelectionModel().getSelectedItem().getIdKontrahent());
@@ -48,7 +52,7 @@ public class KontrahentController {
 
         ObservableList<Kontrahent> data = kontrahenciTableView.getItems();
         data.remove(kontrahenciTableView.getSelectionModel().getSelectedItem());
-    }
+    }}
 
     public void addNowyKontrahent(Kontrahent kontrahent) {
         ObservableList<Kontrahent> data = kontrahenciTableView.getItems();

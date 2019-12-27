@@ -62,7 +62,7 @@ public class ConfigController {
         Config config = new Config();
         config.setConfig(hostTextFieldConfig.getText(), portTextFieldConfig.getText(), databaseNameTextFieldConfig.getText(), loginTextFieldConfig.getText(), passwordTextfieldConfig.getText());
         config.getConfigFromFile();
-        closeStage();
+//        closeStage();
     }
 
     @FXML
