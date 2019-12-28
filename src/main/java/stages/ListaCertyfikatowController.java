@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import model.CertyfikatJakosci;
 import javafx.collections.ObservableList;
 
@@ -92,6 +93,7 @@ public class ListaCertyfikatowController {
         Scene scene = new Scene(vbox);
         stage.setScene(scene);
         stage.setTitle("Dodaj Nowy");
+        stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
 
         DodajNowyCertyfikatController editedCertyfikat = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
@@ -115,6 +117,7 @@ public class ListaCertyfikatowController {
         Scene scene = new Scene(vbox);
         stage.setScene(scene);
         stage.setTitle("Edycja");
+        stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
 
 

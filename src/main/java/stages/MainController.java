@@ -8,6 +8,7 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
 import model.CertyfikatJakosci;
 import model.Dokument;
 import javafx.collections.ObservableList;
@@ -118,6 +119,7 @@ public class MainController {
         Scene scene = new Scene(pane);
         stage.setScene(scene);
         stage.setTitle("Podgląd wydruku");
+        stage.initModality(Modality.APPLICATION_MODAL);
         if (show) {
 
             stage.show();
@@ -174,6 +176,7 @@ public class MainController {
         Scene scene = new Scene(pane);
         stage.setScene(scene);
         stage.setTitle("Ustawienia podmiotu");
+        stage.initModality(Modality.APPLICATION_MODAL);
 
         ConfigPodmiotController podmiotConfigController = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
         podmiotConfigController.setNazwaTextFieldPodmiotConfig(Config.NAZWA_PODMIOTU);
@@ -260,6 +263,7 @@ public class MainController {
         Scene scene = new Scene(pane);
         stage.setScene(scene);
         stage.setTitle("Lista Certyfikatów");
+        stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
     }
 
@@ -290,14 +294,6 @@ public class MainController {
 
         }
 
-//        Stage stage = new Stage();
-//        stage.setResizable(false);
-//        stage.setTitle("Ustawienia");
-//        Pane myPane = (Pane) FXMLLoader.load(getClass().getResource
-//                ("Config.fxml"));
-//        Scene myScene = new Scene(myPane);
-//        stage.setScene(myScene);
-//        stage.showAndWait();
     }
 
     @FXML
@@ -308,6 +304,7 @@ public class MainController {
                 ("KontrahentTableView.fxml"));
         Scene myScene = new Scene(myPane);
         stage.setScene(myScene);
+        stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
     }
 
@@ -321,11 +318,16 @@ public class MainController {
         Scene scene = new Scene(vBox);
         stage.setScene(scene);
         stage.setTitle("Lista Dokumentów");
+        stage.initModality(Modality.APPLICATION_MODAL);
 
         DokumentyStageController dokumentyStageController = loader.getController(); //
         dokumentyStageController.mainController = MainController.this;
 
         stage.show();
+    }
+    @FXML
+    public void menuOprogramieOnClick(){
+        DialogsUtils.infoDialog("info.title", "info.header","info.text");
     }
 
     public void setMessageLabelMain(String messageLabelMain) {

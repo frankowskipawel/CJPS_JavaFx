@@ -37,6 +37,11 @@
                   <MenuItem fx:id="menuDokumenty" mnemonicParsing="false" onAction="#menuDokumentyClick" text="Dokumenty" />
               </items>
             </Menu>
+            <Menu mnemonicParsing="false" text="Informacje">
+              <items>
+                <MenuItem mnemonicParsing="false" onAction="#menuOprogramieOnClick" text="O programie" />
+              </items>
+            </Menu>
       </menus>
     </MenuBar>
       <TableView fx:id="listaAktywnychCertyfikatowTableViewStronaGlowna" minHeight="100.0" minWidth="100.0" prefHeight="516.0" prefWidth="538.0" VBox.vgrow="ALWAYS">

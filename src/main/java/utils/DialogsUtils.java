@@ -23,7 +23,7 @@ public class DialogsUtils {
         Alert confirmationDialog = new Alert(Alert.AlertType.CONFIRMATION);
         confirmationDialog.setTitle(bundle.getString(bundleTitle));
         confirmationDialog.setHeaderText(bundle.getString(BundleHeader));
-        confirmationDialog.initModality(Modality.NONE);
+        confirmationDialog.initModality(Modality.APPLICATION_MODAL);
         Optional<ButtonType> result = confirmationDialog.showAndWait();
 
         return result;
@@ -34,7 +34,7 @@ public class DialogsUtils {
         Alert errorAlert = new Alert(Alert.AlertType.ERROR);
         errorAlert.setTitle(bundle.getString("error.title"));
         errorAlert.setHeaderText(bundle.getString("error.header"));
-
+        errorAlert.initModality(Modality.APPLICATION_MODAL);
         TextArea textArea = new TextArea(error);
         errorAlert.getDialogPane().setContent(textArea);
         errorAlert.showAndWait();
@@ -44,8 +44,8 @@ public class DialogsUtils {
         Alert confirmationDialog = new Alert(Alert.AlertType.CONFIRMATION);
         confirmationDialog.setTitle(bundle.getString(bundleTitle));
         confirmationDialog.setHeaderText(bundle.getString(BundleHeader));
-        confirmationDialog.initModality(Modality.NONE);
-
+       // confirmationDialog.initModality(Modality.NONE);
+        confirmationDialog.initModality(Modality.APPLICATION_MODAL);
         FXMLLoader loader = new FXMLLoader();
         loader.<ConfigController>setController(FxmlUtils.fxmlLoader("/stages/Config.fxml"));
 //        ConfigController configController = (ConfigController)loader.getController();
@@ -54,5 +54,15 @@ public class DialogsUtils {
         Optional<ButtonType> result = confirmationDialog.showAndWait();
 
         return result;
+    }
+
+    public static void infoDialog(String title, String header, String bundleText) {
+        Alert infoAlert = new Alert(Alert.AlertType.INFORMATION);
+        infoAlert.setTitle(bundle.getString(title));
+        infoAlert.setHeaderText(bundle.getString(header));
+        infoAlert.initModality(Modality.APPLICATION_MODAL);
+        TextArea textArea = new TextArea(bundle.getString(bundleText));
+        infoAlert.getDialogPane().setContent(textArea);
+        infoAlert.showAndWait();
     }
 }

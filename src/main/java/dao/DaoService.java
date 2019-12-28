@@ -1,19 +1,9 @@
 package dao;
 
 import config.Config;
-import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.ButtonType;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import stages.ConfigControllerStage;
-import stages.MainController;
 import utils.DialogsUtils;
-import utils.FxmlUtils;
 
-import java.io.IOException;
 import java.sql.*;
 import java.util.Optional;
 

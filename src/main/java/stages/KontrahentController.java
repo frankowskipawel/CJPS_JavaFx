@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import model.Kontrahent;
 import javafx.collections.ObservableList;
@@ -78,6 +79,7 @@ public class KontrahentController {
         Scene scene = new Scene(pane);
         stage.setScene(scene);
         stage.setTitle("Nowy kontrahent");
+        stage.initModality(Modality.APPLICATION_MODAL);
         DodajNowyKontrahentController dodajNowyKontrahentController = loader.getController();
         dodajNowyKontrahentController.kontrahentController = KontrahentController.this;
         stage.show();
