@@ -97,8 +97,8 @@ public class ListaCertyfikatowController {
         stage.show();
 
         DodajNowyCertyfikatController editedCertyfikat = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
-        editedCertyfikat.listaCertyfikatowController = ListaCertyfikatowController.this;
 
+        editedCertyfikat.setListaCertyfikatowController(ListaCertyfikatowController.this);
     }
 
     @FXML
@@ -122,7 +122,10 @@ public class ListaCertyfikatowController {
 
 
         DodajNowyCertyfikatController editedCertyfikat = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
+
         CertyfikatJakosci selected = listaCertyfikatowTableView.getSelectionModel().getSelectedItem();
+
+
         editedCertyfikat.setNumerLabel(selected.getNumerCertyfikatu());
         editedCertyfikat.setNaszaNazwaField(selected.getNaszaNazwa());
         editedCertyfikat.setDataField(selected.getData());
@@ -140,8 +143,11 @@ public class ListaCertyfikatowController {
         editedCertyfikat.setDostawcaField(selected.getDostawca());
         editedCertyfikat.setNrFvField(selected.getNrFV());
         editedCertyfikat.setAktywnyCheckbox(selected.getAktywny());
-        editedCertyfikat.setAsortymentCombobox(selected.getAsortyment());
-        editedCertyfikat.listaCertyfikatowController = ListaCertyfikatowController.this;
+        //editedCertyfikat.setAsortymentCombobox(selected.getAsortyment());
+        editedCertyfikat.getAsortymentCombobox().getSelectionModel().select(selected.getAsortyment());
+        editedCertyfikat.setListaCertyfikatowController(ListaCertyfikatowController.this);
+
+
     }
 
     public void odswiezListeCertyfikatow() {

@@ -15,7 +15,8 @@ import java.io.IOException;
 
 public class DodajNowyCertyfikatController {
 
-    ListaCertyfikatowController listaCertyfikatowController;
+    private ListaCertyfikatowController listaCertyfikatowController;
+    private MainController mainController;
 
     @FXML
     private Label numerLabel;
@@ -76,6 +77,8 @@ public class DodajNowyCertyfikatController {
         String asortymentValue;
 
         asortymentValue = asortymentCombobox.getValue().toString();
+
+
         CertyfikatJakosci cerytfikatJakosci = new CertyfikatJakosci(numerString, isAktywny, naszaNazwaField.getText(), asortymentValue,
                 dataField.getText(), nrCertyfikatuLaboratoriumField.getText(), zawartoscPopioluField.getText(), zawartoscSiarkiField.getText(),
                 zawartoscCzesciLotnychField.getText(), wartoscOpalowaField.getText(), spiekalnoscField.getText(), minWymiarziarnaField.getText(),
@@ -90,7 +93,12 @@ public class DodajNowyCertyfikatController {
 
         Stage stage = (Stage) anulujButton.getScene().getWindow();
         stage.close();
-        this.listaCertyfikatowController.odswiezClick();
+        if (this.mainController != null) {
+            this.mainController.refreshClick();
+        }
+        if (this.listaCertyfikatowController != null) {
+            this.listaCertyfikatowController.odswiezClick();
+        }
     }
 
     @FXML
@@ -196,6 +204,26 @@ public class DodajNowyCertyfikatController {
 
     public void setNrFvField(String nrFvField) {
         this.nrFvField.setText(nrFvField);
+    }
+
+    public ListaCertyfikatowController getListaCertyfikatowController() {
+        return listaCertyfikatowController;
+    }
+
+    public void setListaCertyfikatowController(ListaCertyfikatowController listaCertyfikatowController) {
+        this.listaCertyfikatowController = listaCertyfikatowController;
+    }
+
+    public MainController getMainController() {
+        return mainController;
+    }
+
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
+    }
+
+    public ComboBox getAsortymentCombobox() {
+        return asortymentCombobox;
     }
 }
 
