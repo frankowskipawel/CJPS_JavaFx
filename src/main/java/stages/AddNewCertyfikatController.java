@@ -8,15 +8,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import model.CertyfikatJakosci;
-import model.WartosciDopuszczalnePaliwa;
+import modelFXML.CertyfikatJakosci;
+import modelFXML.WartosciDopuszczalnePaliwa;
 
 import java.io.IOException;
 
-public class DodajNowyCertyfikatController {
+public class AddNewCertyfikatController {
 
-    private ListaCertyfikatowController listaCertyfikatowController;
-    private MainController mainController;
+    private ListCertyfikatyController listCertyfikatyController;
+    private HomeController homeController;
 
     @FXML
     private Label numerLabel;
@@ -93,11 +93,11 @@ public class DodajNowyCertyfikatController {
 
         Stage stage = (Stage) anulujButton.getScene().getWindow();
         stage.close();
-        if (this.mainController != null) {
-            this.mainController.refreshClick();
+        if (this.homeController != null) {
+            this.homeController.refreshClick();
         }
-        if (this.listaCertyfikatowController != null) {
-            this.listaCertyfikatowController.odswiezClick();
+        if (this.listCertyfikatyController != null) {
+            this.listCertyfikatyController.odswiezClick();
         }
     }
 
@@ -112,14 +112,14 @@ public class DodajNowyCertyfikatController {
     void kontrahentOnClick(ActionEvent event) throws IOException {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(this.getClass().getResource("/stages/KontrahentTableView.fxml"));
+        loader.setLocation(this.getClass().getResource("/stages/ListKontrahenci.fxml"));
         VBox vBox = loader.load();
         Scene scene = new Scene(vBox);
         stage.setScene(scene);
         stage.setTitle("Kontrahenci");
         stage.show();
-        KontrahentController kontrahentController = loader.getController();
-        kontrahentController.setDodajNowyCertyfikatController(DodajNowyCertyfikatController.this);
+        ListKontrahenciController listKontrahenciController = loader.getController();
+        listKontrahenciController.setAddNewCertyfikatController(AddNewCertyfikatController.this);
 
     }
 
@@ -206,20 +206,20 @@ public class DodajNowyCertyfikatController {
         this.nrFvField.setText(nrFvField);
     }
 
-    public ListaCertyfikatowController getListaCertyfikatowController() {
-        return listaCertyfikatowController;
+    public ListCertyfikatyController getListCertyfikatyController() {
+        return listCertyfikatyController;
     }
 
-    public void setListaCertyfikatowController(ListaCertyfikatowController listaCertyfikatowController) {
-        this.listaCertyfikatowController = listaCertyfikatowController;
+    public void setListCertyfikatyController(ListCertyfikatyController listCertyfikatyController) {
+        this.listCertyfikatyController = listCertyfikatyController;
     }
 
-    public MainController getMainController() {
-        return mainController;
+    public HomeController getHomeController() {
+        return homeController;
     }
 
-    public void setMainController(MainController mainController) {
-        this.mainController = mainController;
+    public void setHomeController(HomeController homeController) {
+        this.homeController = homeController;
     }
 
     public ComboBox getAsortymentCombobox() {

@@ -1,8 +1,7 @@
 package dao;
 
 import config.Config;
-import model.CertyfikatJakosci;
-
+import modelFXML.CertyfikatJakosci;
 import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
@@ -10,7 +9,6 @@ import java.util.List;
 public class CertyfikatJakosciDao {
     private Connection connection;
     private final String tableName = "certyfikaty";
-
 
     public CertyfikatJakosciDao() {
         init();
@@ -21,13 +19,12 @@ public class CertyfikatJakosciDao {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://" + Config.HOSTNAME + ":" + Config.PORT + "/" + Config.DATABASENAME + "?useSSL=false", Config.USER, Config.PASSWORD);
         } catch (SQLException | ClassNotFoundException e) {
-
             e.printStackTrace();
         }
     }
 
     public List<CertyfikatJakosci> getAllCertyfikatJakosci() {
-        List<CertyfikatJakosci> certyfikatyJakosci = new LinkedList<CertyfikatJakosci>();
+        List<CertyfikatJakosci> certyfikatyJakosci = new LinkedList();
         Statement statement = null;
         try {
             statement = connection.createStatement();
@@ -100,15 +97,12 @@ public class CertyfikatJakosciDao {
                 String dostawca_certyfikaty = resultSet.getString("dostawca_certyfikaty");
                 String nr_fv_certyfikaty = resultSet.getString("nr_fv_certyfikaty");
 
-              //  System.out.println(nr_certyfikaty);
-
                 CertyfikatJakosci certyfikatJakosci = new CertyfikatJakosci(nr_certyfikaty, nasza_nazwa_certyfikaty, Integer.toString(dokumentDao.countDokument(nr_certyfikaty)));
-             //   System.out.println(certyfikatJakosci.getNaszaNazwaAktywne()+ certyfikatJakosci.getNumerCertyfikatuAktywne()+ certyfikatJakosci.getIloscAktywne());
                 certyfikatyJakosci.add(certyfikatJakosci);
             }
 
         } catch (SQLException e) {
-            System.out.println("Bład poł");
+            e.printStackTrace();
         }
         System.out.println();
         return certyfikatyJakosci;
@@ -147,7 +141,6 @@ public class CertyfikatJakosciDao {
     }
 
     public void replaceCertyfikatJakosci(CertyfikatJakosci certyfikatJakosci) {
-        //  UPDATE `certyfikaty_database_testowy`.`certyfikaty` SET `asortyment_certyfikaty` = '121313', `popiol_certyfikaty` = '7', `wartosc_opalowa_certyfikaty` = '56' WHERE (`nr_certyfikaty` = '8');
 
         Statement statement = null;
         try {
@@ -158,19 +151,17 @@ public class CertyfikatJakosciDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
-    public CertyfikatJakosci znajdzCertyfikatPoNr(String nr) {
+    public CertyfikatJakosci findCertyfikat(String nrCertyfikatu) {
 
         CertyfikatJakosci dokument = new CertyfikatJakosci("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "","");
         Statement statement = null;
         try {
             statement = connection.createStatement();
-            String query = "select * from " + tableName + " WHERE nr_certyfikaty=" + nr;
+            String query = "select * from " + tableName + " WHERE nr_certyfikaty=" + nrCertyfikatu;
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
-
                 String nr_certyfikaty = resultSet.getString("nr_certyfikaty");
                 String aktywny_certyfikaty = resultSet.getString("aktywny_certyfikaty");
                 String nasza_nazwa_certyfikaty = resultSet.getString("nasza_nazwa_certyfikaty");
@@ -196,13 +187,11 @@ public class CertyfikatJakosciDao {
                         min_ziarno_certyfikaty, max_ziarno_certyfikaty, podziarno_certyfikaty, nadziarno_certyfikaty,
                         wilgoc_certyfikaty, dostawca_certyfikaty, nr_fv_certyfikaty,"");
                 dokument = dokumenty;
-
             }
             statement.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return dokument;
     }
 

@@ -1,15 +1,9 @@
 package utils;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
-import javafx.stage.Stage;
-import stages.ConfigController;
-import stages.DokumentyStageController;
+import stages.ConfigDataBaseController;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -47,10 +41,10 @@ public class DialogsUtils {
        // confirmationDialog.initModality(Modality.NONE);
         confirmationDialog.initModality(Modality.APPLICATION_MODAL);
         FXMLLoader loader = new FXMLLoader();
-        loader.<ConfigController>setController(FxmlUtils.fxmlLoader("/stages/Config.fxml"));
+        loader.<ConfigDataBaseController>setController(FxmlUtils.fxmlLoader("/stages/ConfigDataBase.fxml"));
 //        ConfigController configController = (ConfigController)loader.getController();
 
-        confirmationDialog.<ConfigController>getDialogPane().setContent(loader.getController());
+        confirmationDialog.<ConfigDataBaseController>getDialogPane().setContent(loader.getController());
         Optional<ButtonType> result = confirmationDialog.showAndWait();
 
         return result;

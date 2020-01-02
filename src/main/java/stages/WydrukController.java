@@ -6,15 +6,15 @@ import javafx.print.PrinterJob;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
-import model.Dokument;
-import model.WartosciDopuszczalnePaliwa;
+import modelFXML.Dokument;
+import modelFXML.WartosciDopuszczalnePaliwa;
 
 import java.io.IOException;
 
-public class CertyfikatJakosciWydrukController {
+public class WydrukController {
 
-    CertyfikatJakosciWydrukController certyfikatJakosciWydrukController;
-    MainController mainController;
+    WydrukController wydrukController;
+    HomeController homeController;
 
     @FXML
     private Pane paneWydruk;
@@ -86,13 +86,13 @@ public class CertyfikatJakosciWydrukController {
     private Label WDmaxZawWilgociWydruk;
 
 
-    public CertyfikatJakosciWydrukController() {
+    public WydrukController() {
     }
 
     public void initialize() {
     }
 
-    public void setPolaNaWydruku(Dokument dokument) {
+    public void setFieldInWydruk(Dokument dokument) {
 
         //Wartości paliwa
         setNazwaAdresPodmiotuWydruk(Config.NAZWA_PODMIOTU + ", " + Config.ULICA_I_NUMER_DOMU_PODMIOTU + ", " + Config.KOD_POCZTOWY_PODMIOTU + " " + Config.MIASTO_PODMIOTU);
@@ -132,7 +132,7 @@ public class CertyfikatJakosciWydrukController {
     }
 
     @FXML
-    private void printClick() throws IOException {
+    private void printOnClick() throws IOException {
         print(2);
     }
 
@@ -144,21 +144,21 @@ public class CertyfikatJakosciWydrukController {
 
     public void print(Node node) {
 
-        mainController.setMessageLabelMain("Przygotowuje wydruk");
+        homeController.setMessageLabelMain("Przygotowuje wydruk");
         PrinterJob job = PrinterJob.createPrinterJob();
 
         if (job != null) {
-            mainController.setMessageLabelMain("Trwa Drukowanie");
+            homeController.setMessageLabelMain("Trwa Drukowanie");
             boolean printed = job.printPage(node);
 
             if (printed) {
-                mainController.setMessageLabelMain("Wydrukowano pomyślnie");
+                homeController.setMessageLabelMain("Wydrukowano pomyślnie");
                 job.endJob();
             } else {
-                mainController.setMessageLabelMain("Błąd wydruku");
+                homeController.setMessageLabelMain("Błąd wydruku");
             }
         } else {
-            mainController.setMessageLabelMain("Błąd wydruku");
+            homeController.setMessageLabelMain("Błąd wydruku");
         }
     }
 

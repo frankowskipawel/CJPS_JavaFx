@@ -4,11 +4,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import model.Kontrahent;
+import modelFXML.Kontrahent;
 
-public class DodajNowyKontrahentController {
+public class AddNewKontrahentController {
 
-    KontrahentController kontrahentController;
+    ListKontrahenciController listKontrahenciController;
 
     @FXML
     private TextField id;
@@ -32,7 +32,7 @@ public class DodajNowyKontrahentController {
     void okOnClick() {
 
         Kontrahent kontrahent = new Kontrahent(id.getText(), nazwa.getText(), adres.getText(), nip.getText(), regon.getText());
-        kontrahentController.addNowyKontrahent(kontrahent);
+        listKontrahenciController.addNowyKontrahent(kontrahent);
         Stage stage = (Stage) okButton.getScene().getWindow();
         stage.close();
     }

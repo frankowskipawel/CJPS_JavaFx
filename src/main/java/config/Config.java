@@ -25,13 +25,11 @@ public class Config {
     public void getConfigFromFile() throws IOException {
         try {
             getConfig();
-
         } catch (FileNotFoundException e) {
             System.out.println("brak pliku");
             setDefaultConfig();
             getConfig();
         }
-
     }
 
     private void getConfig() throws FileNotFoundException {
@@ -49,7 +47,6 @@ public class Config {
         NIP_PODMIOTU= wejscie.nextLine();
         REGON_PODMIOTU= wejscie.nextLine();
         wejscie.close();
-
     }
 
     private void setDefaultConfig() throws IOException {
@@ -70,7 +67,6 @@ public class Config {
         printWriter.println("");
         printWriter.println("");
         printWriter.println("");
-
         printWriter.close();
         getConfig();
     }
@@ -107,10 +103,7 @@ public class Config {
     public void setDanePodmiotu(String nazwa, String ulica, String kodPocztowy, String miasto, String nip, String regon){
         try {
             File file = new File(PATH);
-//            file.delete();
-//            file.createNewFile();
             if (file.exists()) {
-
                 PrintWriter printWriter = new PrintWriter(PATH);
                 printWriter.println(Config.HOSTNAME);
                 printWriter.println(Config.PORT);
@@ -125,20 +118,14 @@ public class Config {
                 printWriter.println(regon);
                 printWriter.close();
                 getConfig();
-
             }else{
                 file.createNewFile();
                 setDanePodmiotu(nazwa, ulica, kodPocztowy, miasto, nip, regon);
-
             }
         } catch (Exception e) {
-
             e.printStackTrace();
         }
-
     }
-
-
 }
 
 

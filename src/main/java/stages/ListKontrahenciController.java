@@ -9,21 +9,20 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import model.Kontrahent;
+import modelFXML.Kontrahent;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import utils.DialogsUtils;
-
 import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-public class KontrahentController {
-    private DodajNowyCertyfikatController dodajNowyCertyfikatController;
+public class ListKontrahenciController {
+    private AddNewCertyfikatController addNewCertyfikatController;
 
     @FXML
     private Button anulujButton;
@@ -74,14 +73,14 @@ public class KontrahentController {
 
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(this.getClass().getResource("/stages/DodajNowyKontrahent.fxml"));
+        loader.setLocation(this.getClass().getResource("/stages/AddNewKontrahent.fxml"));
         Pane pane = loader.load();
         Scene scene = new Scene(pane);
         stage.setScene(scene);
         stage.setTitle("Nowy kontrahent");
         stage.initModality(Modality.APPLICATION_MODAL);
-        DodajNowyKontrahentController dodajNowyKontrahentController = loader.getController();
-        dodajNowyKontrahentController.kontrahentController = KontrahentController.this;
+        AddNewKontrahentController addNewKontrahentController = loader.getController();
+        addNewKontrahentController.listKontrahenciController = ListKontrahenciController.this;
         stage.show();
 
     }
@@ -105,8 +104,8 @@ public class KontrahentController {
 
     @FXML
     void okOnClick(ActionEvent event) {
-        if (dodajNowyCertyfikatController != null) {
-            dodajNowyCertyfikatController.setDostawcaField(getKontrahenciTableView().getSelectionModel().getSelectedItem().getIdKontrahent());
+        if (addNewCertyfikatController != null) {
+            addNewCertyfikatController.setDostawcaField(getKontrahenciTableView().getSelectionModel().getSelectedItem().getIdKontrahent());
             Stage stage = (Stage) okButton.getScene().getWindow();
             stage.close();
         } else {
@@ -137,12 +136,12 @@ public class KontrahentController {
     }
 
 
-    public DodajNowyCertyfikatController getDodajNowyCertyfikatController() {
-        return dodajNowyCertyfikatController;
+    public AddNewCertyfikatController getAddNewCertyfikatController() {
+        return addNewCertyfikatController;
     }
 
-    public void setDodajNowyCertyfikatController(DodajNowyCertyfikatController dodajNowyCertyfikatController) {
-        this.dodajNowyCertyfikatController = dodajNowyCertyfikatController;
+    public void setAddNewCertyfikatController(AddNewCertyfikatController addNewCertyfikatController) {
+        this.addNewCertyfikatController = addNewCertyfikatController;
     }
 
     public TableView<Kontrahent> getKontrahenciTableView() {

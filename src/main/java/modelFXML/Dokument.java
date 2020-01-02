@@ -1,7 +1,6 @@
-package model;
+package modelFXML;
 
 import javafx.beans.property.SimpleStringProperty;
-import javafx.scene.control.TableView;
 
 public class Dokument {
 
@@ -57,12 +56,6 @@ public class Dokument {
                         certyfikatJakosci.getZawartoscCzesciLotnych()+"%}-{wart.opał.: "+certyfikatJakosci.getWartoscOpalowa()+"MJ/kg}-{RI: "+
                         certyfikatJakosci.getZdolnoscSpiekania()+"}-{wym.ziar.: "+certyfikatJakosci.getMinimalnyWymiarZiarna()+"-"+
                         certyfikatJakosci.getMaksymalnyWymiarZiarna()+"mm}-{podziarno: "+certyfikatJakosci.getZawartoscPodziarna()+"%}-{nadziarno: "+
-                        certyfikatJakosci.getZawartoscNadziarna()+"%}-{wilgotność: "+certyfikatJakosci.getZawartoscWilgociCalkowitej()+"%}"
-
-                ;
-
-
+                        certyfikatJakosci.getZawartoscNadziarna()+"%}-{wilgotność: "+certyfikatJakosci.getZawartoscWilgociCalkowitej()+"%}";
     }
-
-
 }

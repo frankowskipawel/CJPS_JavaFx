@@ -3,13 +3,11 @@ package config;
 public enum DefaultConnection {
     CONNECTION("localhost", "3306", "certyfikaty_database", "root", "admin");
 
-
     private String host;
     private String port;
     private String databaseName;
     private String user;
     private String password;
-
 
     DefaultConnection(String host, String port, String databaseName, String user, String password) {
         this.host = host;
@@ -38,6 +36,4 @@ public enum DefaultConnection {
     public String getPassword() {
         return password;
     }
-
-
 }

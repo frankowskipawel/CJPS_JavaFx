@@ -1,5 +1,3 @@
-package stages;
-
 import config.Config;
 import dao.DaoService;
 import javafx.application.Application;
@@ -7,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import stages.HomeController;
 import utils.FxmlUtils;
 
 import java.io.IOException;
@@ -25,13 +24,13 @@ public class Main extends Application {
         DaoService daoService = new DaoService();
         daoService.init();
 
-        VBox vBox = (VBox) FxmlUtils.fxmlLoader("/stages/Main.fxml");
+        VBox vBox = (VBox) FxmlUtils.fxmlLoader("/stages/Home.fxml");
         Scene scene = new Scene(vBox);
         primaryStage.setScene(scene);
         primaryStage.setTitle(FxmlUtils.getResourceBundle().getString("title.application"));
         primaryStage.show();
-        FXMLLoader loader = FxmlUtils.getLoader("/stages/Main.fxml");
-        MainController mainController = loader.getController();
+        FXMLLoader loader = FxmlUtils.getLoader("/stages/Home.fxml");
+        HomeController homeController = loader.getController();
 
     }
 }

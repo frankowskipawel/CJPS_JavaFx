@@ -1,4 +1,4 @@
-package model;
+package modelFXML;
 
 import javafx.beans.property.SimpleStringProperty;
 
@@ -18,17 +18,6 @@ public class Kontrahent {
         setNipKontrahent(nip);
         setRegonKontrahent(regon);
 
-    }
-
-    @Override
-    public String toString() {
-        return "Kontrahent{" +
-                "id=" + idKontrahent +
-                ", nazwa='" + nazwaKontrahent + '\'' +
-                ", adres='" + adresKontrahent + '\'' +
-                ", nip='" + nipKontrahent + '\'' +
-                ", regon='" + regonKontrahent + '\'' +
-                '}';
     }
 
     public String getIdKontrahent() {
@@ -75,5 +64,16 @@ public class Kontrahent {
     }
     public void setRegonKontrahent(String regonKontrahent) {
         this.regonKontrahent.set(regonKontrahent);
+    }
+
+    @Override
+    public String toString() {
+        return "Kontrahent{" +
+                "id=" + idKontrahent +
+                ", nazwa='" + nazwaKontrahent + '\'' +
+                ", adres='" + adresKontrahent + '\'' +
+                ", nip='" + nipKontrahent + '\'' +
+                ", regon='" + regonKontrahent + '\'' +
+                '}';
     }
 }

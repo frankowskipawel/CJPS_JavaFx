@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="paneWydruk" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="716.0" prefWidth="485.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stages.CertyfikatJakosciWydrukController">
+<Pane fx:id="paneWydruk" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="716.0" prefWidth="485.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stages.WydrukController">
    <children>
       <GridPane gridLinesVisible="true" layoutY="4.0" prefHeight="237.0" prefWidth="485.0">
         <columnConstraints>
@@ -489,7 +489,7 @@
                         <Font size="8.0" />
                      </font>
                   </Label>
-                  <Button layoutX="220.0" layoutY="62.0" mnemonicParsing="false" onAction="#printClick" prefHeight="9.0" prefWidth="41.0" text="Drukuj">
+                  <Button layoutX="220.0" layoutY="62.0" mnemonicParsing="false" onAction="#printOnClick" prefHeight="9.0" prefWidth="41.0" text="Drukuj">
                      <font>
                         <Font size="8.0" />
                      </font>

@@ -9,8 +9,8 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
-import model.CertyfikatJakosci;
-import model.Dokument;
+import modelFXML.CertyfikatJakosci;
+import modelFXML.Dokument;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,19 +19,15 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import model.WartosciDopuszczalnePaliwa;
 import utils.DialogsUtils;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-public class MainController {
+public class HomeController {
 
     private ObservableList<CertyfikatJakosci> lista;
     @FXML
@@ -116,7 +112,7 @@ public class MainController {
         Stage stage = new Stage();
         stage.setResizable(false);
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(this.getClass().getResource("/stages/CertyfikatJakosciWydruk.fxml"));
+        loader.setLocation(this.getClass().getResource("/stages/Wydruk.fxml"));
         Pane pane = loader.load();
         Scene scene = new Scene(pane);
         stage.setScene(scene);
@@ -126,11 +122,11 @@ public class MainController {
 
             stage.show();
         }
-        CertyfikatJakosciWydrukController certyfikatJakosciWydrukController = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
-        certyfikatJakosciWydrukController.setPolaNaWydruku(dokument);
-        certyfikatJakosciWydrukController.mainController = MainController.this;
+        WydrukController wydrukController = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
+        wydrukController.setFieldInWydruk(dokument);
+        wydrukController.homeController = HomeController.this;
         if (print) {
-            certyfikatJakosciWydrukController.print(2);
+            wydrukController.print(2);
         }
     }
 
@@ -151,10 +147,10 @@ public class MainController {
     protected Dokument addDokumentToListView() {
 
         ObservableList<Dokument> data = listaDokumentowListViewStronaGlowna.getItems();
-        CertyfikatJakosci certyfikatJakosci = new CertyfikatJakosciDao().znajdzCertyfikatPoNr(listaAktywnychCertyfikatowTableViewStronaGlowna.getSelectionModel().getSelectedItem().getNumerCertyfikatuAktywne());
+        CertyfikatJakosci certyfikatJakosci = new CertyfikatJakosciDao().findCertyfikat(listaAktywnychCertyfikatowTableViewStronaGlowna.getSelectionModel().getSelectedItem().getNumerCertyfikatuAktywne());
         DokumentDao dokumentDao = new DokumentDao();
 
-        int numer = dokumentDao.getKolejnyNumerDokumentuDao();
+        int numer = dokumentDao.getNextNumberDokumentDao();
         //System.out.println(numer);
 
         ZonedDateTime dataDzisiejsza = ZonedDateTime.now();
@@ -174,7 +170,7 @@ public class MainController {
         Stage stage = new Stage();
         stage.setResizable(false);
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(this.getClass().getResource("/stages/PodmiotConfig.fxml"));
+        loader.setLocation(this.getClass().getResource("/stages/ConfigPodmiot.fxml"));
         Pane pane = loader.load();
         Scene scene = new Scene(pane);
         stage.setScene(scene);
@@ -262,7 +258,7 @@ public class MainController {
     public void MenuListaCertyfikatowClick() throws IOException {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(this.getClass().getResource("/stages/ListaCertyfikatowTableView.fxml"));
+        loader.setLocation(this.getClass().getResource("/stages/ListCertyfikaty.fxml"));
         Pane pane = loader.load();
         Scene scene = new Scene(pane);
         stage.setScene(scene);
@@ -279,7 +275,7 @@ public class MainController {
 
 
             DokumentDao dokumentDao = new DokumentDao();
-            dokumentDao.usunOstatniDokument();
+            dokumentDao.deleteLastDokument();
             refreshListaDokumentow();
             refreshListaAktywnychCertyfikatow();
         }
@@ -303,7 +299,7 @@ public class MainController {
         Stage stage = new Stage();
         stage.setTitle("Kontrahenci");
         Pane myPane = (Pane) FXMLLoader.load(getClass().getResource
-                ("KontrahentTableView.fxml"));
+                ("ListKontrahenci.fxml"));
         Scene myScene = new Scene(myPane);
         stage.setScene(myScene);
         stage.initModality(Modality.APPLICATION_MODAL);
@@ -315,15 +311,15 @@ public class MainController {
 
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(this.getClass().getResource("/stages/Dokumenty.fxml"));
+        loader.setLocation(this.getClass().getResource("/stages/ListDokumenty.fxml"));
         VBox vBox = loader.load();
         Scene scene = new Scene(vBox);
         stage.setScene(scene);
         stage.setTitle("Lista Dokumentów");
         stage.initModality(Modality.APPLICATION_MODAL);
 
-        DokumentyStageController dokumentyStageController = loader.getController(); //
-        dokumentyStageController.mainController = MainController.this;
+        ListDokumentyController listDokumentyController = loader.getController(); //
+        listDokumentyController.homeController = HomeController.this;
 
         stage.show();
     }
@@ -345,7 +341,7 @@ public class MainController {
 
             Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(this.getClass().getResource("/stages/DodajNowyCertyfikat.fxml"));
+            loader.setLocation(this.getClass().getResource("/stages/AddNewCertyfikat.fxml"));
             VBox vbox = loader.load();
             Scene scene = new Scene(vbox);
             stage.setScene(scene);
@@ -354,12 +350,11 @@ public class MainController {
             stage.show();
 
 
-            DodajNowyCertyfikatController editedCertyfikat = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
-            editedCertyfikat.setMainController(MainController.this);
+            AddNewCertyfikatController editedCertyfikat = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
+            editedCertyfikat.setHomeController(HomeController.this);
             CertyfikatJakosci selected = listaAktywnychCertyfikatowTableViewStronaGlowna.getSelectionModel().getSelectedItem();
-            // System.out.println(selected.getNumerCertyfikatuAktywne());
             CertyfikatJakosciDao certyfikatJakosciDao = new CertyfikatJakosciDao();
-            CertyfikatJakosci selectedCertyfikat = certyfikatJakosciDao.znajdzCertyfikatPoNr(selected.getNumerCertyfikatuAktywne());
+            CertyfikatJakosci selectedCertyfikat = certyfikatJakosciDao.findCertyfikat(selected.getNumerCertyfikatuAktywne());
 
 
             editedCertyfikat.setNumerLabel(selectedCertyfikat.getNumerCertyfikatu());
@@ -379,10 +374,8 @@ public class MainController {
             editedCertyfikat.setDostawcaField(selectedCertyfikat.getDostawca());
             editedCertyfikat.setNrFvField(selectedCertyfikat.getNrFV());
             editedCertyfikat.setAktywnyCheckbox(selectedCertyfikat.getAktywny());
-            //  editedCertyfikat.setAsortymentCombobox(selectedCertyfikat.getAsortyment());
             editedCertyfikat.getAsortymentCombobox().getSelectionModel().select(selectedCertyfikat.getAsortyment());
-            //  editedCertyfikat.listaCertyfikatowController = ListaCertyfikatowController.this;
-            editedCertyfikat.setMainController(MainController.this);
+            editedCertyfikat.setHomeController(HomeController.this);
 
         } else {
             messageLabelMain.setText("Zaznacz najpierw certyfikat");

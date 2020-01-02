@@ -1,13 +1,6 @@
-package model;
+package modelFXML;
 
-import dao.DokumentDao;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.paint.Color;
 
 public class CertyfikatJakosci{
  //   private WartościDopuszczalnePaliwa typ;

@@ -8,7 +8,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
-import model.CertyfikatJakosci;
+import modelFXML.CertyfikatJakosci;
 import javafx.collections.ObservableList;
 
 import javafx.fxml.FXMLLoader;
@@ -16,7 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
-import model.Dokument;
+import modelFXML.Dokument;
 import utils.DialogsUtils;
 
 import java.io.IOException;
@@ -24,10 +24,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
-public class ListaCertyfikatowController {
+public class ListCertyfikatyController {
 
 
-    private DokumentyStageController dokumentyStageController;
+    private ListDokumentyController listDokumentyController;
     private ObservableList<CertyfikatJakosci> lista;
     private Dokument dokumentEdytowany;
 
@@ -88,7 +88,7 @@ public class ListaCertyfikatowController {
 
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(this.getClass().getResource("/stages/DodajNowyCertyfikat.fxml"));
+        loader.setLocation(this.getClass().getResource("/stages/AddNewCertyfikat.fxml"));
         VBox vbox = loader.load();
         Scene scene = new Scene(vbox);
         stage.setScene(scene);
@@ -96,9 +96,9 @@ public class ListaCertyfikatowController {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
 
-        DodajNowyCertyfikatController editedCertyfikat = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
+        AddNewCertyfikatController editedCertyfikat = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
 
-        editedCertyfikat.setListaCertyfikatowController(ListaCertyfikatowController.this);
+        editedCertyfikat.setListCertyfikatyController(ListCertyfikatyController.this);
     }
 
     @FXML
@@ -112,7 +112,7 @@ public class ListaCertyfikatowController {
     void edycjaOnClick(ActionEvent event) throws IOException {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(this.getClass().getResource("/stages/DodajNowyCertyfikat.fxml"));
+        loader.setLocation(this.getClass().getResource("/stages/AddNewCertyfikat.fxml"));
         VBox vbox = loader.load();
         Scene scene = new Scene(vbox);
         stage.setScene(scene);
@@ -121,7 +121,7 @@ public class ListaCertyfikatowController {
         stage.show();
 
 
-        DodajNowyCertyfikatController editedCertyfikat = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
+        AddNewCertyfikatController editedCertyfikat = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
 
         CertyfikatJakosci selected = listaCertyfikatowTableView.getSelectionModel().getSelectedItem();
 
@@ -145,7 +145,7 @@ public class ListaCertyfikatowController {
         editedCertyfikat.setAktywnyCheckbox(selected.getAktywny());
         //editedCertyfikat.setAsortymentCombobox(selected.getAsortyment());
         editedCertyfikat.getAsortymentCombobox().getSelectionModel().select(selected.getAsortyment());
-        editedCertyfikat.setListaCertyfikatowController(ListaCertyfikatowController.this);
+        editedCertyfikat.setListCertyfikatyController(ListCertyfikatyController.this);
 
 
     }
@@ -178,7 +178,7 @@ public class ListaCertyfikatowController {
         Dokument dokument = new Dokument(dokumentEdytowany.getNumerDokumentu(), dokumentEdytowany.getDataDokumentu(), listaCertyfikatowTableView.getSelectionModel().getSelectedItem());
         DokumentDao dokumentDao = new DokumentDao();
         dokumentDao.updateDokument(dokument);
-        dokumentyStageController.odswiezDokumentyListView();
+        listDokumentyController.odswiezDokumentyListView();
         zamknijOnClick();
     }}
 
@@ -209,12 +209,12 @@ public class ListaCertyfikatowController {
         this.listaCertyfikatowTableView = listaCertyfikatowTableView;
     }
 
-    public DokumentyStageController getDokumentyStageController() {
-        return dokumentyStageController;
+    public ListDokumentyController getListDokumentyController() {
+        return listDokumentyController;
     }
 
-    public void setDokumentyStageController(DokumentyStageController dokumentyStageController) {
-        this.dokumentyStageController = dokumentyStageController;
+    public void setListDokumentyController(ListDokumentyController listDokumentyController) {
+        this.listDokumentyController = listDokumentyController;
     }
 
     public ObservableList<CertyfikatJakosci> getLista() {

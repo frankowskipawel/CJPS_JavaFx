@@ -1,7 +1,6 @@
 package stages;
 
 import config.Config;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -10,38 +9,33 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class ConfigPodmiotController {
+
     @FXML
     private Button okButton;
     @FXML
     private TextField nazwaTextFieldPodmiotConfig;
-
     @FXML
     private TextField ulicaTextFieldPodmiotConfig;
-
     @FXML
     private TextField kodPocztowyTextFieldPodmiotConfig;
-
     @FXML
     private TextField miastoTextFieldPodmiotConfig;
-
     @FXML
     private TextField nipTextFieldPodmiotConfig;
-
     @FXML
     private TextField regonTextFieldPodmiotConfig;
-
     @FXML
     private Button anulujButton;
 
 
     @FXML
-    void anulujButtonClick() {
+    void cancelOnClick() {
         Stage stage = (Stage) anulujButton.getScene().getWindow();
         stage.close();
     }
 
     @FXML
-    void okClick() throws IOException {
+    void okOnClick() throws IOException {
         Config config = new Config();
         config.setDanePodmiotu(nazwaTextFieldPodmiotConfig.getText(), ulicaTextFieldPodmiotConfig.getText(), kodPocztowyTextFieldPodmiotConfig.getText(),
                 miastoTextFieldPodmiotConfig.getText(), nipTextFieldPodmiotConfig.getText(), regonTextFieldPodmiotConfig.getText());

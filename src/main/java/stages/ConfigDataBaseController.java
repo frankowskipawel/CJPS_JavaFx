@@ -12,31 +12,25 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 
-public class ConfigController {
+public class ConfigDataBaseController {
 
     @FXML
     private TextField hostTextFieldConfig;
-
     @FXML
     private TextField portTextFieldConfig;
-
     @FXML
     private TextField databaseNameTextFieldConfig;
-
     @FXML
     private TextField loginTextFieldConfig;
-
     @FXML
     private TextField passwordTextfieldConfig;
-
     @FXML
     private Button anulujButton;
-
     @FXML
     private Label messageLabel;
 
 
-    public ConfigController() {
+    public ConfigDataBaseController() {
     }
 
     //Najpierw wywoływany jest konstruktor dopiero metoda initialize i to w niej mozna dopiero ustawiać kontrolki
@@ -58,16 +52,16 @@ public class ConfigController {
     }
 
     @FXML
-    void okClick(ActionEvent event) throws IOException {
+    void okOnClick(ActionEvent event) throws IOException {
         Config config = new Config();
         config.setConfig(hostTextFieldConfig.getText(), portTextFieldConfig.getText(), databaseNameTextFieldConfig.getText(), loginTextFieldConfig.getText(), passwordTextfieldConfig.getText());
         config.getConfigFromFile();
         messageLabel.setText("Zapisano zmiany!");
-//        closeStage();
+
     }
 
     @FXML
-    void domyslneClick(ActionEvent event) {
+    void defaultClick(ActionEvent event) {
         hostTextFieldConfig.setText(DefaultConnection.CONNECTION.getHost());
         portTextFieldConfig.setText(DefaultConnection.CONNECTION.getPort());
         databaseNameTextFieldConfig.setText(DefaultConnection.CONNECTION.getDatabaseName());
@@ -77,7 +71,7 @@ public class ConfigController {
     }
 
     @FXML
-    void anulujClick(ActionEvent event) {
+    void cancelOnClick(ActionEvent event) {
         closeStage();
     }
 

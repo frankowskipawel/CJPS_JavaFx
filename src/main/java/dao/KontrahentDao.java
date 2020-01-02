@@ -1,8 +1,7 @@
 package dao;
 
 import config.Config;
-import model.Kontrahent;
-
+import modelFXML.Kontrahent;
 import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,7 +19,6 @@ public class KontrahentDao {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection("jdbc:mysql://" + Config.HOSTNAME + ":" + Config.PORT + "/" + Config.DATABASENAME + "?useSSL=false", Config.USER, Config.PASSWORD);
-
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -54,7 +52,7 @@ public class KontrahentDao {
         try {
             statement = connection.createStatement();
             String query = "insert into " + tableName + "(id_kontrahent, nazwa_kontrahent, adres_kontrahent, nip_kontrahent, regon_kontrahent) values('" + kontrahent.getIdKontrahent() + "', '" + kontrahent.getNazwaKontrahent() + "', '" + kontrahent.getAdresKontrahent() + "', '" + kontrahent.getNipKontrahent() + "', '" + kontrahent.getRegonKontrahent() + "');";
-            int resultSet = statement.executeUpdate(query);
+            statement.executeUpdate(query);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -65,7 +63,7 @@ public class KontrahentDao {
         try {
             statement = connection.createStatement();
             String query = "delete from " + tableName + " where id_kontrahent = '" + id+"';";
-            int resultSet = statement.executeUpdate(query);
+            statement.executeUpdate(query);
         } catch (SQLException e) {
             e.printStackTrace();
         }
