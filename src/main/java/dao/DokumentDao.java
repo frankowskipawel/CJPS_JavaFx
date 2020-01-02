@@ -64,7 +64,7 @@ public class DokumentDao {
                         asortyment_certyfikaty, data_certyfikaty, nr_lab_certyfikaty, popiol_certyfikaty,
                         siarka_certyfikaty, cz_lotne_certyfikaty, wartosc_opalowa_certyfikaty, spiekalnosc_certyfikaty,
                         min_ziarno_certyfikaty, max_ziarno_certyfikaty, podziarno_certyfikaty, nadziarno_certyfikaty,
-                        wilgoc_certyfikaty, dostawca_certyfikaty, nr_fv_certyfikaty));
+                        wilgoc_certyfikaty, dostawca_certyfikaty, nr_fv_certyfikaty,""));
 
                 dokumentyLista.add(dokumenty);
             }
@@ -76,7 +76,7 @@ public class DokumentDao {
     }
 
     public Dokument znajdzDokumentPoId(String id) {
-        Dokument dokument = new Dokument("", "", new CertyfikatJakosci("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""));
+        Dokument dokument = new Dokument("", "", new CertyfikatJakosci("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",""));
         Statement statement = null;
         try {
             statement = connection.createStatement();
@@ -108,7 +108,7 @@ public class DokumentDao {
                         asortyment_certyfikaty, data_certyfikaty, nr_lab_certyfikaty, popiol_certyfikaty,
                         siarka_certyfikaty, cz_lotne_certyfikaty, wartosc_opalowa_certyfikaty, spiekalnosc_certyfikaty,
                         min_ziarno_certyfikaty, max_ziarno_certyfikaty, podziarno_certyfikaty, nadziarno_certyfikaty,
-                        wilgoc_certyfikaty, dostawca_certyfikaty, nr_fv_certyfikaty));
+                        wilgoc_certyfikaty, dostawca_certyfikaty, nr_fv_certyfikaty,""));
                 dokument = dokumenty;
 
             }

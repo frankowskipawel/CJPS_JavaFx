@@ -233,7 +233,8 @@ public class MainController {
                                 b.getCertyfikatJakosci().zawartoscNadziarnaProperty().getValue(),
                                 b.getCertyfikatJakosci().zawartoscWilgociCalkowitejProperty().getValue(),
                                 b.getCertyfikatJakosci().dostawcaProperty().getValue(),
-                                b.getCertyfikatJakosci().nrFVProperty().getValue()))
+                                b.getCertyfikatJakosci().nrFVProperty().getValue(),
+                                ""))
                 );
             }
             i++;

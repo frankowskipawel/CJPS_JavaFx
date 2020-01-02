@@ -53,11 +53,13 @@ public class CertyfikatJakosciDao {
                 String dostawca_certyfikaty = resultSet.getString("dostawca_certyfikaty");
                 String nr_fv_certyfikaty = resultSet.getString("nr_fv_certyfikaty");
 
+                DokumentDao dokumentDao = new DokumentDao();
+
                 CertyfikatJakosci certyfikatJakosci = new CertyfikatJakosci(nr_certyfikaty, aktywny_certyfikaty, nasza_nazwa_certyfikaty,
                         asortyment_certyfikaty, data_certyfikaty, nr_lab_certyfikaty, popiol_certyfikaty,
                         siarka_certyfikaty, cz_lotne_certyfikaty, wartosc_opalowa_certyfikaty, spiekalnosc_certyfikaty,
                         min_ziarno_certyfikaty, max_ziarno_certyfikaty, podziarno_certyfikaty, nadziarno_certyfikaty,
-                        wilgoc_certyfikaty, dostawca_certyfikaty, nr_fv_certyfikaty);
+                        wilgoc_certyfikaty, dostawca_certyfikaty, nr_fv_certyfikaty,Integer.toString(dokumentDao.countDokument(nr_certyfikaty)));
 
                 certyfikatyJakosci.add(certyfikatJakosci);
             }
@@ -161,7 +163,7 @@ public class CertyfikatJakosciDao {
 
     public CertyfikatJakosci znajdzCertyfikatPoNr(String nr) {
 
-        CertyfikatJakosci dokument = new CertyfikatJakosci("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
+        CertyfikatJakosci dokument = new CertyfikatJakosci("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "","");
         Statement statement = null;
         try {
             statement = connection.createStatement();
@@ -192,7 +194,7 @@ public class CertyfikatJakosciDao {
                         asortyment_certyfikaty, data_certyfikaty, nr_lab_certyfikaty, popiol_certyfikaty,
                         siarka_certyfikaty, cz_lotne_certyfikaty, wartosc_opalowa_certyfikaty, spiekalnosc_certyfikaty,
                         min_ziarno_certyfikaty, max_ziarno_certyfikaty, podziarno_certyfikaty, nadziarno_certyfikaty,
-                        wilgoc_certyfikaty, dostawca_certyfikaty, nr_fv_certyfikaty);
+                        wilgoc_certyfikaty, dostawca_certyfikaty, nr_fv_certyfikaty,"");
                 dokument = dokumenty;
 
             }

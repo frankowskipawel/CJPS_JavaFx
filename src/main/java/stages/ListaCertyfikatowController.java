@@ -76,7 +76,7 @@ public class ListaCertyfikatowController {
                     b.zawartoscNadziarnaProperty().getValue(),
                     b.zawartoscWilgociCalkowitejProperty().getValue(),
                     b.dostawcaProperty().getValue(),
-                    b.nrFVProperty().getValue())
+                    b.nrFVProperty().getValue(),b.iloscProperty().getValue())
             );
         }
         this.lista = data;

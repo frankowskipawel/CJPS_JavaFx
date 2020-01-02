@@ -83,7 +83,7 @@ public class DodajNowyCertyfikatController {
                 dataField.getText(), nrCertyfikatuLaboratoriumField.getText(), zawartoscPopioluField.getText(), zawartoscSiarkiField.getText(),
                 zawartoscCzesciLotnychField.getText(), wartoscOpalowaField.getText(), spiekalnoscField.getText(), minWymiarziarnaField.getText(),
                 maxWymiarziarnaField.getText(), zawartoscPodziarnaField.getText(), zawartoscNadziarnaField.getText(), zawartoscWilgociField.getText(),
-                dostawcaField.getText(), nrFvField.getText());
+                dostawcaField.getText(), nrFvField.getText(),"");
 
         if (numerLabel.getText().equals("(auto)")) {
             certyfikatJakosciDao.addCertyfikatJakosciToDatabase(cerytfikatJakosci);

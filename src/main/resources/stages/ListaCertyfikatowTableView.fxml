@@ -97,6 +97,11 @@
 <cellValueFactory>
 <PropertyValueFactory property="nrFV" />
 </cellValueFactory></TableColumn>
+            <TableColumn fx:id="iloscListaCertyfikatowTableView" prefWidth="75.0" text="Ilość" >
+                <cellValueFactory>
+                    <PropertyValueFactory property="ilosc" />
+                </cellValueFactory>
+            </TableColumn>
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

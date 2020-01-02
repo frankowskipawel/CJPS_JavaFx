@@ -36,13 +36,14 @@ public class CertyfikatJakosci{
     private final SimpleStringProperty zawartoscWilgociCalkowitej = new SimpleStringProperty("");
     private final SimpleStringProperty dostawca = new SimpleStringProperty("");
     private final SimpleStringProperty nrFV = new SimpleStringProperty("");
+    private final SimpleStringProperty ilosc = new SimpleStringProperty("");
 
     //Konstruktor używany na liście certyfikatów
     public CertyfikatJakosci(String numerCertyfikatu, String aktywny, String naszaNazwa, String asortyment, String data,
                              String numerCertyfikatuLaboratorium, String zawartoscPopiolu, String zawartoscSiarkiCalkowitej,
                              String zawartoscCzesciLotnych, String wartoscOpalowa, String zdolnoscSpiekania,
                              String minimalnyWymiarZiarna, String maksymalnyWymiarZiarna, String zawartoscPodziarna,
-                             String zawartoscNadziarna, String zawartoscWilgociCalkowitej, String dostawca, String nrFV) {
+                             String zawartoscNadziarna, String zawartoscWilgociCalkowitej, String dostawca, String nrFV, String ilosc) {
 
         setNumerCertyfikatu(numerCertyfikatu);
         setAktywny(aktywny);
@@ -62,6 +63,7 @@ public class CertyfikatJakosci{
         setZawartoscWilgociCalkowitej(zawartoscWilgociCalkowitej);
         setDostawca(dostawca);
         setNrFV(nrFV);
+        setIloscAktywne(ilosc);
 //---
     }
 
@@ -296,6 +298,20 @@ public class CertyfikatJakosci{
 
     public void setNrFV(String nrFV) {
         this.nrFV.set(nrFV);
+    }
+
+    public String getIlosc() {
+        return ilosc.get();
+    }
+
+    public SimpleStringProperty iloscProperty() {
+        return iloscAktywne;
+    }
+
+    public void setIlosc(String ilosc) {
+        //  DokumentDao dokumentDao = new DokumentDao();
+
+        this.iloscAktywne.set(ilosc);
     }
 //-------------------------------------------------------------------------------------------------------
 
