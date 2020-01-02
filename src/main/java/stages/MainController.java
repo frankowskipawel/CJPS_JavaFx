@@ -342,7 +342,6 @@ public class MainController {
         if (listaAktywnychCertyfikatowTableViewStronaGlowna.getSelectionModel().getSelectedItem() != null) {
 
 
-
             Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(this.getClass().getResource("/stages/DodajNowyCertyfikat.fxml"));
@@ -387,6 +386,11 @@ public class MainController {
         } else {
             messageLabelMain.setText("Zaznacz najpierw certyfikat");
         }
+    }
+
+    @FXML
+    void usunOstatniMenuContextClick(ActionEvent event) throws IOException {
+        usunOstatniMenuClick();
     }
 }
 
