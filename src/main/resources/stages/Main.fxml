@@ -72,7 +72,7 @@
          <contextMenu>
             <ContextMenu>
               <items>
-                <MenuItem mnemonicParsing="false" onAction="#edytujContextMenu" text="Edytuj" />
+                <MenuItem fx:id="edytujContextItem" mnemonicParsing="false" onAction="#edytujContextMenu" text="Edytuj" />
               </items>
             </ContextMenu>
          </contextMenu>

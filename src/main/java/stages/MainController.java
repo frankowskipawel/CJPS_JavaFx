@@ -48,6 +48,8 @@ public class MainController {
     private TableColumn nrCertyfikatuTableViewStronaGlowna;
     @FXML
     private TableColumn iloscTableViewStronaGlowna;
+    @FXML
+    private MenuItem edytujContextItem;
 
     @FXML
     public void initialize() {
@@ -292,9 +294,7 @@ public class MainController {
             DaoService daoService = new DaoService();
             daoService.init();
             refreshClick();
-
         }
-
     }
 
     @FXML
@@ -326,9 +326,10 @@ public class MainController {
 
         stage.show();
     }
+
     @FXML
-    public void menuOprogramieOnClick(){
-        DialogsUtils.infoDialog("info.title", "info.header","info.text");
+    public void menuOprogramieOnClick() {
+        DialogsUtils.infoDialog("info.title", "info.header", "info.text");
     }
 
     public void setMessageLabelMain(String messageLabelMain) {
@@ -336,50 +337,56 @@ public class MainController {
     }
 
 
-
     public void edytujContextMenu(ActionEvent actionEvent) throws IOException {
-        Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(this.getClass().getResource("/stages/DodajNowyCertyfikat.fxml"));
-        VBox vbox = loader.load();
-        Scene scene = new Scene(vbox);
-        stage.setScene(scene);
-        stage.setTitle("Edycja");
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.show();
+
+        if (listaAktywnychCertyfikatowTableViewStronaGlowna.getSelectionModel().getSelectedItem() != null) {
 
 
-        DodajNowyCertyfikatController editedCertyfikat = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
-        editedCertyfikat.setMainController(MainController.this);
-        CertyfikatJakosci selected = listaAktywnychCertyfikatowTableViewStronaGlowna.getSelectionModel().getSelectedItem();
-       // System.out.println(selected.getNumerCertyfikatuAktywne());
-        CertyfikatJakosciDao certyfikatJakosciDao = new CertyfikatJakosciDao();
-        CertyfikatJakosci selectedCertyfikat = certyfikatJakosciDao.znajdzCertyfikatPoNr(selected.getNumerCertyfikatuAktywne());
+
+            Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(this.getClass().getResource("/stages/DodajNowyCertyfikat.fxml"));
+            VBox vbox = loader.load();
+            Scene scene = new Scene(vbox);
+            stage.setScene(scene);
+            stage.setTitle("Edycja");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
 
 
-        editedCertyfikat.setNumerLabel(selectedCertyfikat.getNumerCertyfikatu());
-        editedCertyfikat.setNaszaNazwaField(selectedCertyfikat.getNaszaNazwa());
-        editedCertyfikat.setDataField(selectedCertyfikat.getData());
-        editedCertyfikat.setNrCertyfikatuLaboratoriumField(selectedCertyfikat.getNumerCertyfikatuLaboratorium());
-        editedCertyfikat.setZawartoscPopioluField(selectedCertyfikat.getZawartoscPopiolu());
-        editedCertyfikat.setZawartoscSiarkiField(selectedCertyfikat.getZawartoscSiarkiCalkowitej());
-        editedCertyfikat.setZawartoscCzesciLotnychField(selectedCertyfikat.getZawartoscCzesciLotnych());
-        editedCertyfikat.setWartoscOpalowaField(selectedCertyfikat.getWartoscOpalowa());
-        editedCertyfikat.setSpiekalnoscField(selectedCertyfikat.getZdolnoscSpiekania());
-        editedCertyfikat.setMinWymiarziarnaField(selectedCertyfikat.getMinimalnyWymiarZiarna());
-        editedCertyfikat.setMaxWymiarziarnaField(selectedCertyfikat.getMaksymalnyWymiarZiarna());
-        editedCertyfikat.setZawartoscPodziarnaField(selectedCertyfikat.getZawartoscPodziarna());
-        editedCertyfikat.setZawartoscNadziarnaField(selectedCertyfikat.getZawartoscNadziarna());
-        editedCertyfikat.setZawartoscWilgociField(selectedCertyfikat.getZawartoscWilgociCalkowitej());
-        editedCertyfikat.setDostawcaField(selectedCertyfikat.getDostawca());
-        editedCertyfikat.setNrFvField(selectedCertyfikat.getNrFV());
-        editedCertyfikat.setAktywnyCheckbox(selectedCertyfikat.getAktywny());
-      //  editedCertyfikat.setAsortymentCombobox(selectedCertyfikat.getAsortyment());
-        editedCertyfikat.getAsortymentCombobox().getSelectionModel().select(selectedCertyfikat.getAsortyment());
-      //  editedCertyfikat.listaCertyfikatowController = ListaCertyfikatowController.this;
-        editedCertyfikat.setMainController(MainController.this);
+            DodajNowyCertyfikatController editedCertyfikat = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
+            editedCertyfikat.setMainController(MainController.this);
+            CertyfikatJakosci selected = listaAktywnychCertyfikatowTableViewStronaGlowna.getSelectionModel().getSelectedItem();
+            // System.out.println(selected.getNumerCertyfikatuAktywne());
+            CertyfikatJakosciDao certyfikatJakosciDao = new CertyfikatJakosciDao();
+            CertyfikatJakosci selectedCertyfikat = certyfikatJakosciDao.znajdzCertyfikatPoNr(selected.getNumerCertyfikatuAktywne());
 
+
+            editedCertyfikat.setNumerLabel(selectedCertyfikat.getNumerCertyfikatu());
+            editedCertyfikat.setNaszaNazwaField(selectedCertyfikat.getNaszaNazwa());
+            editedCertyfikat.setDataField(selectedCertyfikat.getData());
+            editedCertyfikat.setNrCertyfikatuLaboratoriumField(selectedCertyfikat.getNumerCertyfikatuLaboratorium());
+            editedCertyfikat.setZawartoscPopioluField(selectedCertyfikat.getZawartoscPopiolu());
+            editedCertyfikat.setZawartoscSiarkiField(selectedCertyfikat.getZawartoscSiarkiCalkowitej());
+            editedCertyfikat.setZawartoscCzesciLotnychField(selectedCertyfikat.getZawartoscCzesciLotnych());
+            editedCertyfikat.setWartoscOpalowaField(selectedCertyfikat.getWartoscOpalowa());
+            editedCertyfikat.setSpiekalnoscField(selectedCertyfikat.getZdolnoscSpiekania());
+            editedCertyfikat.setMinWymiarziarnaField(selectedCertyfikat.getMinimalnyWymiarZiarna());
+            editedCertyfikat.setMaxWymiarziarnaField(selectedCertyfikat.getMaksymalnyWymiarZiarna());
+            editedCertyfikat.setZawartoscPodziarnaField(selectedCertyfikat.getZawartoscPodziarna());
+            editedCertyfikat.setZawartoscNadziarnaField(selectedCertyfikat.getZawartoscNadziarna());
+            editedCertyfikat.setZawartoscWilgociField(selectedCertyfikat.getZawartoscWilgociCalkowitej());
+            editedCertyfikat.setDostawcaField(selectedCertyfikat.getDostawca());
+            editedCertyfikat.setNrFvField(selectedCertyfikat.getNrFV());
+            editedCertyfikat.setAktywnyCheckbox(selectedCertyfikat.getAktywny());
+            //  editedCertyfikat.setAsortymentCombobox(selectedCertyfikat.getAsortyment());
+            editedCertyfikat.getAsortymentCombobox().getSelectionModel().select(selectedCertyfikat.getAsortyment());
+            //  editedCertyfikat.listaCertyfikatowController = ListaCertyfikatowController.this;
+            editedCertyfikat.setMainController(MainController.this);
+
+        } else {
+            messageLabelMain.setText("Zaznacz najpierw certyfikat");
+        }
     }
-
 }
 
