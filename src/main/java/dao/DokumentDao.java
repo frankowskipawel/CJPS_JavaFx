@@ -1,16 +1,12 @@
 package dao;
 
 import config.Config;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 import model.CertyfikatJakosci;
 import model.Dokument;
-import model.WartosciDopuszczalnePaliwa;
-import stages.OknoDialogoweController;
 
 import java.sql.*;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -206,16 +202,56 @@ public class DokumentDao {
         return nrNajwyzszy;
     }
 
-    public String getNajwyzszyNumerDokumentuDaoString() {
+    public int getKolejnyNumerDokumentuDao() {
+        Statement statement;
+        int autoIncrement = 0;
+        int nrNajwyzszy = 0;
+        int nrKolejny=0;
+        String dataNajwyzszy = null;
+        try {
+            statement = connection.createStatement();
+            String query = "SELECT max(auto_numeracja) FROM " + tableName;
+            ResultSet resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
+                autoIncrement = resultSet.getInt("max(auto_numeracja)");
+            }
+
+            query = "SELECT id_dokumenty, data_Dokumenty FROM " + tableName + " WHERE auto_numeracja=" + autoIncrement;
+
+            resultSet = statement.executeQuery(query);
+            while (resultSet.next()) {
+                nrNajwyzszy = resultSet.getInt("id_dokumenty");
+                dataNajwyzszy = resultSet.getString("data_dokumenty");
+            }
+            statement.close();
+
+            ZonedDateTime dataDzisiejsza = ZonedDateTime.now();
+            DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            String dataDzisiejszaString = dataDzisiejsza.format(f);
+            if (dataDzisiejszaString.substring(0, 4).equals(dataNajwyzszy.substring(0, 4))) {
+                nrKolejny = nrNajwyzszy + 1;
+            } else {
+                nrKolejny = 1;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return nrKolejny;
+    }
+
+
+    public String getAILastDokument() {
         Statement statement = null;
         String nrNajwyzszy = "";
         try {
             statement = connection.createStatement();
-            String query = "SELECT max(id_dokumenty) FROM " + tableName;
+            String query = "SELECT max(auto_numeracja) FROM " + tableName;
             ResultSet resultSet = statement.executeQuery(query);
 
             while (resultSet.next()) {
-                nrNajwyzszy = resultSet.getString("max(id_dokumenty)");
+                nrNajwyzszy = resultSet.getString("max(auto_numeracja)");
             }
             statement.close();
         } catch (SQLException e) {
@@ -224,12 +260,12 @@ public class DokumentDao {
         return nrNajwyzszy;
     }
 
-    public void deleteDokumentDatabase(String id) {
+    public void deleteDokumentDatabase(String autoNumeracja) {
         Statement statement = null;
         try {
             statement = connection.createStatement();
 
-            String query = "delete from " + tableName + " where id_dokumenty = '" + id + "'";
+            String query = "delete from " + tableName + " where auto_numeracja = '" + autoNumeracja + "'";
             ///  System.out.println(query);1
             //   String query = "select * from " + tableName;
             int resultSet = statement.executeUpdate(query);
@@ -241,7 +277,7 @@ public class DokumentDao {
 
     public void usunOstatniDokument() {
         DokumentDao dokumentDao = new DokumentDao();
-        dokumentDao.deleteDokumentDatabase(dokumentDao.getNajwyzszyNumerDokumentuDaoString());
+        dokumentDao.deleteDokumentDatabase(dokumentDao.getAILastDokument());
 
     }
 
@@ -263,18 +299,18 @@ public class DokumentDao {
 
     public int countDokument(String numerCertyfikatu) {
         //  SELECT * FROM certyfikaty_database.dokumenty WHERE nr_certyfikaty="30";
-        int count=0;
+        int count = 0;
         Statement statement = null;
         try {
             statement = connection.createStatement();
 
-            String query = "SELECT * FROM " + tableName + " WHERE nr_certyfikaty='" + numerCertyfikatu+"';";            //   System.out.println(query);
+            String query = "SELECT * FROM " + tableName + " WHERE nr_certyfikaty='" + numerCertyfikatu + "';";            //   System.out.println(query);
             ResultSet resultSet = statement.executeQuery(query);
 
             while (resultSet.next()) {
                 count++;
             }
-           // System.out.println(resultSet);
+            // System.out.println(resultSet);
 
         } catch (SQLException e) {
             e.printStackTrace();

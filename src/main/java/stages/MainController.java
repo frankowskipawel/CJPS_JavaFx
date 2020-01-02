@@ -152,7 +152,8 @@ public class MainController {
         CertyfikatJakosci certyfikatJakosci = new CertyfikatJakosciDao().znajdzCertyfikatPoNr(listaAktywnychCertyfikatowTableViewStronaGlowna.getSelectionModel().getSelectedItem().getNumerCertyfikatuAktywne());
         DokumentDao dokumentDao = new DokumentDao();
 
-        int numer = dokumentDao.getNajwyzszyNumerDokumentuDao() + 1;
+        int numer = dokumentDao.getKolejnyNumerDokumentuDao();
+        //System.out.println(numer);
 
         ZonedDateTime dataDzisiejsza = ZonedDateTime.now();
         DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy-MM-dd");
