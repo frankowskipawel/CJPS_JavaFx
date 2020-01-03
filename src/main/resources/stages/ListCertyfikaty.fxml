@@ -7,13 +7,15 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="673.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stages.ListCertyfikatyController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="672.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stages.ListCertyfikatyController">
     <children>
         <Label text="Lista certyfikatów Jakości" />
         <TableView fx:id="listaCertyfikatowTableView" prefHeight="539.0" prefWidth="1459.0" VBox.vgrow="ALWAYS">
@@ -107,46 +109,88 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
         </TableView>
-      <GridPane minHeight="50.0">
+      <GridPane minHeight="50.0" prefHeight="62.0" prefWidth="1500.0" scaleShape="false">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="743.0" minWidth="10.0" prefWidth="495.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="1005.0" minWidth="10.0" prefWidth="1005.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">
+            <HBox alignment="TOP_RIGHT" prefHeight="62.0" prefWidth="869.0" GridPane.columnIndex="1">
                <children>
                   <Button fx:id="zmienButton" disable="true" mnemonicParsing="false" onAction="#zmienOnClick" text="Zmień certyfikat na dokumencie">
                      <HBox.margin>
                         <Insets top="10.0" />
                      </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/exchange.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
-                  <Button fx:id="usunButton" mnemonicParsing="false" onAction="#usunCertyfikat" text="Usuń">
+                  <Button fx:id="usunButton" mnemonicParsing="false" onAction="#usunCertyfikat">
                      <HBox.margin>
                         <Insets left="10.0" top="10.0" />
                      </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/remove.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
-                  <Button fx:id="edycjaButton" mnemonicParsing="false" onAction="#edycjaOnClick" text="Edycja">
+                  <Button fx:id="edycjaButton" mnemonicParsing="false" onAction="#edycjaOnClick">
                      <HBox.margin>
                         <Insets left="10.0" top="10.0" />
                      </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/edit.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
-                  <Button fx:id="odswiezButton" mnemonicParsing="false" onAction="#odswiezClick" text="Odśwież">
+                  <Button fx:id="odswiezButton" mnemonicParsing="false" onAction="#odswiezClick">
                      <HBox.margin>
                         <Insets left="10.0" top="10.0" />
                      </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/refresh.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
-                  <Button fx:id="dodajNowyButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addNowyCertyfikatOnClick" text="Dodaj Nowy" textAlignment="CENTER">
+                  <Button fx:id="dodajNowyButton" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addNowyCertyfikatOnClick" prefHeight="40.0" prefWidth="120.0" textAlignment="CENTER">
                      <HBox.margin>
                         <Insets left="10.0" top="10.0" />
                      </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/add.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
-                  <Button fx:id="zamknijButton" mnemonicParsing="false" onAction="#zamknijOnClick" text="Zamknij">
+                  <Button fx:id="zamknijButton" mnemonicParsing="false" onAction="#zamknijOnClick" prefHeight="40.0" prefWidth="120.0">
                      <HBox.margin>
                         <Insets left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/ok.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
                </children>
             </HBox>
