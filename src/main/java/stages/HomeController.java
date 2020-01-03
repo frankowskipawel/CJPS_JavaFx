@@ -46,6 +46,12 @@ public class HomeController {
     private TableColumn iloscTableViewStronaGlowna;
     @FXML
     private MenuItem edytujContextItem;
+    @FXML
+    private CheckBox jednaKopiaCheckBox;
+    @FXML
+    private CheckBox podgladChechBox;
+    @FXML
+    private CheckBox nieDrukuj;
 
     @FXML
     public void initialize() {
@@ -78,6 +84,9 @@ public class HomeController {
         refreshListaAktywnychCertyfikatow();
         refreshListaDokumentow();
         listaAktywnychCertyfikatowTableViewStronaGlowna.getSortOrder().add(naszaNazwaAktywne);
+        jednaKopiaCheckBox.setSelected(false);
+        podgladChechBox.setSelected(false);
+        nieDrukuj.setSelected(false);
     }
 
     @FXML
@@ -90,10 +99,14 @@ public class HomeController {
             refreshListaAktywnychCertyfikatow();
             refreshListaDokumentow();
 
-            showAndPrintDokument(dokument, true, false); //zamienic na print docelowo}
+            showAndPrintDokument(dokument, !nieDrukuj.isSelected(), podgladChechBox.isSelected()); //zamienic na print docelowo}
+            jednaKopiaCheckBox.setSelected(false);
+            podgladChechBox.setSelected(false);
+            nieDrukuj.setSelected(false);
         } else {
             messageLabelMain.setText("Błąd - nie zaznaczono certyfikatu");
         }
+
     }
 
     @FXML
@@ -126,7 +139,11 @@ public class HomeController {
         wydrukController.setFieldInWydruk(dokument);
         wydrukController.homeController = HomeController.this;
         if (print) {
-            wydrukController.print(2);
+            if (jednaKopiaCheckBox.isSelected()) {
+                wydrukController.print(1);
+            } else {
+                wydrukController.print(2);
+            }
         }
     }
 
@@ -385,6 +402,10 @@ public class HomeController {
     @FXML
     void usunOstatniMenuContextClick(ActionEvent event) throws IOException {
         usunOstatniMenuClick();
+    }
+
+    public void tylkoOryginalCheckBoxOnClick(ActionEvent actionEvent) {
+
     }
 }
 

@@ -16,14 +16,14 @@
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="673.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stages.ListCertyfikatyController">
     <children>
         <Label text="Lista certyfikatów Jakości" />
-        <TableView fx:id="listaCertyfikatowTableView" prefHeight="539.0" prefWidth="1459.0">
+        <TableView fx:id="listaCertyfikatowTableView" prefHeight="539.0" prefWidth="1459.0" VBox.vgrow="ALWAYS">
             <columns>
-                <TableColumn fx:id="nrListaCertyfikatowTableView" prefWidth="53.59997636079788" text="Nr">
+                <TableColumn fx:id="nrListaCertyfikatowTableView" prefWidth="53.59997636079788" style="-fx-alignment: center;" text="Nr">
                     <cellValueFactory>
                         <PropertyValueFactory property="numerCertyfikatu" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn fx:id="aktywnyListaCertyfikatowTableView" prefWidth="75.0" text="Aktywny">
+                <TableColumn fx:id="aktywnyListaCertyfikatowTableView" prefWidth="75.0" style="-fx-alignment: center;" text="Aktywny">
                     <cellValueFactory>
                         <PropertyValueFactory property="aktywny" />
                     </cellValueFactory>
@@ -38,66 +38,66 @@
                     <PropertyValueFactory property="asortyment" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="dataListaCertyfikatowTableView" minWidth="1.60003662109375" prefWidth="60.79998779296875" text="Data">
+            <TableColumn fx:id="dataListaCertyfikatowTableView" minWidth="1.60003662109375" prefWidth="60.79998779296875" style="-fx-alignment: center;" text="Data">
             <cellValueFactory>
                 <PropertyValueFactory property="data" />
             </cellValueFactory>
         </TableColumn>
-        <TableColumn fx:id="nrLabListaCertyfikatowTableView" prefWidth="53.60003662109375" text="Nr Lab.">
+        <TableColumn fx:id="nrLabListaCertyfikatowTableView" prefWidth="53.60003662109375" style="-fx-alignment: center;" text="Nr Lab.">
         <cellValueFactory>
             <PropertyValueFactory property="numerCertyfikatuLaboratorium" />
         </cellValueFactory>
     </TableColumn>
-    <TableColumn fx:id="popiolListaCertyfikatowTableView" prefWidth="60.0" text="Popiół">
+    <TableColumn fx:id="popiolListaCertyfikatowTableView" prefWidth="60.0" style="-fx-alignment: center;" text="Popiół">
     <cellValueFactory>
         <PropertyValueFactory property="zawartoscPopiolu" />
     </cellValueFactory>
 </TableColumn>
-<TableColumn fx:id="siarkaListaCertyfikatowTableView" prefWidth="75.0" text="Siarka">
+<TableColumn fx:id="siarkaListaCertyfikatowTableView" prefWidth="75.0" style="-fx-alignment: center;" text="Siarka">
 <cellValueFactory>
 <PropertyValueFactory property="zawartoscSiarkiCalkowitej" />
 </cellValueFactory></TableColumn>
-<TableColumn fx:id="czLotneListaCertyfikatowTableView" prefWidth="75.0" text="Cz. Lotne">
+<TableColumn fx:id="czLotneListaCertyfikatowTableView" prefWidth="75.0" style="-fx-alignment: center;" text="Cz. Lotne">
 <cellValueFactory>
 <PropertyValueFactory property="zawartoscCzesciLotnych" />
 </cellValueFactory></TableColumn>
-<TableColumn fx:id="wartOpalListaCertyfikatowTableView" prefWidth="75.0" text="Wart. opał.">
+<TableColumn fx:id="wartOpalListaCertyfikatowTableView" prefWidth="75.0" style="-fx-alignment: center;" text="Wart. opał.">
 <cellValueFactory>
 <PropertyValueFactory property="wartoscOpalowa" />
 </cellValueFactory></TableColumn>
-<TableColumn fx:id="spiekalnoscListaCertyfikatowTableView" prefWidth="75.0" text="RI">
+<TableColumn fx:id="spiekalnoscListaCertyfikatowTableView" prefWidth="75.0" style="-fx-alignment: center;" text="RI">
 <cellValueFactory>
 <PropertyValueFactory property="zdolnoscSpiekania" />
 </cellValueFactory></TableColumn>
-<TableColumn fx:id="minZiarnoListaCertyfikatowTableView" prefWidth="75.0" text="min. Ziarno">
+<TableColumn fx:id="minZiarnoListaCertyfikatowTableView" prefWidth="75.0" style="-fx-alignment: center;" text="min. Ziarno">
 <cellValueFactory>
 <PropertyValueFactory property="minimalnyWymiarZiarna" />
 </cellValueFactory></TableColumn>
-<TableColumn fx:id="maxZiarnoListaCertyfikatowTableView" prefWidth="75.0" text="max. Ziarno">
+<TableColumn fx:id="maxZiarnoListaCertyfikatowTableView" prefWidth="75.0" style="-fx-alignment: center;" text="max. Ziarno">
 <cellValueFactory>
 <PropertyValueFactory property="maksymalnyWymiarZiarna" />
 </cellValueFactory></TableColumn>
-<TableColumn fx:id="podziarnoListaCertyfikatowTableView" prefWidth="75.0" text="Podziarno">
+<TableColumn fx:id="podziarnoListaCertyfikatowTableView" prefWidth="75.0" style="-fx-alignment: center;" text="Podziarno">
 <cellValueFactory>
 <PropertyValueFactory property="zawartoscPodziarna" />
 </cellValueFactory></TableColumn>
-<TableColumn fx:id="nadziarnoListaCertyfikatowTableView" prefWidth="75.0" text="Nadziarno">
+<TableColumn fx:id="nadziarnoListaCertyfikatowTableView" prefWidth="75.0" style="-fx-alignment: center;" text="Nadziarno">
 <cellValueFactory>
 <PropertyValueFactory property="zawartoscNadziarna" />
 </cellValueFactory></TableColumn>
-<TableColumn fx:id="wilgocListaCertyfikatowTableView" prefWidth="85.60009765625" text="Wilgoć">
+<TableColumn fx:id="wilgocListaCertyfikatowTableView" prefWidth="85.60009765625" style="-fx-alignment: center;" text="Wilgoć">
 <cellValueFactory>
 <PropertyValueFactory property="zawartoscWilgociCalkowitej" />
 </cellValueFactory></TableColumn>
-<TableColumn fx:id="dostawca" prefWidth="94.39990234375" text="Dostawca">
+<TableColumn fx:id="dostawca" prefWidth="94.39990234375" style="-fx-alignment: center;" text="Dostawca">
 <cellValueFactory>
 <PropertyValueFactory property="dostawca" />
 </cellValueFactory></TableColumn>
-<TableColumn fx:id="nrFVListaCertyfikatowTableView" prefWidth="92.0" text="Nr FV">
+<TableColumn fx:id="nrFVListaCertyfikatowTableView" prefWidth="92.0" style="-fx-alignment: center;" text="Nr FV">
 <cellValueFactory>
 <PropertyValueFactory property="nrFV" />
 </cellValueFactory></TableColumn>
-            <TableColumn fx:id="iloscListaCertyfikatowTableView" prefWidth="75.0" text="Ilość" >
+            <TableColumn fx:id="iloscListaCertyfikatowTableView" prefWidth="75.0" style="-fx-alignment: center;" text="Ilość">
                 <cellValueFactory>
                     <PropertyValueFactory property="ilosc" />
                 </cellValueFactory>

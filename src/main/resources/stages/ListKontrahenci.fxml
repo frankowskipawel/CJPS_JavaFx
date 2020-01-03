@@ -23,7 +23,7 @@
       </TextField>
       <TableView fx:id="kontrahenciTableView" prefHeight="521.0" prefWidth="935.0" VBox.vgrow="ALWAYS">
         <columns>
-          <TableColumn fx:id="idKontrahentTableView" maxWidth="200.0" minWidth="120.0" prefWidth="158.0" text="Id">
+          <TableColumn fx:id="idKontrahentTableView" maxWidth="200.0" minWidth="120.0" prefWidth="158.0" style="-fx-alignment: center;" text="Id">
             <cellValueFactory><PropertyValueFactory property="idKontrahent" />
             </cellValueFactory>
           </TableColumn>
@@ -35,10 +35,10 @@
                 <cellValueFactory><PropertyValueFactory property="adresKontrahent" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="nipKontrahentTableView" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" text="Nip">
+            <TableColumn fx:id="nipKontrahentTableView" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" style="-fx-alignment: center;" text="Nip">
             <cellValueFactory><PropertyValueFactory property="nipKontrahent" />
             </cellValueFactory></TableColumn>
-            <TableColumn fx:id="regonKontrahentTableView" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" text="Regon">
+            <TableColumn fx:id="regonKontrahentTableView" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" style="-fx-alignment: center;" text="Regon">
             <cellValueFactory><PropertyValueFactory property="regonKontrahent" />
             </cellValueFactory></TableColumn>
         </columns>
