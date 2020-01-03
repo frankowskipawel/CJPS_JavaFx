@@ -76,7 +76,7 @@ public class ListCertyfikatyController {
                     b.zawartoscNadziarnaProperty().getValue(),
                     b.zawartoscWilgociCalkowitejProperty().getValue(),
                     b.dostawcaProperty().getValue(),
-                    b.nrFVProperty().getValue(),b.iloscProperty().getValue())
+                    b.nrFVProperty().getValue(), b.iloscProperty().getValue())
             );
         }
         this.lista = data;
@@ -120,7 +120,6 @@ public class ListCertyfikatyController {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
 
-
         AddNewCertyfikatController editedCertyfikat = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
 
         CertyfikatJakosci selected = listaCertyfikatowTableView.getSelectionModel().getSelectedItem();
@@ -159,11 +158,12 @@ public class ListCertyfikatyController {
     @FXML
     public void usunCertyfikat() {
         Optional<ButtonType> result = DialogsUtils.confirmationDialog("delete.title", "delete.header");
-        if(result.get()==ButtonType.OK){
-        CertyfikatJakosciDao certyfikatJakosciDao = new CertyfikatJakosciDao();
-        certyfikatJakosciDao.deleteCertyfikatJakosci(listaCertyfikatowTableView.getSelectionModel().getSelectedItem());
-        odswiezClick();
-    }}
+        if (result.get() == ButtonType.OK) {
+            CertyfikatJakosciDao certyfikatJakosciDao = new CertyfikatJakosciDao();
+            certyfikatJakosciDao.deleteCertyfikatJakosci(listaCertyfikatowTableView.getSelectionModel().getSelectedItem());
+            odswiezClick();
+        }
+    }
 
     @FXML
     private void zamknijOnClick() {
@@ -174,13 +174,14 @@ public class ListCertyfikatyController {
     @FXML
     void zmienOnClick(ActionEvent event) {
         Optional<ButtonType> result = DialogsUtils.confirmationDialog("replace.title", "replace.header");
-        if(result.get()==ButtonType.OK){
-        Dokument dokument = new Dokument(dokumentEdytowany.getNumerDokumentu(), dokumentEdytowany.getDataDokumentu(), listaCertyfikatowTableView.getSelectionModel().getSelectedItem());
-        DokumentDao dokumentDao = new DokumentDao();
-        dokumentDao.updateDokument(dokument);
-        listDokumentyController.odswiezDokumentyListView();
-        zamknijOnClick();
-    }}
+        if (result.get() == ButtonType.OK) {
+            Dokument dokument = new Dokument(dokumentEdytowany.getNumerDokumentu(), dokumentEdytowany.getDataDokumentu(), listaCertyfikatowTableView.getSelectionModel().getSelectedItem());
+            DokumentDao dokumentDao = new DokumentDao();
+            dokumentDao.updateDokument(dokument);
+            listDokumentyController.odswiezDokumentyListView();
+            zamknijOnClick();
+        }
+    }
 
     @FXML
     void tylkoAktywneCheck(ActionEvent event) {

@@ -1,6 +1,7 @@
 package dao;
 
 import config.Config;
+import modelFXML.CertyfikatJakosci;
 import modelFXML.Kontrahent;
 import java.sql.*;
 import java.util.LinkedList;
@@ -64,6 +65,19 @@ public class KontrahentDao {
             statement = connection.createStatement();
             String query = "delete from " + tableName + " where id_kontrahent = '" + id+"';";
             statement.executeUpdate(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateKontrahent(Kontrahent kontrahent) {
+
+        Statement statement = null;
+        try {
+            statement = connection.createStatement();
+            String query = "UPDATE " + tableName + " SET `id_kontrahent` = '" + kontrahent.getIdKontrahent() + "', `nazwa_kontrahent` = '" + kontrahent.getNazwaKontrahent() + "', `adres_kontrahent` = '" + kontrahent.getAdresKontrahent() + "', `nip_kontrahent` = '" + kontrahent.getNipKontrahent() + "', `regon_kontrahent` = '" + kontrahent.getRegonKontrahent() + "' WHERE (`id_kontrahent` = '" + kontrahent.getIdKontrahent() + "')";
+            //   System.out.println(query);
+            int resultSet = statement.executeUpdate(query);
         } catch (SQLException e) {
             e.printStackTrace();
         }

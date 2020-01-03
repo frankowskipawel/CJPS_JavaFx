@@ -61,6 +61,15 @@
                      </image>
                   </ImageView>
                </graphic></Button>
+            <Button mnemonicParsing="false" onAction="#edytujOnClick" prefHeight="40.0" prefWidth="120.0">
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/edit.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
             <Button mnemonicParsing="false" onAction="#dodajNowyOnClick" prefHeight="40.0" prefWidth="120.0">
                <HBox.margin>
                   <Insets left="10.0" />

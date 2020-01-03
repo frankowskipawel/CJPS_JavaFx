@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class ListKontrahenciController {
+
     private AddNewCertyfikatController addNewCertyfikatController;
 
     @FXML
@@ -56,6 +57,7 @@ public class ListKontrahenciController {
 
     public void addNowyKontrahent(Kontrahent kontrahent) {
         ObservableList<Kontrahent> data = kontrahenciTableView.getItems();
+
         data.add(new Kontrahent(kontrahent.getIdKontrahent(),
                 kontrahent.getNazwaKontrahent(),
                 kontrahent.getAdresKontrahent(),
@@ -66,7 +68,15 @@ public class ListKontrahenciController {
         kontrahentDao.addKontrahentDatabase(kontrahent);
 
     }
+    public void updateKontrahent(Kontrahent kontrahent) {
 
+        KontrahentDao kontrahentDao = new KontrahentDao();
+        kontrahentDao.updateKontrahent(kontrahent);
+        ObservableList<Kontrahent> data = kontrahenciTableView.getItems();
+        data.removeAll();
+        setAllKontrahentTableView();
+
+    }
 
     @FXML
     protected void dodajNowyOnClick(ActionEvent event) throws IOException {
@@ -90,10 +100,10 @@ public class ListKontrahenciController {
 
         KontrahentDao kontrahentDao = new KontrahentDao();
         List<Kontrahent> list = kontrahentDao.getAllKontrahent();
-
+        ObservableList<Kontrahent> data = kontrahenciTableView.getItems();
+        data.removeAll(data);
         for (Kontrahent b : list) {
 
-            ObservableList<Kontrahent> data = kontrahenciTableView.getItems();
             data.add(new Kontrahent(b.idKontrahentProperty().getValue(),
                     b.nazwaKontrahentProperty().getValue(),
                     b.adresKontrahentProperty().getValue(),
@@ -146,5 +156,30 @@ public class ListKontrahenciController {
 
     public TableView<Kontrahent> getKontrahenciTableView() {
         return kontrahenciTableView;
+    }
+
+    public void edytujOnClick(ActionEvent actionEvent) throws IOException {
+        if(!kontrahenciTableView.getSelectionModel().isEmpty()){
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(this.getClass().getResource("/stages/AddNewKontrahent.fxml"));
+        Pane pane = loader.load();
+        Scene scene = new Scene(pane);
+        stage.setScene(scene);
+        stage.setTitle("Edycja kontrahenta");
+        stage.initModality(Modality.APPLICATION_MODAL);
+        AddNewKontrahentController addNewKontrahentController = loader.getController();
+        addNewKontrahentController.listKontrahenciController = ListKontrahenciController.this;
+        Kontrahent selected = kontrahenciTableView.getSelectionModel().getSelectedItem();
+
+        addNewKontrahentController.setId(selected.getIdKontrahent());
+        addNewKontrahentController.getId().setDisable(true);
+        addNewKontrahentController.setNazwa(selected.getNazwaKontrahent());
+        addNewKontrahentController.setAdres(selected.getAdresKontrahent());
+        addNewKontrahentController.setNip(selected.getNipKontrahent());
+        addNewKontrahentController.setRegon(selected.getRegonKontrahent());
+        stage.show();}
+
+
     }
 }
