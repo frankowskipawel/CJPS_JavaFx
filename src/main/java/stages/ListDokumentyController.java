@@ -2,6 +2,7 @@ package stages;
 
 import dao.DokumentDao;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -82,7 +83,7 @@ public class ListDokumentyController {
         }
         listCertyfikatyController.getListaCertyfikatowTableView().getSelectionModel().select(row);
         //^^^^^^^^^^
-
+        listCertyfikatyController.getZamknijButton().setDisable(true);
         stage.show();
     }
 
@@ -99,5 +100,13 @@ public class ListDokumentyController {
                 .forEach(data::add);
 
         Collections.reverse(data);
+    }
+
+    public void podgladContextMenu(ActionEvent actionEvent) throws IOException {
+        podgladOnClick();
+    }
+
+    public void edycjaContextMenu(ActionEvent actionEvent) throws IOException {
+        edytujOnClick();
     }
 }

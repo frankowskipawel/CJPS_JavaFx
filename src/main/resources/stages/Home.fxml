@@ -41,7 +41,7 @@
                   <MenuItem fx:id="menuDokumenty" mnemonicParsing="false" onAction="#menuDokumentyClick" text="Dokumenty" />
               </items>
             </Menu>
-            <Menu mnemonicParsing="false" text="Informacje">
+            <Menu mnemonicParsing="false" text="Pomoc">
               <items>
                 <MenuItem mnemonicParsing="false" onAction="#menuOprogramieOnClick" text="O programie" />
               </items>
@@ -55,7 +55,7 @@
               <PropertyValueFactory property="numerCertyfikatuAktywne" />
             </cellValueFactory>
             </TableColumn>
-          <TableColumn fx:id="naszaNazwaAktywne" minWidth="50.0" prefWidth="423.0" text="Nasza Nazwa">
+          <TableColumn fx:id="naszaNazwaAktywne" minWidth="50.0" prefWidth="423.0" text="Nazwa">
             <cellValueFactory>
               <PropertyValueFactory property="naszaNazwaAktywne" />
             </cellValueFactory>
@@ -90,6 +90,7 @@
                   <ContextMenu>
                     <items>
                       <MenuItem mnemonicParsing="false" onAction="#usunOstatniMenuContextClick" text="Usuń ostatni" />
+                        <MenuItem mnemonicParsing="false" onAction="#podgladMenuContextClick" text="Podgląd" />
                     </items>
                   </ContextMenu>
                </contextMenu>
@@ -152,7 +153,7 @@
                         </VBox>
                         <VBox prefHeight="105.0" prefWidth="196.0" HBox.hgrow="ALWAYS">
                            <children>
-                              <CheckBox fx:id="jednaKopiaCheckBox" maxHeight="100.0" maxWidth="300.0" mnemonicParsing="false" onAction="#tylkoOryginalCheckBoxOnClick" prefHeight="17.0" prefWidth="196.0" text="jedna kopia" />
+                              <CheckBox fx:id="jednaKopiaCheckBox" maxHeight="100.0" maxWidth="300.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="196.0" text="jedna kopia" />
                               <CheckBox fx:id="podgladChechBox" maxHeight="100.0" maxWidth="300.0" mnemonicParsing="false" text="podgląd" />
                               <CheckBox fx:id="nieDrukuj" maxHeight="100.0" maxWidth="300.0" mnemonicParsing="false" text="nie drukuj" />
                               <Label prefHeight="59.0" prefWidth="106.0" style="-fx-alignment: center;" text="CJPS" textFill="#00b2ff" VBox.vgrow="ALWAYS">

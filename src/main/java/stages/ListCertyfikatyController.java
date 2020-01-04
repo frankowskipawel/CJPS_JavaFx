@@ -109,7 +109,7 @@ public class ListCertyfikatyController {
 
 
     @FXML
-    void edycjaOnClick(ActionEvent event) throws IOException {
+    void edycjaOnClick() throws IOException {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(this.getClass().getResource("/stages/AddNewCertyfikat.fxml"));
@@ -127,7 +127,7 @@ public class ListCertyfikatyController {
 
         editedCertyfikat.setNumerLabel(selected.getNumerCertyfikatu());
         editedCertyfikat.setNaszaNazwaField(selected.getNaszaNazwa());
-        editedCertyfikat.setDataField(selected.getData());
+        editedCertyfikat.setDatePicker(selected.getData());
         editedCertyfikat.setNrCertyfikatuLaboratoriumField(selected.getNumerCertyfikatuLaboratorium());
         editedCertyfikat.setZawartoscPopioluField(selected.getZawartoscPopiolu());
         editedCertyfikat.setZawartoscSiarkiField(selected.getZawartoscSiarkiCalkowitej());
@@ -166,7 +166,7 @@ public class ListCertyfikatyController {
     }
 
     @FXML
-    private void zamknijOnClick() {
+    private void okOnClick() {
         Stage stage = (Stage) zamknijButton.getScene().getWindow();
         stage.close();
     }
@@ -179,12 +179,35 @@ public class ListCertyfikatyController {
             DokumentDao dokumentDao = new DokumentDao();
             dokumentDao.updateDokument(dokument);
             listDokumentyController.odswiezDokumentyListView();
-            zamknijOnClick();
+            okOnClick();
         }
     }
 
     @FXML
+    void dodajNowyContextMenu(ActionEvent event) throws IOException {
+        addNowyCertyfikatOnClick();
+    }
+
+
+    @FXML
+    void edytujContextMenu(ActionEvent event) throws IOException {
+        edycjaOnClick();
+    }
+
+
+    @FXML
+    void odswiezContextMenu(ActionEvent event) {
+        odswiezClick();
+    }
+
+    @FXML
+    public void usunContextMenu(ActionEvent actionEvent) {
+        usunCertyfikat();
+    }
+
+    @FXML
     void tylkoAktywneCheck(ActionEvent event) {
+
 
         if (tylkoAktywne.isSelected()) {
             ObservableList<CertyfikatJakosci> data = listaCertyfikatowTableView.getItems();
@@ -245,4 +268,18 @@ public class ListCertyfikatyController {
     public TableView<CertyfikatJakosci> getListaCertyfikatowTableView() {
         return listaCertyfikatowTableView;
     }
+
+    public Button getZamknijButton() {
+        return zamknijButton;
+    }
+
+    public void setZamknijButton(Button zamknijButton) {
+        this.zamknijButton = zamknijButton;
+    }
+
+    public void anulujOnClick(ActionEvent actionEvent) {
+        okOnClick();
+    }
+
+
 }

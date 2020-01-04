@@ -8,10 +8,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 import modelFXML.CertyfikatJakosci;
 import modelFXML.WartosciDopuszczalnePaliwa;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class AddNewCertyfikatController {
 
@@ -26,8 +29,8 @@ public class AddNewCertyfikatController {
     private CheckBox aktywnyCheckbox;
     @FXML
     private ComboBox asortymentCombobox;
-    @FXML
-    private TextField dataField;
+    //    @FXML
+//    private TextField datePicker;
     @FXML
     private TextField nrCertyfikatuLaboratoriumField;
     @FXML
@@ -56,6 +59,8 @@ public class AddNewCertyfikatController {
     private TextField nrFvField;
     @FXML
     private Button anulujButton;
+    @FXML
+    private DatePicker datePicker;
 
 
     @FXML
@@ -80,10 +85,10 @@ public class AddNewCertyfikatController {
 
 
         CertyfikatJakosci cerytfikatJakosci = new CertyfikatJakosci(numerString, isAktywny, naszaNazwaField.getText(), asortymentValue,
-                dataField.getText(), nrCertyfikatuLaboratoriumField.getText(), zawartoscPopioluField.getText(), zawartoscSiarkiField.getText(),
+                datePicker.getValue().toString(), nrCertyfikatuLaboratoriumField.getText(), zawartoscPopioluField.getText(), zawartoscSiarkiField.getText(),
                 zawartoscCzesciLotnychField.getText(), wartoscOpalowaField.getText(), spiekalnoscField.getText(), minWymiarziarnaField.getText(),
                 maxWymiarziarnaField.getText(), zawartoscPodziarnaField.getText(), zawartoscNadziarnaField.getText(), zawartoscWilgociField.getText(),
-                dostawcaField.getText(), nrFvField.getText(),"");
+                dostawcaField.getText(), nrFvField.getText(), "");
 
         if (numerLabel.getText().equals("(auto)")) {
             certyfikatJakosciDao.addCertyfikatJakosciToDatabase(cerytfikatJakosci);
@@ -127,6 +132,35 @@ public class AddNewCertyfikatController {
     public void initialize() {
 
         asortymentCombobox.getItems().addAll(WartosciDopuszczalnePaliwa.values());
+
+
+        String pattern = "yyyy-MM-dd";
+       // datePicker.setPromptText(pattern);
+        try {
+            datePicker.setConverter(new StringConverter<LocalDate>() {
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern(pattern);
+
+                @Override
+                public String toString(LocalDate object) {
+                    if (object == null) {
+                        return null;
+                    }
+                    return dtf.format(object);
+                }
+
+                @Override
+                public LocalDate fromString(String string) {
+                    if (string != null & !string.isEmpty()) {
+                        return LocalDate.parse(string, dtf);
+                    }
+                    return null;
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     public void setNumerLabel(String numerLabel) {
@@ -150,8 +184,12 @@ public class AddNewCertyfikatController {
         this.asortymentCombobox.setPromptText(asortymentCombobox);
     }
 
-    public void setDataField(String dataField) {
-        this.dataField.setText(dataField);
+    public void setDatePicker(String datePicker) {
+
+        DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate data = LocalDate.parse(datePicker, f);
+
+        this.datePicker.setValue(data);
     }
 
     public void setNrCertyfikatuLaboratoriumField(String nrCertyfikatuLaboratoriumField) {
@@ -224,6 +262,10 @@ public class AddNewCertyfikatController {
 
     public ComboBox getAsortymentCombobox() {
         return asortymentCombobox;
+    }
+
+    public void dataOnClick(ActionEvent actionEvent) {
+
     }
 }
 

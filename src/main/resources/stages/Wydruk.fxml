@@ -2,7 +2,10 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -489,11 +492,19 @@
                         <Font size="8.0" />
                      </font>
                   </Label>
-                  <Button layoutX="220.0" layoutY="62.0" mnemonicParsing="false" onAction="#printOnClick" prefHeight="9.0" prefWidth="41.0" text="Drukuj">
+                  <Button fx:id="printButton" layoutX="161.0" layoutY="22.0" mnemonicParsing="false" onAction="#printOnClick" prefHeight="25.0" prefWidth="100.0">
                      <font>
                         <Font size="8.0" />
                      </font>
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/printer.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
+                  <CheckBox fx:id="jednaKopiaCheckBox" layoutX="161.0" layoutY="62.0" mnemonicParsing="false" text="jedna kopia" />
                </children>
             </Pane>
          </children>

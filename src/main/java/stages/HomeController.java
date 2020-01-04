@@ -139,6 +139,8 @@ public class HomeController {
         wydrukController.setFieldInWydruk(dokument);
         wydrukController.homeController = HomeController.this;
         if (print) {
+            wydrukController.getJednaKopiaCheckBox().setVisible(false);
+            wydrukController.getPrintButton().setVisible(false);
             if (jednaKopiaCheckBox.isSelected()) {
                 wydrukController.print(1);
             } else {
@@ -376,7 +378,8 @@ public class HomeController {
 
             editedCertyfikat.setNumerLabel(selectedCertyfikat.getNumerCertyfikatu());
             editedCertyfikat.setNaszaNazwaField(selectedCertyfikat.getNaszaNazwa());
-            editedCertyfikat.setDataField(selectedCertyfikat.getData());
+
+            editedCertyfikat.setDatePicker(selectedCertyfikat.getData());
             editedCertyfikat.setNrCertyfikatuLaboratoriumField(selectedCertyfikat.getNumerCertyfikatuLaboratorium());
             editedCertyfikat.setZawartoscPopioluField(selectedCertyfikat.getZawartoscPopiolu());
             editedCertyfikat.setZawartoscSiarkiField(selectedCertyfikat.getZawartoscSiarkiCalkowitej());
@@ -404,8 +407,9 @@ public class HomeController {
         usunOstatniMenuClick();
     }
 
-    public void tylkoOryginalCheckBoxOnClick(ActionEvent actionEvent) {
-
+    @FXML
+    void podgladMenuContextClick() throws IOException {
+        showAndPrintDokument(listaDokumentowListViewStronaGlowna.getSelectionModel().getSelectedItem(), false, true);
     }
 }
 

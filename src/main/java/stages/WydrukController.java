@@ -4,6 +4,8 @@ import config.Config;
 import javafx.fxml.FXML;
 import javafx.print.PrinterJob;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import modelFXML.Dokument;
@@ -84,6 +86,10 @@ public class WydrukController {
     private Label WDmaxNadziarnoWydruk;
     @FXML
     private Label WDmaxZawWilgociWydruk;
+    @FXML
+    private Button printButton;
+    @FXML
+    private CheckBox jednaKopiaCheckBox;
 
 
     public WydrukController() {
@@ -133,7 +139,18 @@ public class WydrukController {
 
     @FXML
     private void printOnClick() throws IOException {
-        print(2);
+        getJednaKopiaCheckBox().setVisible(false);
+        getPrintButton().setVisible(false);
+
+        if (getJednaKopiaCheckBox().isSelected()) {
+
+            print(1);
+        } else {
+            print(2);
+        }
+        getJednaKopiaCheckBox().setVisible(true);
+        getPrintButton().setVisible(true);
+
     }
 
     public void print(int a) {
@@ -294,5 +311,29 @@ public class WydrukController {
 
     public void setWDmaxWilgotnoscWydruk(String WDmaxZawWilgociWydruk) {
         this.WDmaxZawWilgociWydruk.setText(WDmaxZawWilgociWydruk);
+    }
+
+    public WydrukController getWydrukController() {
+        return wydrukController;
+    }
+
+    public void setWydrukController(WydrukController wydrukController) {
+        this.wydrukController = wydrukController;
+    }
+
+    public Button getPrintButton() {
+        return printButton;
+    }
+
+    public void setPrintButton(Button printButton) {
+        this.printButton = printButton;
+    }
+
+    public CheckBox getJednaKopiaCheckBox() {
+        return jednaKopiaCheckBox;
+    }
+
+    public void setJednaKopiaCheckBox(CheckBox jednaKopiaCheckBox) {
+        this.jednaKopiaCheckBox = jednaKopiaCheckBox;
     }
 }

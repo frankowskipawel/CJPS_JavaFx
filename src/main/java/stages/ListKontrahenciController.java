@@ -43,7 +43,7 @@ public class ListKontrahenciController {
     }
 
     @FXML
-    protected void usunKontrahent(ActionEvent event) {
+    protected void usunKontrahent() {
         Optional<ButtonType> result = DialogsUtils.confirmationDialog("delete.title", "delete.header");
         if(result.get()==ButtonType.OK){
         KontrahentDao kontrahentDao = new KontrahentDao();
@@ -79,7 +79,7 @@ public class ListKontrahenciController {
     }
 
     @FXML
-    protected void dodajNowyOnClick(ActionEvent event) throws IOException {
+    protected void dodajNowyOnClick() throws IOException {
 
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader();
@@ -158,7 +158,7 @@ public class ListKontrahenciController {
         return kontrahenciTableView;
     }
 
-    public void edytujOnClick(ActionEvent actionEvent) throws IOException {
+    public void edytujOnClick() throws IOException {
         if(!kontrahenciTableView.getSelectionModel().isEmpty()){
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader();
@@ -181,5 +181,17 @@ public class ListKontrahenciController {
         stage.show();}
 
 
+    }
+
+    public void dodajNowyContextMenu() throws IOException {
+        dodajNowyOnClick();
+    }
+
+    public void edycjaContextMenu() throws IOException {
+        edytujOnClick();
+    }
+
+    public void usunContextMenu() {
+        usunKontrahent();
     }
 }
