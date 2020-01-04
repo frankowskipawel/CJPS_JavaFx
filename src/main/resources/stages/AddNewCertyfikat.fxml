@@ -15,13 +15,15 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="TOP_CENTER" prefHeight="566.0" prefWidth="523.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stages.AddNewCertyfikatController">
+<VBox alignment="TOP_CENTER" prefHeight="566.0" prefWidth="604.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="stages.AddNewCertyfikatController">
    <children>
-      <GridPane alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="494.0" prefWidth="462.0">
+      <GridPane alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="494.0" prefWidth="574.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="353.3999847412109" minWidth="10.0" prefWidth="158.40001831054687" />
-          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="307.79997558593755" minWidth="10.0" prefWidth="246.99998779296877" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="261.5999755859375" minWidth="10.0" prefWidth="71.00001220703126" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="353.3999847412109" minWidth="10.0" prefWidth="187.0" />
+          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="307.79997558593755" minWidth="10.0" prefWidth="201.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="261.5999755859375" minWidth="45.0" prefWidth="45.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="261.5999755859375" minWidth="45.0" prefWidth="45.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="261.5999755859375" minWidth="45.0" prefWidth="45.0" />
         </columnConstraints>
         <rowConstraints>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -83,16 +85,38 @@
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="100.0" text="\%" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="12" />
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="78.0" text="\%" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="14" />
             <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#kontrahentOnClick" prefHeight="26.0" prefWidth="25.0" text="..." textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="15" />
-            <ComboBox fx:id="asortymentCombobox" prefHeight="26.0" prefWidth="261.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ComboBox fx:id="asortymentCombobox" onAction="#asortymentSelectOnClick" prefHeight="26.0" prefWidth="261.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label text="Numer " />
             <Label fx:id="numerLabel" prefHeight="17.0" prefWidth="275.0" style="-fx-alignment: center;" text="(auto)" GridPane.columnIndex="1" />
             <DatePicker fx:id="datePicker" editable="false" prefHeight="25.0" prefWidth="244.0" style="-fx-alignment: center;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="minPopiolLabel" text="-" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <Label fx:id="minSiarkaLabel" text="-" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+            <Label fx:id="minZawCzLotnychLabel" text="-" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+            <Label fx:id="minWartoscOpalowaLabel" text="-" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+            <Label fx:id="minSpiekalnoscLabel" text="-" GridPane.columnIndex="3" GridPane.rowIndex="9" />
+            <Label fx:id="minWymiarZiarnaLabel" text="-" GridPane.columnIndex="3" GridPane.rowIndex="10" />
+            <Label text="-" GridPane.columnIndex="3" GridPane.rowIndex="11" />
+            <Label fx:id="minPodziarnoLabel" text="-" GridPane.columnIndex="3" GridPane.rowIndex="12" />
+            <Label fx:id="minNadziarnoLabel" text="-" GridPane.columnIndex="3" GridPane.rowIndex="13" />
+            <Label fx:id="minZawartoscWilgociLabel" text="-" GridPane.columnIndex="3" GridPane.rowIndex="14" />
+            <Label fx:id="maxPopiolLabel" text="-" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+            <Label fx:id="maxSiarkaLabel" text="-" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+            <Label fx:id="maxZawCzLotnychLabel" text="-" GridPane.columnIndex="4" GridPane.rowIndex="7" />
+            <Label fx:id="maxWartoscOpalowaLabel" text="-" GridPane.columnIndex="4" GridPane.rowIndex="8" />
+            <Label fx:id="maxSpiekalnoscLabel" text="-" GridPane.columnIndex="4" GridPane.rowIndex="9" />
+            <Label text="-" GridPane.columnIndex="4" GridPane.rowIndex="10" />
+            <Label fx:id="maxWymiarZiarnaLabel" text="-" GridPane.columnIndex="4" GridPane.rowIndex="11" />
+            <Label fx:id="maxPodziarnoLabel" text="-" GridPane.columnIndex="4" GridPane.rowIndex="12" />
+            <Label fx:id="maxNadziarnoLabel" text="-" GridPane.columnIndex="4" GridPane.rowIndex="13" />
+            <Label fx:id="maxZawartoscWilgociLabel" text="-" GridPane.columnIndex="4" GridPane.rowIndex="14" />
+            <Label text="min" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <Label text="max" GridPane.columnIndex="4" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <HBox alignment="CENTER" prefHeight="76.0" prefWidth="523.0">
+      <HBox alignment="CENTER" prefHeight="72.0" prefWidth="435.0">
          <children>
-            <CheckBox fx:id="aktywnyCheckbox" mnemonicParsing="false" text="Aktywny" />
-            <HBox alignment="CENTER_RIGHT" cache="true" prefHeight="87.0" prefWidth="418.0">
+            <CheckBox fx:id="aktywnyCheckbox" mnemonicParsing="false" prefHeight="21.0" prefWidth="161.0" text="Aktywny" />
+            <HBox alignment="CENTER_RIGHT" cache="true" prefHeight="72.0" prefWidth="409.0">
                <children>
                   <Button fx:id="dodajButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#okOnClick" prefHeight="40.0" prefWidth="120.0">
                      <opaqueInsets>

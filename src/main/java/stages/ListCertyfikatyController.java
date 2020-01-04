@@ -26,7 +26,7 @@ import java.util.Optional;
 
 public class ListCertyfikatyController {
 
-
+    private HomeController homeController;
     private ListDokumentyController listDokumentyController;
     private ObservableList<CertyfikatJakosci> lista;
     private Dokument dokumentEdytowany;
@@ -167,8 +167,10 @@ public class ListCertyfikatyController {
 
     @FXML
     private void okOnClick() {
+        getHomeController().refreshClick();
         Stage stage = (Stage) zamknijButton.getScene().getWindow();
         stage.close();
+
     }
 
     @FXML
@@ -281,5 +283,11 @@ public class ListCertyfikatyController {
         okOnClick();
     }
 
+    public HomeController getHomeController() {
+        return homeController;
+    }
 
+    public void setHomeController(HomeController homeController) {
+        this.homeController = homeController;
+    }
 }

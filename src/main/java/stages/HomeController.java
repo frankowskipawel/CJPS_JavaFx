@@ -283,6 +283,11 @@ public class HomeController {
         stage.setScene(scene);
         stage.setTitle("Lista Certyfikatów");
         stage.initModality(Modality.APPLICATION_MODAL);
+
+
+        ListCertyfikatyController listCertyfikatyController = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
+        listCertyfikatyController.setHomeController(this);
+
         stage.showAndWait();
     }
 

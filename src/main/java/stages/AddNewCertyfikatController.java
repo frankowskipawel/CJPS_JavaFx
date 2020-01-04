@@ -61,6 +61,42 @@ public class AddNewCertyfikatController {
     private Button anulujButton;
     @FXML
     private DatePicker datePicker;
+    @FXML
+    private Label minPopiolLabel;
+    @FXML
+    private Label minSiarkaLabel;
+    @FXML
+    private Label minZawCzLotnychLabel;
+    @FXML
+    private Label minWartoscOpalowaLabel;
+    @FXML
+    private Label minSpiekalnoscLabel;
+    @FXML
+    private Label minWymiarZiarnaLabel;
+    @FXML
+    private Label minPodziarnoLabel;
+    @FXML
+    private Label minNadziarnoLabel;
+    @FXML
+    private Label minZawartoscWilgociLabel;
+    @FXML
+    private Label maxPopiolLabel;
+    @FXML
+    private Label maxSiarkaLabel;
+    @FXML
+    private Label maxZawCzLotnychLabel;
+    @FXML
+    private Label maxWartoscOpalowaLabel;
+    @FXML
+    private Label maxSpiekalnoscLabel;
+    @FXML
+    private Label maxWymiarZiarnaLabel;
+    @FXML
+    private Label maxPodziarnoLabel;
+    @FXML
+    private Label maxNadziarnoLabel;
+    @FXML
+    private Label maxZawartoscWilgociLabel;
 
 
     @FXML
@@ -266,6 +302,174 @@ public class AddNewCertyfikatController {
 
     public void dataOnClick(ActionEvent actionEvent) {
 
+    }
+
+    public void asortymentSelectOnClick(ActionEvent actionEvent) {
+
+        WartosciDopuszczalnePaliwa wartosciDopuszczalnePaliwa = WartosciDopuszczalnePaliwa.valueOf(getAsortymentCombobox().getSelectionModel().getSelectedItem().toString());
+        setMinPopiolLabel(wartosciDopuszczalnePaliwa.getMinPopiol());
+        setMaxPopiolLabel(wartosciDopuszczalnePaliwa.getMaxPopiol());
+        setMinSiarkaLabel(wartosciDopuszczalnePaliwa.getMinSiarka());
+        setMaxSiarkaLabel(wartosciDopuszczalnePaliwa.getMaxSiarka());
+        setMinZawCzLotnychLabel(wartosciDopuszczalnePaliwa.getMinCzLotne());
+        setMaxZawCzLotnychLabel(wartosciDopuszczalnePaliwa.getMaxCzLotne());
+        setMinWartoscOpalowaLabel(wartosciDopuszczalnePaliwa.getMinWartoscOpalowa());
+        setMaxWartoscOpalowaLabel(wartosciDopuszczalnePaliwa.getMaxWartoscOpalowa());
+        setMinSpiekalnoscLabel(wartosciDopuszczalnePaliwa.getMinSpiekalnsc());
+        setMaxSpiekalnoscLabel(wartosciDopuszczalnePaliwa.getMaxSpiekalnosc());
+        setMinWymiarZiarnaLabel(wartosciDopuszczalnePaliwa.getMinWymiarZiarna());
+        setMaxWymiarZiarnaLabel(wartosciDopuszczalnePaliwa.getMaxWymiarZiarna());
+        setMinPodziarnoLabel(wartosciDopuszczalnePaliwa.getMinPodziarno());
+        setMaxPodziarnoLabel(wartosciDopuszczalnePaliwa.getMaxPodziarno());
+        setMinNadziarnoLabel(wartosciDopuszczalnePaliwa.getMinNadziarno());
+        setMaxNadziarnoLabel(wartosciDopuszczalnePaliwa.getMaxNadziarno());
+        setMinZawartoscWilgociLabel(wartosciDopuszczalnePaliwa.getMinWilgotnosc());
+        setMaxZawartoscWilgociLabel(wartosciDopuszczalnePaliwa.getMaxWilgotnosc());
+    }
+
+
+    public Label getMinPopiolLabel() {
+        return minPopiolLabel;
+    }
+
+    public void setMinPopiolLabel(String minPopiolLabel) {
+        this.minPopiolLabel.setText(minPopiolLabel);
+    }
+
+    public Label getMinSiarkaLabel() {
+        return minSiarkaLabel;
+    }
+
+    public void setMinSiarkaLabel(String minSiarkaLabel) {
+        this.minSiarkaLabel.setText(minSiarkaLabel);
+    }
+
+    public Label getMinZawCzLotnychLabel() {
+        return minZawCzLotnychLabel;
+    }
+
+    public void setMinZawCzLotnychLabel(String minZawCzLotnychLabel) {
+        this.minZawCzLotnychLabel.setText(minZawCzLotnychLabel);
+    }
+
+    public Label getMinWartoscOpalowaLabel() {
+        return minWartoscOpalowaLabel;
+    }
+
+    public void setMinWartoscOpalowaLabel(String minWartoscOpalowaLabel) {
+        this.minWartoscOpalowaLabel.setText(minWartoscOpalowaLabel);
+    }
+
+    public Label getMinSpiekalnoscLabel() {
+        return minSpiekalnoscLabel;
+    }
+
+    public void setMinSpiekalnoscLabel(String minSpiekalnoscLabel) {
+        this.minSpiekalnoscLabel.setText(minSpiekalnoscLabel);
+    }
+
+    public Label getMinWymiarZiarnaLabel() {
+        return minWymiarZiarnaLabel;
+    }
+
+    public void setMinWymiarZiarnaLabel(String minWymiarZiarnaLabel) {
+        this.minWymiarZiarnaLabel.setText(minWymiarZiarnaLabel);
+    }
+
+    public Label getMinPodziarnoLabel() {
+        return minPodziarnoLabel;
+    }
+
+    public void setMinPodziarnoLabel(String minPodziarnoLabel) {
+        this.minPodziarnoLabel.setText(minPodziarnoLabel);
+    }
+
+    public Label getMinNadziarnoLabel() {
+        return minNadziarnoLabel;
+    }
+
+    public void setMinNadziarnoLabel(String minNadziarnoLabel) {
+        this.minNadziarnoLabel.setText(minNadziarnoLabel);
+    }
+
+    public Label getMinZawartoscWilgociLabel() {
+        return minZawartoscWilgociLabel;
+    }
+
+    public void setMinZawartoscWilgociLabel(String minZawartoscWilgociLabel) {
+        this.minZawartoscWilgociLabel.setText(minZawartoscWilgociLabel);
+    }
+
+    public Label getMaxPopiolLabel() {
+        return maxPopiolLabel;
+    }
+
+    public void setMaxPopiolLabel(String maxPopiolLabel) {
+        this.maxPopiolLabel.setText(maxPopiolLabel);
+    }
+
+    public Label getMaxSiarkaLabel() {
+        return maxSiarkaLabel;
+    }
+
+    public void setMaxSiarkaLabel(String maxSiarkaLabel) {
+        this.maxSiarkaLabel.setText(maxSiarkaLabel);
+    }
+
+    public Label getMaxZawCzLotnychLabel() {
+        return maxZawCzLotnychLabel;
+    }
+
+    public void setMaxZawCzLotnychLabel(String maxZawCzLotnychLabel) {
+        this.maxZawCzLotnychLabel.setText(maxZawCzLotnychLabel);
+    }
+
+    public Label getMaxWartoscOpalowaLabel() {
+        return maxWartoscOpalowaLabel;
+    }
+
+    public void setMaxWartoscOpalowaLabel(String maxWartoscOpalowaLabel) {
+        this.maxWartoscOpalowaLabel.setText(maxWartoscOpalowaLabel);
+    }
+
+    public Label getMaxSpiekalnoscLabel() {
+        return maxSpiekalnoscLabel;
+    }
+
+    public void setMaxSpiekalnoscLabel(String maxSpiekalnoscLabel) {
+        this.maxSpiekalnoscLabel.setText(maxSpiekalnoscLabel);
+    }
+
+    public Label getMaxWymiarZiarnaLabel() {
+        return maxWymiarZiarnaLabel;
+    }
+
+    public void setMaxWymiarZiarnaLabel(String maxWymiarZiarnaLabel) {
+        this.maxWymiarZiarnaLabel.setText(maxWymiarZiarnaLabel);
+    }
+
+    public Label getMaxPodziarnoLabel() {
+        return maxPodziarnoLabel;
+    }
+
+    public void setMaxPodziarnoLabel(String maxPodziarnoLabel) {
+        this.maxPodziarnoLabel.setText(maxPodziarnoLabel);
+    }
+
+    public Label getMaxNadziarnoLabel() {
+        return maxNadziarnoLabel;
+    }
+
+    public void setMaxNadziarnoLabel(String maxNadziarnoLabel) {
+        this.maxNadziarnoLabel.setText(maxNadziarnoLabel);
+    }
+
+    public Label getMaxZawartoscWilgociLabel() {
+        return maxZawartoscWilgociLabel;
+    }
+
+    public void setMaxZawartoscWilgociLabel(String maxZawartoscWilgociLabel) {
+        this.maxZawartoscWilgociLabel.setText(maxZawartoscWilgociLabel);
     }
 }
 
