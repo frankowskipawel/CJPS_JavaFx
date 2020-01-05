@@ -63,16 +63,16 @@
             <Label text="Nr Faktury VAT zakupu" GridPane.rowIndex="16" />
             <TextField fx:id="naszaNazwaField" alignment="TOP_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="nrCertyfikatuLaboratoriumField" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField fx:id="zawartoscPopioluField" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <TextField fx:id="zawartoscSiarkiField" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <TextField fx:id="zawartoscCzesciLotnychField" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <TextField fx:id="wartoscOpalowaField" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-            <TextField fx:id="spiekalnoscField" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-            <TextField fx:id="minWymiarziarnaField" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-            <TextField fx:id="maxWymiarziarnaField" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-            <TextField fx:id="zawartoscPodziarnaField" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-            <TextField fx:id="zawartoscNadziarnaField" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="13" />
-            <TextField fx:id="zawartoscWilgociField" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+            <TextField fx:id="zawartoscPopioluField" alignment="CENTER" onKeyReleased="#zawartoscPopioluOnKeyReleased" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="zawartoscSiarkiField" alignment="CENTER" onKeyReleased="#zawartoscSiarkiOnKeyReleased" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <TextField fx:id="zawartoscCzesciLotnychField" alignment="CENTER" onKeyReleased="#zawartoscCzesiLotnychOnKeyReleased" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <TextField fx:id="wartoscOpalowaField" alignment="CENTER" onKeyReleased="#wartoscOpalowaOnKeyReleased" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <TextField fx:id="spiekalnoscField" alignment="CENTER" onKeyReleased="#spiekalnoscOnKeyReleased" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <TextField fx:id="minWymiarziarnaField" alignment="CENTER" onKeyReleased="#minWymiarZiarnaOnKeyReleased" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+            <TextField fx:id="maxWymiarziarnaField" alignment="CENTER" onKeyReleased="#maxWymiarZiarnaOnKeyReleased" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+            <TextField fx:id="zawartoscPodziarnaField" alignment="CENTER" onKeyReleased="#zawartoscPodziarnaOnKeyReleased" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+            <TextField fx:id="zawartoscNadziarnaField" alignment="CENTER" onKeyReleased="#zawartoscNadziarnaOnKeyReleased" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+            <TextField fx:id="zawartoscWilgociField" alignment="CENTER" onKeyReleased="#zawartoscWilgociOnKeyReleased" GridPane.columnIndex="1" GridPane.rowIndex="14" />
             <TextField fx:id="dostawcaField" alignment="CENTER" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="15" />
             <TextField fx:id="nrFvField" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="16" />
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="82.0" text="\%" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="5" />
@@ -111,6 +111,11 @@
             <Label fx:id="maxZawartoscWilgociLabel" text="-" GridPane.columnIndex="4" GridPane.rowIndex="14" />
             <Label text="min" GridPane.columnIndex="3" GridPane.rowIndex="4" />
             <Label text="max" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+            <CheckBox fx:id="niestandardoweCheckBox" mnemonicParsing="false" text="niestandardowe" GridPane.columnIndex="3" GridPane.columnSpan="2">
+               <GridPane.margin>
+                  <Insets right="5.0" top="5.0" />
+               </GridPane.margin>
+            </CheckBox>
          </children>
       </GridPane>
       <HBox alignment="CENTER" prefHeight="72.0" prefWidth="435.0">

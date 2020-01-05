@@ -4,9 +4,14 @@ import dao.CertyfikatJakosciDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import modelFXML.CertyfikatJakosci;
@@ -15,6 +20,10 @@ import modelFXML.WartosciDopuszczalnePaliwa;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import static javafx.scene.paint.Color.BLUE;
 
 public class AddNewCertyfikatController {
 
@@ -70,6 +79,8 @@ public class AddNewCertyfikatController {
     @FXML
     private Label minWartoscOpalowaLabel;
     @FXML
+    private Label maxWartoscOpalowaLabel;
+    @FXML
     private Label minSpiekalnoscLabel;
     @FXML
     private Label minWymiarZiarnaLabel;
@@ -86,8 +97,6 @@ public class AddNewCertyfikatController {
     @FXML
     private Label maxZawCzLotnychLabel;
     @FXML
-    private Label maxWartoscOpalowaLabel;
-    @FXML
     private Label maxSpiekalnoscLabel;
     @FXML
     private Label maxWymiarZiarnaLabel;
@@ -97,6 +106,8 @@ public class AddNewCertyfikatController {
     private Label maxNadziarnoLabel;
     @FXML
     private Label maxZawartoscWilgociLabel;
+    @FXML
+    private CheckBox niestandardoweCheckBox;
 
 
     @FXML
@@ -171,7 +182,7 @@ public class AddNewCertyfikatController {
 
 
         String pattern = "yyyy-MM-dd";
-       // datePicker.setPromptText(pattern);
+        // datePicker.setPromptText(pattern);
         try {
             datePicker.setConverter(new StringConverter<LocalDate>() {
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern(pattern);
@@ -471,5 +482,261 @@ public class AddNewCertyfikatController {
     public void setMaxZawartoscWilgociLabel(String maxZawartoscWilgociLabel) {
         this.maxZawartoscWilgociLabel.setText(maxZawartoscWilgociLabel);
     }
+
+    public TextField getNaszaNazwaField() {
+        return naszaNazwaField;
+    }
+
+    public void setNaszaNazwaField(TextField naszaNazwaField) {
+        this.naszaNazwaField = naszaNazwaField;
+    }
+
+    public CheckBox getAktywnyCheckbox() {
+        return aktywnyCheckbox;
+    }
+
+    public void setAktywnyCheckbox(CheckBox aktywnyCheckbox) {
+        this.aktywnyCheckbox = aktywnyCheckbox;
+    }
+
+    public void setAsortymentCombobox(ComboBox asortymentCombobox) {
+        this.asortymentCombobox = asortymentCombobox;
+    }
+
+    public TextField getNrCertyfikatuLaboratoriumField() {
+        return nrCertyfikatuLaboratoriumField;
+    }
+
+    public void setNrCertyfikatuLaboratoriumField(TextField nrCertyfikatuLaboratoriumField) {
+        this.nrCertyfikatuLaboratoriumField = nrCertyfikatuLaboratoriumField;
+    }
+
+    public TextField getZawartoscPopioluField() {
+        return zawartoscPopioluField;
+    }
+
+    public void setZawartoscPopioluField(TextField zawartoscPopioluField) {
+        this.zawartoscPopioluField = zawartoscPopioluField;
+    }
+
+    public TextField getZawartoscSiarkiField() {
+        return zawartoscSiarkiField;
+    }
+
+    public void setZawartoscSiarkiField(TextField zawartoscSiarkiField) {
+        this.zawartoscSiarkiField = zawartoscSiarkiField;
+    }
+
+    public TextField getZawartoscCzesciLotnychField() {
+        return zawartoscCzesciLotnychField;
+    }
+
+    public void setZawartoscCzesciLotnychField(TextField zawartoscCzesciLotnychField) {
+        this.zawartoscCzesciLotnychField = zawartoscCzesciLotnychField;
+    }
+
+    public TextField getWartoscOpalowaField() {
+        return wartoscOpalowaField;
+    }
+
+    public void setWartoscOpalowaField(TextField wartoscOpalowaField) {
+        this.wartoscOpalowaField = wartoscOpalowaField;
+    }
+
+    public TextField getSpiekalnoscField() {
+        return spiekalnoscField;
+    }
+
+    public void setSpiekalnoscField(TextField spiekalnoscField) {
+        this.spiekalnoscField = spiekalnoscField;
+    }
+
+    public TextField getMinWymiarziarnaField() {
+        return minWymiarziarnaField;
+    }
+
+    public void setMinWymiarziarnaField(TextField minWymiarziarnaField) {
+        this.minWymiarziarnaField = minWymiarziarnaField;
+    }
+
+    public TextField getMaxWymiarziarnaField() {
+        return maxWymiarziarnaField;
+    }
+
+    public void setMaxWymiarziarnaField(TextField maxWymiarziarnaField) {
+        this.maxWymiarziarnaField = maxWymiarziarnaField;
+    }
+
+    public TextField getZawartoscPodziarnaField() {
+        return zawartoscPodziarnaField;
+    }
+
+    public void setZawartoscPodziarnaField(TextField zawartoscPodziarnaField) {
+        this.zawartoscPodziarnaField = zawartoscPodziarnaField;
+    }
+
+    public TextField getZawartoscNadziarnaField() {
+        return zawartoscNadziarnaField;
+    }
+
+    public void setZawartoscNadziarnaField(TextField zawartoscNadziarnaField) {
+        this.zawartoscNadziarnaField = zawartoscNadziarnaField;
+    }
+
+    public TextField getZawartoscWilgociField() {
+        return zawartoscWilgociField;
+    }
+
+    public void setZawartoscWilgociField(TextField zawartoscWilgociField) {
+        this.zawartoscWilgociField = zawartoscWilgociField;
+    }
+
+    public TextField getDostawcaField() {
+        return dostawcaField;
+    }
+
+    public void setDostawcaField(TextField dostawcaField) {
+        this.dostawcaField = dostawcaField;
+    }
+
+    public TextField getNrFvField() {
+        return nrFvField;
+    }
+
+    public void setNrFvField(TextField nrFvField) {
+        this.nrFvField = nrFvField;
+    }
+
+
+    public CheckBox getNiestandardoweCheckBox() {
+        return niestandardoweCheckBox;
+    }
+
+    public void setNiestandardoweCheckBox(CheckBox niestandardoweCheckBox) {
+        this.niestandardoweCheckBox = niestandardoweCheckBox;
+    }
+
+    public void zawartoscPopioluOnKeyReleased() {
+
+        isNumberValidation(getZawartoscPopioluField(), minPopiolLabel, maxPopiolLabel);
+    }
+
+    public void zawartoscSiarkiOnKeyReleased(KeyEvent keyEvent) {
+        isNumberValidation(getZawartoscSiarkiField(), minSiarkaLabel, maxSiarkaLabel);
+    }
+
+    public void zawartoscCzesiLotnychOnKeyReleased(KeyEvent keyEvent) {
+        isNumberValidation(getZawartoscCzesciLotnychField(), minZawCzLotnychLabel, maxZawCzLotnychLabel);
+    }
+
+    public void wartoscOpalowaOnKeyReleased(KeyEvent keyEvent) {
+        isNumberValidation(getWartoscOpalowaField(), minWartoscOpalowaLabel, maxWartoscOpalowaLabel);
+    }
+
+    public void spiekalnoscOnKeyReleased(KeyEvent keyEvent) {
+        isNumberValidation(getSpiekalnoscField(), minSpiekalnoscLabel, maxSpiekalnoscLabel);
+    }
+
+    public void minWymiarZiarnaOnKeyReleased(KeyEvent keyEvent) {
+        isNumberValidation(getMinWymiarziarnaField(), minWymiarZiarnaLabel, maxWymiarZiarnaLabel);
+    }
+
+    public void maxWymiarZiarnaOnKeyReleased(KeyEvent keyEvent) {
+        isNumberValidation(getMaxWymiarziarnaField(), minWymiarZiarnaLabel, maxWymiarZiarnaLabel);
+    }
+
+    public void zawartoscPodziarnaOnKeyReleased(KeyEvent keyEvent) {
+        isNumberValidation(getZawartoscPodziarnaField(), minPodziarnoLabel, maxPodziarnoLabel);
+    }
+
+    public void zawartoscNadziarnaOnKeyReleased(KeyEvent keyEvent) {
+        isNumberValidation(getZawartoscNadziarnaField(), minNadziarnoLabel, maxNadziarnoLabel);
+    }
+
+    public void zawartoscWilgociOnKeyReleased(KeyEvent keyEvent) {
+        isNumberValidation(getZawartoscWilgociField(), minZawartoscWilgociLabel, maxZawartoscWilgociLabel);
+
+    }
+
+    private void isNumberValidation(TextField textField, Label wartoscMinTemp, Label wartoscMaxTemp ) {
+        String input =textField.getText();
+        if (!niestandardoweCheckBox.isSelected()) {
+            boolean find = false;
+            Pattern pattern = Pattern.compile("\\d+\\,\\d*|\\,?\\d+");
+            Matcher matcher = pattern.matcher(input);
+
+            while (matcher.find()) {
+              //  System.out.println(matcher.group());
+                textField.setText(matcher.group());
+
+                find = true;
+            }
+            if (!find) {
+                textField.setText("");
+            }
+            textField.positionCaret(textField.getText().length());
+        }
+//---------------
+        String wartoscMin;
+        String wartoscMax;
+        if (wartoscMinTemp.getText().equals("-")){wartoscMin = "0";}else{wartoscMin=wartoscMinTemp.getText();}
+        if (wartoscMaxTemp.getText().equals("-")){wartoscMax = "9999";}else{wartoscMax=wartoscMaxTemp.getText();}
+
+        if (!niestandardoweCheckBox.isSelected()) {
+            boolean find = false;
+            Pattern pattern = Pattern.compile("\\d+\\,\\d*|\\,?\\d+");
+            Matcher matcher = pattern.matcher(input);
+            Double value;
+            while (matcher.find()) {
+
+                value = Double.parseDouble(matcher.group().replace(",","."));
+
+                if (value > Double.parseDouble(wartoscMax.replace(",",".")) || value < Double.parseDouble(wartoscMin.replace(",","."))) {
+                    textField.setStyle("-fx-background-color: violet");
+                } else {
+                    textField.setStyle("");
+                }
+                find = true;
+            }
+            if (!find) {
+                textField.setText("");
+            }
+            textField.positionCaret(textField.getText().length());
+        }
+
+
+
+    }
+
+    private void sprawdzCzyWartoscMiesciSieWwartosciachDopuszczalnych(String input, TextField textField, Label wartoscMinTemp, Label wartoscMaxTemp) {
+       String wartoscMin;
+       String wartoscMax;
+        if (wartoscMinTemp.getText().equals("-")){wartoscMin = "0";}else{wartoscMin=wartoscMinTemp.getText();}
+        if (wartoscMaxTemp.getText().equals("-")){wartoscMax = "0";}else{wartoscMax=wartoscMaxTemp.getText();}
+
+        if (!niestandardoweCheckBox.isSelected()) {
+            boolean find = false;
+            Pattern pattern = Pattern.compile("[0-9]+");
+            Matcher matcher = pattern.matcher(input);
+            int value;
+            while (matcher.find()) {
+                System.out.println(matcher.group());
+                value = Integer.parseInt(matcher.group());
+                if (value > Integer.parseInt(wartoscMax) || value < Integer.parseInt(wartoscMin)) {
+                    textField.setStyle("-fx-background-color: violet");
+                } else {
+                    textField.setStyle("");
+                }
+                find = true;
+            }
+            if (!find) {
+                textField.setText("");
+            }
+            textField.positionCaret(textField.getText().length());
+        }
+
+    }
+
+
 }
 
