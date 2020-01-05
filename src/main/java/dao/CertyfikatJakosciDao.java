@@ -1,7 +1,7 @@
 package dao;
 
 import config.Config;
-import modelFXML.CertyfikatJakosci;
+import modelFX.CertyfikatJakosci;
 import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;

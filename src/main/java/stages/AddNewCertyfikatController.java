@@ -4,26 +4,20 @@ import dao.CertyfikatJakosciDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
-import modelFXML.CertyfikatJakosci;
-import modelFXML.WartosciDopuszczalnePaliwa;
+import modelFX.CertyfikatJakosci;
+import modelFX.WartosciDopuszczalnePaliwa;
+import utils.DialogsUtils;
 
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import static javafx.scene.paint.Color.BLUE;
 
 public class AddNewCertyfikatController {
 
@@ -38,8 +32,6 @@ public class AddNewCertyfikatController {
     private CheckBox aktywnyCheckbox;
     @FXML
     private ComboBox asortymentCombobox;
-    //    @FXML
-//    private TextField datePicker;
     @FXML
     private TextField nrCertyfikatuLaboratoriumField;
     @FXML
@@ -111,7 +103,8 @@ public class AddNewCertyfikatController {
 
 
     @FXML
-    protected void okOnClick() {
+    protected void okOnClick() throws IOException {
+
 
         CertyfikatJakosciDao certyfikatJakosciDao = new CertyfikatJakosciDao();
         String numerString;
@@ -127,29 +120,36 @@ public class AddNewCertyfikatController {
             isAktywny = "NIE";
         }
         String asortymentValue;
-
-        asortymentValue = asortymentCombobox.getValue().toString();
-
-
-        CertyfikatJakosci cerytfikatJakosci = new CertyfikatJakosci(numerString, isAktywny, naszaNazwaField.getText(), asortymentValue,
-                datePicker.getValue().toString(), nrCertyfikatuLaboratoriumField.getText(), zawartoscPopioluField.getText(), zawartoscSiarkiField.getText(),
-                zawartoscCzesciLotnychField.getText(), wartoscOpalowaField.getText(), spiekalnoscField.getText(), minWymiarziarnaField.getText(),
-                maxWymiarziarnaField.getText(), zawartoscPodziarnaField.getText(), zawartoscNadziarnaField.getText(), zawartoscWilgociField.getText(),
-                dostawcaField.getText(), nrFvField.getText(), "");
-
-        if (numerLabel.getText().equals("(auto)")) {
-            certyfikatJakosciDao.addCertyfikatJakosciToDatabase(cerytfikatJakosci);
+        boolean validate = true;
+        if (!asortymentCombobox.getSelectionModel().isEmpty()) {
+            asortymentValue = asortymentCombobox.getValue().toString();
         } else {
-            certyfikatJakosciDao.replaceCertyfikatJakosci(cerytfikatJakosci);
+            DialogsUtils.errorDialog("errorAsortyment.title", "errorAsortyment.header");
+            validate = false;
+            asortymentValue = "";
         }
+        //  System.out.println("asot: "+asortymentCombobox.getValue().toString());
+        if (validate) {
+            CertyfikatJakosci cerytfikatJakosci = new CertyfikatJakosci(numerString, isAktywny, naszaNazwaField.getText(), asortymentValue,
+                    datePicker.getValue().toString(), nrCertyfikatuLaboratoriumField.getText(), zawartoscPopioluField.getText(), zawartoscSiarkiField.getText(),
+                    zawartoscCzesciLotnychField.getText(), wartoscOpalowaField.getText(), spiekalnoscField.getText(), minWymiarziarnaField.getText(),
+                    maxWymiarziarnaField.getText(), zawartoscPodziarnaField.getText(), zawartoscNadziarnaField.getText(), zawartoscWilgociField.getText(),
+                    dostawcaField.getText(), nrFvField.getText(), "");
 
-        Stage stage = (Stage) anulujButton.getScene().getWindow();
-        stage.close();
-        if (this.homeController != null) {
-            this.homeController.refreshClick();
-        }
-        if (this.listCertyfikatyController != null) {
-            this.listCertyfikatyController.odswiezClick();
+            if (numerLabel.getText().equals("(auto)")) {
+                certyfikatJakosciDao.addCertyfikatJakosciToDatabase(cerytfikatJakosci);
+            } else {
+                certyfikatJakosciDao.replaceCertyfikatJakosci(cerytfikatJakosci);
+            }
+
+            Stage stage = (Stage) anulujButton.getScene().getWindow();
+            stage.close();
+            if (this.homeController != null) {
+                this.homeController.refreshClick();
+            }
+            if (this.listCertyfikatyController != null) {
+                this.listCertyfikatyController.odswiezClick();
+            }
         }
     }
 
@@ -336,6 +336,7 @@ public class AddNewCertyfikatController {
         setMaxNadziarnoLabel(wartosciDopuszczalnePaliwa.getMaxNadziarno());
         setMinZawartoscWilgociLabel(wartosciDopuszczalnePaliwa.getMinWilgotnosc());
         setMaxZawartoscWilgociLabel(wartosciDopuszczalnePaliwa.getMaxWilgotnosc());
+        checkAllValidationField(false);
     }
 
 
@@ -618,70 +619,60 @@ public class AddNewCertyfikatController {
 
     public void zawartoscPopioluOnKeyReleased() {
 
-        isNumberValidation(getZawartoscPopioluField(), minPopiolLabel, maxPopiolLabel);
+        isNumberValidation(getZawartoscPopioluField(), minPopiolLabel, maxPopiolLabel, true);
     }
 
-    public void zawartoscSiarkiOnKeyReleased(KeyEvent keyEvent) {
-        isNumberValidation(getZawartoscSiarkiField(), minSiarkaLabel, maxSiarkaLabel);
+    public void zawartoscSiarkiOnKeyReleased() {
+        isNumberValidation(getZawartoscSiarkiField(), minSiarkaLabel, maxSiarkaLabel, true);
     }
 
-    public void zawartoscCzesiLotnychOnKeyReleased(KeyEvent keyEvent) {
-        isNumberValidation(getZawartoscCzesciLotnychField(), minZawCzLotnychLabel, maxZawCzLotnychLabel);
+    public void zawartoscCzesiLotnychOnKeyReleased() {
+        isNumberValidation(getZawartoscCzesciLotnychField(), minZawCzLotnychLabel, maxZawCzLotnychLabel, true);
     }
 
-    public void wartoscOpalowaOnKeyReleased(KeyEvent keyEvent) {
-        isNumberValidation(getWartoscOpalowaField(), minWartoscOpalowaLabel, maxWartoscOpalowaLabel);
+    public void wartoscOpalowaOnKeyReleased() {
+        isNumberValidation(getWartoscOpalowaField(), minWartoscOpalowaLabel, maxWartoscOpalowaLabel, true);
     }
 
-    public void spiekalnoscOnKeyReleased(KeyEvent keyEvent) {
-        isNumberValidation(getSpiekalnoscField(), minSpiekalnoscLabel, maxSpiekalnoscLabel);
+    public void spiekalnoscOnKeyReleased() {
+        isNumberValidation(getSpiekalnoscField(), minSpiekalnoscLabel, maxSpiekalnoscLabel, true);
     }
 
-    public void minWymiarZiarnaOnKeyReleased(KeyEvent keyEvent) {
-        isNumberValidation(getMinWymiarziarnaField(), minWymiarZiarnaLabel, maxWymiarZiarnaLabel);
+    public void minWymiarZiarnaOnKeyReleased() {
+        isNumberValidation(getMinWymiarziarnaField(), minWymiarZiarnaLabel, maxWymiarZiarnaLabel, true);
     }
 
-    public void maxWymiarZiarnaOnKeyReleased(KeyEvent keyEvent) {
-        isNumberValidation(getMaxWymiarziarnaField(), minWymiarZiarnaLabel, maxWymiarZiarnaLabel);
+    public void maxWymiarZiarnaOnKeyReleased() {
+        isNumberValidation(getMaxWymiarziarnaField(), minWymiarZiarnaLabel, maxWymiarZiarnaLabel, true);
     }
 
-    public void zawartoscPodziarnaOnKeyReleased(KeyEvent keyEvent) {
-        isNumberValidation(getZawartoscPodziarnaField(), minPodziarnoLabel, maxPodziarnoLabel);
+    public void zawartoscPodziarnaOnKeyReleased() {
+        isNumberValidation(getZawartoscPodziarnaField(), minPodziarnoLabel, maxPodziarnoLabel, true);
     }
 
-    public void zawartoscNadziarnaOnKeyReleased(KeyEvent keyEvent) {
-        isNumberValidation(getZawartoscNadziarnaField(), minNadziarnoLabel, maxNadziarnoLabel);
+    public void zawartoscNadziarnaOnKeyReleased() {
+        isNumberValidation(getZawartoscNadziarnaField(), minNadziarnoLabel, maxNadziarnoLabel, true);
     }
 
-    public void zawartoscWilgociOnKeyReleased(KeyEvent keyEvent) {
-        isNumberValidation(getZawartoscWilgociField(), minZawartoscWilgociLabel, maxZawartoscWilgociLabel);
+    public void zawartoscWilgociOnKeyReleased() {
+        isNumberValidation(getZawartoscWilgociField(), minZawartoscWilgociLabel, maxZawartoscWilgociLabel, true);
 
     }
 
-    private void isNumberValidation(TextField textField, Label wartoscMinTemp, Label wartoscMaxTemp ) {
-        String input =textField.getText();
-        if (!niestandardoweCheckBox.isSelected()) {
-            boolean find = false;
-            Pattern pattern = Pattern.compile("\\d+\\,\\d*|\\,?\\d+");
-            Matcher matcher = pattern.matcher(input);
-
-            while (matcher.find()) {
-              //  System.out.println(matcher.group());
-                textField.setText(matcher.group());
-
-                find = true;
-            }
-            if (!find) {
-                textField.setText("");
-            }
-            textField.positionCaret(textField.getText().length());
-        }
-//---------------
+    private void isNumberValidation(TextField textField, Label wartoscMinTemp, Label wartoscMaxTemp, boolean repair) {
+        String input = textField.getText();
         String wartoscMin;
         String wartoscMax;
-        if (wartoscMinTemp.getText().equals("-")){wartoscMin = "0";}else{wartoscMin=wartoscMinTemp.getText();}
-        if (wartoscMaxTemp.getText().equals("-")){wartoscMax = "9999";}else{wartoscMax=wartoscMaxTemp.getText();}
-
+        if (wartoscMinTemp.getText().equals("-")) {
+            wartoscMin = "0";
+        } else {
+            wartoscMin = wartoscMinTemp.getText();
+        }
+        if (wartoscMaxTemp.getText().equals("-")) {
+            wartoscMax = "9999";
+        } else {
+            wartoscMax = wartoscMaxTemp.getText();
+        }
         if (!niestandardoweCheckBox.isSelected()) {
             boolean find = false;
             Pattern pattern = Pattern.compile("\\d+\\,\\d*|\\,?\\d+");
@@ -689,9 +680,11 @@ public class AddNewCertyfikatController {
             Double value;
             while (matcher.find()) {
 
-                value = Double.parseDouble(matcher.group().replace(",","."));
-
-                if (value > Double.parseDouble(wartoscMax.replace(",",".")) || value < Double.parseDouble(wartoscMin.replace(",","."))) {
+                if (repair) {
+                    textField.setText(matcher.group());
+                }
+                value = Double.parseDouble(matcher.group().replace(",", "."));
+                if (value > Double.parseDouble(wartoscMax.replace(",", ".")) || value < Double.parseDouble(wartoscMin.replace(",", "."))) {
                     textField.setStyle("-fx-background-color: violet");
                 } else {
                     textField.setStyle("");
@@ -703,40 +696,44 @@ public class AddNewCertyfikatController {
             }
             textField.positionCaret(textField.getText().length());
         }
-
-
-
     }
 
-    private void sprawdzCzyWartoscMiesciSieWwartosciachDopuszczalnych(String input, TextField textField, Label wartoscMinTemp, Label wartoscMaxTemp) {
-       String wartoscMin;
-       String wartoscMax;
-        if (wartoscMinTemp.getText().equals("-")){wartoscMin = "0";}else{wartoscMin=wartoscMinTemp.getText();}
-        if (wartoscMaxTemp.getText().equals("-")){wartoscMax = "0";}else{wartoscMax=wartoscMaxTemp.getText();}
 
+    public void checkAllValidationField(boolean repair) {
+
+        isNumberValidation(getZawartoscPopioluField(), minPopiolLabel, maxPopiolLabel, repair);
+        isNumberValidation(getZawartoscSiarkiField(), minSiarkaLabel, maxSiarkaLabel, repair);
+        isNumberValidation(getZawartoscCzesciLotnychField(), minZawCzLotnychLabel, maxZawCzLotnychLabel, repair);
+        isNumberValidation(getWartoscOpalowaField(), minWartoscOpalowaLabel, maxWartoscOpalowaLabel, repair);
+        isNumberValidation(getSpiekalnoscField(), minSpiekalnoscLabel, maxSpiekalnoscLabel, repair);
+        isNumberValidation(getMinWymiarziarnaField(), minWymiarZiarnaLabel, maxWymiarZiarnaLabel, repair);
+        isNumberValidation(getMaxWymiarziarnaField(), minWymiarZiarnaLabel, maxWymiarZiarnaLabel, repair);
+        isNumberValidation(getZawartoscPodziarnaField(), minPodziarnoLabel, maxPodziarnoLabel, repair);
+        isNumberValidation(getZawartoscNadziarnaField(), minNadziarnoLabel, maxNadziarnoLabel, repair);
+        isNumberValidation(getZawartoscWilgociField(), minZawartoscWilgociLabel, maxZawartoscWilgociLabel, repair);
+    }
+
+    @FXML
+    private void niestandardoweCheckButtonOnClick() {
         if (!niestandardoweCheckBox.isSelected()) {
-            boolean find = false;
-            Pattern pattern = Pattern.compile("[0-9]+");
-            Matcher matcher = pattern.matcher(input);
-            int value;
-            while (matcher.find()) {
-                System.out.println(matcher.group());
-                value = Integer.parseInt(matcher.group());
-                if (value > Integer.parseInt(wartoscMax) || value < Integer.parseInt(wartoscMin)) {
-                    textField.setStyle("-fx-background-color: violet");
-                } else {
-                    textField.setStyle("");
-                }
-                find = true;
-            }
-            if (!find) {
-                textField.setText("");
-            }
-            textField.positionCaret(textField.getText().length());
+            checkAllValidationField(false);
+        } else {
+            setAllFieldNoColour();
         }
-
     }
 
+    private void setAllFieldNoColour() {
+        getZawartoscPopioluField().setStyle("");
+        getZawartoscSiarkiField().setStyle("");
+        getZawartoscCzesciLotnychField().setStyle("");
+        getWartoscOpalowaField().setStyle("");
+        getSpiekalnoscField().setStyle("");
+        getMinWymiarziarnaField().setStyle("");
+        getMaxWymiarziarnaField().setStyle("");
+        getZawartoscPodziarnaField().setStyle("");
+        getZawartoscNadziarnaField().setStyle("");
+        getZawartoscWilgociField().setStyle("");
+    }
 
 }
 

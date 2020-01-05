@@ -1,8 +1,8 @@
 package dao;
 
 import config.Config;
-import modelFXML.CertyfikatJakosci;
-import modelFXML.Dokument;
+import modelFX.CertyfikatJakosci;
+import modelFX.Dokument;
 
 import java.sql.*;
 import java.time.ZonedDateTime;

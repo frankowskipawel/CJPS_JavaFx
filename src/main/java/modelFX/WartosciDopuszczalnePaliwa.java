@@ -1,4 +1,4 @@
-package modelFXML;
+package modelFX;
 
 public enum WartosciDopuszczalnePaliwa {
 

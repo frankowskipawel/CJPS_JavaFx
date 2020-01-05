@@ -111,7 +111,7 @@
             <Label fx:id="maxZawartoscWilgociLabel" text="-" GridPane.columnIndex="4" GridPane.rowIndex="14" />
             <Label text="min" GridPane.columnIndex="3" GridPane.rowIndex="4" />
             <Label text="max" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-            <CheckBox fx:id="niestandardoweCheckBox" mnemonicParsing="false" text="niestandardowe" GridPane.columnIndex="3" GridPane.columnSpan="2">
+            <CheckBox fx:id="niestandardoweCheckBox" mnemonicParsing="false" onAction="#niestandardoweCheckButtonOnClick" text="niestandardowe" GridPane.columnIndex="3" GridPane.columnSpan="2">
                <GridPane.margin>
                   <Insets right="5.0" top="5.0" />
                </GridPane.margin>

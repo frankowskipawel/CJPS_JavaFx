@@ -1,4 +1,4 @@
-package modelFXML;
+package modelFX;
 
 import javafx.beans.property.SimpleStringProperty;
 

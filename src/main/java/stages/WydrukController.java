@@ -8,8 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
-import modelFXML.Dokument;
-import modelFXML.WartosciDopuszczalnePaliwa;
+import modelFX.Dokument;
+import modelFX.WartosciDopuszczalnePaliwa;
 
 import java.io.IOException;
 

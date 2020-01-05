@@ -8,7 +8,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
-import modelFXML.CertyfikatJakosci;
+import modelFX.CertyfikatJakosci;
 import javafx.collections.ObservableList;
 
 import javafx.fxml.FXMLLoader;
@@ -16,10 +16,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
-import modelFXML.Dokument;
+import modelFX.Dokument;
 import utils.DialogsUtils;
 
 import java.io.IOException;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
@@ -99,6 +101,10 @@ public class ListCertyfikatyController {
         AddNewCertyfikatController editedCertyfikat = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
 
         editedCertyfikat.setListCertyfikatyController(ListCertyfikatyController.this);
+        ZonedDateTime dataDzisiejsza = ZonedDateTime.now();
+        DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String dataDzisiejszaString = dataDzisiejsza.format(f);
+        editedCertyfikat.setDatePicker(dataDzisiejszaString);
     }
 
     @FXML
@@ -145,6 +151,7 @@ public class ListCertyfikatyController {
         //editedCertyfikat.setAsortymentCombobox(selected.getAsortyment());
         editedCertyfikat.getAsortymentCombobox().getSelectionModel().select(selected.getAsortyment());
         editedCertyfikat.setListCertyfikatyController(ListCertyfikatyController.this);
+        editedCertyfikat.checkAllValidationField(false);
 
 
     }

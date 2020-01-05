@@ -24,13 +24,13 @@ public class DialogsUtils {
     }
 
 
-    public static void errorDialog(String error) {
+    public static void errorDialog(String errorTitle, String errorHeader) {
         Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-        errorAlert.setTitle(bundle.getString("error.title"));
-        errorAlert.setHeaderText(bundle.getString("error.header"));
+        errorAlert.setTitle(bundle.getString(errorTitle));
+        errorAlert.setHeaderText(bundle.getString(errorHeader));
         errorAlert.initModality(Modality.APPLICATION_MODAL);
-        TextArea textArea = new TextArea(error);
-        errorAlert.getDialogPane().setContent(textArea);
+        //TextArea textArea = new TextArea(error);
+      //  errorAlert.getDialogPane().setContent(textArea);
         errorAlert.showAndWait();
     }
 
