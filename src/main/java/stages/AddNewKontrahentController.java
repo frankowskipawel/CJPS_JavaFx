@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import modelFX.Kontrahent;
+import utils.DialogsUtils;
 
 public class AddNewKontrahentController {
 
@@ -34,15 +35,22 @@ public class AddNewKontrahentController {
         if (!id.isDisable()) {
             Kontrahent kontrahent = new Kontrahent(id.getText(), nazwa.getText(), adres.getText(), nip.getText(), regon.getText());
             listKontrahenciController.addNowyKontrahent(kontrahent);
+            Stage stage = (Stage) okButton.getScene().getWindow();
+            stage.close();
 
         } else {
+
             Kontrahent kontrahent = new Kontrahent(id.getText(), nazwa.getText(), adres.getText(), nip.getText(), regon.getText());
             listKontrahenciController.updateKontrahent(kontrahent);
+            Stage stage = (Stage) okButton.getScene().getWindow();
+            stage.close();
+
 
         }
-        Stage stage = (Stage) okButton.getScene().getWindow();
-        stage.close();
+
     }
+
+
 
     public ListKontrahenciController getListKontrahenciController() {
         return listKontrahenciController;

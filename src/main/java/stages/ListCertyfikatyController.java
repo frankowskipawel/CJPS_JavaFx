@@ -191,7 +191,8 @@ public class ListCertyfikatyController {
             DokumentDao dokumentDao = new DokumentDao();
             dokumentDao.updateDokument(dokument);
             listDokumentyController.odswiezDokumentyListView();
-            okOnClick();
+            Stage stage = (Stage) zamknijButton.getScene().getWindow();
+            stage.close();
         }
     }
 
