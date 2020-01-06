@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 import modelFX.Dokument;
+import modelFX.WartosciDopuszczalnePaliwa;
 import utils.DialogsUtils;
 
 import java.io.IOException;
@@ -148,8 +149,10 @@ public class ListCertyfikatyController {
         editedCertyfikat.setDostawcaField(selected.getDostawca());
         editedCertyfikat.setNrFvField(selected.getNrFV());
         editedCertyfikat.setAktywnyCheckbox(selected.getAktywny());
-        //editedCertyfikat.setAsortymentCombobox(selected.getAsortyment());
+       // editedCertyfikat.setAsortymentCombobox(selected.getAsortyment());
         editedCertyfikat.getAsortymentCombobox().getSelectionModel().select(selected.getAsortyment());
+
+
         editedCertyfikat.setListCertyfikatyController(ListCertyfikatyController.this);
         editedCertyfikat.checkAllValidationField(false);
 

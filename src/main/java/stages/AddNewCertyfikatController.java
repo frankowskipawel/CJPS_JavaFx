@@ -121,7 +121,10 @@ public class AddNewCertyfikatController {
         }
         String asortymentValue;
         boolean validate = true;
-        if (!asortymentCombobox.getSelectionModel().isEmpty()) {
+       // System.out.println(asortymentCombobox.getValue());
+
+
+        if (!asortymentCombobox.getValue().toString().equals("")) {
             asortymentValue = asortymentCombobox.getValue().toString();
         } else {
             DialogsUtils.errorDialog("errorAsortyment.title", "errorAsortyment.header");
