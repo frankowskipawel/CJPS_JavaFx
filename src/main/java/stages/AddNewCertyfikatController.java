@@ -121,17 +121,24 @@ public class AddNewCertyfikatController {
         }
         String asortymentValue;
         boolean validate = true;
-       // System.out.println(asortymentCombobox.getValue());
-
-
-        if (!asortymentCombobox.getValue().toString().equals("")) {
+        asortymentValue = "";
+        boolean temp = true;
+        if (!asortymentCombobox.getSelectionModel().isEmpty()) {
             asortymentValue = asortymentCombobox.getValue().toString();
-        } else {
-            DialogsUtils.errorDialog("errorAsortyment.title", "errorAsortyment.header");
-            validate = false;
-            asortymentValue = "";
+            temp = false;
         }
-        //  System.out.println("asot: "+asortymentCombobox.getValue().toString());
+        if (temp) {
+            try {
+                if (!asortymentCombobox.getValue().toString().equals("")) {
+                    asortymentValue = asortymentCombobox.getValue().toString();
+                }
+            } catch (Exception e) {
+                DialogsUtils.errorDialog("errorAsortyment.title", "errorAsortyment.header");
+                validate = false;
+                asortymentValue = "";
+            }
+        }
+
         if (validate) {
             CertyfikatJakosci cerytfikatJakosci = new CertyfikatJakosci(numerString, isAktywny, naszaNazwaField.getText(), asortymentValue,
                     datePicker.getValue().toString(), nrCertyfikatuLaboratoriumField.getText(), zawartoscPopioluField.getText(), zawartoscSiarkiField.getText(),
