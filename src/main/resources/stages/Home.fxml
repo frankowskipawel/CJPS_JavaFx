@@ -50,7 +50,7 @@
     </MenuBar>
       <TableView fx:id="listaAktywnychCertyfikatowTableViewStronaGlowna" minHeight="100.0" minWidth="100.0" prefHeight="516.0" prefWidth="538.0" VBox.vgrow="ALWAYS">
         <columns>
-          <TableColumn fx:id="numerCertyfikatuAktywne" maxWidth="100.0" minWidth="60.0" prefWidth="60.0" style="-fx-alignment: center;" text="NR CJ">
+          <TableColumn fx:id="numerCertyfikatuAktywne" maxWidth="100.0" minWidth="60.0" prefWidth="60.0" style="-fx-alignment: center;" text="Nr CJ">
             <cellValueFactory>
               <PropertyValueFactory property="numerCertyfikatuAktywne" />
             </cellValueFactory>

@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import modelFX.CertyfikatJakosci;
@@ -301,4 +302,6 @@ public class ListCertyfikatyController {
     public void setHomeController(HomeController homeController) {
         this.homeController = homeController;
     }
+
+
 }

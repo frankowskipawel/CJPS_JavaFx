@@ -2,6 +2,8 @@ package dao;
 
 import config.Config;
 import modelFX.Kontrahent;
+import utils.DialogsUtils;
+
 import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
@@ -47,15 +49,13 @@ public class KontrahentDao {
         return kontrahenci;
     }
 
-    public void addKontrahentDatabase(Kontrahent kontrahent) {
+    public void addKontrahentDatabase(Kontrahent kontrahent) throws SQLException {
         Statement statement = null;
-        try {
+
             statement = connection.createStatement();
             String query = "insert into " + tableName + "(id_kontrahent, nazwa_kontrahent, adres_kontrahent, nip_kontrahent, regon_kontrahent) values('" + kontrahent.getIdKontrahent() + "', '" + kontrahent.getNazwaKontrahent() + "', '" + kontrahent.getAdresKontrahent() + "', '" + kontrahent.getNipKontrahent() + "', '" + kontrahent.getRegonKontrahent() + "');";
             statement.executeUpdate(query);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+
     }
 
     public void deleteKontrahentDatabase(String id) {

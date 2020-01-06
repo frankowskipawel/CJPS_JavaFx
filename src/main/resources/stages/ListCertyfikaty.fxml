@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ContextMenu?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
@@ -18,86 +19,86 @@
         <Label text="Lista certyfikatów Jakości" />
         <TableView fx:id="listaCertyfikatowTableView" prefHeight="539.0" prefWidth="1459.0" VBox.vgrow="ALWAYS">
             <columns>
-                <TableColumn fx:id="nrListaCertyfikatowTableView" prefWidth="53.59997636079788" style="-fx-alignment: center;" text="Nr">
+                <TableColumn fx:id="nrListaCertyfikatowTableView" prefWidth="-1.0" style="-fx-alignment: center;" text="Nr">
                     <cellValueFactory>
                         <PropertyValueFactory property="numerCertyfikatu" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn fx:id="aktywnyListaCertyfikatowTableView" prefWidth="75.0" style="-fx-alignment: center;" text="Aktywny">
+                <TableColumn fx:id="aktywnyListaCertyfikatowTableView" prefWidth="-1.0" style="-fx-alignment: center;" text="Aktywny">
                     <cellValueFactory>
                         <PropertyValueFactory property="aktywny" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn fx:id="nazwaNaszaListaCertyfikatowTableView" minWidth="170.0" prefWidth="170.0" text="Nazwa Nasza">
+                <TableColumn fx:id="nazwaNaszaListaCertyfikatowTableView" minWidth="130.0" prefWidth="-1.0" text="Nazwa Nasza">
                     <cellValueFactory>
                         <PropertyValueFactory property="naszaNazwa" />
                     </cellValueFactory>
                 </TableColumn>
-                <TableColumn fx:id="asortymentListaCertyfikatowTableView" minWidth="170.0" prefWidth="170.0" text="Asortyment">
+                <TableColumn fx:id="asortymentListaCertyfikatowTableView" minWidth="140.0" prefWidth="-1.0" text="Asortyment">
                 <cellValueFactory>
                     <PropertyValueFactory property="asortyment" />
                 </cellValueFactory>
             </TableColumn>
-            <TableColumn fx:id="dataListaCertyfikatowTableView" minWidth="1.60003662109375" prefWidth="60.79998779296875" style="-fx-alignment: center;" text="Data">
+            <TableColumn fx:id="dataListaCertyfikatowTableView" minWidth="40.0" prefWidth="-1.0" style="-fx-alignment: center;" text="Data">
             <cellValueFactory>
                 <PropertyValueFactory property="data" />
             </cellValueFactory>
         </TableColumn>
-        <TableColumn fx:id="nrLabListaCertyfikatowTableView" prefWidth="53.60003662109375" style="-fx-alignment: center;" text="Nr Lab.">
+        <TableColumn fx:id="nrLabListaCertyfikatowTableView" prefWidth="-1.0" style="-fx-alignment: center;" text="Nr Lab.">
         <cellValueFactory>
             <PropertyValueFactory property="numerCertyfikatuLaboratorium" />
         </cellValueFactory>
     </TableColumn>
-    <TableColumn fx:id="popiolListaCertyfikatowTableView" prefWidth="60.0" style="-fx-alignment: center;" text="Popiół">
+    <TableColumn fx:id="popiolListaCertyfikatowTableView" prefWidth="-1.0" style="-fx-alignment: center;" text="Popiół">
     <cellValueFactory>
         <PropertyValueFactory property="zawartoscPopiolu" />
     </cellValueFactory>
 </TableColumn>
-<TableColumn fx:id="siarkaListaCertyfikatowTableView" prefWidth="75.0" style="-fx-alignment: center;" text="Siarka">
+<TableColumn fx:id="siarkaListaCertyfikatowTableView" prefWidth="-1.0" style="-fx-alignment: center;" text="Siarka">
 <cellValueFactory>
 <PropertyValueFactory property="zawartoscSiarkiCalkowitej" />
 </cellValueFactory></TableColumn>
-<TableColumn fx:id="czLotneListaCertyfikatowTableView" prefWidth="75.0" style="-fx-alignment: center;" text="Cz. Lotne">
+<TableColumn fx:id="czLotneListaCertyfikatowTableView" prefWidth="-1.0" style="-fx-alignment: center;" text="Cz. Lotne">
 <cellValueFactory>
 <PropertyValueFactory property="zawartoscCzesciLotnych" />
 </cellValueFactory></TableColumn>
-<TableColumn fx:id="wartOpalListaCertyfikatowTableView" prefWidth="75.0" style="-fx-alignment: center;" text="Wart. opał.">
+<TableColumn fx:id="wartOpalListaCertyfikatowTableView" prefWidth="-1.0" style="-fx-alignment: center;" text="Wart. opał.">
 <cellValueFactory>
 <PropertyValueFactory property="wartoscOpalowa" />
 </cellValueFactory></TableColumn>
-<TableColumn fx:id="spiekalnoscListaCertyfikatowTableView" prefWidth="75.0" style="-fx-alignment: center;" text="RI">
+<TableColumn fx:id="spiekalnoscListaCertyfikatowTableView" prefWidth="-1.0" style="-fx-alignment: center;" text="RI">
 <cellValueFactory>
 <PropertyValueFactory property="zdolnoscSpiekania" />
 </cellValueFactory></TableColumn>
-<TableColumn fx:id="minZiarnoListaCertyfikatowTableView" prefWidth="75.0" style="-fx-alignment: center;" text="min. Ziarno">
+<TableColumn fx:id="minZiarnoListaCertyfikatowTableView" prefWidth="-1.0" style="-fx-alignment: center;" text="min. Ziarno">
 <cellValueFactory>
 <PropertyValueFactory property="minimalnyWymiarZiarna" />
 </cellValueFactory></TableColumn>
-<TableColumn fx:id="maxZiarnoListaCertyfikatowTableView" prefWidth="75.0" style="-fx-alignment: center;" text="max. Ziarno">
+<TableColumn fx:id="maxZiarnoListaCertyfikatowTableView" prefWidth="-1.0" style="-fx-alignment: center;" text="max. Ziarno">
 <cellValueFactory>
 <PropertyValueFactory property="maksymalnyWymiarZiarna" />
 </cellValueFactory></TableColumn>
-<TableColumn fx:id="podziarnoListaCertyfikatowTableView" prefWidth="75.0" style="-fx-alignment: center;" text="Podziarno">
+<TableColumn fx:id="podziarnoListaCertyfikatowTableView" prefWidth="-1.0" style="-fx-alignment: center;" text="Podziarno">
 <cellValueFactory>
 <PropertyValueFactory property="zawartoscPodziarna" />
 </cellValueFactory></TableColumn>
-<TableColumn fx:id="nadziarnoListaCertyfikatowTableView" prefWidth="75.0" style="-fx-alignment: center;" text="Nadziarno">
+<TableColumn fx:id="nadziarnoListaCertyfikatowTableView" prefWidth="-1.0" style="-fx-alignment: center;" text="Nadziarno">
 <cellValueFactory>
 <PropertyValueFactory property="zawartoscNadziarna" />
 </cellValueFactory></TableColumn>
-<TableColumn fx:id="wilgocListaCertyfikatowTableView" prefWidth="85.60009765625" style="-fx-alignment: center;" text="Wilgoć">
+<TableColumn fx:id="wilgocListaCertyfikatowTableView" prefWidth="-1.0" style="-fx-alignment: center;" text="Wilgoć">
 <cellValueFactory>
 <PropertyValueFactory property="zawartoscWilgociCalkowitej" />
 </cellValueFactory></TableColumn>
-<TableColumn fx:id="dostawca" prefWidth="94.39990234375" style="-fx-alignment: center;" text="Dostawca">
+<TableColumn fx:id="dostawca" prefWidth="-1.0" style="-fx-alignment: center;" text="Dostawca">
 <cellValueFactory>
 <PropertyValueFactory property="dostawca" />
 </cellValueFactory></TableColumn>
-<TableColumn fx:id="nrFVListaCertyfikatowTableView" prefWidth="92.0" style="-fx-alignment: center;" text="Nr FV">
+<TableColumn fx:id="nrFVListaCertyfikatowTableView" prefWidth="-1.0" style="-fx-alignment: center;" text="Nr FV">
 <cellValueFactory>
 <PropertyValueFactory property="nrFV" />
 </cellValueFactory></TableColumn>
-            <TableColumn fx:id="iloscListaCertyfikatowTableView" prefWidth="75.0" style="-fx-alignment: center;" text="Ilość">
+            <TableColumn fx:id="iloscListaCertyfikatowTableView" prefWidth="-1.0" style="-fx-alignment: center;" text="Ilość">
                 <cellValueFactory>
                     <PropertyValueFactory property="ilosc" />
                 </cellValueFactory>
@@ -117,93 +118,102 @@
             </ContextMenu>
          </contextMenu>
         </TableView>
-      <HBox alignment="TOP_RIGHT" prefHeight="62.0" prefWidth="869.0">
+      <VBox>
          <children>
-            <Button fx:id="zmienButton" disable="true" maxHeight="42.0" minHeight="42.0" mnemonicParsing="false" onAction="#zmienOnClick" text="Zmień certyfikat na dokumencie">
-               <HBox.margin>
-                  <Insets top="10.0" />
-               </HBox.margin>
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/exchange.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="usunButton" maxHeight="42.0" maxWidth="42.0" minHeight="42.0" minWidth="42.0" mnemonicParsing="false" onAction="#usunCertyfikat" prefHeight="42.0" prefWidth="42.0">
-               <HBox.margin>
-                  <Insets left="10.0" top="10.0" />
-               </HBox.margin>
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/remove.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="edycjaButton" maxHeight="42.0" maxWidth="42.0" minHeight="42.0" minWidth="42.0" mnemonicParsing="false" onAction="#edycjaOnClick" prefHeight="42.0" prefWidth="42.0">
-               <HBox.margin>
-                  <Insets left="10.0" top="10.0" />
-               </HBox.margin>
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/edit.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="odswiezButton" maxHeight="42.0" maxWidth="42.0" minHeight="42.0" minWidth="42.0" mnemonicParsing="false" onAction="#odswiezClick" prefHeight="42.0" prefWidth="42.0">
-               <HBox.margin>
-                  <Insets left="10.0" top="10.0" />
-               </HBox.margin>
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/refresh.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="dodajNowyButton" contentDisplay="CENTER" maxHeight="42.0" maxWidth="42.0" minHeight="42.0" minWidth="42.0" mnemonicParsing="false" onAction="#addNowyCertyfikatOnClick" prefHeight="42.0" prefWidth="42.0" textAlignment="CENTER">
-               <HBox.margin>
-                  <Insets left="10.0" top="10.0" />
-               </HBox.margin>
-               <graphic>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/add.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="zamknijButton" maxHeight="42.0" minHeight="42.0" mnemonicParsing="false" onAction="#okOnClick" prefHeight="40.0" prefWidth="120.0">
-               <HBox.margin>
-                  <Insets left="10.0" right="10.0" top="10.0" />
-               </HBox.margin>
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/ok.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button maxHeight="42.0" minHeight="42.0" mnemonicParsing="false" onAction="#anulujOnClick" prefHeight="40.0" prefWidth="120.0">
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../icons/cancel.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <HBox.margin>
-                  <Insets right="10.0" top="10.0" />
-               </HBox.margin>
-            </Button>
+            <CheckBox fx:id="tylkoAktywne" mnemonicParsing="false" onAction="#tylkoAktywneCheck" text="Tylko aktywne">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </CheckBox>
+            <HBox alignment="TOP_RIGHT" prefHeight="62.0" prefWidth="869.0">
+               <children>
+                  <Button fx:id="zmienButton" disable="true" maxHeight="42.0" minHeight="42.0" mnemonicParsing="false" onAction="#zmienOnClick" text="Zmień certyfikat na dokumencie">
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/exchange.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="usunButton" maxHeight="42.0" maxWidth="42.0" minHeight="42.0" minWidth="42.0" mnemonicParsing="false" onAction="#usunCertyfikat" prefHeight="42.0" prefWidth="42.0">
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/remove.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="edycjaButton" maxHeight="42.0" maxWidth="42.0" minHeight="42.0" minWidth="42.0" mnemonicParsing="false" onAction="#edycjaOnClick" prefHeight="42.0" prefWidth="42.0">
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/edit.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="odswiezButton" maxHeight="42.0" maxWidth="42.0" minHeight="42.0" minWidth="42.0" mnemonicParsing="false" onAction="#odswiezClick" prefHeight="42.0" prefWidth="42.0">
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/refresh.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="dodajNowyButton" contentDisplay="CENTER" maxHeight="42.0" maxWidth="42.0" minHeight="42.0" minWidth="42.0" mnemonicParsing="false" onAction="#addNowyCertyfikatOnClick" prefHeight="42.0" prefWidth="42.0" textAlignment="CENTER">
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/add.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="zamknijButton" maxHeight="42.0" minHeight="42.0" mnemonicParsing="false" onAction="#okOnClick" prefHeight="40.0" prefWidth="120.0">
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" top="10.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="44.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/ok.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button maxHeight="42.0" minHeight="42.0" mnemonicParsing="false" onAction="#anulujOnClick" prefHeight="40.0" prefWidth="120.0">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/cancel.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets right="10.0" top="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+            </HBox>
          </children>
-      </HBox>
+      </VBox>
         </children>
         </VBox>

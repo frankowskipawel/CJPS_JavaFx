@@ -16,7 +16,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import utils.DialogsUtils;
+
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -45,29 +47,39 @@ public class ListKontrahenciController {
     @FXML
     protected void usunKontrahent() {
         Optional<ButtonType> result = DialogsUtils.confirmationDialog("delete.title", "delete.header");
-        if(result.get()==ButtonType.OK){
-        KontrahentDao kontrahentDao = new KontrahentDao();
-        System.out.println(kontrahenciTableView.getSelectionModel().getSelectedItem().getIdKontrahent());
-        kontrahentDao.deleteKontrahentDatabase(kontrahenciTableView.getSelectionModel().getSelectedItem().getIdKontrahent());
-
-
-        ObservableList<Kontrahent> data = kontrahenciTableView.getItems();
-        data.remove(kontrahenciTableView.getSelectionModel().getSelectedItem());
-    }}
-
-    public void addNowyKontrahent(Kontrahent kontrahent) {
-        ObservableList<Kontrahent> data = kontrahenciTableView.getItems();
-
-        data.add(new Kontrahent(kontrahent.getIdKontrahent(),
-                kontrahent.getNazwaKontrahent(),
-                kontrahent.getAdresKontrahent(),
-                kontrahent.getNipKontrahent(),
-                kontrahent.getRegonKontrahent()
-        ));
-        KontrahentDao kontrahentDao = new KontrahentDao();
-        kontrahentDao.addKontrahentDatabase(kontrahent);
-
+        if (result.get() == ButtonType.OK) {
+            KontrahentDao kontrahentDao = new KontrahentDao();
+            kontrahentDao.deleteKontrahentDatabase(kontrahenciTableView.getSelectionModel().getSelectedItem().getIdKontrahent());
+            ObservableList<Kontrahent> data = kontrahenciTableView.getItems();
+            data.remove(kontrahenciTableView.getSelectionModel().getSelectedItem());
+        }
     }
+
+    public boolean addNowyKontrahent(Kontrahent kontrahent) {
+        ObservableList<Kontrahent> data = kontrahenciTableView.getItems();
+
+        KontrahentDao kontrahentDao = new KontrahentDao();
+        boolean isAddOk = true;
+        try {
+            kontrahentDao.addKontrahentDatabase(kontrahent);
+        } catch (SQLException e) {
+
+            DialogsUtils.errorDialog("errorUniqueId.title", "errorUniqueId.header");
+            isAddOk = false;
+            return false;
+        }
+        if (isAddOk) {
+            data.add(new Kontrahent(kontrahent.getIdKontrahent(),
+                    kontrahent.getNazwaKontrahent(),
+                    kontrahent.getAdresKontrahent(),
+                    kontrahent.getNipKontrahent(),
+                    kontrahent.getRegonKontrahent()
+            ));
+            return true;
+        }
+        return isAddOk;
+    }
+
     public void updateKontrahent(Kontrahent kontrahent) {
 
         KontrahentDao kontrahentDao = new KontrahentDao();
@@ -159,26 +171,27 @@ public class ListKontrahenciController {
     }
 
     public void edytujOnClick() throws IOException {
-        if(!kontrahenciTableView.getSelectionModel().isEmpty()){
-        Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(this.getClass().getResource("/stages/AddNewKontrahent.fxml"));
-        Pane pane = loader.load();
-        Scene scene = new Scene(pane);
-        stage.setScene(scene);
-        stage.setTitle("Edycja kontrahenta");
-        stage.initModality(Modality.APPLICATION_MODAL);
-        AddNewKontrahentController addNewKontrahentController = loader.getController();
-        addNewKontrahentController.listKontrahenciController = ListKontrahenciController.this;
-        Kontrahent selected = kontrahenciTableView.getSelectionModel().getSelectedItem();
+        if (!kontrahenciTableView.getSelectionModel().isEmpty()) {
+            Stage stage = new Stage();
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(this.getClass().getResource("/stages/AddNewKontrahent.fxml"));
+            Pane pane = loader.load();
+            Scene scene = new Scene(pane);
+            stage.setScene(scene);
+            stage.setTitle("Edycja kontrahenta");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            AddNewKontrahentController addNewKontrahentController = loader.getController();
+            addNewKontrahentController.listKontrahenciController = ListKontrahenciController.this;
+            Kontrahent selected = kontrahenciTableView.getSelectionModel().getSelectedItem();
 
-        addNewKontrahentController.setId(selected.getIdKontrahent());
-        addNewKontrahentController.getId().setDisable(true);
-        addNewKontrahentController.setNazwa(selected.getNazwaKontrahent());
-        addNewKontrahentController.setAdres(selected.getAdresKontrahent());
-        addNewKontrahentController.setNip(selected.getNipKontrahent());
-        addNewKontrahentController.setRegon(selected.getRegonKontrahent());
-        stage.show();}
+            addNewKontrahentController.setId(selected.getIdKontrahent());
+            addNewKontrahentController.getId().setDisable(true);
+            addNewKontrahentController.setNazwa(selected.getNazwaKontrahent());
+            addNewKontrahentController.setAdres(selected.getAdresKontrahent());
+            addNewKontrahentController.setNip(selected.getNipKontrahent());
+            addNewKontrahentController.setRegon(selected.getRegonKontrahent());
+            stage.show();
+        }
 
 
     }

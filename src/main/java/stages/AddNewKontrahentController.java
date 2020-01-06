@@ -7,6 +7,8 @@ import javafx.stage.Stage;
 import modelFX.Kontrahent;
 import utils.DialogsUtils;
 
+import java.sql.SQLException;
+
 public class AddNewKontrahentController {
 
     ListKontrahenciController listKontrahenciController;
@@ -34,9 +36,12 @@ public class AddNewKontrahentController {
     void okOnClick() {
         if (!id.isDisable()) {
             Kontrahent kontrahent = new Kontrahent(id.getText(), nazwa.getText(), adres.getText(), nip.getText(), regon.getText());
-            listKontrahenciController.addNowyKontrahent(kontrahent);
+
+               boolean isAddOk = listKontrahenciController.addNowyKontrahent(kontrahent);
+
+            if (isAddOk){
             Stage stage = (Stage) okButton.getScene().getWindow();
-            stage.close();
+            stage.close();}
 
         } else {
 
@@ -49,7 +54,6 @@ public class AddNewKontrahentController {
         }
 
     }
-
 
 
     public ListKontrahenciController getListKontrahenciController() {

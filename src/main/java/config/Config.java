@@ -26,7 +26,6 @@ public class Config {
         try {
             getConfig();
         } catch (FileNotFoundException e) {
-            System.out.println("brak pliku");
             setDefaultConfig();
             getConfig();
         }
