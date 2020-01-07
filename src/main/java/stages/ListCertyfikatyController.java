@@ -183,6 +183,10 @@ public class ListCertyfikatyController {
         stage.close();
 
     }
+    public void anulujOnClick(ActionEvent actionEvent) {
+        Stage stage = (Stage) zamknijButton.getScene().getWindow();
+        stage.close();
+    }
 
     @FXML
     void zmienOnClick(ActionEvent event) {
@@ -291,9 +295,7 @@ public class ListCertyfikatyController {
         this.zamknijButton = zamknijButton;
     }
 
-    public void anulujOnClick(ActionEvent actionEvent) {
-        okOnClick();
-    }
+
 
     public HomeController getHomeController() {
         return homeController;
