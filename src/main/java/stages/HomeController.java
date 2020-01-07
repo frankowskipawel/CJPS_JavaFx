@@ -7,6 +7,7 @@ import dao.DokumentDao;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import modelFX.CertyfikatJakosci;
@@ -114,9 +115,9 @@ public class HomeController {
 
         if (!listaDokumentowListViewStronaGlowna.getSelectionModel().isEmpty()) {
             messageLabelMain.setText("");
-            showAndPrintDokument(listaDokumentowListViewStronaGlowna.getSelectionModel().getSelectedItem(), false, true);
-        } else {
-            messageLabelMain.setText("Błąd - zaznacz najpierw dokument");
+            showAndPrintDokument(listaDokumentowListViewStronaGlowna.getSelectionModel().getSelectedItem(), false, true);}
+        if (!listaAktywnychCertyfikatowTableViewStronaGlowna.getSelectionModel().isEmpty()){
+            edytujContextMenu();
         }
     }
 
@@ -358,7 +359,7 @@ public class HomeController {
     }
 
 
-    public void edytujContextMenu(ActionEvent actionEvent) throws IOException {
+    public void edytujContextMenu() throws IOException {
 
         if (listaAktywnychCertyfikatowTableViewStronaGlowna.getSelectionModel().getSelectedItem() != null) {
 
@@ -414,7 +415,18 @@ public class HomeController {
 
     @FXML
     void podgladMenuContextClick() throws IOException {
-        showAndPrintDokument(listaDokumentowListViewStronaGlowna.getSelectionModel().getSelectedItem(), false, true);
+
+            showAndPrintDokument(listaDokumentowListViewStronaGlowna.getSelectionModel().getSelectedItem(), false, true);
+
+    }
+
+    public void onMouseClickedTableView(MouseEvent mouseEvent) {
+        listaDokumentowListViewStronaGlowna.getSelectionModel().clearSelection();
+
+    }
+
+    public void onMouseClickedListView(MouseEvent mouseEvent) {
+        listaAktywnychCertyfikatowTableViewStronaGlowna.getSelectionModel().clearSelection();
     }
 }
 

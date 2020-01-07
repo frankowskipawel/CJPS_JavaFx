@@ -48,7 +48,7 @@
             </Menu>
       </menus>
     </MenuBar>
-      <TableView fx:id="listaAktywnychCertyfikatowTableViewStronaGlowna" minHeight="100.0" minWidth="100.0" prefHeight="516.0" prefWidth="538.0" VBox.vgrow="ALWAYS">
+      <TableView fx:id="listaAktywnychCertyfikatowTableViewStronaGlowna" minHeight="100.0" minWidth="100.0" onMouseClicked="#onMouseClickedTableView" prefHeight="516.0" prefWidth="538.0" VBox.vgrow="ALWAYS">
         <columns>
           <TableColumn fx:id="numerCertyfikatuAktywne" maxWidth="100.0" minWidth="60.0" prefWidth="60.0" style="-fx-alignment: center;" text="Nr CJ">
             <cellValueFactory>
@@ -82,7 +82,7 @@
       </TableView>
       <HBox alignment="TOP_RIGHT" prefHeight="179.0" prefWidth="540.0">
          <children>
-            <ListView fx:id="listaDokumentowListViewStronaGlowna" maxHeight="-Infinity" minHeight="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="155.0" prefWidth="387.0" HBox.hgrow="ALWAYS">
+            <ListView fx:id="listaDokumentowListViewStronaGlowna" maxHeight="-Infinity" minHeight="-Infinity" nodeOrientation="LEFT_TO_RIGHT" onMouseClicked="#onMouseClickedListView" prefHeight="155.0" prefWidth="387.0" HBox.hgrow="ALWAYS">
                <HBox.margin>
                   <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
                </HBox.margin>
