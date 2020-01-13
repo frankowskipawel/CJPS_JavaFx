@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="vBoxStronaGlowna" focusTraversable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="690.0" minWidth="500.0" prefHeight="701.0" prefWidth="540.0" translateX="1.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.weglokoks.stages.HomeController">
+<VBox fx:id="vBoxStronaGlowna" focusTraversable="true" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="690.0" minWidth="500.0" prefHeight="701.0" prefWidth="540.0" translateX="1.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="pl.weglokoks.stages.HomeController">
   <children>
     <MenuBar prefHeight="26.0" prefWidth="462.0" VBox.vgrow="NEVER">
       <menus>
@@ -104,7 +104,7 @@
                      <graphic>
                         <ImageView fitHeight="45.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="/pl/weglokoks/icons/printer.png" />
+                              <Image url="@../icons/printer.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -126,7 +126,7 @@
                                  <graphic>
                                     <ImageView fitHeight="20.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="/pl/weglokoks/icons/refresh.png" />
+                                          <Image url="@../icons/refresh.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -141,7 +141,7 @@
                                  <graphic>
                                     <ImageView fitHeight="46.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="/pl/weglokoks/icons/preview.png" />
+                                          <Image url="@../icons/preview.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>

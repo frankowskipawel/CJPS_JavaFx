@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox fx:id="vBoxWydruk" maxWidth="481.0" minWidth="481.0" prefWidth="481.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.weglokoks.stages.WydrukController">
+<VBox fx:id="vBoxWydruk" maxHeight="716.0" maxWidth="481.0" minHeight="716.0" minWidth="481.0" prefHeight="716.0" prefWidth="481.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="pl.weglokoks.stages.WydrukController">
    <children>
       <GridPane gridLinesVisible="true" maxWidth="480.0" minWidth="480.0" prefHeight="243.0" prefWidth="480.0">
         <columnConstraints>

@@ -35,8 +35,16 @@ public class DialogsUtils {
 
     public static void errorDialog(String errorTitle, String errorHeader) {
         Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-        errorAlert.setTitle(bundle.getString(errorTitle));
-        errorAlert.setHeaderText(bundle.getString(errorHeader));
+        try {
+            errorAlert.setTitle(new String(bundle.getString(errorTitle).getBytes("ISO-8859-1"), "UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        try {
+            errorAlert.setHeaderText(new String(bundle.getString(errorHeader).getBytes("ISO-8859-1"), "UTF-8"));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
         errorAlert.initModality(Modality.APPLICATION_MODAL);
         //TextArea textArea = new TextArea(error);
       //  errorAlert.getDialogPane().setContent(textArea);

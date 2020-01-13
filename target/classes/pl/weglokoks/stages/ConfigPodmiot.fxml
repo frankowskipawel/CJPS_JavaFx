@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="283.0" prefWidth="461.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.weglokoks.stages.ConfigPodmiotController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="283.0" prefWidth="461.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="pl.weglokoks.stages.ConfigPodmiotController">
    <children>
       <Label prefHeight="18.0" prefWidth="589.0" style="-fx-alignment: center;" text="DANE PODMIOTU">
          <font>
@@ -60,7 +60,7 @@
                <graphic>
                   <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="/pl/weglokoks/icons/ok.png" />
+                        <Image url="@../icons/ok.png" />
                      </image>
                   </ImageView>
                </graphic></Button>
@@ -68,7 +68,7 @@
                <graphic>
                   <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="/pl/weglokoks/icons/cancel.png" />
+                        <Image url="@../icons/cancel.png" />
                      </image>
                   </ImageView>
                </graphic></Button>

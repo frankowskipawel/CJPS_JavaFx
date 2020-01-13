@@ -144,8 +144,13 @@ public class HomeController {
             wydrukController.getJednaKopiaCheckBox().setVisible(false);
             wydrukController.getPrintButton().setVisible(false);
             if (jednaKopiaCheckBox.isSelected()) {
+                stage.show();
+                stage.close();
                 wydrukController.print(1);
+
             } else {
+                stage.show();
+                stage.close();
                 wydrukController.print(2);
             }
         }
