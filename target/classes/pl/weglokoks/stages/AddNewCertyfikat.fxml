@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="TOP_CENTER" prefHeight="566.0" prefWidth="604.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.weglokoks.stages.AddNewCertyfikatController">
+   <children>
+      <GridPane alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="494.0" prefWidth="574.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="353.3999847412109" minWidth="10.0" prefWidth="187.0" />
+          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="307.79997558593755" minWidth="10.0" prefWidth="201.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="261.5999755859375" minWidth="45.0" prefWidth="45.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="261.5999755859375" minWidth="45.0" prefWidth="45.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="261.5999755859375" minWidth="45.0" prefWidth="45.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label prefHeight="18.0" prefWidth="310.0" text="Nasza nazwa" GridPane.rowIndex="1" />
+            <Label prefHeight="18.0" prefWidth="330.0" text="Asortyment" GridPane.rowIndex="2" />
+            <Label prefHeight="18.0" prefWidth="147.0" text="Data" GridPane.rowIndex="3" />
+            <Label text="Nr certyfikatu laboratorium" GridPane.rowIndex="4" />
+            <Label text="Zawartość popiołu" GridPane.rowIndex="5" />
+            <Label text="Zawartość siarki" GridPane.rowIndex="6" />
+            <Label text="Zawartość części lotnych" GridPane.rowIndex="7" />
+            <Label text="Wartość opałowa" GridPane.rowIndex="8" />
+            <Label text="Spiekalność" GridPane.rowIndex="9" />
+            <Label text="Minimalny wymiar ziarna" GridPane.rowIndex="10" />
+            <Label text="Maksymalny wymiar ziarna" GridPane.rowIndex="11" />
+            <Label text="Zawartość podziarna" GridPane.rowIndex="12" />
+            <Label text="Zawartość nadziarna" GridPane.rowIndex="13" />
+            <Label text="Zawartość wilgoci" GridPane.rowIndex="14" />
+            <Label text="Dostawca" GridPane.rowIndex="15" />
+            <Label text="Nr Faktury VAT zakupu" GridPane.rowIndex="16" />
+            <TextField fx:id="naszaNazwaField" alignment="TOP_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="nrCertyfikatuLaboratoriumField" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="zawartoscPopioluField" alignment="CENTER" onKeyReleased="#zawartoscPopioluOnKeyReleased" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="zawartoscSiarkiField" alignment="CENTER" onKeyReleased="#zawartoscSiarkiOnKeyReleased" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <TextField fx:id="zawartoscCzesciLotnychField" alignment="CENTER" onKeyReleased="#zawartoscCzesiLotnychOnKeyReleased" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <TextField fx:id="wartoscOpalowaField" alignment="CENTER" onKeyReleased="#wartoscOpalowaOnKeyReleased" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <TextField fx:id="spiekalnoscField" alignment="CENTER" onKeyReleased="#spiekalnoscOnKeyReleased" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <TextField fx:id="minWymiarziarnaField" alignment="CENTER" onKeyReleased="#minWymiarZiarnaOnKeyReleased" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+            <TextField fx:id="maxWymiarziarnaField" alignment="CENTER" onKeyReleased="#maxWymiarZiarnaOnKeyReleased" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+            <TextField fx:id="zawartoscPodziarnaField" alignment="CENTER" onKeyReleased="#zawartoscPodziarnaOnKeyReleased" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+            <TextField fx:id="zawartoscNadziarnaField" alignment="CENTER" onKeyReleased="#zawartoscNadziarnaOnKeyReleased" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+            <TextField fx:id="zawartoscWilgociField" alignment="CENTER" onKeyReleased="#zawartoscWilgociOnKeyReleased" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+            <TextField fx:id="dostawcaField" alignment="CENTER" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="15" />
+            <TextField fx:id="nrFvField" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="16" />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="82.0" text="\%" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="66.0" text="\%" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="69.0" text="\%" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="104.0" text="MJ/kg" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="79.0" text="RI" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="90.0" text="mm" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="10" />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="112.0" text="mm" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="11" />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="100.0" text="\%" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="12" />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="18.0" prefWidth="78.0" text="\%" textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="14" />
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#kontrahentOnClick" prefHeight="26.0" prefWidth="25.0" text="..." textAlignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="15" />
+            <ComboBox fx:id="asortymentCombobox" onAction="#asortymentSelectOnClick" prefHeight="26.0" prefWidth="261.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label text="Numer " />
+            <Label fx:id="numerLabel" prefHeight="17.0" prefWidth="275.0" style="-fx-alignment: center;" text="(auto)" GridPane.columnIndex="1" />
+            <DatePicker fx:id="datePicker" editable="false" prefHeight="25.0" prefWidth="244.0" style="-fx-alignment: center;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="minPopiolLabel" text="-" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+            <Label fx:id="minSiarkaLabel" text="-" GridPane.columnIndex="3" GridPane.rowIndex="6" />
+            <Label fx:id="minZawCzLotnychLabel" text="-" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+            <Label fx:id="minWartoscOpalowaLabel" text="-" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+            <Label fx:id="minSpiekalnoscLabel" text="-" GridPane.columnIndex="3" GridPane.rowIndex="9" />
+            <Label fx:id="minWymiarZiarnaLabel" text="-" GridPane.columnIndex="3" GridPane.rowIndex="10" />
+            <Label text="-" GridPane.columnIndex="3" GridPane.rowIndex="11" />
+            <Label fx:id="minPodziarnoLabel" text="-" GridPane.columnIndex="3" GridPane.rowIndex="12" />
+            <Label fx:id="minNadziarnoLabel" text="-" GridPane.columnIndex="3" GridPane.rowIndex="13" />
+            <Label fx:id="minZawartoscWilgociLabel" text="-" GridPane.columnIndex="3" GridPane.rowIndex="14" />
+            <Label fx:id="maxPopiolLabel" text="-" GridPane.columnIndex="4" GridPane.rowIndex="5" />
+            <Label fx:id="maxSiarkaLabel" text="-" GridPane.columnIndex="4" GridPane.rowIndex="6" />
+            <Label fx:id="maxZawCzLotnychLabel" text="-" GridPane.columnIndex="4" GridPane.rowIndex="7" />
+            <Label fx:id="maxWartoscOpalowaLabel" text="-" GridPane.columnIndex="4" GridPane.rowIndex="8" />
+            <Label fx:id="maxSpiekalnoscLabel" text="-" GridPane.columnIndex="4" GridPane.rowIndex="9" />
+            <Label text="-" GridPane.columnIndex="4" GridPane.rowIndex="10" />
+            <Label fx:id="maxWymiarZiarnaLabel" text="-" GridPane.columnIndex="4" GridPane.rowIndex="11" />
+            <Label fx:id="maxPodziarnoLabel" text="-" GridPane.columnIndex="4" GridPane.rowIndex="12" />
+            <Label fx:id="maxNadziarnoLabel" text="-" GridPane.columnIndex="4" GridPane.rowIndex="13" />
+            <Label fx:id="maxZawartoscWilgociLabel" text="-" GridPane.columnIndex="4" GridPane.rowIndex="14" />
+            <Label text="min" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+            <Label text="max" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+            <CheckBox fx:id="niestandardoweCheckBox" mnemonicParsing="false" onAction="#niestandardoweCheckButtonOnClick" text="niestandardowe" GridPane.columnIndex="3" GridPane.columnSpan="2">
+               <GridPane.margin>
+                  <Insets right="5.0" top="5.0" />
+               </GridPane.margin>
+            </CheckBox>
+         </children>
+      </GridPane>
+      <HBox alignment="CENTER" prefHeight="72.0" prefWidth="435.0">
+         <children>
+            <CheckBox fx:id="aktywnyCheckbox" mnemonicParsing="false" prefHeight="21.0" prefWidth="161.0" text="Aktywny" />
+            <HBox alignment="CENTER_RIGHT" cache="true" prefHeight="72.0" prefWidth="409.0">
+               <children>
+                  <Button fx:id="dodajButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#okOnClick" prefHeight="40.0" prefWidth="120.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="/pl/weglokoks/icons/ok.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="anulujButton" mnemonicParsing="false" onAction="#anulujOnClick" prefHeight="40.0" prefWidth="120.0">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="/pl/weglokoks/icons/cancel.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </HBox.margin></Button>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </HBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>
