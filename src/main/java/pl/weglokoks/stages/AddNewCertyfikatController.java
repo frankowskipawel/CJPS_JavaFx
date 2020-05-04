@@ -104,12 +104,10 @@ public class AddNewCertyfikatController {
 
     @FXML
     protected void okOnClick() throws IOException {
-
-
         CertyfikatJakosciDao certyfikatJakosciDao = new CertyfikatJakosciDao();
         String numerString;
         if (numerLabel.getText().equals("(auto)")) {
-            numerString = Integer.toString(certyfikatJakosciDao.getNajwyzszyNumerCertyfikatuDao() + 1);
+            numerString = Integer.toString(certyfikatJakosciDao.findLastNumber() + 1);
         } else {
             numerString = numerLabel.getText();
         }
@@ -138,7 +136,6 @@ public class AddNewCertyfikatController {
                 asortymentValue = "";
             }
         }
-
         if (validate) {
             CertyfikatJakosci cerytfikatJakosci = new CertyfikatJakosci(numerString, isAktywny, naszaNazwaField.getText(), asortymentValue,
                     datePicker.getValue().toString(), nrCertyfikatuLaboratoriumField.getText(), zawartoscPopioluField.getText(), zawartoscSiarkiField.getText(),
@@ -147,9 +144,9 @@ public class AddNewCertyfikatController {
                     dostawcaField.getText(), nrFvField.getText(), "");
 
             if (numerLabel.getText().equals("(auto)")) {
-                certyfikatJakosciDao.addCertyfikatJakosciToDatabase(cerytfikatJakosci);
+                certyfikatJakosciDao.insertCertyfikatJakosci(cerytfikatJakosci);
             } else {
-                certyfikatJakosciDao.replaceCertyfikatJakosci(cerytfikatJakosci);
+                certyfikatJakosciDao.updateCertyfikatJakosci(cerytfikatJakosci);
             }
 
             Stage stage = (Stage) anulujButton.getScene().getWindow();
@@ -182,17 +179,12 @@ public class AddNewCertyfikatController {
         stage.show();
         ListKontrahenciController listKontrahenciController = loader.getController();
         listKontrahenciController.setAddNewCertyfikatController(AddNewCertyfikatController.this);
-
     }
 
     @FXML
     public void initialize() {
-
         asortymentCombobox.getItems().addAll(WartosciDopuszczalnePaliwa.values());
-
-
         String pattern = "yyyy-MM-dd";
-        // datePicker.setPromptText(pattern);
         try {
             datePicker.setConverter(new StringConverter<LocalDate>() {
                 DateTimeFormatter dtf = DateTimeFormatter.ofPattern(pattern);
@@ -216,8 +208,6 @@ public class AddNewCertyfikatController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
 
     public void setNumerLabel(String numerLabel) {
@@ -301,16 +291,8 @@ public class AddNewCertyfikatController {
         this.nrFvField.setText(nrFvField);
     }
 
-    public ListCertyfikatyController getListCertyfikatyController() {
-        return listCertyfikatyController;
-    }
-
     public void setListCertyfikatyController(ListCertyfikatyController listCertyfikatyController) {
         this.listCertyfikatyController = listCertyfikatyController;
-    }
-
-    public HomeController getHomeController() {
-        return homeController;
     }
 
     public void setHomeController(HomeController homeController) {
@@ -321,12 +303,7 @@ public class AddNewCertyfikatController {
         return asortymentCombobox;
     }
 
-    public void dataOnClick(ActionEvent actionEvent) {
-
-    }
-
     public void asortymentSelectOnClick(ActionEvent actionEvent) {
-
         WartosciDopuszczalnePaliwa wartosciDopuszczalnePaliwa = WartosciDopuszczalnePaliwa.valueOf(getAsortymentCombobox().getSelectionModel().getSelectedItem().toString());
         setMinPopiolLabel(wartosciDopuszczalnePaliwa.getMinPopiol());
         setMaxPopiolLabel(wartosciDopuszczalnePaliwa.getMaxPopiol());
@@ -350,281 +327,116 @@ public class AddNewCertyfikatController {
     }
 
 
-    public Label getMinPopiolLabel() {
-        return minPopiolLabel;
-    }
-
     public void setMinPopiolLabel(String minPopiolLabel) {
         this.minPopiolLabel.setText(minPopiolLabel);
-    }
-
-    public Label getMinSiarkaLabel() {
-        return minSiarkaLabel;
     }
 
     public void setMinSiarkaLabel(String minSiarkaLabel) {
         this.minSiarkaLabel.setText(minSiarkaLabel);
     }
 
-    public Label getMinZawCzLotnychLabel() {
-        return minZawCzLotnychLabel;
-    }
-
     public void setMinZawCzLotnychLabel(String minZawCzLotnychLabel) {
         this.minZawCzLotnychLabel.setText(minZawCzLotnychLabel);
-    }
-
-    public Label getMinWartoscOpalowaLabel() {
-        return minWartoscOpalowaLabel;
     }
 
     public void setMinWartoscOpalowaLabel(String minWartoscOpalowaLabel) {
         this.minWartoscOpalowaLabel.setText(minWartoscOpalowaLabel);
     }
 
-    public Label getMinSpiekalnoscLabel() {
-        return minSpiekalnoscLabel;
-    }
-
     public void setMinSpiekalnoscLabel(String minSpiekalnoscLabel) {
         this.minSpiekalnoscLabel.setText(minSpiekalnoscLabel);
-    }
-
-    public Label getMinWymiarZiarnaLabel() {
-        return minWymiarZiarnaLabel;
     }
 
     public void setMinWymiarZiarnaLabel(String minWymiarZiarnaLabel) {
         this.minWymiarZiarnaLabel.setText(minWymiarZiarnaLabel);
     }
 
-    public Label getMinPodziarnoLabel() {
-        return minPodziarnoLabel;
-    }
-
     public void setMinPodziarnoLabel(String minPodziarnoLabel) {
         this.minPodziarnoLabel.setText(minPodziarnoLabel);
-    }
-
-    public Label getMinNadziarnoLabel() {
-        return minNadziarnoLabel;
     }
 
     public void setMinNadziarnoLabel(String minNadziarnoLabel) {
         this.minNadziarnoLabel.setText(minNadziarnoLabel);
     }
 
-    public Label getMinZawartoscWilgociLabel() {
-        return minZawartoscWilgociLabel;
-    }
-
     public void setMinZawartoscWilgociLabel(String minZawartoscWilgociLabel) {
         this.minZawartoscWilgociLabel.setText(minZawartoscWilgociLabel);
-    }
-
-    public Label getMaxPopiolLabel() {
-        return maxPopiolLabel;
     }
 
     public void setMaxPopiolLabel(String maxPopiolLabel) {
         this.maxPopiolLabel.setText(maxPopiolLabel);
     }
 
-    public Label getMaxSiarkaLabel() {
-        return maxSiarkaLabel;
-    }
-
     public void setMaxSiarkaLabel(String maxSiarkaLabel) {
         this.maxSiarkaLabel.setText(maxSiarkaLabel);
-    }
-
-    public Label getMaxZawCzLotnychLabel() {
-        return maxZawCzLotnychLabel;
     }
 
     public void setMaxZawCzLotnychLabel(String maxZawCzLotnychLabel) {
         this.maxZawCzLotnychLabel.setText(maxZawCzLotnychLabel);
     }
 
-    public Label getMaxWartoscOpalowaLabel() {
-        return maxWartoscOpalowaLabel;
-    }
-
     public void setMaxWartoscOpalowaLabel(String maxWartoscOpalowaLabel) {
         this.maxWartoscOpalowaLabel.setText(maxWartoscOpalowaLabel);
-    }
-
-    public Label getMaxSpiekalnoscLabel() {
-        return maxSpiekalnoscLabel;
     }
 
     public void setMaxSpiekalnoscLabel(String maxSpiekalnoscLabel) {
         this.maxSpiekalnoscLabel.setText(maxSpiekalnoscLabel);
     }
 
-    public Label getMaxWymiarZiarnaLabel() {
-        return maxWymiarZiarnaLabel;
-    }
-
     public void setMaxWymiarZiarnaLabel(String maxWymiarZiarnaLabel) {
         this.maxWymiarZiarnaLabel.setText(maxWymiarZiarnaLabel);
-    }
-
-    public Label getMaxPodziarnoLabel() {
-        return maxPodziarnoLabel;
     }
 
     public void setMaxPodziarnoLabel(String maxPodziarnoLabel) {
         this.maxPodziarnoLabel.setText(maxPodziarnoLabel);
     }
 
-    public Label getMaxNadziarnoLabel() {
-        return maxNadziarnoLabel;
-    }
-
     public void setMaxNadziarnoLabel(String maxNadziarnoLabel) {
         this.maxNadziarnoLabel.setText(maxNadziarnoLabel);
-    }
-
-    public Label getMaxZawartoscWilgociLabel() {
-        return maxZawartoscWilgociLabel;
     }
 
     public void setMaxZawartoscWilgociLabel(String maxZawartoscWilgociLabel) {
         this.maxZawartoscWilgociLabel.setText(maxZawartoscWilgociLabel);
     }
 
-    public TextField getNaszaNazwaField() {
-        return naszaNazwaField;
-    }
-
-    public void setNaszaNazwaField(TextField naszaNazwaField) {
-        this.naszaNazwaField = naszaNazwaField;
-    }
-
-    public CheckBox getAktywnyCheckbox() {
-        return aktywnyCheckbox;
-    }
-
-    public void setAktywnyCheckbox(CheckBox aktywnyCheckbox) {
-        this.aktywnyCheckbox = aktywnyCheckbox;
-    }
-
-    public void setAsortymentCombobox(ComboBox asortymentCombobox) {
-        this.asortymentCombobox = asortymentCombobox;
-    }
-
-    public TextField getNrCertyfikatuLaboratoriumField() {
-        return nrCertyfikatuLaboratoriumField;
-    }
-
-    public void setNrCertyfikatuLaboratoriumField(TextField nrCertyfikatuLaboratoriumField) {
-        this.nrCertyfikatuLaboratoriumField = nrCertyfikatuLaboratoriumField;
-    }
-
     public TextField getZawartoscPopioluField() {
         return zawartoscPopioluField;
-    }
-
-    public void setZawartoscPopioluField(TextField zawartoscPopioluField) {
-        this.zawartoscPopioluField = zawartoscPopioluField;
     }
 
     public TextField getZawartoscSiarkiField() {
         return zawartoscSiarkiField;
     }
 
-    public void setZawartoscSiarkiField(TextField zawartoscSiarkiField) {
-        this.zawartoscSiarkiField = zawartoscSiarkiField;
-    }
-
     public TextField getZawartoscCzesciLotnychField() {
         return zawartoscCzesciLotnychField;
-    }
-
-    public void setZawartoscCzesciLotnychField(TextField zawartoscCzesciLotnychField) {
-        this.zawartoscCzesciLotnychField = zawartoscCzesciLotnychField;
     }
 
     public TextField getWartoscOpalowaField() {
         return wartoscOpalowaField;
     }
 
-    public void setWartoscOpalowaField(TextField wartoscOpalowaField) {
-        this.wartoscOpalowaField = wartoscOpalowaField;
-    }
-
     public TextField getSpiekalnoscField() {
         return spiekalnoscField;
-    }
-
-    public void setSpiekalnoscField(TextField spiekalnoscField) {
-        this.spiekalnoscField = spiekalnoscField;
     }
 
     public TextField getMinWymiarziarnaField() {
         return minWymiarziarnaField;
     }
 
-    public void setMinWymiarziarnaField(TextField minWymiarziarnaField) {
-        this.minWymiarziarnaField = minWymiarziarnaField;
-    }
-
     public TextField getMaxWymiarziarnaField() {
         return maxWymiarziarnaField;
-    }
-
-    public void setMaxWymiarziarnaField(TextField maxWymiarziarnaField) {
-        this.maxWymiarziarnaField = maxWymiarziarnaField;
     }
 
     public TextField getZawartoscPodziarnaField() {
         return zawartoscPodziarnaField;
     }
 
-    public void setZawartoscPodziarnaField(TextField zawartoscPodziarnaField) {
-        this.zawartoscPodziarnaField = zawartoscPodziarnaField;
-    }
-
     public TextField getZawartoscNadziarnaField() {
         return zawartoscNadziarnaField;
     }
 
-    public void setZawartoscNadziarnaField(TextField zawartoscNadziarnaField) {
-        this.zawartoscNadziarnaField = zawartoscNadziarnaField;
-    }
-
     public TextField getZawartoscWilgociField() {
         return zawartoscWilgociField;
-    }
-
-    public void setZawartoscWilgociField(TextField zawartoscWilgociField) {
-        this.zawartoscWilgociField = zawartoscWilgociField;
-    }
-
-    public TextField getDostawcaField() {
-        return dostawcaField;
-    }
-
-    public void setDostawcaField(TextField dostawcaField) {
-        this.dostawcaField = dostawcaField;
-    }
-
-    public TextField getNrFvField() {
-        return nrFvField;
-    }
-
-    public void setNrFvField(TextField nrFvField) {
-        this.nrFvField = nrFvField;
-    }
-
-
-    public CheckBox getNiestandardoweCheckBox() {
-        return niestandardoweCheckBox;
-    }
-
-    public void setNiestandardoweCheckBox(CheckBox niestandardoweCheckBox) {
-        this.niestandardoweCheckBox = niestandardoweCheckBox;
     }
 
     public void zawartoscPopioluOnKeyReleased() {
@@ -744,6 +556,5 @@ public class AddNewCertyfikatController {
         getZawartoscNadziarnaField().setStyle("");
         getZawartoscWilgociField().setStyle("");
     }
-
 }
 

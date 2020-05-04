@@ -39,7 +39,7 @@ public class ListDokumentyController {
         ObservableList<Dokument> data = dokumentyListView.getItems();
         data.removeAll(data);
         DokumentDao dokumentDao = new DokumentDao();
-        data.addAll(dokumentDao.getAllDokumenty());
+        data.addAll(dokumentDao.findAllDokumenty());
         Collections.reverse(data);
     }
 
@@ -70,7 +70,6 @@ public class ListDokumentyController {
         listCertyfikatyController.getZmienButton().setDisable(false);
 
         Iterator iterator = listCertyfikatyController.getLista().iterator();
-
         //Zazanaczenie na liście certyfikatów - certyfikatu z dokumentu
         int row = 0;
         int counter = 0;
@@ -88,13 +87,11 @@ public class ListDokumentyController {
     }
 
     @FXML
-    void szukaj(KeyEvent event) {
-
+    void szukaj() {
         ObservableList<Dokument> data = dokumentyListView.getItems();
         data.removeAll(data);
         DokumentDao dokumentDao = new DokumentDao();
-        List<Dokument> dataFromDB = dokumentDao.getAllDokumenty();
-
+        List<Dokument> dataFromDB = dokumentDao.findAllDokumenty();
         dataFromDB.stream()
                 .filter(item -> item.toString().matches(("(.*)" + szukajTextField.getText()) + "(.*)"))
                 .forEach(data::add);
@@ -102,11 +99,11 @@ public class ListDokumentyController {
         Collections.reverse(data);
     }
 
-    public void podgladContextMenu(ActionEvent actionEvent) throws IOException {
+    public void podgladContextMenu() throws IOException {
         podgladOnClick();
     }
 
-    public void edycjaContextMenu(ActionEvent actionEvent) throws IOException {
+    public void edycjaContextMenu() throws IOException {
         edytujOnClick();
     }
 }

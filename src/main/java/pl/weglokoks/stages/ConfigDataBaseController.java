@@ -29,14 +29,8 @@ public class ConfigDataBaseController {
     @FXML
     private Label messageLabel;
 
-
-    public ConfigDataBaseController() {
-    }
-
-    //Najpierw wywoływany jest konstruktor dopiero metoda initialize i to w niej mozna dopiero ustawiać kontrolki
     @FXML
     public void initialize() {
-        //Chwilowo wczytanie ustawień z pliku
         Config config = new Config();
         try {
             config.getConfigFromFile();
@@ -48,7 +42,6 @@ public class ConfigDataBaseController {
         databaseNameTextFieldConfig.setText(Config.DATABASENAME);
         loginTextFieldConfig.setText(Config.USER);
         passwordTextfieldConfig.setText(Config.PASSWORD);
-
     }
 
     @FXML
@@ -57,7 +50,6 @@ public class ConfigDataBaseController {
         config.setConfig(hostTextFieldConfig.getText(), portTextFieldConfig.getText(), databaseNameTextFieldConfig.getText(), loginTextFieldConfig.getText(), passwordTextfieldConfig.getText());
         config.getConfigFromFile();
         messageLabel.setText("Zapisano zmiany!");
-
     }
 
     @FXML
@@ -67,7 +59,6 @@ public class ConfigDataBaseController {
         databaseNameTextFieldConfig.setText(DefaultConnection.CONNECTION.getDatabaseName());
         loginTextFieldConfig.setText(DefaultConnection.CONNECTION.getUser());
         passwordTextfieldConfig.setText(DefaultConnection.CONNECTION.getPassword());
-
     }
 
     @FXML
@@ -78,65 +69,5 @@ public class ConfigDataBaseController {
     void closeStage() {
         Stage stage = (Stage) anulujButton.getScene().getWindow();
         stage.close();
-    }
-
-    public void setMessageLabel(String text){
-        messageLabel.setText(text);
-    }
-
-    public TextField getHostTextFieldConfig() {
-        return hostTextFieldConfig;
-    }
-
-    public void setHostTextFieldConfig(TextField hostTextFieldConfig) {
-        this.hostTextFieldConfig = hostTextFieldConfig;
-    }
-
-    public TextField getPortTextFieldConfig() {
-        return portTextFieldConfig;
-    }
-
-    public void setPortTextFieldConfig(TextField portTextFieldConfig) {
-        this.portTextFieldConfig = portTextFieldConfig;
-    }
-
-    public TextField getDatabaseNameTextFieldConfig() {
-        return databaseNameTextFieldConfig;
-    }
-
-    public void setDatabaseNameTextFieldConfig(TextField databaseNameTextFieldConfig) {
-        this.databaseNameTextFieldConfig = databaseNameTextFieldConfig;
-    }
-
-    public TextField getLoginTextFieldConfig() {
-        return loginTextFieldConfig;
-    }
-
-    public void setLoginTextFieldConfig(TextField loginTextFieldConfig) {
-        this.loginTextFieldConfig = loginTextFieldConfig;
-    }
-
-    public TextField getPasswordTextfieldConfig() {
-        return passwordTextfieldConfig;
-    }
-
-    public void setPasswordTextfieldConfig(TextField passwordTextfieldConfig) {
-        this.passwordTextfieldConfig = passwordTextfieldConfig;
-    }
-
-    public Button getAnulujButton() {
-        return anulujButton;
-    }
-
-    public void setAnulujButton(Button anulujButton) {
-        this.anulujButton = anulujButton;
-    }
-
-    public Label getMessageLabel() {
-        return messageLabel;
-    }
-
-    public void setMessageLabel(Label messageLabel) {
-        this.messageLabel = messageLabel;
     }
 }

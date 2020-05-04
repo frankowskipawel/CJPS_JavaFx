@@ -19,11 +19,13 @@ public class DialogsUtils {
         try {
             confirmationDialog.setTitle(new String(bundle.getString(bundleTitle).getBytes("ISO-8859-1"), "UTF-8"));
         } catch (UnsupportedEncodingException e) {
+            DialogsUtils.errorDialog("Błąd", e.getMessage());
             e.printStackTrace();
         }
         try {
             confirmationDialog.setHeaderText(new String(bundle.getString(BundleHeader).getBytes("ISO-8859-1"), "UTF-8"));
         } catch (UnsupportedEncodingException e) {
+            DialogsUtils.errorDialog("Błąd", e.getMessage());
             e.printStackTrace();
         }
         confirmationDialog.initModality(Modality.APPLICATION_MODAL);
@@ -38,34 +40,28 @@ public class DialogsUtils {
         try {
             errorAlert.setTitle(new String(bundle.getString(errorTitle).getBytes("ISO-8859-1"), "UTF-8"));
         } catch (UnsupportedEncodingException e) {
+            DialogsUtils.errorDialog("Błąd", e.getMessage());
             e.printStackTrace();
         }
         try {
             errorAlert.setHeaderText(new String(bundle.getString(errorHeader).getBytes("ISO-8859-1"), "UTF-8"));
         } catch (UnsupportedEncodingException e) {
+            DialogsUtils.errorDialog("Błąd", e.getMessage());
             e.printStackTrace();
         }
         errorAlert.initModality(Modality.APPLICATION_MODAL);
-        //TextArea textArea = new TextArea(error);
-      //  errorAlert.getDialogPane().setContent(textArea);
         errorAlert.showAndWait();
     }
 
     public static Optional<ButtonType> configDialog(String bundleTitle, String BundleHeader) throws IOException {
         Alert confirmationDialog = new Alert(Alert.AlertType.CONFIRMATION);
         confirmationDialog.setTitle(new String(bundle.getString(bundleTitle).getBytes("ISO-8859-1"), "UTF-8"));
-       // confirmationDialog.setTitle(bundle.getString(bundleTitle));
         confirmationDialog.setHeaderText(new String(bundle.getString(BundleHeader).getBytes("ISO-8859-1"), "UTF-8"));
-       // confirmationDialog.setHeaderText(bundle.getString(BundleHeader));
-       // confirmationDialog.initModality(Modality.NONE);
         confirmationDialog.initModality(Modality.APPLICATION_MODAL);
         FXMLLoader loader = new FXMLLoader();
         loader.<ConfigDataBaseController>setController(FxmlUtils.fxmlLoader("/pl/weglokoks/stages/ConfigDataBase.fxml"));
-//        ConfigController configController = (ConfigController)loader.getController();
-
         confirmationDialog.<ConfigDataBaseController>getDialogPane().setContent(loader.getController());
         Optional<ButtonType> result = confirmationDialog.showAndWait();
-
         return result;
     }
 
@@ -74,11 +70,13 @@ public class DialogsUtils {
         try {
             infoAlert.setTitle(new String(bundle.getString(title).getBytes("ISO-8859-1"), "UTF-8"));
         } catch (UnsupportedEncodingException e) {
+            DialogsUtils.errorDialog("Błąd", e.getMessage());
             e.printStackTrace();
         }
         try {
             infoAlert.setHeaderText(new String(bundle.getString(header).getBytes("ISO-8859-1"), "UTF-8"));
         } catch (UnsupportedEncodingException e) {
+            DialogsUtils.errorDialog("Błąd", e.getMessage());
             e.printStackTrace();
         }
         infoAlert.initModality(Modality.APPLICATION_MODAL);

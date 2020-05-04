@@ -7,7 +7,7 @@ import pl.weglokoks.utils.DialogsUtils;
 import java.sql.*;
 import java.util.Optional;
 
-public class DaoService {
+public class UtilsDao {
 
     private Connection connection;
 
@@ -23,7 +23,6 @@ public class DaoService {
                 try {
                     isOk = false;
                     createDatabase();
-
                 } catch (SQLException ex) {
                     isOk = false;
                     Optional<ButtonType> result = DialogsUtils.configDialog("errorConnection.title", "errorConnection.header");
@@ -39,9 +38,7 @@ public class DaoService {
 
         Class.forName("com.mysql.jdbc.Driver");
         connection = DriverManager.getConnection("jdbc:mysql://" + Config.HOSTNAME + "/" + "?useSSL=false", Config.USER, Config.PASSWORD);
-
         Statement statement = null;
-
         String query;
         statement = connection.createStatement();
         query = "create database " + Config.DATABASENAME + ";";

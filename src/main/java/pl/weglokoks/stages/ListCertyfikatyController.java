@@ -38,30 +38,23 @@ public class ListCertyfikatyController {
     @FXML
     private TableView<CertyfikatJakosci> listaCertyfikatowTableView;
     @FXML
-    private Button dodajNowyButton;
-    @FXML
     private Button zmienButton;
     @FXML
     private CheckBox tylkoAktywne;
 
     @FXML
     public void initialize() {
-
         setAllCertyfikatyTableView();
     }
 
     @FXML
     protected void setAllCertyfikatyTableView() {
-
         CertyfikatJakosciDao certyfikatJakosciDao = new CertyfikatJakosciDao();
-        List<CertyfikatJakosci> list = certyfikatJakosciDao.getAllCertyfikatJakosci();
-
+        List<CertyfikatJakosci> list = certyfikatJakosciDao.findAllCertyfikatJakosci();
         Iterator<CertyfikatJakosci> iterator = list.iterator();
         ObservableList<CertyfikatJakosci> data = listaCertyfikatowTableView.getItems();
-
         for (CertyfikatJakosci b : list) {
             data.add(new CertyfikatJakosci(b.numerCertyfikatuProperty().getValue(),
-
                     b.aktywnyProperty().getValue(),
                     b.naszaNazwaProperty().getValue(),
                     b.asortymentProperty().getValue(),
@@ -87,7 +80,6 @@ public class ListCertyfikatyController {
 
     @FXML
     protected void addNowyCertyfikatOnClick() throws IOException {
-
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(this.getClass().getResource("/pl/weglokoks/stages/AddNewCertyfikat.fxml"));
@@ -109,7 +101,6 @@ public class ListCertyfikatyController {
 
     @FXML
     protected void odswiezClick() {
-
         odswiezListeCertyfikatow();
     }
 
@@ -127,9 +118,7 @@ public class ListCertyfikatyController {
         stage.show();
 
         AddNewCertyfikatController editedCertyfikat = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
-
         CertyfikatJakosci selected = listaCertyfikatowTableView.getSelectionModel().getSelectedItem();
-
 
         editedCertyfikat.setNumerLabel(selected.getNumerCertyfikatu());
         editedCertyfikat.setNaszaNazwaField(selected.getNaszaNazwa());
@@ -148,14 +137,9 @@ public class ListCertyfikatyController {
         editedCertyfikat.setDostawcaField(selected.getDostawca());
         editedCertyfikat.setNrFvField(selected.getNrFV());
         editedCertyfikat.setAktywnyCheckbox(selected.getAktywny());
-       // editedCertyfikat.setAsortymentCombobox(selected.getAsortyment());
         editedCertyfikat.getAsortymentCombobox().getSelectionModel().select(selected.getAsortyment());
-
-
         editedCertyfikat.setListCertyfikatyController(ListCertyfikatyController.this);
         editedCertyfikat.checkAllValidationField(false);
-
-
     }
 
     public void odswiezListeCertyfikatow() {
@@ -179,8 +163,8 @@ public class ListCertyfikatyController {
         getHomeController().refreshClick();
         Stage stage = (Stage) zamknijButton.getScene().getWindow();
         stage.close();
-
     }
+
     public void anulujOnClick(ActionEvent actionEvent) {
         Stage stage = (Stage) zamknijButton.getScene().getWindow();
         stage.close();
@@ -223,14 +207,11 @@ public class ListCertyfikatyController {
 
     @FXML
     void tylkoAktywneCheck(ActionEvent event) {
-
-
         if (tylkoAktywne.isSelected()) {
             ObservableList<CertyfikatJakosci> data = listaCertyfikatowTableView.getItems();
             data.removeAll(data);
             CertyfikatJakosciDao certyfikatJakosciDao = new CertyfikatJakosciDao();
-            List<CertyfikatJakosci> dataFromDB = certyfikatJakosciDao.getAllCertyfikatJakosci();
-
+            List<CertyfikatJakosci> dataFromDB = certyfikatJakosciDao.findAllCertyfikatJakosci();
             dataFromDB.stream()
                     .filter(item -> item.getAktywny().equals("TAK"))
                     .forEach(data::add);
@@ -238,19 +219,10 @@ public class ListCertyfikatyController {
             ObservableList<CertyfikatJakosci> data = listaCertyfikatowTableView.getItems();
             data.removeAll(data);
             CertyfikatJakosciDao certyfikatJakosciDao = new CertyfikatJakosciDao();
-            List<CertyfikatJakosci> dataFromDB = certyfikatJakosciDao.getAllCertyfikatJakosci();
+            List<CertyfikatJakosci> dataFromDB = certyfikatJakosciDao.findAllCertyfikatJakosci();
             data.addAll(dataFromDB);
         }
 
-    }
-
-
-    public void setListaCertyfikatowTableView(TableView<CertyfikatJakosci> listaCertyfikatowTableView) {
-        this.listaCertyfikatowTableView = listaCertyfikatowTableView;
-    }
-
-    public ListDokumentyController getListDokumentyController() {
-        return listDokumentyController;
     }
 
     public void setListDokumentyController(ListDokumentyController listDokumentyController) {
@@ -261,20 +233,8 @@ public class ListCertyfikatyController {
         return lista;
     }
 
-    public void setLista(ObservableList<CertyfikatJakosci> lista) {
-        this.lista = lista;
-    }
-
-    public Dokument getDokumentEdytowany() {
-        return dokumentEdytowany;
-    }
-
     public void setDokumentEdytowany(Dokument dokumentEdytowany) {
         this.dokumentEdytowany = dokumentEdytowany;
-    }
-
-    public void setZmienButton(Button zmienButton) {
-        this.zmienButton = zmienButton;
     }
 
     public Button getZmienButton() {
@@ -288,12 +248,6 @@ public class ListCertyfikatyController {
     public Button getZamknijButton() {
         return zamknijButton;
     }
-
-    public void setZamknijButton(Button zamknijButton) {
-        this.zamknijButton = zamknijButton;
-    }
-
-
 
     public HomeController getHomeController() {
         return homeController;

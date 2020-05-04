@@ -2,7 +2,7 @@ package pl.weglokoks.stages;
 
 import pl.weglokoks.config.Config;
 import pl.weglokoks.dao.CertyfikatJakosciDao;
-import pl.weglokoks.dao.DaoService;
+import pl.weglokoks.dao.UtilsDao;
 import pl.weglokoks.dao.DokumentDao;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -42,12 +42,6 @@ public class HomeController {
     @FXML
     private TableColumn naszaNazwaAktywne;
     @FXML
-    private TableColumn nrCertyfikatuTableViewStronaGlowna;
-    @FXML
-    private TableColumn iloscTableViewStronaGlowna;
-    @FXML
-    private MenuItem edytujContextItem;
-    @FXML
     private CheckBox jednaKopiaCheckBox;
     @FXML
     private CheckBox podgladChechBox;
@@ -56,17 +50,14 @@ public class HomeController {
 
     @FXML
     public void initialize() {
-
         setListaAktywnychCertyfikatow();
         add5DokumentowToListView();
         listaAktywnychCertyfikatowTableViewStronaGlowna.getSortOrder().add(naszaNazwaAktywne);
-
-
     }
 
     protected void setListaAktywnychCertyfikatow() {
         CertyfikatJakosciDao certyfikatJakosciDao = new CertyfikatJakosciDao();
-        List<CertyfikatJakosci> list = certyfikatJakosciDao.getAktywneCertyfikatyJakosci();
+        List<CertyfikatJakosci> list = certyfikatJakosciDao.findAktywneCertyfikatyJakosci();
 
         ObservableList<CertyfikatJakosci> data = listaAktywnychCertyfikatowTableViewStronaGlowna.getItems();
 
@@ -76,7 +67,6 @@ public class HomeController {
             ));
         }
         this.lista = data;
-
     }
 
     @FXML
@@ -107,7 +97,6 @@ public class HomeController {
         } else {
             messageLabelMain.setText("Błąd - nie zaznaczono certyfikatu");
         }
-
     }
 
     @FXML
@@ -115,14 +104,14 @@ public class HomeController {
 
         if (!listaDokumentowListViewStronaGlowna.getSelectionModel().isEmpty()) {
             messageLabelMain.setText("");
-            showAndPrintDokument(listaDokumentowListViewStronaGlowna.getSelectionModel().getSelectedItem(), false, true);}
-        if (!listaAktywnychCertyfikatowTableViewStronaGlowna.getSelectionModel().isEmpty()){
+            showAndPrintDokument(listaDokumentowListViewStronaGlowna.getSelectionModel().getSelectedItem(), false, true);
+        }
+        if (!listaAktywnychCertyfikatowTableViewStronaGlowna.getSelectionModel().isEmpty()) {
             edytujContextMenu();
         }
     }
 
     protected void showAndPrintDokument(Dokument dokument, boolean print, boolean show) throws IOException {
-
         Stage stage = new Stage();
         stage.setResizable(false);
         FXMLLoader loader = new FXMLLoader();
@@ -171,22 +160,16 @@ public class HomeController {
     }
 
     protected Dokument addDokumentToListView() {
-
         ObservableList<Dokument> data = listaDokumentowListViewStronaGlowna.getItems();
-        CertyfikatJakosci certyfikatJakosci = new CertyfikatJakosciDao().findCertyfikat(listaAktywnychCertyfikatowTableViewStronaGlowna.getSelectionModel().getSelectedItem().getNumerCertyfikatuAktywne());
+        CertyfikatJakosci certyfikatJakosci = new CertyfikatJakosciDao().findCertyfikatByNumber(listaAktywnychCertyfikatowTableViewStronaGlowna.getSelectionModel().getSelectedItem().getNumerCertyfikatuAktywne());
         DokumentDao dokumentDao = new DokumentDao();
-
-        int numer = dokumentDao.getNextNumberDokumentDao();
-        //System.out.println(numer);
-
+        int numer = dokumentDao.getNextNumberDokument();
         ZonedDateTime dataDzisiejsza = ZonedDateTime.now();
         DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String dataDzisiejszaString = dataDzisiejsza.format(f);
-
         Dokument dokumentDodawany = new Dokument(Integer.toString(numer) + "/" + dataDzisiejszaString.substring(0, 4), dataDzisiejszaString, certyfikatJakosci);
-
         data.add(dokumentDodawany);
-        dokumentDao.addDokumentToDatabase(dokumentDodawany);
+        dokumentDao.insertDokument(dokumentDodawany);
         return dokumentDodawany;
     }
 
@@ -220,22 +203,16 @@ public class HomeController {
             Platform.exit();
             System.exit(0);
         }
-
-
-        // System.exit(0);
     }
 
     @FXML
     protected void add5DokumentowToListView() {
-
         DokumentDao dokumentDao = new DokumentDao();
-        List<Dokument> list = dokumentDao.getAllDokumenty();
-
+        List<Dokument> list = dokumentDao.findAllDokumenty();
         int i = 0;
         for (Dokument b : list) {
             if (i > list.size() - 7) {
                 ObservableList<Dokument> data = listaDokumentowListViewStronaGlowna.getItems();
-
                 data.add(new Dokument(b.numerDokumentuProperty().getValue(),
                         b.dataDokumentuProperty().getValue(),
                         new CertyfikatJakosci(b.getCertyfikatJakosci().numerCertyfikatuProperty().getValue(),
@@ -290,21 +267,15 @@ public class HomeController {
         stage.setScene(scene);
         stage.setTitle("Lista Certyfikatów");
         stage.initModality(Modality.APPLICATION_MODAL);
-
-
         ListCertyfikatyController listCertyfikatyController = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
         listCertyfikatyController.setHomeController(this);
-
         stage.showAndWait();
     }
 
     @FXML
     public void usunOstatniMenuClick() throws IOException {
-
         Optional<ButtonType> result = DialogsUtils.confirmationDialog("delete.title", "delete.header");
         if (result.get() == ButtonType.OK) {
-
-
             DokumentDao dokumentDao = new DokumentDao();
             dokumentDao.deleteLastDokument();
             refreshListaDokumentow();
@@ -319,8 +290,8 @@ public class HomeController {
         if (result.get() == ButtonType.OK) {
             Config config = new Config();
             config.getConfigFromFile();
-            DaoService daoService = new DaoService();
-            daoService.init();
+            UtilsDao utilsDao = new UtilsDao();
+            utilsDao.init();
             refreshClick();
         }
     }
@@ -339,7 +310,6 @@ public class HomeController {
 
     @FXML
     void menuDokumentyClick(ActionEvent event) throws IOException {
-
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(this.getClass().getResource("/pl/weglokoks/stages/ListDokumenty.fxml"));
@@ -348,10 +318,8 @@ public class HomeController {
         stage.setScene(scene);
         stage.setTitle("Lista Dokumentów");
         stage.initModality(Modality.APPLICATION_MODAL);
-
         ListDokumentyController listDokumentyController = loader.getController(); //
         listDokumentyController.homeController = HomeController.this;
-
         stage.show();
     }
 
@@ -364,12 +332,9 @@ public class HomeController {
         this.messageLabelMain.setText(messageLabelMain);
     }
 
-
     public void edytujContextMenu() throws IOException {
 
         if (listaAktywnychCertyfikatowTableViewStronaGlowna.getSelectionModel().getSelectedItem() != null) {
-
-
             Stage stage = new Stage();
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(this.getClass().getResource("/pl/weglokoks/stages/AddNewCertyfikat.fxml"));
@@ -380,17 +345,14 @@ public class HomeController {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
 
-
             AddNewCertyfikatController editedCertyfikat = loader.getController(); //wyciągnięcie referencji wyświetlanego stage-a
             editedCertyfikat.setHomeController(HomeController.this);
             CertyfikatJakosci selected = listaAktywnychCertyfikatowTableViewStronaGlowna.getSelectionModel().getSelectedItem();
             CertyfikatJakosciDao certyfikatJakosciDao = new CertyfikatJakosciDao();
-            CertyfikatJakosci selectedCertyfikat = certyfikatJakosciDao.findCertyfikat(selected.getNumerCertyfikatuAktywne());
-
+            CertyfikatJakosci selectedCertyfikat = certyfikatJakosciDao.findCertyfikatByNumber(selected.getNumerCertyfikatuAktywne());
 
             editedCertyfikat.setNumerLabel(selectedCertyfikat.getNumerCertyfikatu());
             editedCertyfikat.setNaszaNazwaField(selectedCertyfikat.getNaszaNazwa());
-
             editedCertyfikat.setDatePicker(selectedCertyfikat.getData());
             editedCertyfikat.setNrCertyfikatuLaboratoriumField(selectedCertyfikat.getNumerCertyfikatuLaboratorium());
             editedCertyfikat.setZawartoscPopioluField(selectedCertyfikat.getZawartoscPopiolu());
@@ -408,7 +370,6 @@ public class HomeController {
             editedCertyfikat.setAktywnyCheckbox(selectedCertyfikat.getAktywny());
             editedCertyfikat.getAsortymentCombobox().getSelectionModel().select(selectedCertyfikat.getAsortyment());
             editedCertyfikat.setHomeController(HomeController.this);
-
         } else {
             messageLabelMain.setText("Zaznacz najpierw certyfikat");
         }
@@ -421,9 +382,7 @@ public class HomeController {
 
     @FXML
     void podgladMenuContextClick() throws IOException {
-
-            showAndPrintDokument(listaDokumentowListViewStronaGlowna.getSelectionModel().getSelectedItem(), false, true);
-
+        showAndPrintDokument(listaDokumentowListViewStronaGlowna.getSelectionModel().getSelectedItem(), false, true);
     }
 
     public void onMouseClickedTableView(MouseEvent mouseEvent) {

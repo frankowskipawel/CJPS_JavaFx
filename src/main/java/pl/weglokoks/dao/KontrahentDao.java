@@ -2,6 +2,7 @@ package pl.weglokoks.dao;
 
 import pl.weglokoks.config.Config;
 import pl.weglokoks.modelFX.Kontrahent;
+import pl.weglokoks.utils.DialogsUtils;
 
 import java.sql.*;
 import java.util.LinkedList;
@@ -25,7 +26,7 @@ public class KontrahentDao {
         }
     }
 
-    public List<Kontrahent> getAllKontrahent() {
+    public List<Kontrahent> findAllKontrahent() {
         List<Kontrahent> kontrahenci = new LinkedList<Kontrahent>();
         Statement statement = null;
         try {
@@ -43,27 +44,27 @@ public class KontrahentDao {
             }
             statement.close();
         } catch (SQLException e) {
+            DialogsUtils.errorDialog("Błąd", e.getMessage());
             e.printStackTrace();
         }
         return kontrahenci;
     }
 
-    public void addKontrahentDatabase(Kontrahent kontrahent) throws SQLException {
+    public void insertKontrahent(Kontrahent kontrahent) throws SQLException {
         Statement statement = null;
-
             statement = connection.createStatement();
             String query = "insert into " + tableName + "(id_kontrahent, nazwa_kontrahent, adres_kontrahent, nip_kontrahent, regon_kontrahent) values('" + kontrahent.getIdKontrahent() + "', '" + kontrahent.getNazwaKontrahent() + "', '" + kontrahent.getAdresKontrahent() + "', '" + kontrahent.getNipKontrahent() + "', '" + kontrahent.getRegonKontrahent() + "');";
             statement.executeUpdate(query);
-
     }
 
-    public void deleteKontrahentDatabase(String id) {
+    public void deleteKontrahentById(String id) {
         Statement statement = null;
         try {
             statement = connection.createStatement();
             String query = "delete from " + tableName + " where id_kontrahent = '" + id+"';";
             statement.executeUpdate(query);
         } catch (SQLException e) {
+            DialogsUtils.errorDialog("Błąd", e.getMessage());
             e.printStackTrace();
         }
     }
@@ -77,8 +78,8 @@ public class KontrahentDao {
             //   System.out.println(query);
             int resultSet = statement.executeUpdate(query);
         } catch (SQLException e) {
+            DialogsUtils.errorDialog("Błąd", e.getMessage());
             e.printStackTrace();
         }
     }
-
 }

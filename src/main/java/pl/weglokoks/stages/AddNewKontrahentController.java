@@ -33,32 +33,16 @@ public class AddNewKontrahentController {
     void okOnClick() {
         if (!id.isDisable()) {
             Kontrahent kontrahent = new Kontrahent(id.getText(), nazwa.getText(), adres.getText(), nip.getText(), regon.getText());
-
                boolean isAddOk = listKontrahenciController.addNowyKontrahent(kontrahent);
-
             if (isAddOk){
             Stage stage = (Stage) okButton.getScene().getWindow();
             stage.close();}
-
         } else {
-
             Kontrahent kontrahent = new Kontrahent(id.getText(), nazwa.getText(), adres.getText(), nip.getText(), regon.getText());
             listKontrahenciController.updateKontrahent(kontrahent);
             Stage stage = (Stage) okButton.getScene().getWindow();
             stage.close();
-
-
         }
-
-    }
-
-
-    public ListKontrahenciController getListKontrahenciController() {
-        return listKontrahenciController;
-    }
-
-    public void setListKontrahenciController(ListKontrahenciController listKontrahenciController) {
-        this.listKontrahenciController = listKontrahenciController;
     }
 
     public TextField getId() {
@@ -77,35 +61,15 @@ public class AddNewKontrahentController {
         this.nazwa.setText(nazwa);
     }
 
-    public TextField getAdres() {
-        return adres;
-    }
-
     public void setAdres(String adres) {
         this.adres.setText(adres);
-    }
-
-    public TextField getNip() {
-        return nip;
     }
 
     public void setNip(String nip) {
         this.nip.setText(nip);
     }
 
-    public TextField getRegon() {
-        return regon;
-    }
-
     public void setRegon(String regon) {
         this.regon.setText(regon);
-    }
-
-    public Button getOkButton() {
-        return okButton;
-    }
-
-    public void setOkButton(Button okButton) {
-        this.okButton = okButton;
     }
 }

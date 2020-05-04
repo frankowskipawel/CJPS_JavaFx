@@ -181,7 +181,6 @@ public class WydrukController {
     }
 
 
-    //getters and sertters
     public void setNazwaAdresPodmiotuWydruk(String nazwaAdresPodmiotuWydruk) {
         this.nazwaAdresPodmiotuWydruk.setText(nazwaAdresPodmiotuWydruk);
     }
@@ -314,27 +313,11 @@ public class WydrukController {
         this.WDmaxZawWilgociWydruk.setText(WDmaxZawWilgociWydruk);
     }
 
-    public WydrukController getWydrukController() {
-        return wydrukController;
-    }
-
-    public void setWydrukController(WydrukController wydrukController) {
-        this.wydrukController = wydrukController;
-    }
-
     public Button getPrintButton() {
         return printButton;
     }
 
-    public void setPrintButton(Button printButton) {
-        this.printButton = printButton;
-    }
-
     public CheckBox getJednaKopiaCheckBox() {
         return jednaKopiaCheckBox;
-    }
-
-    public void setJednaKopiaCheckBox(CheckBox jednaKopiaCheckBox) {
-        this.jednaKopiaCheckBox = jednaKopiaCheckBox;
     }
 }

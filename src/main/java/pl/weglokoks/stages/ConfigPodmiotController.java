@@ -46,48 +46,24 @@ public class ConfigPodmiotController {
 
     }
 
-    public String getNazwaTextFieldPodmiotConfig() {
-        return nazwaTextFieldPodmiotConfig.getText();
-    }
-
     public void setNazwaTextFieldPodmiotConfig(String nazwaTextFieldPodmiotConfig) {
         this.nazwaTextFieldPodmiotConfig.setText(nazwaTextFieldPodmiotConfig);
-    }
-
-    public String getUlicaTextFieldPodmiotConfig() {
-        return ulicaTextFieldPodmiotConfig.getText();
     }
 
     public void setUlicaTextFieldPodmiotConfig(String ulicaTextFieldPodmiotConfig) {
         this.ulicaTextFieldPodmiotConfig.setText(ulicaTextFieldPodmiotConfig);
     }
 
-    public String getKodPocztowyTextFieldPodmiotConfig() {
-        return kodPocztowyTextFieldPodmiotConfig.getText();
-    }
-
     public void setKodPocztowyTextFieldPodmiotConfig(String kodPocztowyTextFieldPodmiotConfig) {
         this.kodPocztowyTextFieldPodmiotConfig.setText(kodPocztowyTextFieldPodmiotConfig);
-    }
-
-    public String getMiastoTextFieldPodmiotConfig() {
-        return miastoTextFieldPodmiotConfig.getText();
     }
 
     public void setMiastoTextFieldPodmiotConfig(String miastoTextFieldPodmiotConfig) {
         this.miastoTextFieldPodmiotConfig.setText(miastoTextFieldPodmiotConfig);
     }
 
-    public String getNipTextFieldPodmiotConfig() {
-        return nipTextFieldPodmiotConfig.getText();
-    }
-
     public void setNipTextFieldPodmiotConfig(String nipTextFieldPodmiotConfig) {
         this.nipTextFieldPodmiotConfig.setText(nipTextFieldPodmiotConfig);
-    }
-
-    public String getRegonTextFieldPodmiotConfig() {
-        return regonTextFieldPodmiotConfig.getText();
     }
 
     public void setRegonTextFieldPodmiotConfig(String regonTextFieldPodmiotConfig) {

@@ -315,19 +315,6 @@ public class CertyfikatJakosci{
         setIloscAktywne(iloscAktywne);
     }
 
-//    public String getNaszaNazwa() {
-//        return naszaNazwa.get();
-//    }
-//
-//    public SimpleStringProperty naszaNazwaProperty() {
-//        return naszaNazwa;
-//    }
-//
-//    public void setNaszaNazwa(String naszaNazwa) {
-//        this.naszaNazwa.set(naszaNazwa);
-//    }
-
-
     public String getNumerCertyfikatuAktywne() {
         return numerCertyfikatuAktywne.get();
     } //Tu sprawdzic

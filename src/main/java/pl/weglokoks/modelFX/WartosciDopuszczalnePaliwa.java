@@ -10,7 +10,6 @@ public enum WartosciDopuszczalnePaliwa {
     WEGIEL_KAMIENNY_EKOGROSZEK("WĘGIEL KAMIENNY - EKOGROSZEK", "-", "12", "-", "1,2", "-", "-", "24", "-", "-", "25", "5", "31,5", "0", "10", "0", "10", "-", "15"),
     WEGIEL_KAMIENNY_PELLET("WĘGIEL KAMIENNY - PELLET", "-", "12", "-", "1,2", "-", "-", "24", "-", "-", "25", "5", "31,5", "0", "10", "0", "5", "-", "15");
 
-
     private String nazwa;
     private String minPopiol;
     private String maxPopiol;

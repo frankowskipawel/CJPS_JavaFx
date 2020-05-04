@@ -1,5 +1,7 @@
 package pl.weglokoks.config;
 
+import pl.weglokoks.utils.DialogsUtils;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -7,7 +9,7 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 
 public class Config {
-  //  private final String PATH = "config.txt";
+
   private final String PATH = "config.txt";
 
     public static String HOSTNAME;
@@ -33,7 +35,6 @@ public class Config {
     }
 
     private void getConfig() throws IOException {
-        //Path source = Paths.get(PATH);
         File plik = new File(PATH);
         Scanner wejscie = new Scanner(plik);
         HOSTNAME = wejscie.nextLine();
@@ -52,9 +53,7 @@ public class Config {
 
     private void setDefaultConfig() throws IOException {
         File file = new File(PATH);
-       // file.delete();
         file.createNewFile();
-
         PrintWriter printWriter = new PrintWriter(PATH);
         //Wartości domyślnie wpisywane do pliku konfiguracyjnego
         printWriter.println(pl.weglokoks.config.DefaultConnection.CONNECTION.getHost());
@@ -97,6 +96,7 @@ public class Config {
                 setConfig(host, port, database, login, password);
             }
         } catch (Exception e) {
+            DialogsUtils.errorDialog("Błąd", e.getMessage());
             e.printStackTrace();
         }
     }
@@ -124,6 +124,7 @@ public class Config {
                 setDanePodmiotu(nazwa, ulica, kodPocztowy, miasto, nip, regon);
             }
         } catch (Exception e) {
+            DialogsUtils.errorDialog("Błąd", e.getMessage());
             e.printStackTrace();
         }
     }

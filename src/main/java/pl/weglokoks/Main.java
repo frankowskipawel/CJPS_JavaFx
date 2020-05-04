@@ -1,7 +1,7 @@
 package pl.weglokoks;
 
 import pl.weglokoks.config.Config;
-import pl.weglokoks.dao.DaoService;
+import pl.weglokoks.dao.UtilsDao;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
@@ -21,8 +21,8 @@ public class Main extends Application {
 
         Config config = new Config();
         config.getConfigFromFile();
-        DaoService daoService = new DaoService();
-        daoService.init();
+        UtilsDao utilsDao = new UtilsDao();
+        utilsDao.init();
 
         VBox vBox = (VBox) FxmlUtils.fxmlLoader("/pl/weglokoks/stages/Home.fxml");
         Scene scene = new Scene(vBox);

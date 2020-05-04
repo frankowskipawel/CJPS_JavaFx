@@ -39,9 +39,7 @@ public class ListKontrahenciController {
 
     @FXML
     public void initialize() {
-
         setAllKontrahentTableView();
-
     }
 
     @FXML
@@ -49,7 +47,7 @@ public class ListKontrahenciController {
         Optional<ButtonType> result = DialogsUtils.confirmationDialog("delete.title", "delete.header");
         if (result.get() == ButtonType.OK) {
             KontrahentDao kontrahentDao = new KontrahentDao();
-            kontrahentDao.deleteKontrahentDatabase(kontrahenciTableView.getSelectionModel().getSelectedItem().getIdKontrahent());
+            kontrahentDao.deleteKontrahentById(kontrahenciTableView.getSelectionModel().getSelectedItem().getIdKontrahent());
             ObservableList<Kontrahent> data = kontrahenciTableView.getItems();
             data.remove(kontrahenciTableView.getSelectionModel().getSelectedItem());
         }
@@ -61,7 +59,7 @@ public class ListKontrahenciController {
         KontrahentDao kontrahentDao = new KontrahentDao();
         boolean isAddOk = true;
         try {
-            kontrahentDao.addKontrahentDatabase(kontrahent);
+            kontrahentDao.insertKontrahent(kontrahent);
         } catch (SQLException e) {
 
             DialogsUtils.errorDialog("errorUniqueId.title", "errorUniqueId.header");
@@ -81,18 +79,15 @@ public class ListKontrahenciController {
     }
 
     public void updateKontrahent(Kontrahent kontrahent) {
-
         KontrahentDao kontrahentDao = new KontrahentDao();
         kontrahentDao.updateKontrahent(kontrahent);
         ObservableList<Kontrahent> data = kontrahenciTableView.getItems();
         data.removeAll();
         setAllKontrahentTableView();
-
     }
 
     @FXML
     protected void dodajNowyOnClick() throws IOException {
-
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(this.getClass().getResource("/pl/weglokoks/stages/AddNewKontrahent.fxml"));
@@ -104,18 +99,15 @@ public class ListKontrahenciController {
         AddNewKontrahentController addNewKontrahentController = loader.getController();
         addNewKontrahentController.listKontrahenciController = ListKontrahenciController.this;
         stage.show();
-
     }
 
     @FXML
     protected void setAllKontrahentTableView() {
-
         KontrahentDao kontrahentDao = new KontrahentDao();
-        List<Kontrahent> list = kontrahentDao.getAllKontrahent();
+        List<Kontrahent> list = kontrahentDao.findAllKontrahent();
         ObservableList<Kontrahent> data = kontrahenciTableView.getItems();
         data.removeAll(data);
         for (Kontrahent b : list) {
-
             data.add(new Kontrahent(b.idKontrahentProperty().getValue(),
                     b.nazwaKontrahentProperty().getValue(),
                     b.adresKontrahentProperty().getValue(),
@@ -134,7 +126,6 @@ public class ListKontrahenciController {
             Stage stage = (Stage) okButton.getScene().getWindow();
             stage.close();
         }
-
     }
 
     @FXML
@@ -148,18 +139,12 @@ public class ListKontrahenciController {
         ObservableList<Kontrahent> data = kontrahenciTableView.getItems();
         data.removeAll(data);
         KontrahentDao kontrachentDao = new KontrahentDao();
-        List<Kontrahent> dataFromDB = kontrachentDao.getAllKontrahent();
-
+        List<Kontrahent> dataFromDB = kontrachentDao.findAllKontrahent();
         dataFromDB.stream()
                 .filter(item -> item.toString().matches(("(.*)" + szukajTextField.getText()) + "(.*)"))
                 .forEach(data::add);
 
         Collections.reverse(data);
-    }
-
-
-    public AddNewCertyfikatController getAddNewCertyfikatController() {
-        return addNewCertyfikatController;
     }
 
     public void setAddNewCertyfikatController(AddNewCertyfikatController addNewCertyfikatController) {
