@@ -2,7 +2,7 @@ CERTYFIKATY JAKOŚCI PALIW STAŁYCH
 
 Program powstał w odpowiedzi na wprowadzone przepisy dotyczące wystawiania certyfikatów dla paliw stałych do każdej sprzedaży. Przeznaczony jest dla sprzedawców i pomaga w łatwy i szybki sposób na zarządzanie certyfikatami. Wybieramy certyfikat i wciskamy drukuj a program sam nadaje mu kolejny numer i go drukuje. Program działa z bazą danych MySQL i może pracować na wielu komputerach naraz.
 
-Wykoszystane technologie: JAVA, JAVA FX, JDBC
+Wykorzystane technologie: JAVA, JAVA FX, JDBC
 
 Wymagania : Baza danych MySQL, Java 8
 
