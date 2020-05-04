@@ -1,4 +1,4 @@
-package pl.weglokoks.modelFX;
+package pl.weglokoks.enums;
 
 public enum WartosciDopuszczalnePaliwa {
 

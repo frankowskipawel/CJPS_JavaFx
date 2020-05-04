@@ -20,7 +20,8 @@ public class KontrahentDao {
     private void init() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://" + Config.HOSTNAME + ":" + Config.PORT + "/" + Config.DATABASENAME + "?useSSL=false", Config.USER, Config.PASSWORD);
+            connection = DriverManager.getConnection("jdbc:mysql://" + Config.HOSTNAME +
+                    ":" + Config.PORT + "/" + Config.DATABASENAME + "?useSSL=false", Config.USER, Config.PASSWORD);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -53,7 +54,11 @@ public class KontrahentDao {
     public void insertKontrahent(Kontrahent kontrahent) throws SQLException {
         Statement statement = null;
             statement = connection.createStatement();
-            String query = "insert into " + tableName + "(id_kontrahent, nazwa_kontrahent, adres_kontrahent, nip_kontrahent, regon_kontrahent) values('" + kontrahent.getIdKontrahent() + "', '" + kontrahent.getNazwaKontrahent() + "', '" + kontrahent.getAdresKontrahent() + "', '" + kontrahent.getNipKontrahent() + "', '" + kontrahent.getRegonKontrahent() + "');";
+            String query = "insert into " + tableName +
+                    "(id_kontrahent, nazwa_kontrahent, adres_kontrahent, nip_kontrahent, regon_kontrahent) values('" +
+                    kontrahent.getIdKontrahent() + "', '" + kontrahent.getNazwaKontrahent() + "', '" +
+                    kontrahent.getAdresKontrahent() + "', '" + kontrahent.getNipKontrahent() + "', '" +
+                    kontrahent.getRegonKontrahent() + "');";
             statement.executeUpdate(query);
     }
 
@@ -74,8 +79,13 @@ public class KontrahentDao {
         Statement statement = null;
         try {
             statement = connection.createStatement();
-            String query = "UPDATE " + tableName + " SET `id_kontrahent` = '" + kontrahent.getIdKontrahent() + "', `nazwa_kontrahent` = '" + kontrahent.getNazwaKontrahent() + "', `adres_kontrahent` = '" + kontrahent.getAdresKontrahent() + "', `nip_kontrahent` = '" + kontrahent.getNipKontrahent() + "', `regon_kontrahent` = '" + kontrahent.getRegonKontrahent() + "' WHERE (`id_kontrahent` = '" + kontrahent.getIdKontrahent() + "')";
-            //   System.out.println(query);
+            String query = "UPDATE " + tableName + " SET `id_kontrahent` = '" +
+                    kontrahent.getIdKontrahent() + "', `nazwa_kontrahent` = '" +
+                    kontrahent.getNazwaKontrahent() + "', `adres_kontrahent` = '" +
+                    kontrahent.getAdresKontrahent() + "', `nip_kontrahent` = '" +
+                    kontrahent.getNipKontrahent() + "', `regon_kontrahent` = '" +
+                    kontrahent.getRegonKontrahent() + "' WHERE (`id_kontrahent` = '" +
+                    kontrahent.getIdKontrahent() + "')";
             int resultSet = statement.executeUpdate(query);
         } catch (SQLException e) {
             DialogsUtils.errorDialog("Błąd", e.getMessage());

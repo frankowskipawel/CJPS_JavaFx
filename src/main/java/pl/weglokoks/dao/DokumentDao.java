@@ -24,7 +24,8 @@ public class DokumentDao {
     private void init() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://" + Config.HOSTNAME + ":" + Config.PORT + "/" + Config.DATABASENAME + "?useSSL=false", Config.USER, Config.PASSWORD);
+            connection = DriverManager.getConnection("jdbc:mysql://" + Config.HOSTNAME + ":" + Config.PORT + "/" +
+                    Config.DATABASENAME + "?useSSL=false", Config.USER, Config.PASSWORD);
         } catch (Exception e) {
             DialogsUtils.errorDialog("Błąd", e.getMessage());
             e.printStackTrace();
@@ -131,7 +132,9 @@ public class DokumentDao {
                 dataNajwyzszy = resultSet.getString("data_dokumenty");
             }
             statement.close();
-            if (dataNajwyzszy==null){dataNajwyzszy="         ";}
+            if (dataNajwyzszy == null) {
+                dataNajwyzszy = "         ";
+            }
             ZonedDateTime dataDzisiejsza = ZonedDateTime.now();
             DateTimeFormatter f = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             String dataDzisiejszaString = dataDzisiejsza.format(f);

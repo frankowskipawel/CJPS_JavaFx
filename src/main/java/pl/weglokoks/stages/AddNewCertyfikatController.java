@@ -10,7 +10,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import pl.weglokoks.modelFX.CertyfikatJakosci;
-import pl.weglokoks.modelFX.WartosciDopuszczalnePaliwa;
+import pl.weglokoks.enums.WartosciDopuszczalnePaliwa;
 import pl.weglokoks.utils.DialogsUtils;
 
 import java.io.IOException;
@@ -103,7 +103,7 @@ public class AddNewCertyfikatController {
 
 
     @FXML
-    protected void okOnClick() throws IOException {
+    protected void okOnClick() {
         CertyfikatJakosciDao certyfikatJakosciDao = new CertyfikatJakosciDao();
         String numerString;
         if (numerLabel.getText().equals("(auto)")) {
@@ -161,14 +161,14 @@ public class AddNewCertyfikatController {
     }
 
     @FXML
-    void anulujOnClick(ActionEvent event) {
+    void anulujOnClick() {
         Stage stage = (Stage) anulujButton.getScene().getWindow();
         stage.close();
 
     }
 
     @FXML
-    void kontrahentOnClick(ActionEvent event) throws IOException {
+    void kontrahentOnClick() throws IOException {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(this.getClass().getResource("/pl/weglokoks/stages/ListKontrahenci.fxml"));
@@ -224,11 +224,6 @@ public class AddNewCertyfikatController {
         } else {
             this.aktywnyCheckbox.setSelected(false);
         }
-    }
-
-    public void setAsortymentCombobox(String asortymentCombobox) {
-
-        this.asortymentCombobox.setPromptText(asortymentCombobox);
     }
 
     public void setDatePicker(String datePicker) {

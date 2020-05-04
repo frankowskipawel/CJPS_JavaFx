@@ -177,8 +177,6 @@ public class ListKontrahenciController {
             addNewKontrahentController.setRegon(selected.getRegonKontrahent());
             stage.show();
         }
-
-
     }
 
     public void dodajNowyContextMenu() throws IOException {

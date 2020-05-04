@@ -45,7 +45,7 @@ public class ConfigDataBaseController {
     }
 
     @FXML
-    void okOnClick(ActionEvent event) throws IOException {
+    void okOnClick() throws IOException {
         Config config = new Config();
         config.setConfig(hostTextFieldConfig.getText(), portTextFieldConfig.getText(), databaseNameTextFieldConfig.getText(), loginTextFieldConfig.getText(), passwordTextfieldConfig.getText());
         config.getConfigFromFile();
@@ -53,7 +53,7 @@ public class ConfigDataBaseController {
     }
 
     @FXML
-    void defaultClick(ActionEvent event) {
+    void defaultClick() {
         hostTextFieldConfig.setText(DefaultConnection.CONNECTION.getHost());
         portTextFieldConfig.setText(DefaultConnection.CONNECTION.getPort());
         databaseNameTextFieldConfig.setText(DefaultConnection.CONNECTION.getDatabaseName());
@@ -62,7 +62,7 @@ public class ConfigDataBaseController {
     }
 
     @FXML
-    void cancelOnClick(ActionEvent event) {
+    void cancelOnClick() {
         closeStage();
     }
 

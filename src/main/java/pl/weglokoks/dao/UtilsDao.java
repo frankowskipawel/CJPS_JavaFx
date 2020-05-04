@@ -18,7 +18,8 @@ public class UtilsDao {
             try {
                 isOk = true;
                 Class.forName("com.mysql.jdbc.Driver");
-                connection = DriverManager.getConnection("jdbc:mysql://" + Config.HOSTNAME + ":" + Config.PORT + "/" + Config.DATABASENAME + "?useSSL=false", Config.USER, Config.PASSWORD);
+                connection = DriverManager.getConnection("jdbc:mysql://" + Config.HOSTNAME + ":" + Config.PORT +
+                        "/" + Config.DATABASENAME + "?useSSL=false", Config.USER, Config.PASSWORD);
             } catch (SQLException e) {
                 try {
                     isOk = false;

@@ -8,15 +8,13 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.layout.Pane;
 import pl.weglokoks.modelFX.Dokument;
-import pl.weglokoks.modelFX.WartosciDopuszczalnePaliwa;
+import pl.weglokoks.enums.WartosciDopuszczalnePaliwa;
 
 import java.io.IOException;
 
 public class WydrukController {
 
-    WydrukController wydrukController;
     HomeController homeController;
 
     @FXML
