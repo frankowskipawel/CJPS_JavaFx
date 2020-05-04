@@ -4,6 +4,8 @@ Program powstał w odpowiedzi na wprowadzone przepisy dotyczące wystawiania cer
 
 Wykoszystane technologie: JAVA, JAVA FX, JDBC
 
+Wymagania : Baza danych MySQL, Java 8
+
 Nie zezwalam na użytek komercyjny.
 
 <img src="README images\1.jpg" />
